@@ -1,0 +1,2193 @@
+<!DOCTYPE html>
+<head>
+    
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>UMA 2.0 | Gravitee.io API Platform Documentation</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="UMA 2.0" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Home page for Gravitee.io API Platform documentation" />
+<meta property="og:description" content="Home page for Gravitee.io API Platform documentation" />
+<link rel="canonical" href="https://docs.gravitee.io/am/current/am_devguide_protocols_uma2_overview.html" />
+<meta property="og:url" content="https://docs.gravitee.io/am/current/am_devguide_protocols_uma2_overview.html" />
+<meta property="og:site_name" content="Gravitee.io API Platform Documentation" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="UMA 2.0" />
+<meta name="twitter:site" content="@graviteeio" />
+<script type="application/ld+json">
+{"headline":"UMA 2.0","description":"Home page for Gravitee.io API Platform documentation","url":"https://docs.gravitee.io/am/current/am_devguide_protocols_uma2_overview.html","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>UMA 2.0 | Gravitee.io API Platform Documentation</title>
+<link rel="stylesheet" href="/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/css/modern-business.css">
+<link rel="stylesheet" href="/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/css/rouge_github.css">
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/theme-bluegrey.css">
+<link rel="stylesheet" href="/css/gravitee.css">
+<link rel="stylesheet" href="/fonts/plex/css/ibm-plex.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="Gravitee.io API Platform Documentation" href="https://docs.gravitee.iofeed.xml">
+<!-- Algolia search -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+
+    <script src="/js/init-default.js"></script>
+
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-lg navbar-brand" href="/index.html"><img alt="Gravitee.io API Platform" src="/images/GRAVITEE_LOGOV2_TRANSPBLEU.png"><span class="projectTitle">Gravitee.io API Platform</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/apim/3.x/apim_overview_introduction.html">3.x (current)</a></li>
+                        
+                        
+                        
+                        <li><a href="/apim/1.x/apim_overview_introduction.html">1.x</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Access Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/am/current/am_overview_introduction.html">3.x (current)</a></li>
+                        
+                        
+                        
+                        <li><a href="/am/2.x/am_overview_introduction.html">2.x</a></li>
+                        
+                        
+                        
+                        <li><a href="/am/1.x/am_overview_introduction.html">1.x</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/ae/overview_introduction.html">Alert Engine</a></li>
+                
+                
+                
+                <li><a href="/cli/cli_introduction.html">CLI</a></li>
+                
+                
+                
+                <li><a href="/ee/ee_introduction.html">Enterprise</a></li>
+                
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="Search">
+                    </div>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Access Management 3.x </li>
+    
+    
+    
+    <li>
+        <a href="#">Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/current/am_overview_introduction.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_overview_why.html">Why Gravitee.io ?</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_overview_architecture.html">Architecture</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_overview_components.html">Components</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_overview_concepts.html">Concepts</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_overview_plugins.html">Plugins</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">QuickStart</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/current/am_quickstart_register_app.html">Register a new application</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_quickstart_authenticate_users.html">Authenticate users with Identity Provider</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_quickstart_profile_information.html">Get user profile information</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_quickstart_secure_apis.html">Secure your APIs</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_quickstart_use_policies.html">Use your first Extension Point</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_quickstart_tokens_custom_claims.html">Add Custom Claims to Tokens</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">User Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/current/am_userguide_overview.html">Overview</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Getting Started</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_authentication.html">Sign in to the Management UI</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Security domains</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_security_domains.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_create_domain.html">Create security domain</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Identity providers</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_identity_providers.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_create_identity_provider.html">Create identity provider</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_identity_provider_mapping.html">User and Roles mapping</a></li>
+                    
+                    
+                    
+                    <li class="subfolders">
+                        <a href="#">Enteprise Identity Providers</a>
+                        <ul>
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_enterprise_identity_providers.html">Overview</a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_enterprise_identity_provider_ldap.html">Active Directory / LDAP</a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_enterprise_identity_provider_http.html">HTTP (web service)</a></li>
+                            
+                            
+                            
+                        </ul>
+                    </li>
+                    
+                    
+                    
+                    <li class="subfolders">
+                        <a href="#">Social Identity Providers</a>
+                        <ul>
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_social_identity_providers.html">Overview</a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_social_identity_provider_azure_ad.html">Azure AD</a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_social_identity_provider_facebook.html">Facebook</a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_social_identity_provider_github.html">GitHub</a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_social_identity_provider_twitter.html">Twitter</a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_social_identity_provider_google.html">Google</a></li>
+                            
+                            
+                            
+                        </ul>
+                    </li>
+                    
+                    
+                    
+                    <li class="subfolders">
+                        <a href="#">Legal Identity Providers</a>
+                        <ul>
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_legal_identity_providers.html">Overview</a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_legal_identity_provider_franceconnect.html">FranceConnect</a></li>
+                            
+                            
+                            
+                        </ul>
+                    </li>
+                    
+                    
+                    
+                    <li class="subfolders">
+                        <a href="#">Database</a>
+                        <ul>
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_database_identity_providers.html">Overview</a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_database_identity_provider_jdbc.html">JDBC</a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_database_identity_provider_mongodb.html">MongoDB</a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="/am/current/am_userguide_database_identity_provider_inline.html">Inline</a></li>
+                            
+                            
+                            
+                        </ul>
+                    </li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Applications</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_clients.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_create_client.html">Create application</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_dynamic_client_registration.html">Dynamic Client Registration</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Login Page</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_login_page.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_custom_login_page.html">Custom login page</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Multi-factor Authentication</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_mfa.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_mfa_factors.html">Factors</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_mfa_user_factors.html">Reset User's MFA</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Passwordless (W3C WebAuthn)</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_passwordless.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Certificates</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_certificates.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_create_certificate.html">Create certificate</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Extension Grants</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_extension_grants.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_extension_grants_jwt_bearer.html">JWT Bearer</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">User Management</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_user_management.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_user_management_users.html">Users</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_user_management_groups.html">Groups</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_user_management_roles.html">Roles</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_user_management_registration.html">User Registration</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_user_management_forms.html">Custom Forms</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_user_management_scim.html">SCIM 2.0</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_user_management_consent.html">User consent</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">User Session Management</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_user_session_management_logout.html">Logout</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Audit Log</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_logs.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_audit_log.html">Audit Trail</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Extension Points</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_policies.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_userguide_policies_extension_points.html">Extension points</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Administration Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/current/am_adminguide_roles_and_permissions.html">Roles and Permissions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_adminguide_users_and_groups.html">Users and Groups</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Installation Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/current/am_installguide_introduction.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_installguide_quickstart.html">Quickstart</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Install with .zip</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_gateway_install_zip.html">Auth Gateway</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_management_api_install_zip.html">Management API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_management_ui_install_zip.html">Portal</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Install on Red Hat</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_redhat_introduction.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_redhat_stack.html">Install Access Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_redhat_gateway.html">Install Access Gateway component</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_redhat_management_api.html">Install Management API component</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_redhat_management_ui.html">Install Management UI component</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Install on Amazon</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_amazon_introduction.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_amazon_stack.html">Install Access Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_amazon_gateway.html">Install Access Gateway component</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_amazon_management_api.html">Install Management API component</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_amazon_management_ui.html">Install Management UI component</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Run on Docker</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_docker_images.html">Images</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_docker_compose.html">Compose</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_installguide_kubernetes.html">Kubernetes</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Auth Gateway</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_gateway_configuration.html">Configuration</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_gateway_technical_api.html">Technical API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_gateway_metrics.html">Metrics</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Management API</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_management_api_configuration.html">Configuration</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_management_api_technical_api.html">Technical API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_management_api_metrics.html">Metrics</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Portal</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_management_ui_configuration.html">Configuration</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Repositories</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_repositories.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_repositories_mongodb.html">MongoDB</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_installguide_repositories_jdbc.html">JDBC</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_installguide_migration.html">Migration guide</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Breaking changes</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/current/am_breaking_changes.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_breaking_changes_3.1.html">Breaking changes in 3.1</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_breaking_changes_3.0.html">Breaking changes in 3.0</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_breaking_changes_2.10.html">Breaking changes in 2.10</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_breaking_changes_2.8.html">Breaking changes in 2.8</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_breaking_changes_2.5.html">Breaking changes in 2.5</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_breaking_changes_2.0.html">Breaking changes in 2.0</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Developer Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/current/am_devguide_bootstrap.html">Bootstrap your environment</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/current/am_devguide_management_api_documentation.html">Management API</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">APIs</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/current/am_devguide_protocols_overview.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_devguide_protocols_oauth2_overview.html">OAuth 2.0</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_devguide_protocols_oidc_overview.html">OpenID Connect</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="active"><a href="/am/current/am_devguide_protocols_uma2_overview.html">UMA 2.0</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_devguide_protocols_scim_overview.html">SCIM 2.0</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_devguide_protocols_users_overview.html">Users</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/current/am_devguide_protocols_session_overview.html">User Session</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Changelog</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/current/am_changelog.html">Changelog</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+    <h1 class="post-title-main">UMA 2.0</h1>
+</div>
+
+
+
+<div class="post-content">
+
+    <div class="summary">3.2.0</div>
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <div class="sect1">
+<h2 id="overview">Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>User-Managed Access (UMA) is an OAuth-based protocol designed to give to an individual a unified control point for authorizing who and what can get access to their digital data, content, and services, no matter where all those things live.</p>
+</div>
+<div class="paragraph">
+<p>The authorization server and resource server interact with the client and requesting party in a way that is asynchronous with respect to resource owner interactions.</p>
+</div>
+<div class="paragraph">
+<p>This lets a resource owner configure an authorization server with authorization grant rules (policy conditions) at will, rather than authorizing access token issuance synchronously just after authenticating.</p>
+</div>
+<div class="paragraph">
+<p>For example, bank customer (resource owner) Alice with a bank account service (resource server) can use a sharing management service (authorization server) hosted by the bank to manage access to her various protected resources by spouse Bob, accounting professional Charline, and financial information aggregation company Decide Account, all using different client applications.
+Each of her bank accounts is a protected resource, and two different scopes of access she can control on them are viewing account data and accessing payment functions.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-08.html#claim-redirect">The User-Managed Access (UMA) 2.0 Grant for OAuth 2.0 Authorization specification</a> discusses the use of the authorization server&#8217;s claims interaction endpoint for one or more interactive claims-gathering processes as the authorization server requires. Gravitee.io AM does not support interactive claims gathering. Claims gathering is accomplished by having the requesting party acquire an OpenID Connect (OIDC) ID token.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using_uma_2_0">Using UMA 2.0</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Gravitee.io AM exposes an endpoint for discovering information about the UMA provider configuration.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Discovery endpoint URL : <a href="https://am-gateway/{domain}/uma/.well-known/uma2-configuration" class="bare">https://am-gateway/{domain}/uma/.well-known/uma2-configuration</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can also find UMA 2.0 protocol endpoints exposed by Gravitee.io Access Management :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/am/current/uma2/index.html" target="_blank" rel="noopener">UMA 2.0 API Console</a> - <a href="/am/current/uma2/swagger.yml" target="_blank" rel="noopener">Swagger spec</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="roles">Roles</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The UMA grant enhances the OAuth definitions of entities in order to accommodate the requesting party role.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">resource owner</dt>
+<dd>
+<p>An entity capable of granting access to a protected resource, the "user" in User-Managed Access.
+The resource owner MAY be an end-user (natural person) or MAY be a non-human entity treated as a person for limited legal purposes (legal person), such as a corporation.</p>
+</dd>
+<dt class="hdlist1">requesting party</dt>
+<dd>
+<p>A natural or legal person that uses a client to seek access to a protected resource. The requesting party may or may not be the same party as the resource owner.</p>
+</dd>
+<dt class="hdlist1">client</dt>
+<dd>
+<p>An application that is capable of making requests for protected resources with the resource owner&#8217;s authorization and on the requesting party&#8217;s behalf.</p>
+</dd>
+<dt class="hdlist1">resource server</dt>
+<dd>
+<p>A server that hosts resources on a resource owner&#8217;s behalf and is capable of accepting and responding to requests for protected resources.</p>
+</dd>
+<dt class="hdlist1">authorization server</dt>
+<dd>
+<p>A server that protects, on a resource owner&#8217;s behalf, resources hosted at a resource server.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="protocol_flow">Protocol flow</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The UMA 2.0 flow enhances the standard OAuth 2.0 grant by defining formal communications between the UMA-enabled authorization server and resource server as they act on behalf of the resource owner</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>                                             +------------------+
+                                             |     resource     |
+       +------------manage (out of scope)----|       owner      |
+       |                                     +------------------+
+       |                                               |
+       |                protection                     |
+       |                API access                  control
+       |                token (PAT)              (out of scope)
+       |                                               |
+       v                                               v
++------------+                    +----------+------------------+
+|            |                    |protection|                  |
+|  resource  |                    |   API    |   authorization  |
+|   server   |&lt;-----protect-------| (needs   |      server      |
+|            |                    |   PAT)   |                  |
++------------+                    +----------+------------------+
+| protected  |                               |        UMA       |
+| resource   |                               |       grant      |
+|(needs RPT) |          requesting           |  (PCT optional)  |
++------------+          party token          +------------------+
+       ^                  (RPT)               ^  persisted   ^
+       |                                      |   claims     |
+       |                                    push   token     |
+       |                                   claim   (PCT)     |
+       |                                   tokens         interact
+       |                                      +--------+    for
+       +------------access--------------------| client |   claims
+                                              +--------+  gathering
+                                                +---------------+
+                                                |  requesting   |
+                                                |     party     |
+                                                +---------------+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="endpoints">Endpoints</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="resource_registration_endpoint">Resource Registration Endpoint</h3>
+<div class="paragraph">
+<p><a href="https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-federated-authz-2.0.html#resource-registration-endpoint">The resource registration endpoint</a>  enables the resource server to put resources under the protection of an authorization server on behalf of the resource owner and manage them over time.
+The authorization server MUST first verify the identity of the resource owner.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Resource registration endpoint URL : <a href="https://am-gateway/{domain}/uma/protection/resource_set" class="bare">https://am-gateway/{domain}/uma/protection/resource_set</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="access_policies_endpoint">Access Policies Endpoint</h3>
+<div class="paragraph">
+<p><a href="https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-federated-authz-2.0.html#reg-api">Access policies endpoint</a> allows the resource server to redirect an end-user resource owner to a specific user interface within the authorization server where the resource owner can immediately set or modify access policies subsequent to the resource registration action just completed.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Access policies endpoint URL : <a href="https://am-gateway/{domain}/uma/protection/resource_set/:resourceId/policies" class="bare">https://am-gateway/{domain}/uma/protection/resource_set/:resourceId/policies</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only the resource owner can create a policy to protect a resource. Administrator users, cannot create policies on behalf of a resource owner.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The policies can be written with the Groovy language thanks to the <a href="/apim/3.x/apim_policies_groovy.html">Groovy Policy</a>.</p>
+</div>
+<div class="paragraph">
+<p>When the authorization server handles an incoming UMA 2 grant request, some attributes are automatically created.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>{#request} : Current HTTP Request with parameters, headers, path, &#8230;&#8203;</p>
+</li>
+<li>
+<p>{#context.attributes['client']} : OAuth 2.0 Client with clientId, clientName, &#8230;&#8203;</p>
+</li>
+<li>
+<p>{#context.attributes['user']} : Requesting party user with username, firstName, lastName, email, roles, &#8230;&#8203;</p>
+</li>
+<li>
+<p>{#context.attributes['permissionRequest']} : requested permission for the given resource with resourceId and resourceScopes</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here after you can see an example to give <strong>read</strong> access to a resource only for the requesting party <strong>Bob</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>import io.gravitee.policy.groovy.PolicyResult.State
+
+user = context.attributes['user']
+permissionRequest = context.attributes['permissionRequest']
+
+if (user.username == 'bob' &amp;&amp; permissionRequest.resourceScopes.contains('read')) {
+  result.state = State.SUCCESS;
+} else {
+  result.state = State.FAILURE;
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="permission_endpoint">Permission Endpoint</h3>
+<div class="paragraph">
+<p><a href="https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-federated-authz-2.0.html#permission-endpoint">The permission endpoint</a> defines a means for the resource server to request one or more permissions (resource identifiers and corresponding scopes) with the authorization server on the client&#8217;s behalf, and to receive a permission ticket in return (example, request party want to access Alice documents (GET /alice/documents/**)).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Authorization endpoint URL : <a href="https://am-gateway/{domain}/uma/protection/permission" class="bare">https://am-gateway/{domain}/uma/protection/permission</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="introspection_endpoint">Introspection Endpoint</h3>
+<div class="paragraph">
+<p><a href="https://docs.kantarainitiative.org/uma/wg/rec-oauth-uma-federated-authz-2.0.html#introspection-endpoint">The introspection endpoint</a> is an OAuth 2.0 endpoint that takes a parameter representing an OAuth 2.0 token and returns a JSON [RFC7159] document representing the meta information surrounding the token, including whether this token is currently active.
+The resource server uses this endpoint to determine whether the access token (RPT) is active and, if so, its associated permissions.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Introspection endpoint URL : <a href="https://am-gateway/{domain}/oauth/introspect" class="bare">https://am-gateway/{domain}/oauth/introspect</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="concrete_example">Concrete example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s imagine that a user, Alice (the resource owner) wants to share read access to her bank account to her accountant Bob (the requesting party).
+The personal bank account data are exposed through an API (the resource server) secured by OAuth 2.0 protocol.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Alice must log in to the bank application and configure access to personal data resources.</p>
+</li>
+<li>
+<p>Bob will log in and use the bank application and the bank API to access Alice personal data.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="configure_your_security_domain">Configure your security domain</h3>
+<div class="paragraph">
+<p>To use the UMA 2.0 protocol you must enable it at your security domain level.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to the Gravitee.io AM portal as an administrator of your security domain</p>
+</li>
+<li>
+<p>Go to Settings &#8594; UMA (at the bottom of the page)</p>
+</li>
+<li>
+<p>On the UMA page, enable <code>User-Managed Access (UMA) 2.0 support</code> and press <code>SAVE</code></p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="create_the_client_application">Create the client application</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to the Gravitee.io AM portal as an administrator of your security domain</p>
+</li>
+<li>
+<p>Go to Applications section and press <code>(+)</code></p>
+</li>
+<li>
+<p>Select <code>Web</code> application type, press <code>NEXT</code>, fill out the form and press <code>CREATE</code></p>
+</li>
+<li>
+<p>On the Application, go to Identity Providers tabs and select your identity provider for your requesting party users (Bob)</p>
+</li>
+<li>
+<p>Then go to Settings &#8594; OAuth 2.0 / OIDC</p>
+</li>
+<li>
+<p>Add scopes <code>openid</code> and <code>read</code> and press <code>SAVE</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="create_the_resource_server_application">Create the resource server application</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to the Gravitee.io AM portal as an administrator of your security domain</p>
+</li>
+<li>
+<p>Go to Applications section and press <code>(+)</code></p>
+</li>
+<li>
+<p>Select <code>Resource Server</code> application type, press <code>NEXT</code>, fill out the form and press <code>CREATE</code></p>
+</li>
+<li>
+<p>On the Application, go to Identity Providers tabs and select your identity provider for your resource owners (Alice)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="create_a_resource_owner">Create a resource owner</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to the Gravitee.io AM portal as an administrator of your security domain</p>
+</li>
+<li>
+<p>Go to Settings &#8594; Users section and press <code>(+)</code></p>
+</li>
+<li>
+<p>Fill out the form to create the resource owner (Alice) and press <code>CREATE</code></p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Make sure that the resource server application is using the the resource owner&#8217;s identity provider.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="create_a_requesting_party">Create a requesting party</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to the Gravitee.io AM portal as an administrator of your security domain</p>
+</li>
+<li>
+<p>Go to Settings &#8594; Users section and press <code>(+)</code></p>
+</li>
+<li>
+<p>Fill out the form to create the requesting party (Bob) and press <code>CREATE</code></p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Make sure that the client application is using the the requesting party&#8217;s identity provider.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="protect_the_resource_owner_resources">Protect the resource owner resources</h3>
+<div class="sect3">
+<h4 id="get_a_protection_api_token_pat">Get a Protection API Token (PAT)</h4>
+<div class="paragraph">
+<p>The resource owner must acquire a protection API access token (PAT) to register a resource and create authorization grant rules.
+To obtain this PAT the resource owner must log in to its application, by using any <a href="/am/current/am_devguide_protocols_oauth2_overview.html#authorization_grant">OAuth 2.0 Flow</a>.</p>
+</div>
+<div class="paragraph">
+<p>For this guide we are using the <a href="/am/current/am_devguide_protocols_oauth2_overview.html#resource_owner_password_credentials">Resource Owner Password flow</a> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ curl \
+--request POST \
+--data 'grant_type=password' \
+--data 'username=alice' \
+--data 'password=password' \
+--data 'client_id=:Resource-Server-Client-ID' \
+--data 'client_secret=:Resource-Server-Client-Secret' \
+https://am-gateway/{domain}/oauth/token
+
+{
+  "access_token": "eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....",
+  "token_type": "bearer",
+  "scope": "uma_protection"
+  "expires_in": 7199
+}</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>Resource-Server-Client-ID</code> and <code>Resource-Server-Client-Secret</code> can be found in your resource server application settings page.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>access_token</code> is the Protection API Token (PAT) that you can use to register the resources to protect.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="register_resources">Register resources</h4>
+<div class="paragraph">
+<p>With the Protection API Token (PAT) previously acquired , the resource owner can now register a resource.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ curl -X POST \
+--header 'authorization: Bearer eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....' \
+--header 'cache-control: no-cache' \
+--header 'content-type: application/json' \
+--data '{
+   "resource_scopes":[
+      "read"
+   ],
+   "description":"Account read access",
+   "icon_uri":"http://www.example.com/icons/picture.png",
+   "name":"Account access",
+   "type":"http://www.example.com/resource/account"
+}' \
+https://am-gateway/{domain}/uma/protection/resource_set
+
+{
+  "_id": "62dcf5d7-baa6-4e01-9cf5-d7baa61e01ac",
+  "resource_scopes": [
+    "phone"
+  ],
+  "description": "Account read access",
+  "iconUri": "http://www.example.com/icons/picture.png",
+  "name": "Account access",
+  "type": "http://www.example.com/resource/account",
+  "user_access_policy_uri": "https://am-gateway/{domain}/uma/protection/resource_set/62dcf5d7-baa6-4e01-9cf5-d7baa61e01ac/policies"
+  "created_at": 1593006070414,
+  "updated_at": 1593006070414
+}</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The PAT Bearer Token is used via the Authorization HTTP header.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>user_access_policy_uri</code> field give you the URL to assign access policies to this resource.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="assign_access_policies">Assign access policies</h4>
+<div class="paragraph">
+<p>Now that your resource is created, you can protect and share access to it by defining some access policies.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ curl -X POST \
+--header 'authorization: Bearer eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....' \
+--header 'cache-control: no-cache' \
+--header 'content-type: application/json' \
+--data '{
+	"name": "policy-name",
+	"enabled": true,
+	"description": "policy-description",
+	"type": "groovy",
+	"condition": {
+		"onRequestScript": "import io.gravitee.policy.groovy.PolicyResult.State\\nuser = context.attributes['user']\\nif(user.username == 'bob') { result.state = State.SUCCESS; } else { result.state = State.FAILURE;}"
+	}
+}' \
+https://am-gateway/{domain}/uma/protection/resource_set/62dcf5d7-baa6-4e01-9cf5-d7baa61e01ac/policies
+
+{
+  "id": "f05eef05-adb3-4e66-9eef-05adb3be6683",
+  "type": "GROOVY",
+  "enabled": true,
+  "name": "policy-name",
+  "description": "policy-description",
+  "order": 0,
+  "condition": "{\"onRequestScript\":\"import io.gravitee.policy.groovy.PolicyResult.State\\nuser = context.attributes['user']\\nif(user.username == 'bob') { result.state = State.SUCCESS; } else { result.state = State.FAILURE;}\"}",
+  "domain": "uma2_postman",
+  "resource": "62dcf5d7-baa6-4e01-9cf5-d7baa61e01ac",
+  "createdAt": 1593006804494,
+  "updatedAt": 1593006859663
+}</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The PAT Bearer Token is used via the Authorization HTTP header.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In this example we want to share access with our requesting party Bob. Please see <a href="/am/current/am_devguide_protocols_uma2_overview.html#access_policies_endpoint">Access Policies Endpoint</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="request_access_to_the_resource_owner_resources">Request access to the resource owner resources</h3>
+<div class="sect3">
+<h4 id="get_a_permission_ticket_pt">Get a Permission Ticket (PT)</h4>
+<div class="paragraph">
+<p>When the resource server receives a request for access to a resource, it has to request for a permission ticket.
+This permission ticket will be bound for a particular resource and corresponding scopes.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ curl -X POST \
+--header 'authorization: Bearer eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....' \
+--header 'cache-control: no-cache' \
+--header 'content-type: application/json' \
+--data '[
+	{
+		"resource_id":"62dcf5d7-baa6-4e01-9cf5-d7baa61e01ac",
+		"resource_scopes":[
+			"read"
+		]
+	}
+]' \
+https://am-gateway/{domain}/uma/protection/permission
+
+{
+  "ticket": "fe594f7c-5284-4172-994f-7c5284617215"
+}</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The PAT Bearer Token which is used via the Authorization HTTP header must be obtained by the resource server via the <a href="/am/current/am_devguide_protocols_oauth2_overview.html#client_credentials">OAuth 2.0 Client Credentials Flow</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>ticket</code> property in the response is the permission ticket, which will be used to obtain the Requesting Party Token.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="get_the_requesting_party_token_rpt">Get the Requesting Party Token (RPT)</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in the requesting party</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In order to get a Requesting Party Token, the requesting party must be authenticated.</p>
+</div>
+<div class="paragraph">
+<p>For this guide we are using the <a href="/am/current/am_devguide_protocols_oauth2_overview.html#resource_owner_password_credentials">Resource Owner Password flow</a> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ curl \
+--request POST \
+--data 'grant_type=password' \
+--data 'username=bob' \
+--data 'password=password' \
+--data 'client_id=:Client-Client-ID' \
+--data 'client_secret=:Client-Client-Secret' \
+https://am-gateway/{domain}/oauth/access_token
+
+{
+  "access_token": "eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....",
+  "id_token": "eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....",
+  "token_type": "bearer",
+  "scope": "openid read"
+  "expires_in": 7199
+}</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>Client-Client-ID</code> and <code>Client-Client-Secret</code> can be found in your client application settings page.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>id_token</code> will be use to prove the requesting party identity and authentication state (known as claim token).
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Request for a Requesting Party Token (RPT)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The requesting party makes a request using the permission ticket and the claim token (the id_token) previously acquired, to get a Requesting Party Token (RPT).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ curl -X POST \
+--header 'Authorization: Basic (Client-Client-ID:Client-Client-Secret)' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data 'grant_type=urn:ietf:params:oauth:grant-type:uma-ticket' \
+--data 'ticket=fe594f7c-5284-4172-994f-7c5284617215' \
+--data 'claim_token=eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi...' \
+--data 'claim_token_format=urn:ietf:params:oauth:token-type:id_token'
+https://am-gateway/{domain}/oauth/token
+
+{
+  "access_token": "eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....",
+  "token_type": "bearer",
+  "expires_in": 7199
+}</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To make the request you must use the permission <code>ticket</code> and the <code>claim_token</code> (id_token) acquired earlier.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>access_token</code> property is the Requesting Party Token (RPT).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="get_the_resource_owner_data">Get the resource owner data</h4>
+<div class="paragraph">
+<p>The client application just got a Requesting Party Token, it can use it to get the resource owner personal data.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>GET  https://api.company.com/bank/users/alice/documents
+Authorization: Bearer eyJraWQiOiJkZWZhdWx0LWdyYXZpdGVlLUFNLWtleSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOi....</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The RPT Bearer Token is used via the Authorization HTTP header.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The Bank API must check the incoming token to determine the active state of the access token and decide to accept or deny the request.</p>
+</div>
+<div class="paragraph">
+<p>You can use the <a href="/am/current/am_devguide_protocols_oauth2_overview.html#introspection_endpoint">Introspect Endpoint</a> to inspect the properties of the RPT.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>POST https://am-gateway/{domain}/oauth/introspect HTTP/1.1
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+token=b02063f8-2698-4141-a063-f82698e1419c
+
+{
+  "sub": "241322ab-1d10-4f5a-9322-ab1d105f5ac8",
+  "permissions": [
+    {
+      "resourceId": "62dcf5d7-baa6-4e01-9cf5-d7baa61e01ac",
+      "resourceScopes": [
+        "read"
+      ]
+    }
+  ],
+  "domain": "uma2_postman",
+  "iss": "https://am-gateway/{domain}/oidc",
+  "active": true,
+  "exp": 1593020894,
+  "token_type": "bearer",
+  "iat": 1593013694,
+  "client_id": "Client-Client-ID",
+  "jti": "SZtDy09nZVChtFVNW-_UxqE8iImfNspar2eE20mZxSU",
+  "username": "bob"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example the RPT is valid and the resource server application can check if the requesting party can access the resource thanks to the <code>permissions</code> property.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <div class="tags">
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer class="footer">
+    <div class="newsletter-box">
+        <div class="newsletter-title">Join the community</div>
+        <p>Subscribe to get product updates in your inbox</p>
+        <form id="newsletter-form" class="newsletter-form">
+            <input required name="email" type="email" class="gv-input" placeholder="Email Address">
+            <button type="submit" class="gv-button">Subscribe</button>
+        </form>
+        <span class="message">We won’t send you spam, unsubscribe at any time</span>
+
+        <span class="newsletter-error">
+            <i class="fa fa-exclamation"></i>
+            <span></span>
+        </span>
+        <span class="newsletter-success">
+            <i class="fa fa-check"></i>
+            <span></span>
+        </span>
+    </div>
+    <div class="footer-information">
+        <div class="footer-links">
+            <a title="Github" href="https://github.com/gravitee-io" target="_blank"><i
+                    class="fa fa-github fa-3x"></i></a>
+            <a title="Twitter" href="https://twitter.com/graviteeio" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+            <a title="Linkedin" href="https://www.linkedin.com/company/gravitee-io" target="_blank"><i
+                    class="fa fa-linkedin fa-3x"></i></a>
+        </div>
+        <div>
+            &copy;2020 GraviteeSource. All rights reserved. <br/>
+            Gravitee.io API Platform is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache
+            License V2</a><br/>
+             Site last
+            generated: Dec 6, 2020
+        </div>
+    </div>
+</footer>
+
+<!-- Algolia search -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+  apiKey: 'b1c2f572a3911c288af513bd3e7d87f4',
+  indexName: 'gravitee',
+  inputSelector: '#search-input',
+  debug: false // Set debug to true if you want to inspect the dropdown
+});
+
+$(document).ready(function () {
+  $('#newsletter-form').on('submit', function (event) {
+    var formData = $(this).serializeArray();
+    $.ajax({
+      type: 'POST',
+      url: 'https://newsletter.gravitee.io/',
+      dataType: 'json',
+      data: JSON.stringify({ email: formData[0].value }),
+      contentType: 'application/json; charset=utf-8',
+      cache: false,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      statusCode: {
+        201: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'Your subscription has been sent.';
+          $('.newsletter-success').show();
+        },
+        400: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'You have already subscribe to the newsletter.';
+          $('.newsletter-success').show();
+        },
+        500: function () {
+          $('.newsletter-error span')[0].innerText = 'Sorry, an error occurred. Please try again later.';
+          $('.newsletter-success').hide();
+          $('.newsletter-error').show();
+        }
+      },
+      complete: function () {
+        $('.message').hide();
+      }
+    });
+    event.preventDefault();
+    event.stopPropagation();
+  });
+});
+
+</script>
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7600448.js"></script>
+<!-- End of HubSpot Embed Code -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+<!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-67690250-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+</html>

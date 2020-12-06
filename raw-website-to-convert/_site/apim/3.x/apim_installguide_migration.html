@@ -1,0 +1,2148 @@
+<!DOCTYPE html>
+<head>
+    
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Upgrade APIM | Gravitee.io API Platform Documentation</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Upgrade APIM" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Home page for Gravitee.io API Platform documentation" />
+<meta property="og:description" content="Home page for Gravitee.io API Platform documentation" />
+<link rel="canonical" href="https://docs.gravitee.io/apim/3.x/apim_installguide_migration.html" />
+<meta property="og:url" content="https://docs.gravitee.io/apim/3.x/apim_installguide_migration.html" />
+<meta property="og:site_name" content="Gravitee.io API Platform Documentation" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Upgrade APIM" />
+<meta name="twitter:site" content="@graviteeio" />
+<script type="application/ld+json">
+{"headline":"Upgrade APIM","description":"Home page for Gravitee.io API Platform documentation","url":"https://docs.gravitee.io/apim/3.x/apim_installguide_migration.html","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>Upgrade APIM | Gravitee.io API Platform Documentation</title>
+<link rel="stylesheet" href="/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/css/modern-business.css">
+<link rel="stylesheet" href="/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/css/rouge_github.css">
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/theme-bluegrey.css">
+<link rel="stylesheet" href="/css/gravitee.css">
+<link rel="stylesheet" href="/fonts/plex/css/ibm-plex.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="Gravitee.io API Platform Documentation" href="https://docs.gravitee.iofeed.xml">
+<!-- Algolia search -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+
+    <script src="/js/init-default.js"></script>
+
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-lg navbar-brand" href="/index.html"><img alt="Gravitee.io API Platform" src="/images/GRAVITEE_LOGOV2_TRANSPBLEU.png"><span class="projectTitle">Gravitee.io API Platform</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/apim/3.x/apim_overview_introduction.html">3.x (current)</a></li>
+                        
+                        
+                        
+                        <li><a href="/apim/1.x/apim_overview_introduction.html">1.x</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Access Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/am/current/am_overview_introduction.html">3.x (current)</a></li>
+                        
+                        
+                        
+                        <li><a href="/am/2.x/am_overview_introduction.html">2.x</a></li>
+                        
+                        
+                        
+                        <li><a href="/am/1.x/am_overview_introduction.html">1.x</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/ae/overview_introduction.html">Alert Engine</a></li>
+                
+                
+                
+                <li><a href="/cli/cli_introduction.html">CLI</a></li>
+                
+                
+                
+                <li><a href="/ee/ee_introduction.html">Enterprise</a></li>
+                
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="Search">
+                    </div>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">API Management 3.x </li>
+    
+    
+    
+    <li>
+        <a href="#">Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_overview_introduction.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_overview_why.html">Why Gravitee.io API Management?</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_overview_architecture.html">Architecture</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_overview_concepts.html">Concepts</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_overview_components.html">Components</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_overview_plugins.html">Plugins</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Quick Start Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_quickstart_publish.html">Introduction</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Publish your first API</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_quickstart_publish_ui.html">Using APIM Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_quickstart_publish_api.html">Using APIM API</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Consume an API</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_quickstart_consume_ui.html">Using APIM Portal</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_quickstart_consume_api.html">Using APIM API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_quickstart_consume_test.html">Test the API</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Installation Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_installguide.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_installguide_quickstart.html">Quick installation</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Install with .zip</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_gateway_install_zip.html">Install APIM Gateway</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_rest_apis_install_zip.html">Install APIM API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_management_ui_install_zip.html">Install APIM Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_portal_ui_install_zip.html">Install APIM Portal</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Install on Red Hat and CentOS</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_redhat_introduction.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_redhat_stack.html">Install the full APIM stack</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_redhat_gateway.html">Install APIM Gateway</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_redhat_management_api.html">Install APIM API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_redhat_management_ui.html">Install APIM Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_redhat_portal.html">Install APIM Portal</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Install on Amazon</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_amazon_introduction.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_amazon_stack.html">Install the full APIM stack</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_amazon_gateway.html">Install APIM Gateway</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_amazon_management_api.html">Install APIM API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_amazon_management_ui.html">Install APIM Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_amazon_portal.html">Install APIM Portal</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Run on Docker</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_docker_images.html">Images</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_docker_compose.html">Compose</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_docker_customize.html">Customize</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Deploy in Kubernetes</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_kubernetes.html">Helm</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_installguide_hybrid_deployment.html">Hybrid deployment</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="/apim/3.x/apim_installguide_migration.html">Upgrade Guide</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Configuration Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_configurationguide.html">Introduction</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Configure APIM Gateway</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_gateway_configuration.html">General configuration</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_gateway_technical_api.html">Internal API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_gateway_metrics.html">Metrics</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Configure APIM API</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_rest_apis_configuration.html">General configuration</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_rest_apis_technical_api.html">Internal API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_rest_apis_metrics.html">Metrics</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_rest_apis_security.html">Security</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Configure APIM Management</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_management_ui_configuration.html">General configuration</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Configure APIM Portal</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_portal_ui_configuration.html">General configuration</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Configure repositories</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_repositories.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_repositories_elasticsearch.html">Elasticsearch</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_repositories_mongodb.html">MongoDB</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_repositories_jdbc.html">JDBC</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_repositories_redis.html">Redis</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Configure authentication</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_inmemory.html">Connect with in-memory users</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_ldap.html">Connect with LDAP/Active Directory</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_apim.html">Connect with APIM repository</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_graviteeam.html">Connect with Gravitee.io Access Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_github.html">Connect with GitHub</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_google.html">Connect with Google</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_keycloak.html">Configure Keycloak</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_installguide_configuration_notifications.html">Configure notifications</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">API Publisher Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_manage_apis.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_configuring_cors.html">Configuring CORS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_plans_subscriptions.html">Plans and subscriptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_manage_members.html">Manage members</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_api_rating.html">API rating</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_top_apis.html">Top APIs</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Documentation</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_publisherguide_publish_documentation.html">Publish documentation in APIM Portal</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_publisherguide_publish_documentation_markdown.html">Markdown documentation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_publisherguide_publish_documentation_openapi.html">OpenAPI documentation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_publisherguide_publish_documentation_system_folders.html">System folders, links and APIM Portal customization</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Policies</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_overview.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_apikey.html">Api Key</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_assign_attributes.html">Assign attributes</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_assign_content.html">Assign content</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_cache.html">Cache</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_callout_http.html">Callout HTTP</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_dynamic_routing.html">Dynamic Routing</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_generate_jwt.html">Generate JWT</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_groovy.html">Groovy</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_html2json.html">HTML to JSON</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_ip_filtering.html">IP Filtering</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_json_threat_protection.html">JSON Threat Protection</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_json2json.html">JSON to JSON</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_json_validation.html">JSON Validation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_jws.html">JWS</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_jwt.html">JWT</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_latency.html">Latency</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_mock.html">Mock</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_oauth2.html">OAuth2</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_openid_connect_userinfo.html">OpenID Connect - UserInfo</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_override_http_method.html">Override HTTP method</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_rate_limiting.html">Rate Limiting</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_regex_threat_protection.html">Regex Threat Protection</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_request_content_limit.html">Request Content Limit</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_request_validation.html">Request Validation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_resource_filtering.html">Resource Filtering</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_rest2soap.html">Rest to Soap</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_role_based_access_control.html">Role-Based Access Control</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_ssl_enforcement.html">SSL Enforcement</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_transform_headers.html">Transform Headers</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_transform_query_params.html">Transform Query Parameters</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_url_rewriting.html">URL rewriting</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_xml2json.html">XML to JSON</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_xml_threat_protection.html">XML Threat Protection</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_xml_validation.html">XML Validation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_xslt.html">XSLT</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Resources</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_resources_overview.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_resources_cache.html">Cache</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_resources_oauth2_am.html">OAuth2 - Gravitee.io Access Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_resources_oauth2_generic.html">OAuth2 - Generic Authorization Server</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Service Discovery</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_service_discovery_overview.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_service_discovery_eureka.html">Eureka</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_service_discovery_consul.html">Consul.io</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_expression_language.html">Expression Language</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">API Consumer Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_consumerguide_portal.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_consumerguide_create_account.html">Create an account</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_consumerguide_manage_applications.html">Manage applications</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_consumerguide_subscribe.html">Subscribe to an API</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Administration Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_adminguide_organizations_and_environments.html">Organizations and environments</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_adminguide_roles_and_permissions.html">Roles and permissions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_adminguide_users_and_groups.html">Users and groups</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_adminguide_support-tickets.html">Support</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">How To</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_how_to_introduction.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_how_to_configure_global_API_reviewers.html">Configure global API reviewers</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Developer Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_devguide_bootstrap.html">Bootstrap your environment</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_devguide_plugins.html">Plugins</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_devguide_policies.html">Policies</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">API Reference</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_installguide_rest_apis_documentation.html">API reference</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Changelog</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_changelog.html">Changelog</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+    <h1 class="post-title-main">Upgrade APIM</h1>
+</div>
+
+
+
+<div class="post-content">
+
+    <div class="summary">3.2.0</div>
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <h1 id="upgrade_notes" class="sect0">Upgrade Notes</h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Files specified in this guide can be found at <a href="https://github.com/gravitee-io/release/tree/master/upgrades/3.x" class="bare">https://github.com/gravitee-io/release/tree/master/upgrades/3.x</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If you plan to skip versions when you upgrade, ensure that you read the version-specific upgrade notes for each intermediate version.
+You may be required to perform manual actions as part of the upgrade.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Be sure to run scripts on the correct database since <code>gravitee</code> is not always the default database!
+Check your db name by running <code>show dbs;</code>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade_to_3_4_0">Upgrade to 3.4.0</h2>
+<div class="sectionbody">
+<div class="sect3">
+<h4 id="mongodb">Mongodb</h4>
+<div class="paragraph">
+<p>Before running any script, please create a dump of your existing database.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.4.0/mongodb/1-update-audit-to-replace-PORTAL-with_ORGANIZATION-and-ENVIRONMENT.js">upgrades/3.x/3.4.0/mongodb/1-update-audit-to-replace-PORTAL-with_ORGANIZATION-and-ENVIRONMENT.js</a></dt>
+<dd>
+<p>This script convert PORTAL audit into ENVIRONMENT audits or ORGANIZATION audits regarding some conditions.</p>
+</dd>
+<dt class="hdlist1"><a href="https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.4.0/mongodb/2-update-default-role-REVIEWER.js">upgrades/3.x/3.4.0/mongodb/2-update-default-role-REVIEWER.js</a></dt>
+<dd>
+<p>This script add new permissions to the default REVIEWER role.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade_to_3_3_0">Upgrade to 3.3.0</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="repository">Repository</h3>
+<div class="sect3">
+<h4 id="mongodb_2">Mongodb</h4>
+<div class="paragraph">
+<p>Before running any script, please create a dump of your existing database.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.3.0/mongodb/1-update-users-and-identityProviders.js">upgrades/3.x/3.3.0/mongodb/1-update-users-and-identityProviders.js</a></dt>
+<dd>
+<p>This script replaces <strong>referenceId</strong> and <strong>referenceType</strong> with <strong>organizationId</strong> for <code>users</code> and <code>identity_providers</code> collections.</p>
+</dd>
+<dt class="hdlist1"><a href="https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.3.0/mongodb/2-update-json-validation-policy-scopes.js">upgrades/3.x/3.3.0/mongodb/2-update-json-validation-policy-scopes.js</a></dt>
+<dd>
+<p>This script replaces <strong>REQUEST</strong> and <strong>RESPONSE</strong> with <strong>REQUEST_CONTENT</strong> and <strong>RESPONSE_CONTENT</strong> for json-validation policy configuration in <code>apis</code> collections.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deprecation">Deprecation</h3>
+<div class="sect3">
+<h4 id="management_api">Management API</h4>
+<div class="paragraph">
+<p>Starting with this version, <code>User</code> and <code>IdentityProvider</code> are now linked to an organization and not to an environment.
+As a consequence, the Management REST API has been updated.
+If you are using the REST API directly, please note that you should adapt your URL for these resources as they will no longer be accessible from version 4.x
+In the meantime, these resources will be tagged as <code>Deprecated</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Deprecated in 3.3.0, deleted in 4.x</th>
+<th class="tableblock halign-left valign-top">Since 3.3.0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/auth/oauth2/{identity}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/auth/oauth2/{identity}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/configuration/identities</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/configuration/identities</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/configuration/identities/{identityProvider}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/configuration/identities/{identityProvider}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/configuration/rolescopes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/configuration/rolescopes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/configuration/rolescopes/{scope}/roles</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/configuration/rolescopes/{scope}/roles</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/configuration/rolescopes/{scope}/roles/{role}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/configuration/rolescopes/{scope}/roles/{role}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/configuration/rolescopes/{scope}/roles/{role}/users</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/configuration/rolescopes/{scope}/roles/{role}/users</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/configuration/rolescopes/{scope}/roles/{role}/users/{userId}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/configuration/rolescopes/{scope}/roles/{role}/users/{userId</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/search/users</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/search/users</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/user</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/user/subscribeNewsletter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/user/subscribeNewsletter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/user/avatar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/user/avatar</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/user/login</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/user/login</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/user/logout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/user/logout</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/user/tasks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/user/tasks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/user/tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/user/tags</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/user/notifications</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/user/notifications</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/user/tokens</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/user/tokens</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/user/tokens/{token}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/user/tokens/{token}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/users</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/users</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/users/{id}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/users/{id}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/users/{id}/groups</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/users/{id}/groups</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/users/{id}/memberships</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/users/{id}/memberships</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/users/{id}/resetPassword</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/users/{id}/resetPassword</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/users/{id}/avatar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/users/{id}/avatar</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/users/{id}/roles</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/users/{id}/roles</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/users/{id}/_process</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/users/{id}/_process</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/users/registration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/users/registration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/environments/DEFAULT/users/registration/finalize</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/organizations/DEFAULT/users/registration/finalize</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade_to_3_2_0">Upgrade to 3.2.0</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="breaking_changes">Breaking Changes</h3>
+<div class="sect3">
+<h4 id="portal_ui">Portal UI</h4>
+<div class="paragraph">
+<p>The variables css of <code>gv-link</code> component has been modified to improve the theme&#8217;s customization.
+Now the component uses :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Active border color <code>--gv-link-active&#8212;&#8203;bdc</code> instead of Active border bottom color <code>--gv-link-active&#8212;&#8203;bdbc</code></p>
+</li>
+<li>
+<p>Active border style <code>--gv-link-active&#8212;&#8203;bds</code> instead of Active border bottom style <code>--gv-link-active&#8212;&#8203;bdbs</code></p>
+</li>
+<li>
+<p>Active border width <code>--gv-link-active&#8212;&#8203;bdw</code> instead of Active border bottom width <code>--gv-link-active&#8212;&#8203;bdbw</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example, if you has set <code>--gv-link-active&#8212;&#8203;bdbw=3px</code>, now you should set <code>--gv-link-active&#8212;&#8203;bdw=0 0 3px 0</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade_to_3_1_0">Upgrade to 3.1.0</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="docker_images">Docker images</h3>
+<div class="paragraph">
+<p>All the UI based docker images (APIM Console, APIM Portal) are now using HTTP port 8080 and HTTPS port 8443 by default to
+avoid the need of a root account to use 80/443 to improve the security of our platform.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade_to_3_0_7">Upgrade to 3.0.7</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="breaking_changes_2">Breaking changes</h3>
+<div class="paragraph">
+<p>The <code>portalURL</code> parameter in the gravitee.yml file has been removed.
+It has become useless with this issue <a href="https://github.com/gravitee-io/issues/issues/4144">#4144</a>.</p>
+</div>
+<div class="paragraph">
+<p>As this <code>portalURL</code> stands for the former portal, it will be replaced by the <code>management.url</code> parameter in the console settings.
+This parameter will be initialized with the former <code>portalURL</code> value if it still exists in your gravitee.yml.
+Otherwise, the default value of <code>management.url</code> is <a href="http://localhost:3000" class="bare">http://localhost:3000</a></p>
+</div>
+<div class="paragraph">
+<p>The <code>portal.url</code> parameter in the console settings will also have a default value : <a href="http://localhost:4100" class="bare">http://localhost:4100</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade_to_3_0_2">Upgrade to 3.0.2</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="view_renamed_to_categories">'View' renamed to 'Categories'</h3>
+<div class="paragraph">
+<p>In the new portal, 'views' are called 'categories'. But in the management console, they are still called 'views'.
+To be consistent, the term 'View' is replaced by 'Category' in the whole platform.</p>
+</div>
+<div class="paragraph">
+<p>Linked to this issue: <a href="https://github.com/gravitee-io/issues/issues/3843">#3843</a></p>
+</div>
+<div class="sect3">
+<h4 id="mongodb_3">Mongodb</h4>
+<div class="paragraph">
+<p>Before running any script, please create a dump of your existing database.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.2/mongodb/1-rename-view-in-category.js">upgrades/3.x/3.0.2/mongodb/1-rename-view-in-category.js</a></dt>
+<dd>
+<p>This script renames a field in 'apis' collection, rename 'views' collection, change 3 parameters, replace 'view' by 'category' in 'audits' collection and convert documentation view LINK to ctagory LINK</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade_to_3_0_0">Upgrade to 3.0.0</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="important">Important</h3>
+<div class="paragraph">
+<p>If you are using mongoDB, it is <strong>strongly recommended</strong> to run the scripts to upgrade your database <strong>before</strong> starting the new version of the gravitee REST APIs.
+Otherwise, you could experience data corruption issues.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Mongo version <strong>MUST</strong> be at least <strong>3.6</strong>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="general">General</h3>
+<div class="sect3">
+<h4 id="organization_environment">Organization &amp; Environment</h4>
+<div class="paragraph">
+<p>In this new version Gravitee comes with a new way of managing your environments.
+By default, Gravitee is configured with a first Organization:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>organization {
+  id: DEFAULT,
+  name: Default organization
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And a first Environment in this Organization:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>environment {
+  id: DEFAULT,
+  name: Default environment,
+  organization: DEFAULT
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It will allow you to manage more than one environment for each instance of Gravitee.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="breaking_changes_3">Breaking Changes</h3>
+<div class="sect3">
+<h4 id="api_key_policy">API-Key policy</h4>
+<div class="paragraph">
+<p>In this new version, if api-keys used to call an API is invalid or has expired, the gateway will fail with a <strong>401</strong> (instead of 403 in previous versions of Gravitee).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="management_api_2">Management API</h4>
+<div class="paragraph">
+<p>If you are using the REST API directly, please note that you will have to adapt the URL
+from <code><a href="https://host/management/" class="bare">https://host/management/</a></code> to <code><a href="https://host/management/organizations/DEFAULT/environments/DEFAULT/" class="bare">https://host/management/organizations/DEFAULT/environments/DEFAULT/</a></code></p>
+</div>
+<div class="paragraph">
+<p>The resource <code>/views/default</code> has been deleted since a view does not have a <strong>default</strong> field anymore.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="management_ui">Management UI</h4>
+<div class="paragraph">
+<p>The actual portal has been replaced by a brand new version, with its own location. As a consequence, the URL of the management UI has been modified to remove the <strong>/management</strong> part.</p>
+</div>
+<div class="paragraph">
+<p>For instance, to access the <em>Platform Overview</em> page, you should use <code><a href="https://host/#!/platform" class="bare">https://host/#!/platform</a></code> instead of <code><a href="https://host/#!/management/platform" class="bare">https://host/#!/management/platform</a></code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="memberships_roles_and_role_mappings">Memberships, roles and role mappings</h4>
+<div class="paragraph">
+<p>One major breaking change in this new version is the replacement of <strong>MANAGEMENT</strong> and <strong>PORTAL</strong> scopes by <strong>ENVIRONNMENT</strong> and <strong>ORGANIZATION</strong> scopes. It&#8217;s not just a renaming but a dispatch of permissions among these 2 news scopes. As a consequence, all existing memberships, roles, groups and Identity Providers role mappings should be updated.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Memberhips, roles and groups have to be updated with migration scripts <a href="#mongodb">here</a></p>
+</li>
+<li>
+<p>Role Mappings for Identity Providers stored in database will be updated with a specific upgrader. See <a href="#upgrader">Upgrader</a></p>
+</li>
+<li>
+<p>Role mappings defined in the <strong>gravitee.yml</strong> file have to be updated with these new scopes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s a correlation table of permissions before and after migration :</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Permission Name</th>
+<th class="tableblock halign-left valign-top">Scope Name before migration</th>
+<th class="tableblock halign-left valign-top">Scope name after migration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">INSTANCE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GROUP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TAG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TENANT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ROLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ORGANIZATION</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">APPLICATION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PLATFORM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AUDIT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NOTIFICATION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ORGANIZATION</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MESSAGE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DICTIONARY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ALERT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENTRYPOINT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SETTINGS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DASHBOARD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUALITY_RULE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MANAGEMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">METADATA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PORTAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DOCUMENTATION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PORTAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">APPLICATION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PORTAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VIEW</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PORTAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TOP_APIS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PORTAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SETTINGS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PORTAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API_HEADER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PORTAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IDENTITY_PROVIDER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PORTAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CLIENT_REGISTRATION_PROVIDER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PORTAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ENVIRONMENT</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="repository_2">Repository</h3>
+<div class="sect3">
+<h4 id="mongodb_4">Mongodb</h4>
+<div class="paragraph">
+<p>Before running any script, please create a dump of your existing database.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.0/mongodb/1-collections-linked-to-environment-or-organization.js">upgrades/3.x/3.0.0/mongodb/1-collections-linked-to-environment-or-organization.js</a></dt>
+<dd>
+<p>This script adds new fields that refer the default environment or the default organization.</p>
+</dd>
+<dt class="hdlist1"><a href="https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.0/mongodb/2-roles-groups-and-memberships-migration.js">upgrades/3.x/3.0.0/mongodb/2-roles-groups-and-memberships-migration.js</a></dt>
+<dd>
+<p>This script migrates permission values in roles since MANAGEMENT roles and PORTAL roles have been merged and dispatched into new ENVIRONMENT and ORGANIZATION roles.
+It also updates memberships and groups by adding or removing columns.
+All previous indexes for <strong>roles</strong> and <strong>memberships</strong> will be deleted and replaced by new indexes.</p>
+</dd>
+<dt class="hdlist1"><a href="https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.0/mongodb/3-replace-apiArray-by-unique-api.js">upgrades/3.x/3.0.0/mongodb/3-replace-apiArray-by-unique-api.js</a></dt>
+<dd>
+<p>This script adds a new field that refers the api and remove the api array.
+All previous indexes for <strong>plans</strong> will be deleted and replaced by new indexes.</p>
+</dd>
+<dt class="hdlist1"><a href="https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.0/mongodb/4-remove-devMode.js">upgrades/3.x/3.0.0/mongodb/4-remove-devMode.js</a></dt>
+<dd>
+<p>This script removes the 'devMode' parameter, since the legacy portal has been replaced.</p>
+</dd>
+<dt class="hdlist1"><a href="https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.0/mongodb/5-remove-orphan-documentation-pages.js">upgrades/3.x/3.0.0/mongodb/5-remove-orphan-documentation-pages.js</a></dt>
+<dd>
+<p>Due to a bug in a previous version of gravitee when importing APIs, orphan pages may have been created. Orphan pages are all pages with a parentId but no page with such id exists.
+In some situation, this can lead to errors when accessing portal or apis documentation.
+You may use this script to find and remove orphan pages.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><em>Note: You can make a 'dry run' by commenting line 6 and uncommenting line 5.</em></p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://raw.githubusercontent.com/gravitee-io/release/master/upgrades/3.x/3.0.0/mongodb/6-remove-ALL-view-and-defaultView-field.js">upgrades/3.x/3.0.0/mongodb/6-remove-ALL-view-and-defaultView-field.js</a></dt>
+<dd>
+<p>This script removes the 'All' <strong>view</strong>, since the legacy portal has been replaced and the new portal does not need this default view anymore. The script also updates existing views to remove <strong>defaultView</strong> field.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrader">Upgrader</h3>
+<div class="sect3">
+<h4 id="identity_providers">Identity providers</h4>
+<div class="paragraph">
+<p>Because of the evolution of the roles and their scope, role mappings in <strong>Identity Providers</strong> must be updated. To achieve this, a specific service has been created and will be launched at APIM startup. As this is not necessary to launch this service more than once, it can be disabled with some configuration.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">services</span><span class="pi">:</span>
+  <span class="c1"># v3 upgrader service. Can be disabled after first launch.</span>
+  <span class="na">v3-upgrader</span><span class="pi">:</span>
+    <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker">Docker</h3>
+<div class="paragraph">
+<p>Docker images for Gravitee.io APIM have been renamed to follow the same conventions as the others Gravitee.io modules.</p>
+</div>
+<div class="paragraph">
+<p>In the case of Gravitee.io APIM, all the images have been prefixed by <code>-apim</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, for the API gateway <code>graviteeio/gateway</code> has been replaced by <code>graviteeio/apim-gateway</code>.</p>
+</div>
+<div class="paragraph">
+<p>Please have a look to the documentation at: <a href="https://docs.gravitee.io/apim/3.x/apim_installguide_docker_images.html" class="bare">https://docs.gravitee.io/apim/3.x/apim_installguide_docker_images.html</a></p>
+</div>
+</div>
+</div>
+</div>
+
+    <div class="tags">
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer class="footer">
+    <div class="newsletter-box">
+        <div class="newsletter-title">Join the community</div>
+        <p>Subscribe to get product updates in your inbox</p>
+        <form id="newsletter-form" class="newsletter-form">
+            <input required name="email" type="email" class="gv-input" placeholder="Email Address">
+            <button type="submit" class="gv-button">Subscribe</button>
+        </form>
+        <span class="message">We won’t send you spam, unsubscribe at any time</span>
+
+        <span class="newsletter-error">
+            <i class="fa fa-exclamation"></i>
+            <span></span>
+        </span>
+        <span class="newsletter-success">
+            <i class="fa fa-check"></i>
+            <span></span>
+        </span>
+    </div>
+    <div class="footer-information">
+        <div class="footer-links">
+            <a title="Github" href="https://github.com/gravitee-io" target="_blank"><i
+                    class="fa fa-github fa-3x"></i></a>
+            <a title="Twitter" href="https://twitter.com/graviteeio" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+            <a title="Linkedin" href="https://www.linkedin.com/company/gravitee-io" target="_blank"><i
+                    class="fa fa-linkedin fa-3x"></i></a>
+        </div>
+        <div>
+            &copy;2020 GraviteeSource. All rights reserved. <br/>
+            Gravitee.io API Platform is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache
+            License V2</a><br/>
+             Site last
+            generated: Dec 6, 2020
+        </div>
+    </div>
+</footer>
+
+<!-- Algolia search -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+  apiKey: 'b1c2f572a3911c288af513bd3e7d87f4',
+  indexName: 'gravitee',
+  inputSelector: '#search-input',
+  debug: false // Set debug to true if you want to inspect the dropdown
+});
+
+$(document).ready(function () {
+  $('#newsletter-form').on('submit', function (event) {
+    var formData = $(this).serializeArray();
+    $.ajax({
+      type: 'POST',
+      url: 'https://newsletter.gravitee.io/',
+      dataType: 'json',
+      data: JSON.stringify({ email: formData[0].value }),
+      contentType: 'application/json; charset=utf-8',
+      cache: false,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      statusCode: {
+        201: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'Your subscription has been sent.';
+          $('.newsletter-success').show();
+        },
+        400: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'You have already subscribe to the newsletter.';
+          $('.newsletter-success').show();
+        },
+        500: function () {
+          $('.newsletter-error span')[0].innerText = 'Sorry, an error occurred. Please try again later.';
+          $('.newsletter-success').hide();
+          $('.newsletter-error').show();
+        }
+      },
+      complete: function () {
+        $('.message').hide();
+      }
+    });
+    event.preventDefault();
+    event.stopPropagation();
+  });
+});
+
+</script>
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7600448.js"></script>
+<!-- End of HubSpot Embed Code -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+<!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-67690250-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+</html>

@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<head>
+    
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Get user profile information | Gravitee.io API Platform Documentation</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Get user profile information" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Home page for Gravitee.io API Platform documentation" />
+<meta property="og:description" content="Home page for Gravitee.io API Platform documentation" />
+<link rel="canonical" href="https://docs.gravitee.io/am/1.x/am_quickstart_profile_information.html" />
+<meta property="og:url" content="https://docs.gravitee.io/am/1.x/am_quickstart_profile_information.html" />
+<meta property="og:site_name" content="Gravitee.io API Platform Documentation" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Get user profile information" />
+<meta name="twitter:site" content="@graviteeio" />
+<script type="application/ld+json">
+{"headline":"Get user profile information","description":"Home page for Gravitee.io API Platform documentation","url":"https://docs.gravitee.io/am/1.x/am_quickstart_profile_information.html","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>Get user profile information | Gravitee.io API Platform Documentation</title>
+<link rel="stylesheet" href="/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/css/modern-business.css">
+<link rel="stylesheet" href="/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/css/rouge_github.css">
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/theme-bluegrey.css">
+<link rel="stylesheet" href="/css/gravitee.css">
+<link rel="stylesheet" href="/fonts/plex/css/ibm-plex.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="Gravitee.io API Platform Documentation" href="https://docs.gravitee.iofeed.xml">
+<!-- Algolia search -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+
+    <script src="/js/init-default.js"></script>
+
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-lg navbar-brand" href="/index.html"><img alt="Gravitee.io API Platform" src="/images/GRAVITEE_LOGOV2_TRANSPBLEU.png"><span class="projectTitle">Gravitee.io API Platform</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/apim/3.x/apim_overview_introduction.html">3.x (current)</a></li>
+                        
+                        
+                        
+                        <li><a href="/apim/1.x/apim_overview_introduction.html">1.x</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Access Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/am/current/am_overview_introduction.html">3.x (current)</a></li>
+                        
+                        
+                        
+                        <li><a href="/am/2.x/am_overview_introduction.html">2.x</a></li>
+                        
+                        
+                        
+                        <li><a href="/am/1.x/am_overview_introduction.html">1.x</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/ae/overview_introduction.html">Alert Engine</a></li>
+                
+                
+                
+                <li><a href="/cli/cli_introduction.html">CLI</a></li>
+                
+                
+                
+                <li><a href="/ee/ee_introduction.html">Enterprise</a></li>
+                
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="Search">
+                    </div>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Access Management 1.x </li>
+    
+    
+    
+    <li>
+        <a href="#">Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/1.x/am_overview_introduction.html">Introduction</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">QuickStart</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/1.x/am_quickstart_register_app.html">Register a new client</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/1.x/am_quickstart_authenticate_users.html">Authenticate users with Identity Provider</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="/am/1.x/am_quickstart_profile_information.html">Get user profile information</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/1.x/am_quickstart_secure_apis.html">Secure your APIs</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">User Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/1.x/am_userguide_overview.html">Overview</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Getting Started</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_authentication.html">Sign in to the Administration UI</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_concepts.html">Concepts</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Security domains</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_security_domains.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_admin_domain.html">Admin security domain</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_create_domain.html">Create security domain</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Identity providers</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_identity_providers.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_create_identity_provider.html">Create identity provider</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_identity_provider_mapping.html">User and Roles mapping</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Clients</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_clients.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_create_client.html">Create client</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Login Page</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_login_page.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_custom_login_page.html">Custom login page</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Certificates</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_certificates.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_create_certificate.html">Create certificate</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Roles</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_roles.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/1.x/am_userguide_create_role.html">Create role</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Installation Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/1.x/am_installguide_introduction.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/1.x/am_installguide_gateway.html">Gateway</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/1.x/am_installguide_mgt_api.html">Administration API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/1.x/am_installguide_portal.html">Administration UI</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/1.x/am_installguide_configuration.html">Configuration</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/1.x/am_installguide_docker.html">Docker</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Get user profile information</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+  <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>After you have authenticated your first users (see <a href="/am/1.x/am_quickstart_authenticate_users.html" target="_blank" rel="noopener">Authenticate users with Identity provider</a>) you can retrieve the user&#8217;s profile information by using OpenID Connect.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+OpenID Connect is an identity layer on top of the OAuth 2.0 protocol.
+It enables Clients to verify the identity of the End-User based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the End-User.
+See <a href="http://openid.net/specs/openid-connect-core-1_0.html" target="_blank" rel="noopener">OpenID Connect specifications</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Gravitee.io Access Management is based upon OAuth2/OpenID Connect protocols and act as an identity providers broker. It helps you obtaining and verifying the users' identity of your applications by issuing <a href="http://openid.net/specs/openid-connect-core-1_0.html#IDToken" target="_blank" rel="noopener">ID Token</a> or calling the <a href="http://openid.net/specs/openid-connect-core-1_0.html#UserInfo" target="_blank" rel="noopener">UserInfo Endpoint</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="id_token">ID Token</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="get_id_token">Get ID Token</h3>
+<div class="paragraph">
+<p>The ID token is a signed <a href="https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32" target="_blank" rel="noopener">JSON Web Token (JWT)</a> that contains user profile information, also known as <code>claims</code>.
+These claims are statements about the Authentication of the End-User and can be trusted only if application consumers can verify its signature.
+ID Token is self contained and supply all the necessary information about the current user without making additional HTTP requests.</p>
+</div>
+<div class="paragraph">
+<p>You can retrieve an ID Token by requesting for an access token with the specific scope <code>openid</code></p>
+</div>
+<div class="paragraph">
+<p><code>POST <a href="http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oauth/token" class="bare">http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oauth/token</a></code></p>
+</div>
+<table class="tableblock frame-topbot grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">grant_type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>REQUIRED.</strong> Set the value to <code>password</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">client_id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>REQUIRED.</strong> Client&#8217;s ID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">client_secret</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>REQUIRED.</strong> Client&#8217;s secret.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">username</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>REQUIRED.</strong> User&#8217;s name.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>REQUIRED.</strong> User&#8217;s password.</p></td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scope</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>OPTIONAL.</strong> Set the value to <code>openid</code>.</p></td>
+</tr>
+</tfoot>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Request a token</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>curl -X POST \
+  'http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/oauth/token?grant_type=password&amp;client_id=:clientId&amp;client_secret=:clientSecret&amp;username=:username&amp;password=:password&amp;scope=openid' \</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can also specify the client credentials by providing <code>client_id</code> and <code>client_secret</code> in  <code>Authorization</code> header with the Basic auth scheme.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If everything goes well, you should see the following response :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+{
+    "access_token": "1a3fd333-5035-4ddb-86e6-4fe8c1e6d00e",
+    "token_type": "bearer",
+    "refresh_token": "227897bd-9cee-413a-90fe-e6c3304ddd1f",
+    "expires_in": 7199,
+    "scope": "openid",
+    "id_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6ImNsaWVudC0xIiwiaXNzIjoiaHR0cDovL2dyYXZpdGVlLmFtIiwiZXhwIjoxNTAxNjA1MzQ3LCJpYXQiOjE1MDE1OTA5NDcsImZhbWlseV9uYW1lIjoiYWRtaW4ifQ.P4nEWfdOCR6ViWWu_uh7bowLQfttkOjBmmkqDIY1nxRoxsSWJjJCXaDmwzvcnmk6PsfuW9ZOryJ9AyMMXjE_4cR70w4OESy01qnH-kKAE9jiLt8wj1mbObZEhFYAVcDHOZeKGBs5UweW-s-9eTjbnO7y7i6OYuugZJ3qdKIhzlp9qhzwL2cqRDDwgYFq4iVnv21L302JtO22Q7Up9PGCGc3vxmcRhyQYiKB3TFtxnxm8fPMFcuHLdMuwaYSRp3EesOBXa8UN_iIokCGyk0Cw_KPvpRq91GU8x6cMnVEFXnlYokEuP3aYWE4VYcQu0_cErr122vD6774HSnOVns_BLA"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="verify_id_token">Verify ID Token</h3>
+<div class="paragraph">
+<p>ID token can be decoded and verified via 3rd-party JWT library that you can find at <a href="https://jwt.io/" target="_blank" rel="noopener">JWT.IO website</a>.</p>
+</div>
+<div class="paragraph">
+<p>ID token must contain at least the following <a href="http://openid.net/specs/openid-connect-core-1_0.html#IDToken" target="_blank" rel="noopener">required claims</a> :</p>
+</div>
+<table class="tableblock frame-topbot grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Claim</th>
+<th class="tableblock halign-left valign-top"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iss</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Issuer Identifier, must be the <code>oidc.iss</code> configuration value (default <a href="http://gravitee.am" class="bare">http://gravitee.am</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sub</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subject Identifier represented by the unique user&#8217;s <code>username</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aud</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Audience(s) that this ID Token is intended for. It MUST contain your OAuth 2.0 <code>client_id</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">exp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expiration time on or after which the ID Token MUST NOT be accepted for processing.</p></td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time at which the JWT was issued.</p></td>
+</tr>
+</tfoot>
+</table>
+<div class="paragraph">
+<p>Finally, make sure that the ID token was signed by Gravitee.io Access Management.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the <code>Certificates</code> section of your security domain</p>
+</li>
+<li>
+<p>Retrieve your public key by clicking on <span class="image"><img src="/images/am/1.x/graviteeio-am-quickstart-profile-public-key.png" alt="graviteeio am quickstart profile public key"></span> icon</p>
+</li>
+<li>
+<p>Use a JWT library to verify the signature.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can also use the <a href="https://gravitee.io" target="_blank" rel="noopener">Gravitee.io API Management solution</a> and the <a href="/apim_policies_jwt.html" target="_blank" rel="noopener">JWT Policy</a> to verify and retrieve user profile information.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="userinfo_endpoint">UserInfo Endpoint</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In addition to the claims in the ID Token, OpenID Connect defines a standard protected endpoint, the <a href="http://openid.net/specs/openid-connect-core-1_0.html#UserInfo" target="_blank" rel="noopener">UserInfo Endpoint</a>, that returns claims about the current user by the access token.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Request a token</dt>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">curl <span class="nt">-X</span> GET http://GRAVITEEIO-AM-GATEWAY-HOST/:securityDomainPath/userinfo <span class="nt">-H</span> <span class="s1">'Authorization: Bearer :accesToken'</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If everything goes well, you should see the following response :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+{
+    "sub": "johndoe",
+    "given_name": "John",
+    "family_name": "Doe"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="custom_claims">Custom claims</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Identity provider serves default claims such as the user&#8217;s <code>username</code>, <code>given_name</code>, <code>family_name</code>. You can add custom claims by overriding identity provider&#8217;s configuration.</p>
+</div>
+<div class="sect2">
+<h3 id="add_new_user_information">Add new user information</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the <code>Providers</code> section of your security domain</p>
+</li>
+<li>
+<p>Select your Identity Provider and click on <code>User Mappers</code> tab</p>
+</li>
+<li>
+<p>Map new custom claims with user attributes contained in your user data store</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/am/1.x/graviteeio-am-quickstart-profile-user-mappers.png" alt="graviteeio am quickstart profile user mappers">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="4">
+<li>
+<p>Custom user attributes will be available in the UserInfo Endpoint response.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="override_id_token_claims">Override ID Token claims</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To override ID token&#8217;s claims, go to <code>Clients</code> section of your security domain</p>
+</li>
+<li>
+<p>Select your Client and click on <code>OpenID Connect</code> tab</p>
+</li>
+<li>
+<p>Add new custom claims available in the user attributes (created previously inside <code>User Mappers</code> tab) and press <code>SAVE</code></p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/am/1.x/graviteeio-am-quickstart-profile-custom-claims.png" alt="graviteeio am quickstart profile custom claims">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="4">
+<li>
+<p>These new claims will be available in the ID Tokens' payload.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+    <div class="tags">
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer class="footer">
+    <div class="newsletter-box">
+        <div class="newsletter-title">Join the community</div>
+        <p>Subscribe to get product updates in your inbox</p>
+        <form id="newsletter-form" class="newsletter-form">
+            <input required name="email" type="email" class="gv-input" placeholder="Email Address">
+            <button type="submit" class="gv-button">Subscribe</button>
+        </form>
+        <span class="message">We won’t send you spam, unsubscribe at any time</span>
+
+        <span class="newsletter-error">
+            <i class="fa fa-exclamation"></i>
+            <span></span>
+        </span>
+        <span class="newsletter-success">
+            <i class="fa fa-check"></i>
+            <span></span>
+        </span>
+    </div>
+    <div class="footer-information">
+        <div class="footer-links">
+            <a title="Github" href="https://github.com/gravitee-io" target="_blank"><i
+                    class="fa fa-github fa-3x"></i></a>
+            <a title="Twitter" href="https://twitter.com/graviteeio" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+            <a title="Linkedin" href="https://www.linkedin.com/company/gravitee-io" target="_blank"><i
+                    class="fa fa-linkedin fa-3x"></i></a>
+        </div>
+        <div>
+            &copy;2020 GraviteeSource. All rights reserved. <br/>
+            Gravitee.io API Platform is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache
+            License V2</a><br/>
+             Site last
+            generated: Dec 6, 2020
+        </div>
+    </div>
+</footer>
+
+<!-- Algolia search -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+  apiKey: 'b1c2f572a3911c288af513bd3e7d87f4',
+  indexName: 'gravitee',
+  inputSelector: '#search-input',
+  debug: false // Set debug to true if you want to inspect the dropdown
+});
+
+$(document).ready(function () {
+  $('#newsletter-form').on('submit', function (event) {
+    var formData = $(this).serializeArray();
+    $.ajax({
+      type: 'POST',
+      url: 'https://newsletter.gravitee.io/',
+      dataType: 'json',
+      data: JSON.stringify({ email: formData[0].value }),
+      contentType: 'application/json; charset=utf-8',
+      cache: false,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      statusCode: {
+        201: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'Your subscription has been sent.';
+          $('.newsletter-success').show();
+        },
+        400: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'You have already subscribe to the newsletter.';
+          $('.newsletter-success').show();
+        },
+        500: function () {
+          $('.newsletter-error span')[0].innerText = 'Sorry, an error occurred. Please try again later.';
+          $('.newsletter-success').hide();
+          $('.newsletter-error').show();
+        }
+      },
+      complete: function () {
+        $('.message').hide();
+      }
+    });
+    event.preventDefault();
+    event.stopPropagation();
+  });
+});
+
+</script>
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7600448.js"></script>
+<!-- End of HubSpot Embed Code -->
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+<!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-67690250-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+</html>

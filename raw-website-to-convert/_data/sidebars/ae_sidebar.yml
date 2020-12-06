@@ -1,0 +1,126 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: Alert Engine 1.x
+  folders:
+
+  - title: Overview
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /ae/overview_introduction.html
+      type: homepage
+    - title: How it works
+      output: web
+      url: /ae/overview_howitworks.html
+
+  - title: Installation Guide
+    output: web
+    folderitems:
+    - title: Introduction
+      output: web
+      url: /ae/installguide_introduction.html
+    - title: Installation
+      output: web
+      url: /ae/installguide_engine.html
+    - title: Docker
+      output: web
+      url: /ae/installguide_docker.html
+    - title: Kubernetes
+      output: web
+      url: /ae/installguide_kubernetes.html
+    - title: Configuration
+      output: web
+      url: /ae/installguide_configuration.html
+    - title: Technical API
+      output: web
+      url: /ae/installguide_technical_api.html
+    - title: Metrics
+      output: web
+      url: /ae/installguide_metrics.html
+
+  - title: User Guide
+    output: web
+    folderitems:
+      - title: Definition
+        output: web
+        url: /ae/userguide_definition.html
+      - title: Conditions
+        output: web
+        url: /ae/userguide_conditions.html
+      - title: Dampening
+        output: web
+        url: /ae/userguide_dampening.html
+        subfolders:
+        - title: Notifications
+          output: web
+          subfolderitems:
+            - title: What is a Notifier ?
+              output: web
+              url: /ae/userguide_notifiers.html
+            - title: Notifier Email
+              output: web
+              url: /ae/userguide_notifier_email.html
+            - title: Notifier System Email
+              output: web
+              url: /ae/userguide_notifier_system_email.html
+            - title: Notifier Slack
+              output: web
+              url: /ae/userguide_notifier_slack.html
+            - title: Notifier Webhook
+              output: web
+              url: /ae/userguide_notifier_webhook.html
+            - title: Create a custom message
+              output: web
+              url: /ae/userguide_notifier_message.html
+            - title: Node lifecycle notification
+              output: web
+              url: /ae/userguide_properties_node_lifecycle.html
+            - title: Node hearbeat notification
+              output: web
+              url: /ae/userguide_properties_node_heartbeat.html
+            - title: Node health-check notification
+              output: web
+              url: /ae/userguide_properties_node_healthcheck.html
+
+  - title: API Management
+    output: web
+    folderitems:
+      - title: Installation
+        output: web
+        url: /ae/apim_installation.html
+      - title: Configuration
+        output: web
+        url: /ae/apim_configuration.html
+      - title: Platform
+        output: web
+        url: /ae/apim_platform.html
+      - title: API
+        output: web
+        url: /ae/apim_api.html
+        subfolders:
+          - title: Notifications
+            output: web
+            subfolderitems:
+              - title: Request notification
+                output: web
+                url: /ae/apim_notification_request.html
+              - title: Health-check notification
+                output: web
+                url: /ae/apim_notification_endpoint_healthcheck.html
+
+  - title: Access Management
+    output: web
+    folderitems:
+      - title: Installation
+        output: web
+        url: /ae/am_installation.html
+
+  - title: Third Parties
+    output: web
+    folderitems:
+      - title: Installation
+        output: web
+        url: /ae/3rdparties_installation.html

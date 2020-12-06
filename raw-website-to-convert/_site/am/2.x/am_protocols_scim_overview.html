@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<head>
+    
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>SCIM 2.0 | Gravitee.io API Platform Documentation</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="SCIM 2.0" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Home page for Gravitee.io API Platform documentation" />
+<meta property="og:description" content="Home page for Gravitee.io API Platform documentation" />
+<link rel="canonical" href="https://docs.gravitee.io/am/2.x/am_protocols_scim_overview.html" />
+<meta property="og:url" content="https://docs.gravitee.io/am/2.x/am_protocols_scim_overview.html" />
+<meta property="og:site_name" content="Gravitee.io API Platform Documentation" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="SCIM 2.0" />
+<meta name="twitter:site" content="@graviteeio" />
+<script type="application/ld+json">
+{"headline":"SCIM 2.0","description":"Home page for Gravitee.io API Platform documentation","url":"https://docs.gravitee.io/am/2.x/am_protocols_scim_overview.html","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>SCIM 2.0 | Gravitee.io API Platform Documentation</title>
+<link rel="stylesheet" href="/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/css/modern-business.css">
+<link rel="stylesheet" href="/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/css/rouge_github.css">
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/theme-bluegrey.css">
+<link rel="stylesheet" href="/css/gravitee.css">
+<link rel="stylesheet" href="/fonts/plex/css/ibm-plex.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="Gravitee.io API Platform Documentation" href="https://docs.gravitee.iofeed.xml">
+<!-- Algolia search -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+
+    <script src="/js/init-default.js"></script>
+
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-lg navbar-brand" href="/index.html"><img alt="Gravitee.io API Platform" src="/images/GRAVITEE_LOGOV2_TRANSPBLEU.png"><span class="projectTitle">Gravitee.io API Platform</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/apim/3.x/apim_overview_introduction.html">3.x (current)</a></li>
+                        
+                        
+                        
+                        <li><a href="/apim/1.x/apim_overview_introduction.html">1.x</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Access Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/am/current/am_overview_introduction.html">3.x (current)</a></li>
+                        
+                        
+                        
+                        <li><a href="/am/2.x/am_overview_introduction.html">2.x</a></li>
+                        
+                        
+                        
+                        <li><a href="/am/1.x/am_overview_introduction.html">1.x</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/ae/overview_introduction.html">Alert Engine</a></li>
+                
+                
+                
+                <li><a href="/cli/cli_introduction.html">CLI</a></li>
+                
+                
+                
+                <li><a href="/ee/ee_introduction.html">Enterprise</a></li>
+                
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="Search">
+                    </div>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Access Management 2.x </li>
+    
+    
+    
+    <li>
+        <a href="#">Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/2.x/am_overview_introduction.html">Introduction</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">QuickStart</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/2.x/am_quickstart_register_app.html">Register a new client</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_quickstart_authenticate_users.html">Authenticate users with Identity Provider</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_quickstart_profile_information.html">Get user profile information</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_quickstart_secure_apis.html">Secure your APIs</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_quickstart_use_policies.html">Use your first Extension Point</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_quickstart_tokens_custom_claims.html">Add Custom Claims to Tokens</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">User Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/2.x/am_userguide_overview.html">Overview</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Getting Started</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_authentication.html">Sign in to the Management UI</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_concepts.html">Concepts</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Security domains</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_security_domains.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_admin_domain.html">Admin security domain</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_create_domain.html">Create security domain</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Identity providers</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_identity_providers.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_create_identity_provider.html">Create identity provider</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_identity_provider_mapping.html">User and Roles mapping</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Clients</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_clients.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_create_client.html">Create client</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_dynamic_client_registration.html">Dynamic Client Registration</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Login Page</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_login_page.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_custom_login_page.html">Custom login page</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Certificates</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_certificates.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_create_certificate.html">Create certificate</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">User Management</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_user_management.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_user_management_users.html">Users</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_user_management_groups.html">Groups</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_user_management_roles.html">Roles</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_user_management_registration.html">User Registration</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_user_management_forms.html">Custom Forms</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_user_management_scim.html">SCIM 2.0</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_user_management_consent.html">User consent</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">User Session Management</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_user_session_management_logout.html">Logout</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Audit Log</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_logs.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_audit_log.html">Audit Trail</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Extension Points</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_policies.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_userguide_policies_extension_points.html">Extension points</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Installation Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/2.x/am_installguide_introduction.html">Introduction</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Access Gateway</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_installguide_gateway_install_zip.html">Install with .zip</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_installguide_gateway_install_rpm.html">Install with RPM</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_installguide_gateway_configuration.html">Configuration</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Management API</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_installguide_management_api_install_zip.html">Install with .zip</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_installguide_management_api_install_rpm.html">Install with RPM</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_installguide_management_api_configuration.html">Configuration</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Management UI</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_installguide_management_ui_install_zip.html">Install with .zip</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_installguide_management_ui_install_rpm.html">Install with RPM</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Repositories</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_installguide_repositories.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/am/2.x/am_installguide_repositories_mongodb.html">MongoDB</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_installguide_docker.html">Docker</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_installguide_kubernetes.html">Kubernetes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_installguide_technical_api.html">Technical API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_installguide_metrics.html">Metrics</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Breaking changes</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/2.x/am_breaking_changes.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_breaking_changes_2.0.html">Breaking changes in 2.0</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_breaking_changes_2.5.html">Breaking changes in 2.5</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_breaking_changes_2.8.html">Breaking changes in 2.8</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_breaking_changes_2.10.html">Breaking changes in 2.10</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Management API</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/2.x/am_management_api_documentation.html">Overview</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">APIs</a>
+        <ul>
+            
+            
+            
+            <li><a href="/am/2.x/am_protocols_overview.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_protocols_oauth2_overview.html">OAuth 2.0</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_protocols_oidc_overview.html">OpenID Connect</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="/am/2.x/am_protocols_scim_overview.html">SCIM 2.0</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_protocols_users_overview.html">Users</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/am/2.x/am_protocols_session_overview.html">User Session</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+    <h1 class="post-title-main">SCIM 2.0</h1>
+</div>
+
+
+
+<div class="post-content">
+
+    <div class="summary">3.2.0</div>
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <div class="sect1">
+<h2 id="overview">Overview</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+New in Gravitee.io AM 2.2.x
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="http://www.simplecloud.info/">SCIM 2.0</a> is a standard for automating the exchange of user identity information between identity domains, or IT systems.</p>
+</div>
+<div class="paragraph">
+<p>Since it is a standard, SCIM ensures interoperability and user data consistency that can be communicated across heterogeneous applications.
+SCIM enables to automate the provisioning/deprovisioning process and manage users and groups.</p>
+</div>
+<div class="paragraph">
+<p>You can find SCIM 2.0 endpoints exposed by Gravitee.io Access Management :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/am/2.x/scim/index.html" target="_blank" rel="noopener">SCIM 2.0 Console</a> - <a href="/am/2.x/scim/swagger.yml" target="_blank" rel="noopener">Swagger spec</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="protocol">Protocol</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The SCIM is a standard that defines schema and protocol for identity management.</p>
+</div>
+<div class="paragraph">
+<p>It relies on REST API with endpoints exposing CRUD (Create, Read, Update, Delete) functionality for Users and Groups as well as Search, Discovery and Bulk features.</p>
+</div>
+</div>
+</div>
+
+    <div class="tags">
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer class="footer">
+    <div class="newsletter-box">
+        <div class="newsletter-title">Join the community</div>
+        <p>Subscribe to get product updates in your inbox</p>
+        <form id="newsletter-form" class="newsletter-form">
+            <input required name="email" type="email" class="gv-input" placeholder="Email Address">
+            <button type="submit" class="gv-button">Subscribe</button>
+        </form>
+        <span class="message">We won’t send you spam, unsubscribe at any time</span>
+
+        <span class="newsletter-error">
+            <i class="fa fa-exclamation"></i>
+            <span></span>
+        </span>
+        <span class="newsletter-success">
+            <i class="fa fa-check"></i>
+            <span></span>
+        </span>
+    </div>
+    <div class="footer-information">
+        <div class="footer-links">
+            <a title="Github" href="https://github.com/gravitee-io" target="_blank"><i
+                    class="fa fa-github fa-3x"></i></a>
+            <a title="Twitter" href="https://twitter.com/graviteeio" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+            <a title="Linkedin" href="https://www.linkedin.com/company/gravitee-io" target="_blank"><i
+                    class="fa fa-linkedin fa-3x"></i></a>
+        </div>
+        <div>
+            &copy;2020 GraviteeSource. All rights reserved. <br/>
+            Gravitee.io API Platform is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache
+            License V2</a><br/>
+             Site last
+            generated: Dec 6, 2020
+        </div>
+    </div>
+</footer>
+
+<!-- Algolia search -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+  apiKey: 'b1c2f572a3911c288af513bd3e7d87f4',
+  indexName: 'gravitee',
+  inputSelector: '#search-input',
+  debug: false // Set debug to true if you want to inspect the dropdown
+});
+
+$(document).ready(function () {
+  $('#newsletter-form').on('submit', function (event) {
+    var formData = $(this).serializeArray();
+    $.ajax({
+      type: 'POST',
+      url: 'https://newsletter.gravitee.io/',
+      dataType: 'json',
+      data: JSON.stringify({ email: formData[0].value }),
+      contentType: 'application/json; charset=utf-8',
+      cache: false,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      statusCode: {
+        201: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'Your subscription has been sent.';
+          $('.newsletter-success').show();
+        },
+        400: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'You have already subscribe to the newsletter.';
+          $('.newsletter-success').show();
+        },
+        500: function () {
+          $('.newsletter-error span')[0].innerText = 'Sorry, an error occurred. Please try again later.';
+          $('.newsletter-success').hide();
+          $('.newsletter-error').show();
+        }
+      },
+      complete: function () {
+        $('.message').hide();
+      }
+    });
+    event.preventDefault();
+    event.stopPropagation();
+  });
+});
+
+</script>
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7600448.js"></script>
+<!-- End of HubSpot Embed Code -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+<!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-67690250-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+</html>

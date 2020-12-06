@@ -1,0 +1,33 @@
+= OpenAPI documentation
+:page-sidebar: apim_3_x_sidebar
+:page-permalink: apim/3.x/apim_publisherguide_publish_documentation_openapi.html
+:page-folder: apim/user-guide/publisher
+:page-layout: apim3x
+
+OpenAPI pages can be translated, come from an external source and their access can be restricted. +
+See link:/apim/3.x/apim_publisherguide_publish_documentation.html#manage_pages[Manage pages] for more information.
+
+The sections below describe specific configuration for OpenAPI pages.
+
+== Page
+
+You can use the *PAGE* editor to edit an OpenAPI page's raw content and preview it.
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-swagger-editor.png[]
+
+== Configuration
+
+=== Viewer
+You can choose the renderer for your OpenAPI file.
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-swagger-configuration-viewer.png[,300]
+
+You can also edit this configuration globally in the settings to change your default renderer or disable a renderer.
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-openapi-configuration-viewer.png[]
+
+=== Swagger-UI configuration
+
+If you choose `Swagger-UI` as the viewer, you can configure the following options:
+
+image::apim/3.x/api-publisher-guide/documentation/graviteeio-page-documentation-swagger-configuration.png[]

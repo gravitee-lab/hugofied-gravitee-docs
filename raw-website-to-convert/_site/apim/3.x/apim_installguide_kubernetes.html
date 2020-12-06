@@ -1,0 +1,2985 @@
+<!DOCTYPE html>
+<head>
+    
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Helm | Gravitee.io API Platform Documentation</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Helm" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Home page for Gravitee.io API Platform documentation" />
+<meta property="og:description" content="Home page for Gravitee.io API Platform documentation" />
+<link rel="canonical" href="https://docs.gravitee.io/apim/3.x/apim_installguide_kubernetes.html" />
+<meta property="og:url" content="https://docs.gravitee.io/apim/3.x/apim_installguide_kubernetes.html" />
+<meta property="og:site_name" content="Gravitee.io API Platform Documentation" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Helm" />
+<meta name="twitter:site" content="@graviteeio" />
+<script type="application/ld+json">
+{"headline":"Helm","description":"Home page for Gravitee.io API Platform documentation","url":"https://docs.gravitee.io/apim/3.x/apim_installguide_kubernetes.html","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>Helm | Gravitee.io API Platform Documentation</title>
+<link rel="stylesheet" href="/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/css/modern-business.css">
+<link rel="stylesheet" href="/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/css/rouge_github.css">
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/theme-bluegrey.css">
+<link rel="stylesheet" href="/css/gravitee.css">
+<link rel="stylesheet" href="/fonts/plex/css/ibm-plex.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="Gravitee.io API Platform Documentation" href="https://docs.gravitee.iofeed.xml">
+<!-- Algolia search -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+
+    <script src="/js/init-default.js"></script>
+
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-lg navbar-brand" href="/index.html"><img alt="Gravitee.io API Platform" src="/images/GRAVITEE_LOGOV2_TRANSPBLEU.png"><span class="projectTitle">Gravitee.io API Platform</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/apim/3.x/apim_overview_introduction.html">3.x (current)</a></li>
+                        
+                        
+                        
+                        <li><a href="/apim/1.x/apim_overview_introduction.html">1.x</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Access Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/am/current/am_overview_introduction.html">3.x (current)</a></li>
+                        
+                        
+                        
+                        <li><a href="/am/2.x/am_overview_introduction.html">2.x</a></li>
+                        
+                        
+                        
+                        <li><a href="/am/1.x/am_overview_introduction.html">1.x</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/ae/overview_introduction.html">Alert Engine</a></li>
+                
+                
+                
+                <li><a href="/cli/cli_introduction.html">CLI</a></li>
+                
+                
+                
+                <li><a href="/ee/ee_introduction.html">Enterprise</a></li>
+                
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="Search">
+                    </div>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">API Management 3.x </li>
+    
+    
+    
+    <li>
+        <a href="#">Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_overview_introduction.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_overview_why.html">Why Gravitee.io API Management?</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_overview_architecture.html">Architecture</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_overview_concepts.html">Concepts</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_overview_components.html">Components</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_overview_plugins.html">Plugins</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Quick Start Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_quickstart_publish.html">Introduction</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Publish your first API</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_quickstart_publish_ui.html">Using APIM Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_quickstart_publish_api.html">Using APIM API</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Consume an API</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_quickstart_consume_ui.html">Using APIM Portal</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_quickstart_consume_api.html">Using APIM API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_quickstart_consume_test.html">Test the API</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Installation Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_installguide.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_installguide_quickstart.html">Quick installation</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Install with .zip</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_gateway_install_zip.html">Install APIM Gateway</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_rest_apis_install_zip.html">Install APIM API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_management_ui_install_zip.html">Install APIM Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_portal_ui_install_zip.html">Install APIM Portal</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Install on Red Hat and CentOS</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_redhat_introduction.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_redhat_stack.html">Install the full APIM stack</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_redhat_gateway.html">Install APIM Gateway</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_redhat_management_api.html">Install APIM API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_redhat_management_ui.html">Install APIM Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_redhat_portal.html">Install APIM Portal</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Install on Amazon</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_amazon_introduction.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_amazon_stack.html">Install the full APIM stack</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_amazon_gateway.html">Install APIM Gateway</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_amazon_management_api.html">Install APIM API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_amazon_management_ui.html">Install APIM Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_amazon_portal.html">Install APIM Portal</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Run on Docker</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_docker_images.html">Images</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_docker_compose.html">Compose</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_docker_customize.html">Customize</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Deploy in Kubernetes</a>
+                <ul>
+                    
+                    
+                    
+                    <li class="active"><a href="/apim/3.x/apim_installguide_kubernetes.html">Helm</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_installguide_hybrid_deployment.html">Hybrid deployment</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_installguide_migration.html">Upgrade Guide</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Configuration Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_configurationguide.html">Introduction</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Configure APIM Gateway</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_gateway_configuration.html">General configuration</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_gateway_technical_api.html">Internal API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_gateway_metrics.html">Metrics</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Configure APIM API</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_rest_apis_configuration.html">General configuration</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_rest_apis_technical_api.html">Internal API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_rest_apis_metrics.html">Metrics</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_rest_apis_security.html">Security</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Configure APIM Management</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_management_ui_configuration.html">General configuration</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Configure APIM Portal</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_portal_ui_configuration.html">General configuration</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Configure repositories</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_repositories.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_repositories_elasticsearch.html">Elasticsearch</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_repositories_mongodb.html">MongoDB</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_repositories_jdbc.html">JDBC</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_repositories_redis.html">Redis</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Configure authentication</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_inmemory.html">Connect with in-memory users</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_ldap.html">Connect with LDAP/Active Directory</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_apim.html">Connect with APIM repository</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_graviteeam.html">Connect with Gravitee.io Access Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_github.html">Connect with GitHub</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_google.html">Connect with Google</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_installguide_authentication_keycloak.html">Configure Keycloak</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_installguide_configuration_notifications.html">Configure notifications</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">API Publisher Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_manage_apis.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_configuring_cors.html">Configuring CORS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_plans_subscriptions.html">Plans and subscriptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_manage_members.html">Manage members</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_api_rating.html">API rating</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_top_apis.html">Top APIs</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Documentation</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_publisherguide_publish_documentation.html">Publish documentation in APIM Portal</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_publisherguide_publish_documentation_markdown.html">Markdown documentation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_publisherguide_publish_documentation_openapi.html">OpenAPI documentation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_publisherguide_publish_documentation_system_folders.html">System folders, links and APIM Portal customization</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Policies</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_overview.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_apikey.html">Api Key</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_assign_attributes.html">Assign attributes</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_assign_content.html">Assign content</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_cache.html">Cache</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_callout_http.html">Callout HTTP</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_dynamic_routing.html">Dynamic Routing</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_generate_jwt.html">Generate JWT</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_groovy.html">Groovy</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_html2json.html">HTML to JSON</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_ip_filtering.html">IP Filtering</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_json_threat_protection.html">JSON Threat Protection</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_json2json.html">JSON to JSON</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_json_validation.html">JSON Validation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_jws.html">JWS</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_jwt.html">JWT</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_latency.html">Latency</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_mock.html">Mock</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_oauth2.html">OAuth2</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_openid_connect_userinfo.html">OpenID Connect - UserInfo</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_override_http_method.html">Override HTTP method</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_rate_limiting.html">Rate Limiting</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_regex_threat_protection.html">Regex Threat Protection</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_request_content_limit.html">Request Content Limit</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_request_validation.html">Request Validation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_resource_filtering.html">Resource Filtering</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_rest2soap.html">Rest to Soap</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_role_based_access_control.html">Role-Based Access Control</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_ssl_enforcement.html">SSL Enforcement</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_transform_headers.html">Transform Headers</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_transform_query_params.html">Transform Query Parameters</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_url_rewriting.html">URL rewriting</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_xml2json.html">XML to JSON</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_xml_threat_protection.html">XML Threat Protection</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_xml_validation.html">XML Validation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_policies_xslt.html">XSLT</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Resources</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_resources_overview.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_resources_cache.html">Cache</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_resources_oauth2_am.html">OAuth2 - Gravitee.io Access Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_resources_oauth2_generic.html">OAuth2 - Generic Authorization Server</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Service Discovery</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_service_discovery_overview.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_service_discovery_eureka.html">Eureka</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/3.x/apim_service_discovery_consul.html">Consul.io</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_publisherguide_expression_language.html">Expression Language</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">API Consumer Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_consumerguide_portal.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_consumerguide_create_account.html">Create an account</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_consumerguide_manage_applications.html">Manage applications</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_consumerguide_subscribe.html">Subscribe to an API</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Administration Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_adminguide_organizations_and_environments.html">Organizations and environments</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_adminguide_roles_and_permissions.html">Roles and permissions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_adminguide_users_and_groups.html">Users and groups</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_adminguide_support-tickets.html">Support</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">How To</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_how_to_introduction.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_how_to_configure_global_API_reviewers.html">Configure global API reviewers</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Developer Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_devguide_bootstrap.html">Bootstrap your environment</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_devguide_plugins.html">Plugins</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/3.x/apim_devguide_policies.html">Policies</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">API Reference</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_installguide_rest_apis_documentation.html">API reference</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Changelog</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/3.x/apim_changelog.html">Changelog</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+    <h1 class="post-title-main">Helm</h1>
+</div>
+
+
+
+<div class="post-content">
+
+    <div class="summary">3.2.0</div>
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+We assume that you are familiar with Kubernetes terms.<br>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="graviteeio-api-management-helm-chart">Gravitee.io API Management Helm Chart</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Chart supported versions: 3.0.x and higher</strong></p>
+</div>
+<div class="sect2">
+<h3 id="components">Components</h3>
+<div class="paragraph">
+<p>This chart will deploy the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gravitee Management API</p>
+</li>
+<li>
+<p>Gravitee Management UI</p>
+</li>
+<li>
+<p>Gravitee Portal UI</p>
+</li>
+<li>
+<p>Gravitee Gateway</p>
+</li>
+<li>
+<p>MongoDB replica-set (optional dependency)</p>
+</li>
+<li>
+<p>Elasticsearch cluster (optional dependency)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="installing">Installing</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Add the Gravitee.io helm charts repo</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ helm repo add graviteeio https://helm.gravitee.io</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Install it</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ helm install --name graviteeio-apim3x graviteeio/apim3</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="create_a_chart_archive">Create a chart archive</h3>
+<div class="paragraph">
+<p>To package this chart directory into a chart archive, run:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ helm package .</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="installing_the_chart">Installing the Chart</h3>
+<div class="paragraph">
+<p>To install the chart from the Helm repository with the release name
+<code>graviteeio-apim3x</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>helm <span class="nb">install</span> <span class="nt">--name</span> graviteeio-apim3x graviteeio/apim3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> If you&#8217;re using Helm 3, the name parameter is no more valid.
+Please check
+<a href="https://helm.sh/docs/faq/#release-names-are-now-scoped-to-the-namespace">https://helm.sh/docs/faq/#release-names-are-now-scoped-to-the-namespace</a></p>
+</div>
+<div class="paragraph">
+<p>To install the chart using the chart archive, run:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ helm install apim3-3.0.0.tgz</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuration">Configuration</h3>
+<div class="paragraph">
+<p>The following tables list the configurable parameters of the Gravitee
+chart and their default values.</p>
+</div>
+<div class="sect3">
+<h4 id="shared_configuration">Shared configuration</h4>
+<div class="paragraph">
+<p>To configure common features such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>chaos testing (see
+<a href="https://github.com/kubernetes/charts/tree/master/stable/chaoskube">chaoskube</a>
+chart)</p>
+</li>
+<li>
+<p>configuration database (see
+<a href="https://github.com/kubernetes/charts/tree/master/stable/mongodb-replicaset">mongodb-replicaset</a>
+chart)</p>
+</li>
+<li>
+<p>logs database (see
+<a href="https://github.com/helm/charts/tree/master/stable/elasticsearch">elastichsearch</a>
+chart)</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>chaos.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable Chaos test</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>inMemoryAuth.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable oauth login</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ldap.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable LDAP login</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="mongo">Mongo</h4>
+<div class="sect4">
+<h5 id="mongodb_connections">MongoDB connections</h5>
+<div class="paragraph">
+<p>There are three ways to configure MongoDB connections.</p>
+</div>
+<div class="paragraph">
+<p>The most simple is to provide the
+<a href="https://docs.mongodb.com/manual/reference/connection-string/">MongoDB
+URI</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongo.uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mongo URI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If no <code>mongo.uri</code> is provided, you can provide a <code>mongo.servers</code> raw
+definition in combination with <code>mongo.dbname</code>, plus eventual
+authentication configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">mongo</span><span class="pi">:</span>
+  <span class="na">servers</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="s">- host: mongo1</span>
+      <span class="s">port: 27017</span>
+    <span class="s">- host: mongo2</span>
+      <span class="s">port: 27017</span>
+  <span class="na">dbname</span><span class="pi">:</span> <span class="s">gravitee</span>
+  <span class="na">auth</span><span class="pi">:</span>
+    <span class="na">enabled</span><span class="pi">:</span> <span class="no">false</span>
+    <span class="na">username</span><span class="pi">:</span>
+    <span class="na">password</span><span class="pi">:</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If neither <code>mongo.uri</code> or <code>mongo.servers</code> are provided, you have to
+define the following configuration options:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongo.rsEnabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether Mongo replicaset is enabled or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongo.rs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mongo replicaset name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rs0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongo.dbhost</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mongo host address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongo-mongodb-replicaset</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongo.dbport</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mongo host port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>27017</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongo.dbname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mongo DB name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gravitee</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongo.auth.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable Mongo DB authentication</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongo.auth.username</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mongo DB username</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongo.auth.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mongo DB password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="other_keys">Other keys</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongo.sslEnabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable SSL connection to MongoDB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongo.socketKeepAlive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable keep alive for socket</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mongo_replicaset">Mongo ReplicaSet</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mongodb-replicaset.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable deployment of Mongo replicaset</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>See
+<a href="https://github.com/helm/charts/tree/master/stable/mongodb-replicaset">MongoDB
+replicaset</a> for detailed documentation on helm chart.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="elasticsearch">Elasticsearch</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>es.security.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch username and password enabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>es.security.username</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch username</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>example</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>es.security.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>example</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>es.tls.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch TLS enabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>es.tls.keystore.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch TLS keystore type (jks, pem or
+pfx)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>es.tls.keystore.path</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch TLS keystore path (jks, pfx)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>es.tls.keystore.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch TLS keystore password (jks,
+pfx)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>es.tls.keystore.certs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch TLS certs (only pems)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>es.tls.keystore.keys</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch TLS keys (only pems)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>es.index</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch index</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gravitee</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>es.endpoints</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch endpoint array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[http://elastic-elasticsearch-client.default.svc.cluster.local:9200]</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="elasticsearch_cluster">Elasticsearch cluster</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>elasticsearch.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable deployment of Elasticsearch cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>See
+<a href="https://github.com/helm/charts/tree/master/stable/elasticsearch">Elasticsearch</a>
+for detailed documentation on optional requirements helm chart.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gravitee_ui">Gravitee UI</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UI service name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.baseURL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base URL to access to the Management API <em>(if set to
+<code>null</code>, defaults to Management API ingress value)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[apim.example.com]/management</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UI Portal title <em>(if set to <code>null</code>, retrieved from the
+management repository)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>API Portal</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.managementTitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UI Management title <em>(if set to <code>null</code>,
+retrieved from the management repository)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>API Management</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.documentationLink</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UI link to documentation <em>(if set to
+<code>null</code>, retrieved from the management repository)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>http://docs.gravitee.io/</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.portal.apikeyHeader</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API key header name <em>(if set to <code>null</code>,
+retrieved from the management repository)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X-Gravitee-Api-Key</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.portal.devMode.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable developer mode <em>(if
+set to <code>null</code>, retrieved from the management repository)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.portal.userCreation.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable user creation
+<em>(if set to <code>null</code>, retrieved from the management repository)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.portal.support.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable support features <em>(if
+set to <code>null</code>, retrieved from the management repository)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.portal.rating.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable API rating <em>(if set to
+<code>null</code>, retrieved from the management repository)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.portal.analytics.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable analytics features
+<em>(if set to <code>null</code>, retrieved from the management repository)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.portal.analytics.trackingId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tracking ID used for analytics <em>(if
+set to <code>null</code>, retrieved from the management repository)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>""</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.replicaCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How many replicas of the UI pod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.image.repository</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gravitee UI image repository</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>graviteeio/management-ui</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.image.tag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gravitee UI image tag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.29.5</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.image.pullPolicy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s image pull policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Always</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.image.pullSecrets</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s image pull secrets, used to pull both
+Gravitee UI image and <code>extraInitContainers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.autoscaling.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether auto-scaling is enabled or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.autoscaling.minReplicas</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>ui.autoscaling.enabled</code> is
+<code>true</code>, what&#8217;s the minimum number of replicas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.autoscaling.maxReplicas</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>ui.autoscaling.enabled</code> is
+<code>true</code>, what&#8217;s the maximum number of replicas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.autoscaling.targetAverageUtilization</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If
+<code>ui.autoscaling.enabled</code> what&#8217;s the average target utilization (in %)
+before it auto-scale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>50</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.service.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UI service name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nginx</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.service.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s publishing
+<a href="https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types">service
+type</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ClusterIP</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.service.externalPort</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s UI service external port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>8082</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.service.internalPort</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s UI service internal port (container)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.service.internalPortName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s UI service internal port name
+(container)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>http</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.ingress.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether Ingress is enabled or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.ingress.hosts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>ui.ingress.enabled</code> is enabled, set
+possible ingress hosts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[apim.example.com]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.ingress.annotations</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported Ingress annotations to configure
+ingress controller</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[kubernetes.io/ingress.class: nginx, kubernetes.io/app-root: /management, kubernetes.io/rewrite-target: /management, ingress.kubernetes.io/configuration-snippet: "etag on;\nproxy_pass_header ETag;\n"]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.ingress.tls.hosts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#tls">Ingress
+TLS termination</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[apim.example.com]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.ingress.tls.secretName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ingress TLS K8s secret name containing
+the TLS private key and certificate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api-custom-cert</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.resources.limits.cpu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment
+<a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/">limits
+definition for CPU</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>100m</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.resources.limits.memory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment limits definition
+for memory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>128Mi</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.resources.requests.cpu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment
+<a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#specify-a-cpu-request-and-a-cpu-limit">requests
+definition for CPU</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>50m</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.resources.requests.memory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment requests
+definition for memory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>64Mi</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.lifecycle.postStart</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment
+<a href="https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/#define-poststart-and-prestop-handlers">postStart</a>
+command definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ui.lifecycle.preStop</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment
+<a href="https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/#define-poststart-and-prestop-handlers">preStop</a>
+command definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="gravitee_api">Gravitee API</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API service name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.logging.debug</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable API debug logging or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.logging.graviteeLevel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logging level for Gravitee classes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DEBUG</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.logging.jettyLevel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logging level for Jetty classes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>INFO</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.logging.stdout.encoderPattern</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logback standard output encoder
+pattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.logging.file.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable file logging or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.logging.file.rollingPolicy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logback file rolling policy
+configuration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TimeBasedRollingPolicy</code> for 30 days</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.logging.file.encoderPattern</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logback file encoder pattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ssl.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API exposition through HTTPS protocol activation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ssl.keystore.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keystore type for API exposition through
+HTTPS protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jks</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ssl.keystore.path</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keystore path for API exposition through
+HTTPS protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ssl.keystore.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keystore password for API exposition
+through HTTPS protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ssl.truststore.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Truststore type for client authentication
+through 2 way TLS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jks</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ssl.truststore.path</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Truststore path for client authentication
+through 2 way TLS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ssl.truststore.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Truststore password for client
+authentication through 2 way TLS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.services.core.http.authentication.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP core
+service authentication password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>adminadmin</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.services.core.http.port</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP core service port exposed in
+container</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18083</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.services.core.http.host</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP core service bind IP or host
+inside container (0.0.0.0 for exposure on every interfaces)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.services.core.http.authentication.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP core
+service authentication password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>adminadmin</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.services.core.http.ingress.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ingress for HTTP core
+service authentication (requires
+<code>api.http.services.core.service.enabled</code> to be true)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.services.core.http.ingress.path</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The ingress path which
+should match for incoming requests to the management technical API.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/management/_(.*)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.services.core.http.ingress.hosts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If
+<code>api.ingress.enabled</code> is enabled, set possible ingress hosts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[apim.example.com]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.services.core.http.ingress.annotations</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported Ingress
+annotations to configure ingress controller</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[kubernetes.io/ingress.class: nginx, nginx.ingress.kubernetes.io/rewrite-target: /_$1]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.services.core.http.ingress.tls.hosts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#tls">Ingress
+TLS termination</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[apim.example.com]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.services.core.http.ingress.tls.secretName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ingress TLS K8s
+secret name containing the TLS private key and certificate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api-custom-cert</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.services.core.http.service.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether a service is
+added or not for technical API</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.services.core.http.service.externalPort</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s service
+external port (internal port is defined by
+<code>api.http.services.core.http.port</code> )</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18083</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.api.entrypoint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Listening path for the API</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/management</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.client.timeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP client global timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>10000</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.client.proxy.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP client proxy type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HTTP</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.client.proxy.http.host</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP client proxy host for HTTP
+protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.client.proxy.http.port</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP client proxy port for HTTP
+protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3128</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.client.proxy.http.username</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP client proxy username for
+HTTP protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.client.proxy.http.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP client proxy password for
+HTTP protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.client.proxy.https.host</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP client proxy host for HTTPS
+protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localhost</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.client.proxy.https.port</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP client proxy port for HTTPS
+protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3128</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.client.proxy.https.username</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP client proxy username
+for HTTPS protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.http.client.proxy.https.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP client proxy password
+for HTTPS protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.user.login.defaultApplication</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable default
+application creation on first user authentication</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.user.anonymizeOnDelete</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable user anonymization on
+deletion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.supportEnabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable support feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ratingEnabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable API rating feature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smtp.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Email sending activation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smtp.host</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SMTP server host</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smtp.example.com</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smtp.port</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SMTP server port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>25</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smtp.from</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Email sending address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>info@example.com</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smtp.username</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SMTP server username</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>info@example.com</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smtp.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SMTP server password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>example.com</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smtp.subject</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Email subjects template</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[gravitee] %s</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smtp.auth</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SMTP server authentication activation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smtp.starttlsEnable</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SMTP server TLS activation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>smtp.localhost</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hostname that is resolvable by the SMTP server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.portalURL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The portal URL used in emails</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>https://{{ index .Values.ui.ingress.hosts 0 }}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.restartPolicy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Policy to
+<a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-and-container-status">restart
+K8 pod</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OnFailure</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.updateStrategy.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://kubernetes.io/zh/docs/concepts/workloads/controllers/deployment/">K8s
+deployment strategy type</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>RollingUpdate</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.updateStrategy.rollingUpdate.maxUnavailable</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If
+api.updateStrategy.type is set to <code>RollingUpdate</code>, make sure to set a
+value here or your Deployment can have 100% unavailability by default.
+The Deployment controller will stop the bad rollout automatically, and
+will stop scaling up the new ReplicaSet. This depends on the
+rollingUpdate parameters (maxUnavailable specifically) that you have
+specified. Kubernetes by default sets the value to 1 and spec.replicas
+to 1 so if you haven’t cared about setting those parameters, your
+Deployment can have 100% unavailability by default!</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.replicaCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How many replicas for the API pod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.image.repository</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gravitee API image repository</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>graviteeio/management-api</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.image.tag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gravitee API image tag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.29.5</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.image.pullPolicy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s image pull policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Always</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.image.pullSecrets</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s image pull secrets, used to pull both
+Gravitee Management API image and <code>extraInitContainers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.env</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Environment variables, defined as a list of <code>name</code> and
+<code>value</code> as specified in
+<a href="https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/">Kubernetes
+documentation</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.service.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s publishing
+<a href="https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types">service
+type</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ClusterIP</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.service.externalPort</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s service external port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.service.internalPort</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s service internal port (container)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>8083</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.service.internalPortName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s service internal port name
+(container)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>http</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.autoscaling.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether auto-scaling is enabled or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.autoscaling.minReplicas</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>api.autoscaling.enabled</code> is
+<code>true</code>, what&#8217;s the minimum number of replicas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.autoscaling.maxReplicas</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>api.autoscaling.enabled</code> is
+<code>true</code>, what&#8217;s the maximum number of replicas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.autoscaling.targetAverageUtilization</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If
+<code>api.autoscaling.enabled</code> what&#8217;s the average target utilization (in %)
+before it auto-scale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>50</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ingress.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether Ingress is enabled or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ingress.path</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The ingress path which should match for incoming
+requests to the management API.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/management</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ingress.hosts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>api.ingress.enabled</code> is enabled, set
+possible ingress hosts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[apim.example.com]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ingress.annotations</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported Ingress annotations to configure
+ingress controller</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[kubernetes.io/ingress.class: nginx, ingress.kubernetes.io/configuration-snippet: "etag on;\nproxy_pass_header ETag;\nproxy_set_header if-match \"\";\n"]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ingress.tls.hosts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#tls">Ingress
+TLS termination</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[apim.example.com]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.ingress.tls.secretName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ingress TLS K8s secret name containing
+the TLS private key and certificate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api-custom-cert</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.resources.limits.cpu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment
+<a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/">limits
+definition for CPU</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>500m</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.resources.limits.memory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment limits definition
+for memory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1024Mi</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.resources.requests.cpu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment
+<a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#specify-a-cpu-request-and-a-cpu-limit">requests
+definition for CPU</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>200m</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.resources.requests.memory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment requests
+definition for memory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>512Mi</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.lifecycle.postStart</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment
+<a href="https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/#define-poststart-and-prestop-handlers">postStart</a>
+command definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.lifecycle.preStop</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment
+<a href="https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/#define-poststart-and-prestop-handlers">preStop</a>
+command definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="gravitee_gateway">Gravitee Gateway</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gateway service name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.logging.debug</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable Gateway debug logging or
+not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ssl.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API exposition through HTTPS protocol
+activation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ssl.keystore.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keystore type for API exposition through
+HTTPS protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jks</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ssl.keystore.path</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keystore path for API exposition through
+HTTPS protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ssl.keystore.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Keystore password for API exposition
+through HTTPS protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ssl.clientAuth</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Client authentication through 2 way TLS
+activation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ssl.truststore.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Truststore type for client
+authentication through 2 way TLS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jks</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ssl.truststore.path</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Truststore path for client
+authentication through 2 way TLS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ssl.truststore.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Truststore password for client
+authentication through 2 way TLS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.logging.graviteeLevel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logging level for Gravitee classes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DEBUG</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.logging.jettyLevel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logging level for Jetty classes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>INFO</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.logging.stdout.encoderPattern</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logback standard output
+encoder pattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>%d{HH:mm:ss.SSS} [%thread] [%X{api}] %-5level %logger{36} - %msg%n</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.logging.file.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to enable file logging or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.logging.file.rollingPolicy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logback file rolling policy
+configuration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TimeBasedRollingPolicy</code> for 30 days</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.logging.file.encoderPattern</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logback file encoder pattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>%d{HH:mm:ss.SSS} [%thread] [%X{api}] %-5level %logger{36} - %msg%n</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gateway deployment type: <code>deployment</code> or
+<code>statefulSet</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deployment</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.replicaCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How many replicas of the Gateway pod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.image.repository</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gravitee Gateway image repository</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>graviteeio/gateway</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.image.tag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gravitee Gateway image tag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.29.5</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.image.pullPolicy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s image pull policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Always</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.image.pullSecrets</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s image pull secrets, used to pull
+both Gravitee Gateway image and <code>extraInitContainers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.env</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Environment variables, defined as a list of <code>name</code>
+and <code>value</code> as specified in
+<a href="https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/">Kubernetes
+documentation</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.service.type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s publishing
+<a href="https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types">service
+type</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ClusterIP</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.service.externalPort</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s Gateway service external port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.service.internalPort</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s Gateway service internal port
+(container)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>8082</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.service.internalPortName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s Gateway service internal port
+name (container)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>http</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.autoscaling.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether auto-scaling is enabled or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.autoscaling.minReplicas</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>gateway.autoscaling.enabled</code>
+is <code>true</code>, what&#8217;s the minimum number of replicas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.autoscaling.maxReplicas</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>gateway.autoscaling.enabled</code>
+is <code>true</code>, what&#8217;s the maximum number of replicas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.autoscaling.targetAverageUtilization</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If
+<code>gateway.autoscaling.enabled</code> what&#8217;s the average target utilization
+(in %) before it auto-scale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>50</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.websocket</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether websocket protocol is enabled or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.apiKey.header</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Header used for the API Key. Set an empty
+value to prohibit its use.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>X-Gravitee-Api-Key</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.apiKey.param</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Query parameter used for the API Key. Set an
+empty value to prohibit its use.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api-key</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.sharding_tags</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sharding tags (comma separated list)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">``</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ingress.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether Ingress is enabled or not</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ingress.path</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The ingress path which should match for
+incoming requests to the gateway.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/gateway</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ingress.hosts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>gateway.ingress.enabled</code> is enabled,
+set possible ingress hosts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[apim.example.com]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ingress.annotations</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supported Ingress annotations to
+configure ingress controller</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[kubernetes.io/ingress.class: nginx, nginx.ingress.kubernetes.io/ssl-redirect: "false", nginx.ingress.kubernetes.io/enable-rewrite-log: "true", kubernetes.io/app-root: /gateway, kubernetes.io/rewrite-target: /gateway]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ingress.tls.hosts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#tls">Ingress
+TLS termination</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[apim.example.com]</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.ingress.tls.secretName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ingress TLS K8s secret name
+containing the TLS private key and certificate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api-custom-cert</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.resources.limits.cpu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment
+<a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/">limits
+definition for CPU</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>500m</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.resources.limits.memory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment limits
+definition for memory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>512Mi</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.resources.requests.cpu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment
+<a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#specify-a-cpu-request-and-a-cpu-limit">requests
+definition for CPU</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>200m</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.resources.requests.memory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment requests
+definition for memory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>256Mi</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.lifecycle.postStart</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment
+<a href="https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/#define-poststart-and-prestop-handlers">postStart</a>
+command definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>gateway.lifecycle.preStop</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K8s pod deployment
+<a href="https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/#define-poststart-and-prestop-handlers">preStop</a>
+command definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>null</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Specify each parameter using the <code>--set key=value[,key=value]</code>
+argument to <code>helm install</code>.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, a YAML file that specifies the values for the parameters
+can be provided while installing the chart. For example,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>helm <span class="nb">install</span> <span class="nt">--name</span> my-release <span class="nt">-f</span> values.yaml gravitee</code></pre>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Tip</strong>: You can use the default values.yaml</p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <div class="tags">
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer class="footer">
+    <div class="newsletter-box">
+        <div class="newsletter-title">Join the community</div>
+        <p>Subscribe to get product updates in your inbox</p>
+        <form id="newsletter-form" class="newsletter-form">
+            <input required name="email" type="email" class="gv-input" placeholder="Email Address">
+            <button type="submit" class="gv-button">Subscribe</button>
+        </form>
+        <span class="message">We won’t send you spam, unsubscribe at any time</span>
+
+        <span class="newsletter-error">
+            <i class="fa fa-exclamation"></i>
+            <span></span>
+        </span>
+        <span class="newsletter-success">
+            <i class="fa fa-check"></i>
+            <span></span>
+        </span>
+    </div>
+    <div class="footer-information">
+        <div class="footer-links">
+            <a title="Github" href="https://github.com/gravitee-io" target="_blank"><i
+                    class="fa fa-github fa-3x"></i></a>
+            <a title="Twitter" href="https://twitter.com/graviteeio" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+            <a title="Linkedin" href="https://www.linkedin.com/company/gravitee-io" target="_blank"><i
+                    class="fa fa-linkedin fa-3x"></i></a>
+        </div>
+        <div>
+            &copy;2020 GraviteeSource. All rights reserved. <br/>
+            Gravitee.io API Platform is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache
+            License V2</a><br/>
+             Site last
+            generated: Dec 6, 2020
+        </div>
+    </div>
+</footer>
+
+<!-- Algolia search -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+  apiKey: 'b1c2f572a3911c288af513bd3e7d87f4',
+  indexName: 'gravitee',
+  inputSelector: '#search-input',
+  debug: false // Set debug to true if you want to inspect the dropdown
+});
+
+$(document).ready(function () {
+  $('#newsletter-form').on('submit', function (event) {
+    var formData = $(this).serializeArray();
+    $.ajax({
+      type: 'POST',
+      url: 'https://newsletter.gravitee.io/',
+      dataType: 'json',
+      data: JSON.stringify({ email: formData[0].value }),
+      contentType: 'application/json; charset=utf-8',
+      cache: false,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      statusCode: {
+        201: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'Your subscription has been sent.';
+          $('.newsletter-success').show();
+        },
+        400: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'You have already subscribe to the newsletter.';
+          $('.newsletter-success').show();
+        },
+        500: function () {
+          $('.newsletter-error span')[0].innerText = 'Sorry, an error occurred. Please try again later.';
+          $('.newsletter-success').hide();
+          $('.newsletter-error').show();
+        }
+      },
+      complete: function () {
+        $('.message').hide();
+      }
+    });
+    event.preventDefault();
+    event.stopPropagation();
+  });
+});
+
+</script>
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7600448.js"></script>
+<!-- End of HubSpot Embed Code -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+<!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-67690250-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+</html>

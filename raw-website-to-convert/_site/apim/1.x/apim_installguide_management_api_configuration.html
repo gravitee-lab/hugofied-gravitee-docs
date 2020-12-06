@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<head>
+    
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Management API - Configuration | Gravitee.io API Platform Documentation</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Management API - Configuration" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Gravitee.io API Management - Configuration - Management API" />
+<meta property="og:description" content="Gravitee.io API Management - Configuration - Management API" />
+<link rel="canonical" href="https://docs.gravitee.io/apim/1.x/apim_installguide_management_api_configuration.html" />
+<meta property="og:url" content="https://docs.gravitee.io/apim/1.x/apim_installguide_management_api_configuration.html" />
+<meta property="og:site_name" content="Gravitee.io API Platform Documentation" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Management API - Configuration" />
+<meta name="twitter:site" content="@graviteeio" />
+<script type="application/ld+json">
+{"headline":"Management API - Configuration","description":"Gravitee.io API Management - Configuration - Management API","url":"https://docs.gravitee.io/apim/1.x/apim_installguide_management_api_configuration.html","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Gravitee.io API Management - Configuration - Management API">
+<meta name="keywords" content=" Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api">
+<title>Management API - Configuration | Gravitee.io API Platform Documentation</title>
+<link rel="stylesheet" href="/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/css/modern-business.css">
+<link rel="stylesheet" href="/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/css/rouge_github.css">
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/theme-bluegrey.css">
+<link rel="stylesheet" href="/css/gravitee.css">
+<link rel="stylesheet" href="/fonts/plex/css/ibm-plex.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="Gravitee.io API Platform Documentation" href="https://docs.gravitee.iofeed.xml">
+<!-- Algolia search -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+
+    <script src="/js/init-default.js"></script>
+
+    
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-lg navbar-brand" href="/index.html"><img alt="Gravitee.io API Platform" src="/images/GRAVITEE_LOGOV2_TRANSPBLEU.png"><span class="projectTitle">Gravitee.io API Platform</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/apim/3.x/apim_overview_introduction.html">3.x (current)</a></li>
+                        
+                        
+                        
+                        <li><a href="/apim/1.x/apim_overview_introduction.html">1.x</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Access Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/am/current/am_overview_introduction.html">3.x (current)</a></li>
+                        
+                        
+                        
+                        <li><a href="/am/2.x/am_overview_introduction.html">2.x</a></li>
+                        
+                        
+                        
+                        <li><a href="/am/1.x/am_overview_introduction.html">1.x</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="/ae/overview_introduction.html">Alert Engine</a></li>
+                
+                
+                
+                <li><a href="/cli/cli_introduction.html">CLI</a></li>
+                
+                
+                
+                <li><a href="/ee/ee_introduction.html">Enterprise</a></li>
+                
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="Search">
+                    </div>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">API Management 1.x </li>
+    
+    
+    
+    <li>
+        <a href="#">Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/1.x/apim_overview_introduction.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_overview_why.html">Why Gravitee.io ?</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_overview_architecture.html">Architecture</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_overview_concepts.html">Concepts</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_overview_components.html">Components</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_overview_plugins.html">Plugins</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">QuickStart</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/1.x/apim_quickstart_publish.html">Publish your first API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_quickstart_consume.html">Consume an API</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Installation Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/1.x/apim_installguide.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_installguide_quickstart.html">Quicktart</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Install with .zip</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_gateway_install_zip.html">API Gateway</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_management_api_install_zip.html">Management API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_portal_install_zip.html">Portal</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Install on Red Hat</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_redhat_introduction.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_redhat_stack.html">Install API Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_redhat_gateway.html">Install API Gateway component</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_redhat_management_api.html">Install Management API component</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_redhat_portal.html">Install Portal component</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Install on Amazon</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_amazon_introduction.html">Introduction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_amazon_stack.html">Install API Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_amazon_gateway.html">Install API Gateway component</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_amazon_management_api.html">Install Management API component</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_amazon_portal.html">Install Portal component</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Run on Docker</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_docker_images.html">Images</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_docker_compose.html">Compose</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_docker_customize.html">Customize</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">API Gateway</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_gateway_configuration.html">Configuration</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_gateway_technical_api.html">Technical API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_gateway_metrics.html">Metrics</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Management API</a>
+                <ul>
+                    
+                    
+                    
+                    <li class="active"><a href="/apim/1.x/apim_installguide_management_api_configuration.html">Configuration</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_management_api_documentation.html">Documentation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_management_api_technical_api.html">Technical API</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_management_api_metrics.html">Metrics</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_management_api_security.html">Security</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Portal</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_portal_configuration.html">Configuration</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Repositories</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_repositories.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_repositories_elasticsearch.html">Elasticsearch</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_repositories_mongodb.html">MongoDB</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_repositories_jdbc.html">JDBC</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_repositories_redis.html">Redis</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Authentication</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_authentication.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_authentication_inmemory.html">Connect with In-Memory users</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_authentication_ldap.html">Connect with LDAP / Active Directory</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_authentication_apim.html">Connect with Gravitee.io APIM Repository</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_authentication_graviteeam.html">Connect with Gravitee.io AM</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_authentication_github.html">Connect with GitHub</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_authentication_google.html">Connect with Google</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_installguide_authentication_keycloak.html">Configure Keycloak</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_installguide_hybrid_deployment.html">Hybrid deployment</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_installguide_kubernetes.html">Kubernetes</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_installguide_migration.html">Migration guide</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Api Consumer Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/1.x/apim_consumerguide_portal.html">Portal</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_consumerguide_create_account.html">Create an account</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_consumerguide_subscribe.html">Subscribe to an API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_consumerguide_manage_applications.html">Manage applications</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Api Publisher Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/1.x/apim_publisherguide_manage_apis.html">Manage APIs</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_publisherguide_configuring_cors.html">Configuring CORS</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_publisherguide_plans_subscriptions.html">Plans and Subscriptions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_publisherguide_manage_members.html">Manage members</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_publisherguide_publish_documentation.html">Publish documentation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_publisherguide_api_rating.html">API rating</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_publisherguide_top_apis.html">Top APIs</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Policies</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_overview.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_apikey.html">Api Key</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_assign_attributes.html">Assign attributes</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_assign_content.html">Assign content</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_cache.html">Cache</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_callout_http.html">Callout HTTP</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_dynamic_routing.html">Dynamic Routing</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_generate_jwt.html">Generate JWT</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_groovy.html">Groovy</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_html2json.html">HTML to JSON</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_ip_filtering.html">IP Filtering</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_json2json.html">JSON to JSON</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_json_validation.html">JSON Validation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_jws.html">JWS</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_jwt.html">JWT</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_latency.html">Latency</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_mock.html">Mock</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_oauth2.html">OAuth2</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_openid_connect_userinfo.html">OpenID Connect - UserInfo</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_override_http_method.html">Override HTTP method</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_rate_limiting.html">Rate Limiting</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_request_content_limit.html">Request Content Limit</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_request_validation.html">Request Validation</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_resource_filtering.html">Resource Filtering</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_rest2soap.html">Rest to Soap</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_role_based_access_control.html">Role-Based Access Control</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_ssl_enforcement.html">SSL Enforcement</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_transform_headers.html">Transform Headers</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_transform_query_params.html">Transform Query Parameters</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_url_rewriting.html">URL rewriting</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_xml2json.html">XML to JSON</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_policies_xslt.html">XSLT</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Resources</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_resources_overview.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_resources_cache.html">Cache</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_resources_oauth2_am.html">OAuth2 - Gravitee.io Access Management</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_resources_oauth2_generic.html">OAuth2 - Generic Authorization Server</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Service Discovery</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_service_discovery_overview.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_service_discovery_eureka.html">Eureka</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="/apim/1.x/apim_service_discovery_consul.html">Consul.io</a></li>
+                    
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_publisherguide_expression_language.html">Expression Language</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Administration Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/1.x/apim_adminguide_roles_and_permissions.html">Roles and Permissions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_adminguide_users_and_groups.html">Users and Groups</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Developer Guide</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/1.x/apim_devguide_plugins.html">Plugins</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/apim/1.x/apim_devguide_policies.html">Policies</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Changelog</a>
+        <ul>
+            
+            
+            
+            <li><a href="/apim/1.x/apim_changelog.html">Changelog</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+    <h1 class="post-title-main">Management API - Configuration</h1>
+</div>
+
+
+
+<div class="post-content">
+
+    <div class="summary">1.30.22</div>
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+    <div class="sect1">
+<h2 id="how_to_configure">How to configure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are three different ways to configure this component:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>gravitee.yml</code></p>
+</li>
+<li>
+<p>System Properties</p>
+</li>
+<li>
+<p>Environment variables</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In terms of prevalence, environment variables override system properties which are themselves overriding <code>gravitee.yml</code> file.</p>
+</div>
+<div class="sect2">
+<h3 id="gravitee_yml">gravitee.yml</h3>
+<div class="paragraph">
+<p>This is the default way to configure Gravitee.io</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Yaml (yml) format is very sensitive with indentation. Be careful, and use spaces instead of tabs.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="system_properties">System Properties</h3>
+<div class="paragraph">
+<p>You can override the default configuration (<code>gravitee.yml</code>) to configure Gravitee.io by defining system properties.</p>
+</div>
+<div class="paragraph">
+<p>If you want to override this property:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">management</span><span class="pi">:</span>
+  <span class="na">mongodb</span><span class="pi">:</span>
+    <span class="na">dbname</span><span class="pi">:</span> <span class="s">myDatabase</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You have to add this property to the JVM:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>-Dmanagement.mongodb.dbname=myDatabase</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="environment_variables">Environment Variables</h3>
+<div class="paragraph">
+<p>You can override the default configuration (<code>gravitee.yml</code>) and system properties by defining environment variables.</p>
+</div>
+<div class="paragraph">
+<p>If you want to override this property:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">management</span><span class="pi">:</span>
+  <span class="na">mongodb</span><span class="pi">:</span>
+    <span class="na">dbname</span><span class="pi">:</span> <span class="s">myDatabase</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You have to define one of the following variables:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>GRAVITEE_MANAGEMENT_MONGODB_DBNAME=myDatabase
+GRAVITEE.MANAGEMENT.MONGODB.DBNAME=myDatabase
+gravitee_management_mongodb_dbname=myDatabase
+gravitee.management.mongodb.dbname=myDatabase</pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Some properties are case-sensitive and can not be defined upper-case (for example:
+<code>gravitee_security_providers_0_tokenIntrospectionEndpoint</code>. We advise you to define environment variables in lower-case
+and use the correct syntax for each property.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+In some systems, hyphens are forbidden in the variable name. You can remove them like <code>gravitee_policy_apikey_header</code> instead of <code>gravitee_policy_api-key_header</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="how_to_manage_arrays">How to manage arrays ?</h4>
+<div class="paragraph">
+<p>Some properties are arrays. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">analytics</span><span class="pi">:</span>
+  <span class="na">elasticsearch</span><span class="pi">:</span>
+    <span class="na">endpoints</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">https://my.first.endpoint.com</span>
+      <span class="pi">-</span> <span class="s">https://my.second.endpoint.com</span>
+
+<span class="na">security</span><span class="pi">:</span>
+  <span class="na">providers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">ldap</span>
+      <span class="na">context-source-username</span><span class="pi">:</span> <span class="s2">"</span><span class="s">cn=Directory</span><span class="nv"> </span><span class="s">Manager"</span>
+      <span class="na">context-source-password</span><span class="pi">:</span> <span class="s2">"</span><span class="s">password"</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is some ways to write your environment variables. In case of errors, you really should try both of them.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>gravitee_analytics_elasticsearch_endpoints_0=https://my.first.endpoint.com
+gravitee_analytics_elasticsearch_endpoints_1=https://my.second.endpoint.com
+
+gravitee_security_providers_0_type=ldap
+gravitee_security_providers_0_context-source-username=cn=Directory Manager
+gravitee_security_providers_0_context-source-password=password</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>gravitee.analytics.elasticsearch.endpoints[0]=https://my.first.endpoint.com
+gravitee.analytics.elasticsearch.endpoints[1]=https://my.second.endpoint.com
+
+gravitee.security.providers[0]type=ldap
+gravitee.security.providers[0]context-source-username=cn=Directory Manager
+gravitee.security.providers[0]context-source-password=password
+gravitee.security.providers[0].users[1].password=password</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="http_server">HTTP Server</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Management API HTTP server configuration.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">jetty</span><span class="pi">:</span>
+  <span class="na">port</span><span class="pi">:</span> <span class="m">8083</span>
+  <span class="na">idleTimeout</span><span class="pi">:</span> <span class="m">30000</span>
+  <span class="na">acceptors</span><span class="pi">:</span> <span class="s">-1</span>
+  <span class="na">selectors</span><span class="pi">:</span> <span class="s">-1</span>
+  <span class="na">pool</span><span class="pi">:</span>
+    <span class="na">minThreads</span><span class="pi">:</span> <span class="m">10</span>
+    <span class="na">maxThreads</span><span class="pi">:</span> <span class="m">200</span>
+    <span class="na">idleTimeout</span><span class="pi">:</span> <span class="m">60000</span>
+    <span class="na">queueSize</span><span class="pi">:</span> <span class="m">6000</span>
+  <span class="na">jmx</span><span class="pi">:</span> <span class="no">false</span>
+  <span class="na">statistics</span><span class="pi">:</span> <span class="no">false</span>
+  <span class="na">accesslog</span><span class="pi">:</span>
+    <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">path</span><span class="pi">:</span> <span class="s">${gravitee.home}/logs/gravitee_accesslog_yyyy_mm_dd.log</span></code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how_to_enable_https_support">How to enable HTTPS support</h3>
+<div class="paragraph">
+<p>First, you need to provide a keystore. If you don&#8217;t have one, you can generate it :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>keytool -genkey \
+  -alias test \
+  -keyalg RSA \
+  -keystore server-keystore.jks \
+  -keysize 2048 \
+  -validity 360 \
+  -dname CN=localhost \
+  -keypass secret \
+  -storepass secret</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After that, you have to enable secure mode in your <code>gravitee.yml</code> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>jetty:
+  ...
+  secured: true
+  ssl:
+    keystore:
+      path: ${gravitee.home}/security/keystore.jks
+      password: secret
+    truststore:
+      path: ${gravitee.home}/security/truststore.jks
+      password: secret</pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Truststore and keystore defined within <code>jetty</code> section are only used to secure access to the Management API. These are not
+used by any HTTP client calls for other purposes (Fetch, DCR, &#8230;&#8203;)
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="plugins_repository">Plugins repository</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Gravitee.io Management API <a href="#gravitee-plugins">plugins</a> directory configuration.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">plugins</span><span class="pi">:</span>
+  <span class="na">path</span><span class="pi">:</span> <span class="s">${gravitee.home}/plugins</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="management_repository">Management repository</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Management repository is used to store global configuration such as APIs, applications, apikeys, &#8230;&#8203;
+This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:</p>
+</div>
+<div class="paragraph">
+<p><a href="http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html" class="bare">http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">management</span><span class="pi">:</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">mongodb</span>
+  <span class="na">mongodb</span><span class="pi">:</span>
+    <span class="na">dbname</span><span class="pi">:</span> <span class="s">${ds.mongodb.dbname}</span>
+    <span class="na">host</span><span class="pi">:</span> <span class="s">${ds.mongodb.host}</span>
+    <span class="na">port</span><span class="pi">:</span> <span class="s">${ds.mongodb.port}</span>
+<span class="c1">#    username:</span>
+<span class="c1">#    password:</span>
+<span class="c1">#    connectionsPerHost: 0</span>
+<span class="c1">#    connectTimeout: 500</span>
+<span class="c1">#    maxWaitTime: 120000</span>
+<span class="c1">#    socketTimeout: 500</span>
+<span class="c1">#    socketKeepAlive: false</span>
+<span class="c1">#    maxConnectionLifeTime: 0</span>
+<span class="c1">#    maxConnectionIdleTime: 0</span>
+<span class="c1">#    serverSelectionTimeout: 0</span>
+<span class="c1">#    description: gravitee.io</span>
+<span class="c1">#    heartbeatFrequency: 10000</span>
+<span class="c1">#    minHeartbeatFrequency: 500</span>
+<span class="c1">#    heartbeatConnectTimeout: 1000</span>
+<span class="c1">#    heartbeatSocketTimeout: 20000</span>
+<span class="c1">#    localThreshold: 15</span>
+<span class="c1">#    minConnectionsPerHost: 0</span>
+<span class="c1">#    sslEnabled: false</span>
+<span class="c1">#    threadsAllowedToBlockForConnectionMultiplier: 5</span>
+<span class="c1">#    cursorFinalizerEnabled: true</span>
+
+<span class="c1"># Management repository: single MongoDB using URI</span>
+<span class="c1"># For more information about MongoDB configuration using URI, please have a look to:</span>
+<span class="c1"># - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html</span>
+<span class="c1">#management:</span>
+<span class="c1">#  type: mongodb</span>
+<span class="c1">#  mongodb:</span>
+<span class="c1">#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]</span>
+
+<span class="c1"># Management repository: clustered MongoDB</span>
+<span class="c1">#management:</span>
+<span class="c1">#  type: mongodb</span>
+<span class="c1">#  mongodb:</span>
+<span class="c1">#    servers:</span>
+<span class="c1">#      - host: mongo1</span>
+<span class="c1">#        port: 27017</span>
+<span class="c1">#      - host: mongo2</span>
+<span class="c1">#        port: 27017</span>
+<span class="c1">#    dbname: ${ds.mongodb.dbname}</span>
+<span class="c1">#    connectTimeout: 500</span>
+<span class="c1">#    socketTimeout: 250</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="analytics">Analytics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Analytics repository is used to store all reporting, metrics, health-checks stored by gateway instances.</p>
+</div>
+<div class="paragraph">
+<p>This is the default configuration using <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml">  <span class="na">type</span><span class="pi">:</span> <span class="s">elasticsearch</span>
+  <span class="na">elasticsearch</span><span class="pi">:</span>
+    <span class="na">endpoints</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">http://localhost:9200</span>
+<span class="c1">#    index: gravitee</span>
+<span class="c1">#    security:</span>
+<span class="c1">#       username:</span>
+<span class="c1">#       password:</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gravitee-standalone-management-authentication-configuration">Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See the <a href="/apim/1.x/apim_installguide_authentication.html">dedicated</a> section.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sending_emails">Sending emails</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="smtp">SMTP</h3>
+<div class="paragraph">
+<p>SMTP configuration used to send mails.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">email</span><span class="pi">:</span>
+  <span class="na">host</span><span class="pi">:</span> <span class="s">smtp.my.domain</span>
+  <span class="na">port</span><span class="pi">:</span> <span class="m">465</span>
+  <span class="na">from</span><span class="pi">:</span> <span class="s">noreply@my.domain</span>
+  <span class="na">subject</span><span class="pi">:</span> <span class="s2">"</span><span class="s">[Gravitee.io]</span><span class="nv"> </span><span class="s">%s"</span>
+  <span class="na">username</span><span class="pi">:</span> <span class="s">user@my.domain</span>
+  <span class="na">password</span><span class="pi">:</span> <span class="s">password</span></code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configure_the_gmail_smtp_server">Configure the Gmail SMTP server</h4>
+<div class="paragraph">
+<p>Here is the Gmail SMTP configuration.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">email</span><span class="pi">:</span>
+  <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">host</span><span class="pi">:</span> <span class="s">smtp.gmail.com</span>
+  <span class="na">port</span><span class="pi">:</span> <span class="m">587</span>
+  <span class="na">from</span><span class="pi">:</span> <span class="s">user@gmail.com</span>
+  <span class="na">subject</span><span class="pi">:</span> <span class="s2">"</span><span class="s">[Gravitee.io]</span><span class="nv"> </span><span class="s">%s"</span>
+  <span class="na">username</span><span class="pi">:</span> <span class="s">user@gmail.com</span>
+  <span class="na">password</span><span class="pi">:</span> <span class="s">xxxxxxxx</span>
+  <span class="na">properties</span><span class="pi">:</span>
+    <span class="na">auth</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="s">starttls.enable</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="s">ssl.trust</span><span class="pi">:</span> <span class="s">smtp.gmail.com</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re using the 2-Factor Authentication (if not, you should), you have to generate an application password : <a href="https://security.google.com/settings/security/apppasswords" class="bare">https://security.google.com/settings/security/apppasswords</a> .</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="email_templates">Email templates</h3>
+<div class="paragraph">
+<p>Email templates configuration. Gravitee.io Management API use <a href="http://freemarker.org">Freemarker template engine</a> to parse and create the email templates.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">templates</span><span class="pi">:</span>
+  <span class="na">path</span><span class="pi">:</span> <span class="s">${gravitee.home}/templates</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the list of email templates :</p>
+</div>
+<table class="tableblock frame-topbot grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 60%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Email Template</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">groupMember.html</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New API group member notification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>username</em>, <strong>group</strong>, <strong>user</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">apiKeyExpired.html</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API Key expired notification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner</strong>, <strong>api</strong>, <strong>plan</strong>, <strong>application</strong>, apiKey, expirationDate</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">apiKeyRevoked.html</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API Key revoked notification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner</strong>, apiKey</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">apiMember.html</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New API member notification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>username</em>, <strong>api</strong>, <strong>user</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">applicationMember.html</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New application member notification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>username</em>, <strong>application</strong>, <strong>user</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subscriptionApproved.html</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API subscription approved notification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner</strong>, <strong>api</strong>, <strong>plan</strong>, <strong>subscription</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subscriptionReceived.html</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API subscription received notification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner</strong>, <strong>api</strong>, <strong>plan</strong>, <strong>application</strong>, <strong>subscription</strong>, subscriptionsUrl</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subscriptionRejected.html</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API subscription rejected notification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner</strong>, <strong>api</strong>, <strong>plan</strong>, <strong>subscription</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">userRegistration.html</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User registration notification.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>username</em>, registrationUrl, <strong>user</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">supportTicket.html</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support ticket creation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>api</strong>, <strong>application</strong>, <strong>user</strong>, content</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You can access to your api data on your api&#8217;s templates by doing so: ${api.name} or ${api.metadata['foo-bar']}</p>
+</div>
+<div class="paragraph">
+<p>Available attributes:</p>
+</div>
+<table class="tableblock frame-topbot grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Api</th>
+<th class="tableblock halign-left valign-top">Application</th>
+<th class="tableblock halign-left valign-top">Group</th>
+<th class="tableblock halign-left valign-top">Plan</th>
+<th class="tableblock halign-left valign-top">Owner/User</th>
+<th class="tableblock halign-left valign-top">Subscription</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">username</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">firstname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">request</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">order</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lastname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reason</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">role</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">publishedAt (Date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">displayName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">processedAt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">metadata (Map)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">role</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">closedAt (Date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">email</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">startingAt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">deployedAt (Date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">endingAt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">createdAt (Date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">createdAt (Date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">createdAt (Date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">createdAt (Date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">closedAt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">updatedAt (Date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">updatedAt (Date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">updatedAt (Date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">updatedAt (Date)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">subscribedAt</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Here&#8217;s an example of template:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="html"><span class="nt">&lt;html&gt;</span>
+	<span class="nt">&lt;body</span> <span class="na">style=</span><span class="s">"text-align: center;"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;header&gt;</span>
+			<span class="nt">&lt;</span><span class="na">#include</span> <span class="err">"</span><span class="na">header</span><span class="err">.</span><span class="na">html</span><span class="err">"</span> <span class="nt">/&gt;</span>
+		<span class="nt">&lt;/header&gt;</span>
+		<span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"margin-top: 50px; color: #424e5a;"</span><span class="nt">&gt;</span>
+			<span class="nt">&lt;h3&gt;</span>Hi ${owner.username},<span class="nt">&lt;/h3&gt;</span>
+			<span class="nt">&lt;p&gt;</span>The API Key <span class="nt">&lt;code&gt;</span>${apiKey}<span class="nt">&lt;/code&gt;</span> has been expired.
+		<span class="nt">&lt;/p&gt;</span>
+	<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user_options">User options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You have different options to customize :</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">user.login.defaultApplication</dt>
+<dd>
+<p>boolean (default: true) - Create a new application for every new users.</p>
+</dd>
+<dt class="hdlist1">user.creation.token.expire-after</dt>
+<dd>
+<p>number (default: 86400) - Number of seconds before the user registration token expired.</p>
+</dd>
+<dt class="hdlist1">user.reference.secret</dt>
+<dd>
+<p>32 characters (default: s3cR3t4grAv1t33.1Ous3D4R3f3r3nc3) - CHANGE IT! secret used to generate a unique anonymous reference to a user.</p>
+</dd>
+<dt class="hdlist1">user.anonymize-on-delete:enabled</dt>
+<dd>
+<p>boolean (default: false) - If true, the users firstname, lastname and email are anonymized when a user is deleted.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="default_configuration">Default configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Various properties can be specified inside your <code>GRAVITEE_HOME/config/gravitee.yml</code> file. This section provides the general configuration of Gravitee.IO Management API.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="c1">############################################################################################################</span>
+<span class="c1">################################ Gravitee.IO Management API - Configuration ################################</span>
+<span class="c1">############################################################################################################</span>
+
+<span class="c1">############################################################################################################</span>
+<span class="c1"># This file is the general configuration of Gravitee.IO Management API:</span>
+<span class="c1"># - Properties (and respective default values) in comment are provided for information.</span>
+<span class="c1"># - You can reference other property by using ${property.name} syntax</span>
+<span class="c1"># - gravitee.home property is automatically set-up by launcher and refers to the installation path. Do not override it !</span>
+<span class="c1">#</span>
+<span class="c1"># Please have a look to http://docs.gravitee.io/ for more options and fine-grained granularity</span>
+<span class="c1">############################################################################################################</span>
+
+<span class="c1"># HTTP Server</span>
+<span class="c1">#jetty:</span>
+<span class="c1">#  IP/hostname to bind to. Default is 0.0.0.0</span>
+<span class="c1">#  host: 0.0.0.0</span>
+<span class="c1">#  port: 8083</span>
+<span class="c1">#  idleTimeout: 30000</span>
+<span class="c1">#  acceptors: -1</span>
+<span class="c1">#  selectors: -1</span>
+<span class="c1">#  pool:</span>
+<span class="c1">#    minThreads: 10</span>
+<span class="c1">#    maxThreads: 200</span>
+<span class="c1">#    idleTimeout: 60000</span>
+<span class="c1">#    queueSize: 6000</span>
+<span class="c1">#  jmx: false</span>
+<span class="c1">#  statistics: false</span>
+<span class="c1">#  accesslog:</span>
+<span class="c1">#    enabled: true</span>
+<span class="c1">#    path: ${gravitee.home}/logs/gravitee_accesslog_yyyy_mm_dd.log</span>
+<span class="c1">#  secured: false</span>
+<span class="c1">#  ssl:</span>
+<span class="c1">#    keystore:</span>
+<span class="c1">#      type: jks # Supports jks, pkcs12</span>
+<span class="c1">#      path: ${gravitee.home}/security/keystore.jks</span>
+<span class="c1">#      password: secret</span>
+<span class="c1">#    truststore:</span>
+<span class="c1">#      type: jks # Supports jks, pkcs12</span>
+<span class="c1">#      path: ${gravitee.home}/security/truststore.jks</span>
+<span class="c1">#      password: secret</span>
+
+<span class="na">http</span><span class="pi">:</span>
+  <span class="na">api</span><span class="pi">:</span>
+    <span class="c1"># Configure the listening path for the API. Default to /management</span>
+    <span class="c1">#entrypoint: /management</span>
+  <span class="na">cors</span><span class="pi">:</span>
+    <span class="c1"># Allows to configure the header Access-Control-Allow-Origin (default value: *)</span>
+    <span class="c1"># '*' is a valid value but is considered as a security risk as it will be opened to cross origin requests from anywhere.</span>
+    <span class="c1">#allow-origin: http://developer.mycompany.com</span>
+    <span class="c1"># Allows to define how long the result of the preflight request should be cached for (default value; 1728000 [20 days])</span>
+    <span class="c1">#max-age: 864000</span>
+    <span class="c1"># Which methods to allow (default value: OPTIONS, GET, POST, PUT, DELETE)</span>
+    <span class="c1">#allow-methods: 'OPTIONS, GET, POST, PUT, DELETE'</span>
+    <span class="c1"># Which headers to allow (default values: Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With, If-Match, X-Xsrf-Token)</span>
+    <span class="c1">#allow-headers: 'X-Requested-With'</span>
+  <span class="c1">#csrf:</span>
+    <span class="c1"># Allows to enable or disable the CSRF protection (default is disabled).</span>
+  <span class="c1">#  enabled: false</span>
+  <span class="na">hsts</span><span class="pi">:</span>
+    <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">include-sub-domains</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">max-age</span><span class="pi">:</span> <span class="m">31536000</span>
+
+<span class="c1"># Plugins repository</span>
+<span class="c1">#plugins:</span>
+<span class="c1">#  path:</span>
+<span class="c1">#    - ${gravitee.home}/plugins</span>
+<span class="c1">#    - ${gravitee.home}/my-custom-plugins</span>
+<span class="c1"># If a external is already installed (but with a different version), management node does not start anymore</span>
+<span class="c1">#  failOnDuplicate: true</span>
+
+<span class="c1"># Management repository is used to store global configuration such as APIs, applications, apikeys, ...</span>
+<span class="c1"># This is the default configuration using MongoDB (single server)</span>
+<span class="c1"># For more information about MongoDB configuration, please have a look to:</span>
+<span class="c1"># - http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html</span>
+<span class="na">management</span><span class="pi">:</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">mongodb</span>
+  <span class="na">mongodb</span><span class="pi">:</span>
+    <span class="na">dbname</span><span class="pi">:</span> <span class="s">${ds.mongodb.dbname}</span>
+    <span class="na">host</span><span class="pi">:</span> <span class="s">${ds.mongodb.host}</span>
+    <span class="na">port</span><span class="pi">:</span> <span class="s">${ds.mongodb.port}</span>
+<span class="c1">#    username:</span>
+<span class="c1">#    password:</span>
+<span class="c1">#    connectionsPerHost: 0</span>
+<span class="c1">#    connectTimeout: 500</span>
+<span class="c1">#    maxWaitTime: 120000</span>
+<span class="c1">#    socketTimeout: 500</span>
+<span class="c1">#    socketKeepAlive: false</span>
+<span class="c1">#    maxConnectionLifeTime: 0</span>
+<span class="c1">#    maxConnectionIdleTime: 0</span>
+<span class="c1">#    serverSelectionTimeout: 0</span>
+<span class="c1">#    description: gravitee.io</span>
+<span class="c1">#    heartbeatFrequency: 10000</span>
+<span class="c1">#    minHeartbeatFrequency: 500</span>
+<span class="c1">#    heartbeatConnectTimeout: 1000</span>
+<span class="c1">#    heartbeatSocketTimeout: 20000</span>
+<span class="c1">#    localThreshold: 15</span>
+<span class="c1">#    minConnectionsPerHost: 0</span>
+<span class="c1">#    sslEnabled: false</span>
+<span class="c1">#    threadsAllowedToBlockForConnectionMultiplier: 5</span>
+<span class="c1">#    cursorFinalizerEnabled: true</span>
+<span class="c1"># possible values are 1,2,3... (the number of node) or 'majority'</span>
+<span class="c1">#    writeConcern: 1</span>
+<span class="c1">#    wtimeout: 0</span>
+<span class="c1">#    journal: true</span>
+
+<span class="c1"># Management repository: single MongoDB using URI</span>
+<span class="c1"># For more information about MongoDB configuration using URI, please have a look to:</span>
+<span class="c1"># - http://api.mongodb.org/java/current/com/mongodb/MongoClientURI.html</span>
+<span class="c1">#management:</span>
+<span class="c1">#  type: mongodb</span>
+<span class="c1">#  mongodb:</span>
+<span class="c1">#    uri: mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]</span>
+
+<span class="c1"># Management repository: clustered MongoDB</span>
+<span class="c1">#management:</span>
+<span class="c1">#  type: mongodb</span>
+<span class="c1">#  mongodb:</span>
+<span class="c1">#    servers:</span>
+<span class="c1">#      - host: mongo1</span>
+<span class="c1">#        port: 27017</span>
+<span class="c1">#      - host: mongo2</span>
+<span class="c1">#        port: 27017</span>
+<span class="c1">#    dbname: ${ds.mongodb.dbname}</span>
+<span class="c1">#    connectTimeout: 500</span>
+<span class="c1">#    socketTimeout: 250</span>
+
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">core</span><span class="pi">:</span>
+    <span class="na">http</span><span class="pi">:</span>
+      <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">port</span><span class="pi">:</span> <span class="m">18083</span>
+      <span class="na">host</span><span class="pi">:</span> <span class="s">localhost</span>
+      <span class="na">authentication</span><span class="pi">:</span>
+        <span class="c1"># authentication type to be used for the core services</span>
+        <span class="c1"># - none : to disable authentication</span>
+        <span class="c1"># - basic : to use basic authentication</span>
+        <span class="c1"># default is "basic"</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">basic</span>
+        <span class="na">users</span><span class="pi">:</span>
+          <span class="na">admin</span><span class="pi">:</span> <span class="s">adminadmin</span>
+
+  <span class="c1"># metrics service</span>
+  <span class="na">metrics</span><span class="pi">:</span>
+    <span class="na">enabled</span><span class="pi">:</span> <span class="no">false</span>
+    <span class="na">prometheus</span><span class="pi">:</span>
+      <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span>
+
+<span class="c1"># Analytics repository is used to store all reporting, metrics, health-checks stored by gateway instances</span>
+<span class="c1"># This is the default configuration using Elasticsearch</span>
+<span class="na">analytics</span><span class="pi">:</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">elasticsearch</span>
+  <span class="na">elasticsearch</span><span class="pi">:</span>
+    <span class="na">endpoints</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">http://${ds.elastic.host}:${ds.elastic.port}</span>
+<span class="c1">#    index: gravitee</span>
+<span class="c1">#    index_per_type: true</span>
+<span class="c1">#    cross_cluster:</span>
+<span class="c1">#      mapping:</span>
+<span class="c1">#        tenant_id: cluster_name</span>
+<span class="c1">#        tenant_id: cluster_name</span>
+<span class="c1">#    security:</span>
+<span class="c1">#      username: user</span>
+<span class="c1">#      password: secret</span>
+<span class="c1">#    http:</span>
+<span class="c1">#      timeout: 10000 # in milliseconds</span>
+<span class="c1">#      proxy:</span>
+<span class="c1">#        type: HTTP #HTTP, SOCK4, SOCK5</span>
+<span class="c1">#        http:</span>
+<span class="c1">#          host: localhost</span>
+<span class="c1">#          port: 3128</span>
+<span class="c1">#          username: user</span>
+<span class="c1">#          password: secret</span>
+<span class="c1">#        https:</span>
+<span class="c1">#          host: localhost</span>
+<span class="c1">#          port: 3128</span>
+<span class="c1">#          username: user</span>
+<span class="c1">#          password: secret</span>
+
+<span class="c1"># Authentication and identity sources</span>
+<span class="c1"># Users can have following roles (authorities):</span>
+<span class="c1">#  USER: Can access portal and be a member of an API</span>
+<span class="c1">#  API_PUBLISHER: Can create and manage APIs</span>
+<span class="c1">#  API_CONSUMER: Can create and manage Applications</span>
+<span class="c1">#  ADMIN: Can manage global system</span>
+<span class="na">security</span><span class="pi">:</span>
+  <span class="c1"># When using an authentication providers, use trustAll mode for TLS connections</span>
+  <span class="c1"># trustAll: false</span>
+  <span class="na">providers</span><span class="pi">:</span>  <span class="c1"># authentication providers</span>
+    <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">memory</span>
+      <span class="c1"># allow search results to display the user email. Be careful, It may be contrary to the user privacy.</span>
+<span class="c1">#      allow-email-in-search-results: true</span>
+      <span class="c1"># password encoding/hashing algorithm. One of:</span>
+      <span class="c1"># - bcrypt : passwords are hashed with bcrypt (supports only $2a$ algorithm)</span>
+      <span class="c1"># - none : passwords are not hashed/encrypted</span>
+      <span class="c1"># default value is bcrypt</span>
+      <span class="na">password-encoding-algo</span><span class="pi">:</span> <span class="s">bcrypt</span>
+      <span class="na">users</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">user</span><span class="pi">:</span>
+          <span class="na">username</span><span class="pi">:</span> <span class="s">user</span>
+          <span class="c1">#firstname:</span>
+          <span class="c1">#lastname:</span>
+          <span class="c1"># Passwords are encoded using BCrypt</span>
+          <span class="c1"># Password value: password</span>
+          <span class="na">password</span><span class="pi">:</span> <span class="s">$2a$10$9kjw/SH9gucCId3Lnt6EmuFreUAcXSZgpvAYuW2ISv7hSOhHRH1AO</span>
+          <span class="na">roles</span><span class="pi">:</span> <span class="s">MANAGEMENT:USER, PORTAL:USER</span>
+          <span class="c1"># Useful to receive notifications</span>
+          <span class="c1">#email:</span>
+        <span class="pi">-</span> <span class="na">user</span><span class="pi">:</span>
+          <span class="na">username</span><span class="pi">:</span> <span class="s">admin</span>
+          <span class="c1">#firstname:</span>
+          <span class="c1">#lastname:</span>
+          <span class="c1"># Password value: admin</span>
+          <span class="na">password</span><span class="pi">:</span> <span class="s">$2a$10$Ihk05VSds5rUSgMdsMVi9OKMIx2yUvMz7y9VP3rJmQeizZLrhLMyq</span>
+          <span class="na">roles</span><span class="pi">:</span> <span class="s">MANAGEMENT:ADMIN, PORTAL:ADMIN</span>
+          <span class="c1">#email:</span>
+        <span class="pi">-</span> <span class="na">user</span><span class="pi">:</span>
+          <span class="na">username</span><span class="pi">:</span> <span class="s">api1</span>
+          <span class="c1">#firstname:</span>
+          <span class="c1">#lastname:</span>
+          <span class="c1"># Password value: api1</span>
+          <span class="na">password</span><span class="pi">:</span> <span class="s">$2a$10$iXdXO4wAYdhx2LOwijsp7.PsoAZQ05zEdHxbriIYCbtyo.y32LTji</span>
+          <span class="c1"># You can declare multiple roles using comma separator</span>
+          <span class="na">roles</span><span class="pi">:</span> <span class="s">MANAGEMENT:API_PUBLISHER, PORTAL:API_PUBLISHER</span>
+          <span class="c1">#email:</span>
+        <span class="pi">-</span> <span class="na">user</span><span class="pi">:</span>
+          <span class="na">username</span><span class="pi">:</span> <span class="s">application1</span>
+          <span class="c1">#firstname:</span>
+          <span class="c1">#lastname:</span>
+          <span class="c1"># Password value: application1</span>
+          <span class="na">password</span><span class="pi">:</span> <span class="s">$2a$10$2gtKPYRB9zaVaPcn5RBx/.3T.7SeZoDGs9GKqbo9G64fKyXFR1He.</span>
+          <span class="na">roles</span><span class="pi">:</span> <span class="s">MANAGEMENT:USER, PORTAL:USER</span>
+          <span class="c1">#email:</span>
+    <span class="c1"># Enable authentication using internal repository</span>
+    <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">gravitee</span>
+      <span class="c1"># allow search results to display the user email. Be careful, It may be contrary to the user privacy.</span>
+<span class="c1">#      allow-email-in-search-results: true</span>
+    <span class="c1"># Enable authentication using an LDAP/Active Directory</span>
+<span class="c1">#    - type: ldap</span>
+      <span class="c1"># This is default LDAP configuration for ApacheDS</span>
+<span class="c1">#      context:</span>
+<span class="c1">#        username: "uid=admin,ou=system"</span>
+<span class="c1">#        password: "secret"</span>
+<span class="c1">#        url: "ldap://localhost:10389/c=io,o=gravitee"</span>
+<span class="c1">#        base: "c=io,o=gravitee" # the context source base</span>
+<span class="c1">#      authentication:</span>
+<span class="c1">#        user:</span>
+          <span class="c1"># Search base for user authentication. Defaults to "". Only used with user filter.</span>
+          <span class="c1"># It should be relative to the Base DN. If the whole DN is o=user accounts,c=io,o=gravitee then the base should be like this:</span>
+<span class="c1">#          base: "o=user accounts"</span>
+          <span class="c1"># The LDAP filter used to search for user during authentication. For example "(uid={0})". The substituted parameter is the user's login name.</span>
+<span class="c1">#          filter: "mail={0}"</span>
+          <span class="c1"># Specifies the attribute name which contains the user photo (URL or binary)</span>
+<span class="c1">#          photo-attribute: "jpegPhoto"</span>
+<span class="c1">#        group:</span>
+          <span class="c1"># Search base for groups searches. Defaults to "". Only used with group filter.</span>
+          <span class="c1"># It should be relative to the Base DN. If the whole DN is o=authorization groups,c=io,o=gravitee then the base should be like this:</span>
+<span class="c1">#          base: "o=authorization groups"</span>
+<span class="c1">#          filter: "member={0}"</span>
+<span class="c1">#          role:</span>
+<span class="c1">#            attribute: "cn"</span>
+<span class="c1">#            mapper: {</span>
+<span class="c1">#              GRAVITEE-CONSUMERS: API_CONSUMER,</span>
+<span class="c1">#              GRAVITEE-PUBLISHERS: API_PUBLISHER,</span>
+<span class="c1">#              GRAVITEE-ADMINS: ADMIN,</span>
+<span class="c1">#              GRAVITEE-USERS: USER</span>
+<span class="c1">#            }</span>
+<span class="c1">#      lookup:</span>
+         <span class="c1"># allow search results to display the user email. Be careful, It may be contrary to the user privacy.</span>
+<span class="c1">#         allow-email-in-search-results: true</span>
+<span class="c1">#        user:</span>
+          <span class="c1"># Search base for user searches. Defaults to "". Only used with user filter.</span>
+          <span class="c1"># It should be relative to the Base DN. If the whole DN is o=user accounts,c=io,o=gravitee then the base should be like this:</span>
+<span class="c1">#          base: "o=user accounts"</span>
+          <span class="c1"># The LDAP filter used to search for user during authentication. For example "(uid={0})". The substituted parameter is the user's login name.</span>
+<span class="c1">#          filter: "(&amp;(objectClass=Person)(|(cn=*{0}*)(uid={0})))"</span>
+
+<span class="c1"># SMTP configuration used to send mails</span>
+<span class="na">email</span><span class="pi">:</span>
+  <span class="na">enabled</span><span class="pi">:</span> <span class="no">false</span>
+  <span class="na">host</span><span class="pi">:</span> <span class="s">smtp.my.domain</span>
+  <span class="na">subject</span><span class="pi">:</span> <span class="s2">"</span><span class="s">[Gravitee.io]</span><span class="nv"> </span><span class="s">%s"</span>
+  <span class="na">port</span><span class="pi">:</span> <span class="m">587</span>
+  <span class="na">from</span><span class="pi">:</span> <span class="s">noreply@my.domain</span>
+  <span class="na">username</span><span class="pi">:</span> <span class="s">user@my.domain</span>
+  <span class="na">password</span><span class="pi">:</span> <span class="s">password</span>
+<span class="c1">#  properties:</span>
+<span class="c1">#    auth: true</span>
+<span class="c1">#    starttls.enable: true</span>
+<span class="c1">#    ssl.trust: smtp.gmail.com</span>
+
+<span class="c1"># Mail templates</span>
+<span class="c1">#templates:</span>
+<span class="c1">#  path: ${gravitee.home}/templates</span>
+
+<span class="c1"># Referenced properties</span>
+<span class="na">ds</span><span class="pi">:</span>
+  <span class="na">mongodb</span><span class="pi">:</span>
+    <span class="na">dbname</span><span class="pi">:</span> <span class="s">gravitee</span>
+    <span class="na">host</span><span class="pi">:</span> <span class="s">localhost</span>
+    <span class="na">port</span><span class="pi">:</span> <span class="m">27017</span>
+  <span class="na">elastic</span><span class="pi">:</span>
+    <span class="na">host</span><span class="pi">:</span> <span class="s">localhost</span>
+    <span class="na">port</span><span class="pi">:</span> <span class="m">9200</span>
+
+<span class="na">jwt</span><span class="pi">:</span>
+  <span class="na">secret</span><span class="pi">:</span> <span class="s">myJWT4Gr4v1t33_S3cr3t</span>
+  <span class="c1"># Allows to define the end of validity of the token in seconds (default 604800 = a week)</span>
+  <span class="c1">#expire-after: 604800</span>
+  <span class="c1"># Allows to define the end of validity of the token in seconds for email registration (default 86400 = a day)</span>
+  <span class="c1">#email-registration-expire-after: 86400</span>
+  <span class="c1"># Allows to define issuer (default gravitee-management-auth)</span>
+  <span class="c1">#issuer: gravitee-management-auth</span>
+  <span class="c1"># Allows to define cookie context path (default /)</span>
+  <span class="c1">#cookie-path: /</span>
+  <span class="c1"># Allows to define cookie domain (default "")</span>
+  <span class="c1">#cookie-domain: .gravitee.io</span>
+  <span class="c1"># Allows to define if cookie secure only (default false)</span>
+  <span class="c1">#cookie-secure: true</span>
+
+<span class="na">swagger</span><span class="pi">:</span>
+  <span class="c1"># Default scheme used when creating an API from a Swagger descriptor if there is no scheme specified.</span>
+  <span class="na">scheme</span><span class="pi">:</span> <span class="s">https</span>
+
+<span class="c1"># User management configuration</span>
+<span class="na">user</span><span class="pi">:</span>
+  <span class="na">login</span><span class="pi">:</span>
+    <span class="c1"># Create a default application when user connects to the portal for the very first time (default true)</span>
+    <span class="c1">#defaultApplication: true</span>
+
+  <span class="c1"># Password complexity validation policy</span>
+  <span class="c1"># Applications should enforce password complexity rules to discourage easy to guess passwords.</span>
+  <span class="c1"># Passwords should require a minimum level of complexity that makes sense for the application and its user population.</span>
+  <span class="c1">#password:</span>
+  <span class="c1">#  policy:</span>
+  <span class="c1">#    pattern: ^(?=\s*\S).*$ # Regex pattern for password validation (default to ^(?=\s*\S).*$ (non empty string))</span>
+  <span class="c1"># Example : ^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&amp;+=])(?=\S+$).{8,}$</span>
+  <span class="c1"># ^                # start-of-string</span>
+  <span class="c1">#(?=.*[0-9])       # a digit must occur at least once</span>
+  <span class="c1">#(?=.*[a-z])       # a lower case letter must occur at least once</span>
+  <span class="c1">#(?=.*[A-Z])       # an upper case letter must occur at least once</span>
+  <span class="c1">#(?=.*[@#$%^&amp;+=])  # a special character must occur at least once</span>
+  <span class="c1">#(?=\S+$)          # no whitespace allowed in the entire string</span>
+  <span class="c1">#.{8,}             # anything, at least eight places though</span>
+  <span class="c1">#$                 # end-of-string</span>
+  <span class="na">creation</span><span class="pi">:</span>
+    <span class="na">token</span><span class="pi">:</span>
+      <span class="c1">#expire-after: 86400</span>
+  <span class="na">reference</span><span class="pi">:</span>
+      <span class="c1"># Secret key used to generate reference of a user which is unique (default: s3cR3t4grAv1t33.1Ous3D4R3f3r3nc3)</span>
+      <span class="c1"># Must contains 32 chars (256 bits)</span>
+      <span class="c1">#secret:</span>
+  <span class="na">anonymize-on-delete</span><span class="pi">:</span>
+    <span class="c1">#enabled: true</span>
+
+<span class="c1"># The portal URL used in emails</span>
+<span class="na">portalURL</span><span class="pi">:</span> <span class="s">http://localhost:3000/</span>
+
+<span class="c1"># Enable / disable documentation sanitize. Disabled by default.</span>
+<span class="c1">#documentation:</span>
+<span class="c1">#  markdown:</span>
+<span class="c1">#    sanitize: false</span>
+
+<span class="c1">#imports:</span>
+  <span class="c1"># Enable / disable import from private hosts. Enabled by default. (See https://en.wikipedia.org/wiki/Private_network)</span>
+<span class="c1">#  allow-from-private: true</span>
+  <span class="c1"># Empty whitelist means all urls are allowed. Note: allow-from-private is ignored when whitelist is defined.</span>
+<span class="c1">#  whitelist:</span>
+<span class="c1">#      - https://whitelist.domain1.com</span>
+<span class="c1">#      - https://restricted.domain2.com/whitelisted/path</span>
+
+<span class="na">search</span><span class="pi">:</span>
+  <span class="na">data</span><span class="pi">:</span> <span class="s">${gravitee.home}/data</span>
+
+<span class="c1"># global configuration of the http client</span>
+<span class="c1">#httpClient:</span>
+<span class="c1">#  timeout: 10000 # in milliseconds</span>
+<span class="c1">#  proxy:</span>
+<span class="c1">#    type: HTTP #HTTP, SOCK4, SOCK5</span>
+<span class="c1">#    http:</span>
+<span class="c1">#      host: localhost</span>
+<span class="c1">#      port: 3128</span>
+<span class="c1">#      username: user</span>
+<span class="c1">#      password: secret</span>
+<span class="c1">#    https:</span>
+<span class="c1">#      host: localhost</span>
+<span class="c1">#      port: 3128</span>
+<span class="c1">#      username: user</span>
+<span class="c1">#      password: secret</span>
+
+<span class="na">notifiers</span><span class="pi">:</span>
+  <span class="na">email</span><span class="pi">:</span>
+    <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">host</span><span class="pi">:</span> <span class="s">${email.host}</span>
+    <span class="na">subject</span><span class="pi">:</span> <span class="s">${email.subject}</span>
+    <span class="na">port</span><span class="pi">:</span> <span class="s">${email.port}</span>
+    <span class="na">username</span><span class="pi">:</span> <span class="s">${email.username}</span>
+    <span class="na">password</span><span class="pi">:</span> <span class="s">${email.password}</span>
+<span class="c1">#    starttls.enabled: false</span>
+<span class="c1">#    ssl:</span>
+<span class="c1">#      trustAll: false</span>
+<span class="c1">#      keyStore:</span>
+<span class="c1">#      keyStorePassword:</span>
+<span class="c1">#  webhook:</span>
+<span class="c1">#    enabled: true</span>
+    <span class="c1"># Empty whitelist means all urls are allowed.</span>
+<span class="c1">#    whitelist:</span>
+<span class="c1">#      - https://whitelist.domain1.com</span>
+<span class="c1">#      - https://restricted.domain2.com/whitelisted/path</span>
+
+<span class="c1"># Allows to enable or disable recaptcha (see https://developers.google.com/recaptcha/docs/v3). Currently, it only affect the user registration route.</span>
+<span class="c1">#reCaptcha:</span>
+<span class="c1">#  enabled: false</span>
+<span class="c1">#  siteKey:</span>
+<span class="c1">#  secretKey:</span>
+<span class="c1">#  minScore: 0.5</span>
+<span class="c1">#  reCaptcha: https://www.google.com/recaptcha/api/siteverify</span>
+
+<span class="c1"># Specify the visibility duration of a gateway in Unknown State (in seconds)</span>
+<span class="c1"># Default : 604800 seconds (7 days)</span>
+<span class="c1">#gateway:</span>
+<span class="c1">#  unknown-expire-after: 604800</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+
+    <div class="tags">
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer class="footer">
+    <div class="newsletter-box">
+        <div class="newsletter-title">Join the community</div>
+        <p>Subscribe to get product updates in your inbox</p>
+        <form id="newsletter-form" class="newsletter-form">
+            <input required name="email" type="email" class="gv-input" placeholder="Email Address">
+            <button type="submit" class="gv-button">Subscribe</button>
+        </form>
+        <span class="message">We won’t send you spam, unsubscribe at any time</span>
+
+        <span class="newsletter-error">
+            <i class="fa fa-exclamation"></i>
+            <span></span>
+        </span>
+        <span class="newsletter-success">
+            <i class="fa fa-check"></i>
+            <span></span>
+        </span>
+    </div>
+    <div class="footer-information">
+        <div class="footer-links">
+            <a title="Github" href="https://github.com/gravitee-io" target="_blank"><i
+                    class="fa fa-github fa-3x"></i></a>
+            <a title="Twitter" href="https://twitter.com/graviteeio" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+            <a title="Linkedin" href="https://www.linkedin.com/company/gravitee-io" target="_blank"><i
+                    class="fa fa-linkedin fa-3x"></i></a>
+        </div>
+        <div>
+            &copy;2020 GraviteeSource. All rights reserved. <br/>
+            Gravitee.io API Platform is distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache
+            License V2</a><br/>
+             Site last
+            generated: Dec 6, 2020
+        </div>
+    </div>
+</footer>
+
+<!-- Algolia search -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+  apiKey: 'b1c2f572a3911c288af513bd3e7d87f4',
+  indexName: 'gravitee',
+  inputSelector: '#search-input',
+  debug: false // Set debug to true if you want to inspect the dropdown
+});
+
+$(document).ready(function () {
+  $('#newsletter-form').on('submit', function (event) {
+    var formData = $(this).serializeArray();
+    $.ajax({
+      type: 'POST',
+      url: 'https://newsletter.gravitee.io/',
+      dataType: 'json',
+      data: JSON.stringify({ email: formData[0].value }),
+      contentType: 'application/json; charset=utf-8',
+      cache: false,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      statusCode: {
+        201: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'Your subscription has been sent.';
+          $('.newsletter-success').show();
+        },
+        400: function () {
+          $('.newsletter-error').hide();
+          $('.newsletter-success span')[0].innerText = 'You have already subscribe to the newsletter.';
+          $('.newsletter-success').show();
+        },
+        500: function () {
+          $('.newsletter-error span')[0].innerText = 'Sorry, an error occurred. Please try again later.';
+          $('.newsletter-success').hide();
+          $('.newsletter-error').show();
+        }
+      },
+      complete: function () {
+        $('.message').hide();
+      }
+    });
+    event.preventDefault();
+    event.stopPropagation();
+  });
+});
+
+</script>
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7600448.js"></script>
+<!-- End of HubSpot Embed Code -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+<!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-67690250-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+</html>

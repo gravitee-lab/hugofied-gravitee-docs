@@ -1,0 +1,23 @@
+= Gravitee.IO - Documentations
+
+ifdef::env-github[]
+image:https://ci.gravitee.io/buildStatus/icon?job=gravitee-io/gravitee-docs/master["Build status", link="https://ci.gravitee.io/job/gravitee-io/job/gravitee-docs/"]
+image:https://badges.gitter.im/Join Chat.svg["Gitter", link="https://gitter.im/gravitee-io/gravitee-io?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"]
+endif::[]
+
+== How to write documentation for GraviteeIO
+
+Our doc website is generated from AsciiDoc files. +
+You'll find these pages under the `/pages` directory.
+
+=== Live Preview
+
+We suggest you to use a live preview utility like the one available with jekyll.
+```
+> bundle exec jekyll serve
+```
+
+Then, open http://127.0.0.1:4000/ to see your modifications.
+
+For contributions guidelines, please refer to CONTRIBUTING.adoc
+
