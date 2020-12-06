@@ -1,18 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
-    <link>http://example.org/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <title>Gravitee.io API Platform</title>
+    <link>http://127.0.0.1:1313/</link>
+    <description>Recent content on Gravitee.io API Platform</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="http://127.0.0.1:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>http://example.org/readme/</link>
+      <link>http://127.0.0.1:1313/test/test1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/readme/</guid>
-      <description></description>
+      <guid>http://127.0.0.1:1313/test/test1/</guid>
+      <description>Fichier content/test/test1.md</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://127.0.0.1:1313/test/test2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://127.0.0.1:1313/test/test2/</guid>
+      <description>Fichier content/test/test2.md</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://127.0.0.1:1313/test2/test3/default/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://127.0.0.1:1313/test2/test3/default/</guid>
+      <description>Fichier content/test/testX.md</description>
+    </item>
+    
+    <item>
+      <title>Alto enceinte active tx208</title>
+      <link>http://127.0.0.1:1313/apim/3.x/apim_overview_introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://127.0.0.1:1313/apim/3.x/apim_overview_introduction/</guid>
+      <description>Fichier content/apim/3.x/apim_overview_introduction.md</description>
     </item>
     
   </channel>
