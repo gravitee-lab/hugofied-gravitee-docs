@@ -1,5 +1,4 @@
-
-
+# The Hugo-fied Gravitee docs : A Hugo them for all Gravitee documentation websites
 
 # Development
 
@@ -39,7 +38,7 @@ export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): trying to build a hugo project f
 
 ```
 
-* And then start upthe dev server in watch mode :
+* And then start up the dev server in watch mode :
 
 ```bash
 
