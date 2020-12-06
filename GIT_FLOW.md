@@ -24,12 +24,12 @@ ssh-add ~/.ssh.perso.backed/id_rsa
 export GIT_SSH_COMMAND='ssh -i ~/.ssh.perso.backed/id_rsa'
 ssh -Ti ~/.ssh.perso.backed/id_rsa git@github.com
 
-# if [ -d ~/gravitee-docs-pipeline ]; then
-  # rm -fr ~/gravitee-docs-pipeline
+# if [ -d ~/hugofied-gravitee-doc ]; then
+  # rm -fr ~/hugofied-gravitee-doc
 # fi;
 
 git clone git@github.com:gravitee-lab/hugofied-gravitee-docs.git
-cd ~/gravitee-docs-pipeline
+cd ~/hugofied-gravitee-doc
 # git flow init --defaults && git push -u origin --all
 export FEATURE_ALIAS='first-try'
 # git flow feature start ${FEATURE_ALIAS} && git push -u origin --all
