@@ -1,6 +1,5 @@
 ---
-layout: "testjb"
-type: "_default"
+type: testjb2
 ---
 
 Fichier `content/test/_index.md`

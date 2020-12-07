@@ -4,7 +4,6 @@
   
   <url>
     <loc>http://127.0.0.1:1313/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -20,15 +19,15 @@
   </url>
   
   <url>
+    <loc>http://127.0.0.1:1313/test/test4/</loc>
+  </url>
+  
+  <url>
     <loc>http://127.0.0.1:1313/test2/test3/default/</loc>
   </url>
   
   <url>
-    <loc>http://127.0.0.1:1313/apim/3.x/apim_overview_introduction/</loc>
-  </url>
-  
-  <url>
-    <loc>http://127.0.0.1:1313/apim/</loc>
+    <loc>http://127.0.0.1:1313/testjb2/test6/</loc>
   </url>
   
   <url>
@@ -41,6 +40,10 @@
   
   <url>
     <loc>http://127.0.0.1:1313/test2/</loc>
+  </url>
+  
+  <url>
+    <loc>http://127.0.0.1:1313/testjb2/</loc>
   </url>
   
 </urlset>

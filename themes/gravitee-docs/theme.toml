@@ -1,0 +1,16 @@
+name = "gravitee-docs"
+license = "AGPL v3"
+licenselink = "https://www.gnu.org/licenses/agpl-3.0.txt"
+description = "A Hugo theme for all Gravitee.io documentation websites"
+homepage = "https://github.com/gravitee-lab/hugofied-gravitee-docs/"
+tags = ["documentation", "clean", "customizable", "light", "highlighting", "minimal", "corporate", "responsive", "simple"]
+features = ["documentation", "APi documentation"]
+min_version = 0.54
+
+[author]
+  name = "Jean-Baptiste-Lasselle"
+  homepage = "https://github.com/Jean-Baptiste-Lasselle"
+
+[original]
+    author = "Gravitee.io"
+    homepage = "https://github.com/gravitee-io/gravitee-docs"

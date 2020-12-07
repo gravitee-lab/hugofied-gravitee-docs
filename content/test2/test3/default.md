@@ -1,7 +1,5 @@
 ---
-layout: "testjb2"
-type: "test2"
-layout: "testjb"
+type: testjb2
 ---
 
-Fichier `content/test/testX.md`
+Fichier `content/test2/test3/default.md`
