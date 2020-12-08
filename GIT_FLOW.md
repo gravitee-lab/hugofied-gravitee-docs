@@ -32,9 +32,10 @@ git clone git@github.com:gravitee-lab/hugofied-gravitee-docs.git
 cd ~/hugofied-gravitee-doc
 # git flow init --defaults && git push -u origin --all
 export FEATURE_ALIAS='first-try'
+export FEATURE_ALIAS='first-layout'
 # git flow feature start ${FEATURE_ALIAS} && git push -u origin --all
 git checkout "feature/${FEATURE_ALIAS}"
-export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): trying to build a hugo project from the rawx website in the [raw-website-to-convert/] folder "
+export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): trying to build the first layout"
 # git add --all && git commit -m "${COMMIT_MESSAGE}" && git push -u origin HEAD
 
 ```
