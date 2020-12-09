@@ -1,7 +1,7 @@
 ---
 title: Introduction
 current_version: 3.4.0
-type: _default
+type: root-topic
 ---
 
 
@@ -23,6 +23,21 @@ type: _default
   </div>
 </div>
 
+
+This Quick Start Guide is designed to get you up and running quickly with APIM. You can find more detailed information about publishing and consuming APIs in APIM in the following sections:
+
+* [API Publisher Guide](./apim/3.x/apim_publisherguide_manage_apis.html)
+* [API Consumer Guide](/apim/3.x/apim_consumerguide_portal.html)
+
+This Quick Start Guide is designed to get you up and running quickly with APIM. You can find more detailed information about publishing and consuming APIs in APIM in the following sections:
+
+* [API Publisher Guide](./apim/3.x/apim_publisherguide_manage_apis.html)
+* [API Consumer Guide](/apim/3.x/apim_consumerguide_portal.html)
+
+This Quick Start Guide is designed to get you up and running quickly with APIM. You can find more detailed information about publishing and consuming APIs in APIM in the following sections:
+
+* [API Publisher Guide](./apim/3.x/apim_publisherguide_manage_apis.html)
+* [API Consumer Guide](/apim/3.x/apim_consumerguide_portal.html)
 
 This Quick Start Guide is designed to get you up and running quickly with APIM. You can find more detailed information about publishing and consuming APIs in APIM in the following sections:
 

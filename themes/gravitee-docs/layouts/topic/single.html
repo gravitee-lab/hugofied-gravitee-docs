@@ -50,8 +50,7 @@
           style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2><i class="icon-arrow-up back-to-top"> </i>
       <div class="sectionbody">
         <div class="paragraph">
-          <p>This guide walks you through creating your first application and subscribing to your first API with APIM Portal. For a brief overview of how to set up your first API, see the <strong>Publish your first API</strong> section of the Quick
-            Start Guide.</p>
+          <p>{{ .Params.overview_desc }}</p>
         </div>
         <div class="admonitionblock note">
           <table>
@@ -60,12 +59,7 @@
                 <td class="icon">
                   <i class="fa icon-note" title="Note"></i>
                 </td>
-                <td class="content">
-                  APIM includes several ways to access and secure an API, as described in (<a href="/apim/3.x/apim_publisherguide_plans_subscriptions.html">API Publisher Plans and subscriptions</a>).
-                  In this example, we will access an API using an <a href="/apim/3.x/apim_policies_apikey.html">API Key</a>.
-                  Only trusted applications can access the API data by requesting an API Key.
-                  Let’s see how to create an application and generate an API Key.
-                </td>
+                <td class="content">{{ .Params.overview_infos }}</td>
               </tr>
             </tbody>
           </table>
