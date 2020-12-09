@@ -72,7 +72,11 @@
 
 <!-- the google_analytics_id gets auto inserted from the config file -->
 
+<!--
 {{ block "footer" . }}
 {{ end }}
+-->
+
+{{- partial "footer.html" . -}}
 
 </html>
