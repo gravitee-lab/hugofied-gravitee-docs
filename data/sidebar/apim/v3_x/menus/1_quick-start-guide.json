@@ -1,4 +1,5 @@
 {
+  "data_index": 1,
   "title": "Quick Start Guide",
   "items": [
     {
@@ -7,6 +8,7 @@
     },
     {
       "title": "Get started",
+      "data_index": 2,
       "items": [
         {
           "label": "Log in to APIM Console",
@@ -20,6 +22,7 @@
     },
     {
       "title": "Publish your first API",
+      "data_index": 3,
       "items": [
         {
           "label": "Using APIM Console",
@@ -33,6 +36,7 @@
     },
     {
       "title": "Consume an API",
+      "data_index": 4,
       "items": [
         {
           "label": "Using APIM Portal",

@@ -2,7 +2,7 @@
 <!-- https://gohugo.io/functions/eq/ -->
 <li>
     <a href="#">{{ .title }}</a>
-    <ul data-index="1">
+    <ul data-index="{{ .data_index }}">
     {{ range .items }}
         <!-- <li><a href="#">Petit Calcul du If Hugo</a></li> -->
 
@@ -16,7 +16,7 @@
             <!-- <li><a href="#">Le [title] dans cet [item] est une chaîne de caractère NON vide: [ {{ .title }} ]</a></li> -->
             <li class="subfolders">
                 <a href="#">{{ .title }}</a>
-                <ul data-index="2" style="display: none;">
+                <ul data-index="{{ .data_index }}" style="display: none;">
                   {{ range .items }}
                     <li><a href="{{ .link }}">{{ .label }}</a></li>
                   {{ end }}
