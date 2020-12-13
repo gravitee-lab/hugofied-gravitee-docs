@@ -1,0 +1,164 @@
+{
+  "data_index": 5,
+  "title": "Installation Guide",
+  "items": [
+    {
+      "label": "Introduction",
+      "link": "/apim/1.x/apim_installguide.html"
+    },
+    {
+      "label": "Quick installation",
+      "link": "/apim/1.x/apim_installguide_quickstart.html"
+    },
+    {
+      "title": "Install with .zip",
+      "data_index": 6,
+      "items": [
+        {
+          "label": "API Gateway",
+          "link": "/apim/1.x/apim_installguide_gateway_install_zip.html"
+        },
+        {
+          "label": "Management API",
+          "link": "/apim/1.x/apim_installguide_rest_apis_install_zip.html"
+        },
+        {
+          "label": "Portal",
+          "link": "/apim/1.x/apim_installguide_portal_ui_install_zip.html"
+        }
+      ]
+    },
+    {
+      "title": "Install on Redhat and CentOS",
+      "data_index": 7,
+      "items": [
+        {
+          "label": "Introduction",
+          "link": "/apim/1.x/apim_installguide_redhat_introduction.html"
+        },
+        {
+          "label": "Install the full APIM stack",
+          "link": "/apim/1.x/apim_installguide_redhat_stack.html"
+        },
+        {
+          "label": "Install APIM Gateway",
+          "link": "/apim/1.x/apim_installguide_redhat_gateway.html"
+        },
+        {
+          "label": "Install APIM API",
+          "link": "/apim/1.x/apim_installguide_redhat_management_api.html"
+        },
+        {
+          "label": "Install APIM Console",
+          "link": "/apim/1.x/apim_installguide_redhat_management_ui.html"
+        },
+        {
+          "label": "Install APIM Portal",
+          "link": "/apim/1.x/apim_installguide_redhat_portal.html"
+        }
+      ]
+    },
+    {
+      "title": "Install on Amazon",
+      "data_index": 8,
+      "items": [
+        {
+          "label": "Introduction",
+          "link": "/apim/1.x/apim_installguide_amazon_introduction.html"
+        },
+        {
+          "label": "Install the full APIM stack",
+          "link": "/apim/1.x/apim_installguide_amazon_stack.html"
+        },
+        {
+          "label": "Install APIM Gateway",
+          "link": "/apim/1.x/apim_installguide_amazon_gateway.html"
+        },
+        {
+          "label": "Install APIM API",
+          "link": "/apim/1.x/apim_installguide_amazon_management_api.html"
+        },
+        {
+          "label": "Install APIM Console",
+          "link": "/apim/1.x/apim_installguide_amazon_management_ui.html"
+        },
+        {
+          "label": "Install APIM Portal",
+          "link": "/apim/1.x/apim_installguide_amazon_portal.html"
+        }
+      ]
+    },
+    {
+      "title": "Run on Docker",
+      "data_index": 9,
+      "items": [
+        {
+          "label": "Images",
+          "link": "/apim/1.x/apim_installguide_docker_images.html"
+        },
+        {
+          "label": "Compose",
+          "link": "/apim/1.x/apim_installguide_docker_compose.html"
+        },
+        {
+          "label": "Customize",
+          "link": "/apim/1.x/apim_installguide_docker_customize.html"
+        }
+      ]
+    },
+    {
+      "title": "Repositories",
+      "data_index": 10,
+      "items": [
+        {
+          "label": "Introduction",
+          "link": "/apim/1.x/apim_installguide_repositories.html"
+        },
+        {
+          "label": "Elasticsearch",
+          "link": "/apim/1.x/apim_installguide_repositories_elasticsearch.html"
+        },
+        {
+          "label": "MongoDB",
+          "link": "/apim/1.x/apim_installguide_repositories_mongodb.html"
+        },
+        {
+          "label": "JDBC",
+          "link": "/apim/1.x/apim_installguide_repositories_jdbc.html"
+        },
+        {
+          "label": "Redis",
+          "link": "/apim/1.x/apim_installguide_repositories_redis.html"
+        }
+      ]
+    },
+    {
+      "title": "Deploy in Kubernetes",
+      "data_index": 11,
+      "items": [
+        {
+          "label": "Helm",
+          "link": "/apim/1.x/apim_installguide_kubernetes.html"
+        }
+      ]
+    },
+    {
+      "title": "Hybrid deployment",
+      "data_index": 12,
+      "items": [
+        {
+          "label": "Introduction",
+          "link": "/apim/1.x/apim_installguide_hybrid_deployment.html"
+        },
+        {
+          "label": "Deploy a Hybrid Architecture in Kubernetes",
+          "link": "/apim/1.x/apim_installguide_hybrid_kubernetes.html"
+        }
+      ]
+    },
+    {
+      "label": "Migration Guide",
+      "link": "/apim/1.x/apim_installguide_migration.html"
+    }
+  ]
+}

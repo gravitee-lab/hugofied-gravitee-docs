@@ -1,0 +1,18 @@
+{
+  "data_index": 27,
+  "title": "Developer Guide",
+  "items": [
+    {
+      "label": "Bootstrap your environment",
+      "link": "/apim/1.x/apim_devguide_bootstrap.html"
+    },
+    {
+      "label": "Plugins",
+      "link": "/apim/1.x/apim_devguide_plugins.html"
+    },
+    {
+      "label": "Policies",
+      "link": "/apim/1.x/apim_devguide_policies.html"
+    }
+  ]
+}

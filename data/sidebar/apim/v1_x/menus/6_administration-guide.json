@@ -1,0 +1,22 @@
+{
+  "data_index": 25,
+  "title": "Administration Guide",
+  "items": [
+    {
+      "label": "Organizations and environments",
+      "link": "/apim/1.x/apim_adminguide_organizations_and_environments.html"
+    },
+    {
+      "label": "Roles and Permissions",
+      "link": "/apim/1.x/apim_adminguide_roles_and_permissions.html"
+    },
+    {
+      "label": "Users and groups",
+      "link": "/apim/1.x/apim_adminguide_users_and_groups.html"
+    },
+    {
+      "label": "Support",
+      "link": "/apim/1.x/apim_adminguide_support-tickets.html"
+    }
+  ]
+}
