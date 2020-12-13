@@ -1,22 +1,9 @@
 {
-  "title": "Quick Start Guide",
+  "title": "How the Hugo if statement works in this menu",
   "items": [
     {
       "label": "Introduction",
       "link": "/apim/3.x/apim_quickstart_publish.html"
-    },
-    {
-      "title": "Get started",
-      "items": [
-        {
-          "label": "Log in to APIM Console",
-          "link": "/apim/3.x/apim_quickstart_console_login.html"
-        },
-        {
-          "label": "Log in to APIM Portal",
-          "link": "/apim/3.x/apim_quickstart_portal_login.html"
-        }
-      ]
     },
     {
       "title": "Publish your first API",
