@@ -29,6 +29,7 @@
             </li>
         {{ end }}
     {{ end }}
+    <!-- CI-DESSOUS ON A BIEN UNE GENERATION d'HTML mais qui reste invisible en raison du styleeCSS et particularités de la page -->
     {{ range .Site.Menus.developer_guide }}
         {{ if .HasChildren }}
             <li class="{{ if $currentPage.HasMenuCurrent "developer_guide" . }}active{{ end }}">
