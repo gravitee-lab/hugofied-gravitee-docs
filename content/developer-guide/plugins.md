@@ -6,4 +6,4 @@ menu: developer_guide
 type: developer-guide
 ---
 
-Je lapartie plugins du Developer Guide
+Je suis la partie plugins du Developer Guide

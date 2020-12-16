@@ -69,3 +69,7 @@ And here is a working example of what a nested Hugo Shortcode could do :
   {{< html_link text_before=" this is between the link three and link four, and there you go hugo !!!" text="Link Four" link="/apim/3.x/apim_devguide_policies.html" >}}
 
 {{< /preamble-warning >}}
+
+from https://github.com/simonfrey/hugo-leaflet :
+
+{{< leafflet/leaflet-simple mapHeight="500px" mapWidth="500px" mapLon="51.508" mapLat="-0.11" zoom="2">}}
