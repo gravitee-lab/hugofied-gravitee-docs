@@ -1,66 +1,73 @@
 <div class="col-md-3">
 
-<!-- data/sidebar/apim/3-x/menu-tree.json -->
+<!--
+
+Only thing missing to fully automate : How to define Parent / children rerlation between menus
+
+https://discourse.gohugo.io/t/how-are-children-menu-entries-detected/21484/7
+
+
+So now :
+* Developer Guide and Tutorials  Menus are autmotically generated. Each match their content-type :
+  * type: developer-guide
+  * type: tutorials
+
+Only problem :
+* In the Developer Guide menu, the Developer Guide content entries are listed, and that's what I want
+* In the Tutorials menu, the Delveloper Guide content entries are listed, and that's NOT what I want
+* Well that's why I need the concept of Children and parent menus
+
+ -->
+
+
+{{ $currentPage := . }}
+{{ $maVariableLocale := "piloupilou" }}
+<!--
+currentPage is like a variable locccccally defined in this hugo template;
+So there is no { { end } } associated to it. It's just a local variable declaration
+ -->
+
 <ul id="mysidebar" class="nav">
     <li class="sidebarTitle">Gravitee APIM 3.x Hugo Menu </li>
-    <ul>
-    {{ $currentPage := . }}
-    {{ range .Site.Menus.mainmenu }}
-        {{ if .HasChildren }}
-            <li class="{{ if $currentPage.HasMenuCurrent "mainmenu" . }}active{{ end }}">
-                <a href="#">
-                    {{ .Pre }}
-                    <span>{{ .Name }}</span>
-                </a>
-            </li>
-            <ul class="sub-menu">
-                {{ range .Children }}
-                    <li class="{{ if $currentPage.IsMenuCurrent "mainmenu" . }}active{{ end }}">
-                        <a href="{{ .URL }}">{{ .Name }}</a>
-                    </li>
-                {{ end }}
-            </ul>
-        {{ else }}
-            <li>
-                <a href="{{ .URL }}">
-                    {{ .Pre }}
-                    <span>{{ .Name }}</span>
-                </a>
-            </li>
-        {{ end }}
-    {{ end }}
-    <!-- CI-DESSOUS ON A BIEN UNE GENERATION d'HTML mais qui reste invisible en raison du styleeCSS et particularités de la page -->
-    {{ range .Site.Menus.developer_guide }}
-        {{ if .HasChildren }}
-            <li class="{{ if $currentPage.HasMenuCurrent "developer_guide" . }}active{{ end }}">
-                <a href="#">
-                    {{ .Pre }}
-                    <span>{{ .Name }}</span>
-                </a>
-            </li>
-            <ul class="sub-menu">
-                {{ range .Children }}
-                    <li class="{{ if $currentPage.IsMenuCurrent "developer_guide" . }}active{{ end }}">
-                        <a href="{{ .URL }}">{{ .Name }}</a>
-                    </li>
-                {{ end }}
-            </ul>
-        {{ else }}
-            <li>
-                <a href="{{ .URL }}">
-                    {{ .Pre }}
-                    <span>{{ .Name }}</span>
-                </a>
-            </li>
-        {{ end }}
-    {{ end }}
-    <li>
-        <a href="#" target="_blank">Hardcoded Link 1</a>
+
+
+    {{ range $.Site.Menus.mainmenu }}
+    {{ if .HasChildren }}
+    <li  class="{{ if $currentPage.HasMenuCurrent "developer_guide" . }}active{{ end }}">
+      WeshWesh
+        <a href="#">{{ .Pre }} {{ .Name }}</a>
+        <ul class="sub-menu">
+          <li><a href="#">sous menu en dur un</a></li>
+          <li><a href="#">sous menu en dur deux</a></li>
+          {{ range .Children }}
+          <li>
+            <a href="{{ .URL }}">{{ .Name }}</a>
+          </li>
+          {{ end }}
+        </ul>
     </li>
-    <li>
-        <a href="#" target="_blank">Hardcoded Link 2</a>
+    {{ else }}
+    <li class="{{ if $currentPage.HasMenuCurrent "developer_guide" . }}active{{ end }}">
+      <a href="{{ .URL }}">
+        {{ .Pre }} {{ .Name }}
+      </a>
+      <ul class="sub-menu">
+        <li><a href="#">sous menu en dur un</a></li>
+        <li><a href="#">sous menu en dur deux</a></li>
+        {{ range $.Site.Menus.developer_guide }}
+        <li>
+          <a href="{{ .URL }}">
+            {{ .Pre }}{{ .Name }}
+          </a>
+        </li>
+        {{ end }}
+      </ul>
     </li>
-</ul>
+    {{ end }}
+    {{ end }}
+
+
+
 </ul>
 <!--
 <ul id="mysidebar" class="nav">
