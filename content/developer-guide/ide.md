@@ -63,7 +63,7 @@ And here is a working example of what a nested Hugo Shortcode could do :
   {{< bold text_before="" text="how to create" >}}
   {{< bold text_before=", use and" text="deploy a custom policy" >}}
   {{< html_link text_before="? Check out the" text="Policies Developer Guide" link="/apim/3.x/apim_devguide_policies.html" >}}
-  {{< oneliner_code text_before=" Wanna talk about a technical thing like " text="workflow_state" >}}
+  {{< oneliner_code color="#FF6E14" backcolor="#eeeeee" text_before=" Wanna talk about a technical thing like " text="workflow_state" >}}
   {{< html_link text_before="  ? No prob man, Hugo can do anything  !!! this is between the link one and link two, and there you go hugo !!!" text="Link Two" link="/apim/3.x/apim_devguide_policies.html" >}}
   {{< html_link text_before=" this is between the link two and link three, and there you go hugo !!!" text="Link Three" link="/apim/3.x/apim_devguide_policies.html" >}}
   {{< html_link text_before=" this is between the link three and link four, and there you go hugo !!!" text="Link Four" link="/apim/3.x/apim_devguide_policies.html" >}}
