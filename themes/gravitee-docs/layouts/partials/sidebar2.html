@@ -99,7 +99,8 @@ So there is no { { end } } associated to it. It's just a local variable declarat
       </li>
     {{ end }}
 <!-- Premier essai constructif -->
-    {{ range $.Site.Menus.mainmenu }}
+
+    {{ range (sort $.Site.Menus.mainmenu  ".Weight" "desc") }}
     {{ if .HasChildren }}
     <li  class="{{ if $currentPage.HasMenuCurrent "mainmenu" . }}active{{ end }}">
       YesThereAreChildren

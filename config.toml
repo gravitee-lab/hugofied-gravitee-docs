@@ -41,7 +41,7 @@ theme = "gravitee-docs"
     identifier = "developer_guide"
     name = "Developer Guide"
     url = "/developer-guide"
-    weight = 10
+    weight = 20
 
   [[menu.rootmenu]]
     identifier = "tutorials"
