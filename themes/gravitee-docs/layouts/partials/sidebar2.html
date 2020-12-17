@@ -32,24 +32,13 @@ So there is no { { end } } associated to it. It's just a local variable declarat
     <li class="sidebarTitle">Gravitee APIM 3.x Hugo Menu </li>
     <!-- Troisième essai  -->
     {{ range (sort $.Site.Menus.rootmenu  ".Weight" "asc") }}
-    {{ if .HasChildren }}
-    <li  class="{{ if $currentPage.HasMenuCurrent "mainmenu" . }}active{{ end }}">
-      YesThereAreChildren
-        <a href="#">{{ .Pre }} {{ .Name }}</a>
-        <ul class="sub-menu">
-          <li><a href="#">sous menu en dur un Child</a></li>
-          <li><a href="#">sous menu en dur deux Child</a></li>
-          {{ range .Children }}
-          <li>
-            <a href="{{ .URL }}">{{ .Pre }}  {{ .Name }} Child</a>
-          </li>
-          {{ end }}
-        </ul>
-    </li>
-    {{ else }}
-    <li class="{{ if $currentPage.HasMenuCurrent "rootmenu" . }}active{{ end }}">
+    <li class="{{ if eq $currentPage.URL .URL }}active{{ end }}">
       <a href="{{ .URL }}">
         {{ .Pre }} {{ .Name }}
+        currentPage.URL = [{{ $currentPage.URL }}]
+        .URL = [{{ .URL }}]
+
+        {{ if eq $currentPage.URL .URL }} OUI PAREIL {{ else }} NON PAS PAREIL{{ end }}
       </a>
       {{ $allMenus := $.Site.Menus }}
 
@@ -84,7 +73,7 @@ So there is no { { end } } associated to it. It's just a local variable declarat
       {{ end }}
 
     </li>
-    {{ end }}
+
     {{ end }}
 <!-- Deuxième essai  -->
     {{ range $currmenu := $.Site.Menus }}
