@@ -31,11 +31,11 @@ theme = "gravitee-docs"
 
 [menu]
 
-  [[menu.rootmenu]]
-    identifier = "home"
-    name = "Home"
-    url = "/"
-    weight = 10
+  # [[menu.rootmenu]]
+    # identifier = "home"
+    # name = "Home"
+    # url = "/"
+    # weight = 10
 
   [[menu.rootmenu]]
     identifier = "developer_guide"
