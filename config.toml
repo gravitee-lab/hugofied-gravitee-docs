@@ -3,3 +3,28 @@ languageCode = "en-us"
 title = "Gravitee.io API Platform"
 themesDir = "themes"
 theme = "gravitee-docs"
+
+[menu]
+
+  # [[menu.mainmenu]]
+    # identifier = "mainmenu"
+    # name = "Main menu"
+    # pre = "<i class='fa fa-heart'></i>"
+    # url = "/"
+    # weight = -110
+
+  [[menu.developer_guide]]
+    identifier = "developer_guide"
+    name = "Developer Guide"
+    post = "<span class='alert'>New!</span>"
+    pre = "<i class='fa fa-road'></i>"
+    url = "/developer-guide/"
+    weight = -100
+
+  [[menu.tutorials]]
+    identifier = "tutorials"
+    name = "Tutorials"
+    post = "<span class='alert'>New!</span>"
+    pre = "<i class='fa fa-road'></i>"
+    url = "/tutorials/"
+    weight = -100
