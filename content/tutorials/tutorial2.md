@@ -1,8 +1,9 @@
 ---
 title: "Tutorial Two"
-date: 2020-12-16T00:44:23+01:00
+date: 2020-11-16T00:44:23+01:00
 draft: false
 menu: tutorials
+menu_index: 1
 # menu:
   # tutorials:
     # parent: 'mainmenu'
