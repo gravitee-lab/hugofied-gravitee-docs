@@ -30,7 +30,62 @@ So there is no { { end } } associated to it. It's just a local variable declarat
 
 <ul id="mysidebar" class="nav">
     <li class="sidebarTitle">Gravitee APIM 3.x Hugo Menu </li>
+    <!-- Troisième essai  -->
+    {{ range $.Site.Menus.rootmenu }}
+    {{ if .HasChildren }}
+    <li  class="{{ if $currentPage.HasMenuCurrent "mainmenu" . }}active{{ end }}">
+      YesThereAreChildren
+        <a href="#">{{ .Pre }} {{ .Name }}</a>
+        <ul class="sub-menu">
+          <li><a href="#">sous menu en dur un Child</a></li>
+          <li><a href="#">sous menu en dur deux Child</a></li>
+          {{ range .Children }}
+          <li>
+            <a href="{{ .URL }}">{{ .Pre }}  {{ .Name }} Child</a>
+          </li>
+          {{ end }}
+        </ul>
+    </li>
+    {{ else }}
+    <li class="{{ if $currentPage.HasMenuCurrent "rootmenu" . }}active{{ end }}">
+      <a href="{{ .URL }}">
+        {{ .Pre }} {{ .Name }}
+      </a>
+      {{ $allMenus := $.Site.Menus }}
 
+      {{ with (eq .Identifier "home") }}
+      {{ end }}
+      {{ with (eq .Identifier "developer_guide") }}
+        <ul class="sub-menu">
+          <li><a href="#">sous menu en dur un</a></li>
+          <li><a href="#">sous menu en dur deux</a></li>
+          {{ range $allMenus.developer_guide }}
+          <li>
+            <a href="{{ .URL }}">
+              {{ .Pre }}{{ .Name }} CELUI LA WITH
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+      {{ with (eq .Identifier "tutorials") }}
+        <ul class="sub-menu">
+          <li><a href="#">sous menu en dur un</a></li>
+          <li><a href="#">sous menu en dur deux</a></li>
+          {{ range $allMenus.tutorials }}
+          <li>
+            <a href="{{ .URL }}">
+              {{ .Pre }}{{ .Name }} CELUI LA WITH
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+
+    </li>
+    {{ end }}
+    {{ end }}
+<!-- Deuxième essai  -->
     {{ range $currmenu := $.Site.Menus }}
       <li class="">
         <a href="#">
@@ -47,7 +102,7 @@ So there is no { { end } } associated to it. It's just a local variable declarat
     {{ range $.Site.Menus.mainmenu }}
     {{ if .HasChildren }}
     <li  class="{{ if $currentPage.HasMenuCurrent "mainmenu" . }}active{{ end }}">
-      WeshWesh
+      YesThereAreChildren
         <a href="#">{{ .Pre }} {{ .Name }}</a>
         <ul class="sub-menu">
           <li><a href="#">sous menu en dur un Child</a></li>

@@ -5,7 +5,7 @@ draft: false
 menu: tutorials
 # menu:
   # tutorials:
-    # parent: 'mainmenu'
+    # parent: 'rootmenu'
 type: tutorials
 ---
 

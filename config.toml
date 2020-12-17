@@ -4,7 +4,7 @@ title = "Gravitee.io API Platform"
 themesDir = "themes"
 theme = "gravitee-docs"
 
-[menu]
+# [menu]
 
   # [[menu.mainmenu]]
     # identifier = "mainmenu"
@@ -13,18 +13,38 @@ theme = "gravitee-docs"
     # url = "/"
     # weight = -110
 
-  [[menu.developer_guide]]
+  # [[menu.developer_guide]]
+    # identifier = "developer_guide"
+    # name = "Developer Guide"
+    # post = "<span class='alert'>New!</span>"
+    # pre = "<i class='fa fa-road'></i>"
+    # url = "/developer-guide/"
+    # weight = -100
+
+  # [[menu.tutorials]]
+    # identifier = "tutorials"
+    # name = "Tutorials"
+    # post = "<span class='alert'>New!</span>"
+    # pre = "<i class='fa fa-road'></i>"
+    # url = "/tutorials/"
+    # weight = -100
+
+[menu]
+
+  [[menu.rootmenu]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 10
+
+  [[menu.rootmenu]]
     identifier = "developer_guide"
     name = "Developer Guide"
-    post = "<span class='alert'>New!</span>"
-    pre = "<i class='fa fa-road'></i>"
-    url = "/developer-guide/"
-    weight = -100
+    url = "/developer-guide"
+    weight = 10
 
-  [[menu.tutorials]]
+  [[menu.rootmenu]]
     identifier = "tutorials"
     name = "Tutorials"
-    post = "<span class='alert'>New!</span>"
-    pre = "<i class='fa fa-road'></i>"
     url = "/tutorials/"
-    weight = -100
+    weight = 30
