@@ -1,0 +1,242 @@
+{
+  "data_index": 19,
+  "title": "API Publisher Guide",
+  "items": [
+    {
+      "label": "Introduction",
+      "link": "/apim/1.x/apim_publisherguide_manage_apis.html"
+    },
+    {
+      "label": "Configuring CORS",
+      "link": "/apim/1.x/apim_publisherguide_configuring_cors.html"
+    },
+    {
+      "label": "Plans and subscriptions",
+      "link": "/apim/1.x/apim_publisherguide_plans_subscriptions.html"
+    },
+    {
+      "label": "Manage members",
+      "link": "/apim/1.x/apim_publisherguide_manage_members.html"
+    },
+    {
+      "label": "API rating",
+      "link": "/apim/1.x/apim_publisherguide_api_rating.html"
+    },
+    {
+      "label": "Top APIs",
+      "link": "/apim/1.x/apim_publisherguide_top_apis.html"
+    },
+    {
+      "title": "Documentation",
+      "data_index": 17,
+      "items": [
+        {
+          "label": "Publish documentation in APIM portal",
+          "link": "/apim/1.x/apim_publisherguide_publish_documentation.html"
+        },
+        {
+          "label": "Markdown documentation",
+          "link": "/apim/1.x/apim_publisherguide_publish_documentation_markdown.html"
+        },
+        {
+          "label": "OpenAPI documentation",
+          "link": "/apim/1.x/apim_publisherguide_publish_documentation_openapi.html"
+        },
+        {
+          "label": "System folders, links and APIM portal customization",
+          "link": "/apim/1.x/apim_publisherguide_publish_documentation_system_folders.html"
+        }
+      ]
+    },
+    {
+      "title": "Policies",
+      "data_index": 18,
+      "items": [
+        {
+          "label": "Introduction",
+          "link": "/apim/1.x/apim_policies_overview.html"
+        },
+        {
+          "label": "API Key",
+          "link": "/apim/1.x/apim_policies_apikey.html"
+        },
+        {
+          "label": "Assign Attributes",
+          "link": "/apim/1.x/apim_policies_assign_attributes.html"
+        },
+        {
+          "label": "Assign Content",
+          "link": "/apim/1.x/apim_policies_assign_content.html"
+        },
+        {
+          "label": "Cache",
+          "link": "/apim/1.x/apim_policies_cache.html"
+        },
+        {
+          "label": "Callout HTTP",
+          "link": "/apim/1.x/apim_policies_callout_http.html"
+        },
+        {
+          "label": "Dynamic routing",
+          "link": "/apim/1.x/apim_policies_dynamic_routing.html"
+        },
+        {
+          "label": "Generate JWT",
+          "link": "/apim/1.x/apim_policies_generate_jwt.html"
+        },
+        {
+          "label": "Groovy",
+          "link": "/apim/1.x/apim_policies_groovy.html"
+        },
+        {
+          "label": "HTML to JSON",
+          "link": "/apim/1.x/apim_policies_html2json.html"
+        },
+        {
+          "label": "IP filtering",
+          "link": "/apim/1.x/apim_policies_ip_filtering.html"
+        },
+        {
+          "label": "JSON threat protection",
+          "link": "/apim/1.x/apim_policies_json_threat_protection.html"
+        },
+        {
+          "label": "JSON to JSON",
+          "link": "/apim/1.x/apim_policies_json2json.html"
+        },
+        {
+          "label": "JSON validation",
+          "link": "/apim/1.x/apim_policies_json_validation.html"
+        },
+        {
+          "label": "JWS",
+          "link": "/apim/1.x/apim_policies_jws.html"
+        },
+        {
+          "label": "JWT",
+          "link": "/apim/1.x/apim_policies_jwt.html"
+        },
+        {
+          "label": "Latency",
+          "link": "/apim/1.x/apim_policies_latency.html"
+        },
+        {
+          "label": "Mock",
+          "link": "/apim/1.x/apim_policies_mock.html"
+        },
+        {
+          "label": "OpenID connect - UserInfo",
+          "link": "/apim/1.x/apim_policies_openid_connect_userinfo.html"
+        },
+        {
+          "label": "Override HTTP method",
+          "link": "/apim/1.x/apim_policies_override_http_method.html"
+        },
+        {
+          "label": "Rate limiting",
+          "link": "/apim/1.x/apim_policies_rate_limiting.html"
+        },
+        {
+          "label": "Regex threat protection",
+          "link": "/apim/1.x/apim_policies_regex_threat_protection.html"
+        },
+        {
+          "label": "Request content limit",
+          "link": "/apim/1.x/apim_policies_request_content_limit.html"
+        },
+        {
+          "label": "Request validation",
+          "link": "/apim/1.x/apim_policies_request_validation.html"
+        },
+        {
+          "label": "Resource filtering",
+          "link": "/apim/1.x/apim_policies_resource_filtering.html"
+        },
+        {
+          "label": "REST to SOAP",
+          "link": "/apim/1.x/apim_policies_rest2soap.html"
+        },
+        {
+          "label": "Role-based access control",
+          "link": "/apim/1.x/apim_policies_role_based_access_control.html"
+        },
+        {
+          "label": "SSL enforcement",
+          "link": "/apim/1.x/apim_policies_ssl_enforcement.html"
+        },
+        {
+          "label": "Transform headers",
+          "link": "/apim/1.x/apim_policies_transform_headers.html"
+        },
+        {
+          "label": "Transform query parameters",
+          "link": "/apim/1.x/apim_policies_transform_query_params.html"
+        },
+        {
+          "label": "URL rewriting",
+          "link": "/apim/1.x/apim_policies_url_rewriting.html"
+        },
+        {
+          "label": "XML to JSON",
+          "link": "/apim/1.x/apim_policies_xml2json.html"
+        },
+        {
+          "label": "XML threat protection",
+          "link": "/apim/1.x/apim_policies_xml_threat_protection.html"
+        },
+        {
+          "label": "XML validation",
+          "link": "/apim/1.x/apim_policies_xml_validation.html"
+        },
+        {
+          "label": "XSLT",
+          "link": "/apim/1.x/apim_policies_xslt.html"
+        }
+      ]
+    },
+    {
+      "title": "Resources",
+      "data_index": 19,
+      "items": [
+        {
+          "label": "Introduction",
+          "link": "/apim/1.x/apim_resources_overview.html"
+        },
+        {
+          "label": "Cache",
+          "link": "/apim/1.x/apim_resources_cache.html"
+        },
+        {
+          "label": "OAuth2 - Gravitee Access Management",
+          "link": "/apim/1.x/apim_resources_oauth2_am.html"
+        },
+        {
+          "label": "OAuth2 - Generic Autorization Server",
+          "link": "/apim/1.x/apim_resources_oauth2_generic.html"
+        }
+      ]
+    },
+    {
+      "title": "Service Discovery",
+      "data_index": 20,
+      "items": [
+        {
+          "label": "Introduction",
+          "link": "/apim/1.x/apim_service_discovery_overview.html"
+        },
+        {
+          "label": "Eureka",
+          "link": "/apim/1.x/apim_service_discovery_eureka.html"
+        },
+        {
+          "label": "Consul.io",
+          "link": "/apim/1.x/apim_service_discovery_consul.html"
+        }
+      ]
+    },
+    {
+      "label": "Expression Language",
+      "link": "/apim/1.x/apim_publisherguide_expression_language.html"
+    }
+  ]
+}

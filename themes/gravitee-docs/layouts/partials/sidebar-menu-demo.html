@@ -1,0 +1,39 @@
+
+<!-- https://gohugo.io/functions/eq/ -->
+<li>
+    <a href="#">{{ .title }}</a>
+    <ul data-index="1">
+    {{ range .items }}
+        <li><a href="#">Petit Calcul du If Hugo</a></li>
+
+
+        {{ if (not (isset . "link"))  | or (eq .link "") }}
+
+          <li><a href="#">Le Link est la chaîne de caractère vide</a></li>
+          {{ if (not (isset . "title"))  | or (eq .title "") }}
+            <li><a href="#">Le [title] dans cet [item] est la chaîne de caractère vide</a></li>
+          {{ else }}
+            <li><a href="#">Le [title] dans cet [item] est une chaîne de caractère NON vide: [ {{ .title }} ]</a></li>
+          {{ end }}
+        {{ else }}
+          <li><a href="#">Le Link est une chaîne de caractère NON vide: [ {{ .link }} ]</a></li>
+        {{ end }}
+
+
+        <!-- case of <li ><a href="/apim/3.x/apim_quickstart_publish.html">Introduction</a></li> -->
+        <!--  <li><a href="{{ .link }}">{{ .label }}</a></li>  -->
+        <!-- case of a submenu  -->
+        <!--
+        <li class="subfolders">
+            <a href="#">{{ .title }}</a>
+            <ul data-index="2" style="display: none;">
+              {{ range .items }}
+                <li><a href="{{ .link }}">{{ .label }}</a></li>
+              {{ end }}
+            </ul>
+        </li>
+          -->
+    {{ end }}
+    </ul>
+</li>
+        <!--  -->

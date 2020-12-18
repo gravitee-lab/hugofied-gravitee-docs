@@ -1,0 +1,30 @@
+{
+  "data_index": 0,
+  "title": "Overview",
+  "items": [
+    {
+      "label": "Introduction",
+      "link": "/apim/3.x/apim_overview_introduction.html"
+    },
+    {
+      "label": "Why Gravitee.io API Management?",
+      "link": "/apim/3.x/apim_overview_why.html"
+    },
+    {
+      "label": "Architecture",
+      "link": "/apim/3.x/apim_overview_architecture.html"
+    },
+    {
+      "label": "Concepts",
+      "link": "/apim/3.x/apim_overview_concepts.html"
+    },
+    {
+      "label": "Components",
+      "link": "/apim/3.x/apim_overview_components.html"
+    },
+    {
+      "label": "Plugins",
+      "link": "/apim/3.x/apim_overview_plugins.html"
+    }
+  ]
+}

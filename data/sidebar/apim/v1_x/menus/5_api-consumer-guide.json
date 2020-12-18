@@ -1,0 +1,22 @@
+{
+  "data_index": 24,
+  "title": "API Consumer Guide",
+  "items": [
+    {
+      "label": "Introduction",
+      "link": "/apim/1.x/apim_consumerguide_portal.html"
+    },
+    {
+      "label": "Create an account",
+      "link": "/apim/1.x/apim_consumerguide_create_account.html"
+    },
+    {
+      "label": "Manage applications",
+      "link": "/apim/1.x/apim_consumerguide_manage_applications.html"
+    },
+    {
+      "label": "Subscribe to an API",
+      "link": "/apim/1.x/apim_consumerguide_subscribe.html"
+    }
+  ]
+}

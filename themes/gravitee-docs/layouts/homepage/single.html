@@ -1,0 +1,198 @@
+{{ define "main" }}
+<!-- Navigation -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-lg navbar-brand" href="/index.html"><img alt="{{ .Title }}" src="/images/GRAVITEE_LOGOV2_TRANSPBLEU.png"><span class="projectTitle">{{ .Title }}</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+
+
+                        <li><a href="/apim/3.x/apim_overview_introduction.html">3.x (current)</a></li>
+
+
+
+                        <li><a href="/apim/1.x/apim_overview_introduction.html">1.x</a></li>
+
+
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Access Management<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+
+
+                        <li><a href="/am/current/am_overview_introduction.html">3.x (current)</a></li>
+
+
+
+                        <li><a href="/am/2.x/am_overview_introduction.html">2.x</a></li>
+
+
+
+                        <li><a href="/am/1.x/am_overview_introduction.html">1.x</a></li>
+
+
+                    </ul>
+                </li>
+
+
+
+                <!-- entries without drop-downs appear here -->
+
+
+
+                <li><a href="/ae/overview_introduction.html">Alert Engine</a></li>
+
+
+
+                <li><a href="/cli/cli_introduction.html">CLI</a></li>
+
+
+
+                <li><a href="/ee/ee_introduction.html">Enterprise</a></li>
+
+
+
+
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="Search">
+                    </div>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+
+<h1>I am the [themes/gravitee-docs/layouts/homepage/single.html] layout file</h1>
+
+<h1>{{ .Content }}</h1>
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="homepage">
+        <div class="sect1">
+<h2 id="api_management_3_2_0"><a href="/apim/3.x/apim_overview_introduction.html">API Management</a> 3.2.0</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/apim/3.x/apim_overview_introduction.html">Overview</a></p>
+</li>
+<li>
+<p><a href="/apim/3.x/apim_quickstart_publish.html">Quick Start Guide</a></p>
+</li>
+<li>
+<p><a href="/apim/3.x/apim_installguide.html">Installation Guide</a></p>
+</li>
+<li>
+<p><a href="/apim/3.x/apim_configurationguide.html">Configuration Guide</a></p>
+</li>
+<li>
+<p><a href="/apim/3.x/apim_publisherguide_manage_apis.html">API Publisher Guide</a></p>
+</li>
+<li>
+<p><a href="/apim/3.x/apim_consumerguide_portal.html">API Consumer Guide</a></p>
+</li>
+<li>
+<p><a href="/apim/3.x/apim_adminguide_roles_and_permissions.html">Administration Guide</a></p>
+</li>
+<li>
+<p><a href="/apim/3.x/apim_devguide_plugins.html">Developer Guide</a></p>
+</li>
+<li>
+<p><a href="/apim/3.x/apim_installguide_rest_apis_documentation.html">API Reference</a></p>
+</li>
+<li>
+<p><a href="/apim/3.x/apim_changelog.html">Changelog</a></p>
+</li>
+<li>
+<p><a href="/apim/3.x/apim_installguide_migration.html">Migration: from 1.x to 3.x</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="access_management_3_2_0"><a href="/am/current/am_overview_introduction.html">Access Management</a> 3.2.0</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/am/current/am_overview_introduction.html">Overview</a></p>
+</li>
+<li>
+<p><a href="/am/current/am_quickstart_register_app.html">Quick Start Guide</a></p>
+</li>
+<li>
+<p><a href="/am/current/am_installguide_introduction.html">Installation Guide</a></p>
+</li>
+<li>
+<p><a href="/am/current/am_userguide_overview.html">User Guide</a></p>
+</li>
+<li>
+<p><a href="/am/current/am_adminguide_roles_and_permissions.html">Administration Guide</a></p>
+</li>
+<li>
+<p><a href="/am/current/am_devguide_management_api_documentation.html">Developer Guide</a></p>
+</li>
+<li>
+<p><a href="/am/current/am_changelog.html">Changelog</a></p>
+</li>
+<li>
+<p><a href="/am/current/am_installguide_migration.html">Migration: from 2.x to 3.x</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="alert_engine_1_2_4"><a href="/ae/overview_introduction.html">Alert Engine</a> 1.2.4</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/ae/overview_introduction.html">Overview</a></p>
+</li>
+<li>
+<p><a href="/ae/installguide_introduction.html">Installation Guide</a></p>
+</li>
+<li>
+<p><a href="/ae/apim_installation.html">API Management Integration</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div>
+  <h1>I am the [themes/gravitee-docs/layouts/homepage/single.html] layout file</h1>
+</div>
+
+
+    </div>
+
+
+{{ end }}
