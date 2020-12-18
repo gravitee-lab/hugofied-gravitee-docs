@@ -1,4 +1,5 @@
 {
+  "data_index": 1,
   "title": "Quick Start Guide",
   "items": [
     {
@@ -6,7 +7,22 @@
       "link": "/apim/3.x/apim_quickstart_publish.html"
     },
     {
+      "title": "Get started",
+      "data_index": 2,
+      "items": [
+        {
+          "label": "Log in to APIM Console",
+          "link": "/apim/3.x/apim_quickstart_console_login.html"
+        },
+        {
+          "label": "Log in to APIM Portal",
+          "link": "/apim/3.x/apim_quickstart_portal_login.html"
+        }
+      ]
+    },
+    {
       "title": "Publish your first API",
+      "data_index": 3,
       "items": [
         {
           "label": "Using APIM Console",
@@ -20,6 +36,7 @@
     },
     {
       "title": "Consume an API",
+      "data_index": 4,
       "items": [
         {
           "label": "Using APIM Portal",
@@ -34,44 +51,6 @@
           "link": "/apim/3.x/apim_quickstart_consume_test.html"
         }
       ]
-    },
-    {
-      "title": "Quick Start Guide",
-      "items": [
-        {
-          "label": "xxxx",
-          "link": "xxxxx"
-        },
-        {
-          "label": "xxxxxx",
-          "link": "xxxxxxxxxxxxx"
-        },
-        {
-          "label": "xxxxxx",
-          "link": "xxxxxxxxxxxxx"
-        }
-      ]
-    },
-    {
-      "title": "Quick Start Guide",
-      "items": [
-        {
-          "label": "xxxx",
-          "link": "xxxxx"
-        },
-        {
-          "label": "xxxxxx",
-          "link": "xxxxxxxxxxxxx"
-        },
-        {
-          "label": "xxxxxx",
-          "link": "xxxxxxxxxxxxx"
-        }
-      ]
-    },
-    {
-      "label": "xxxxxx",
-      "link": "xxxxxxxxxxxxx"
     }
   ]
 }

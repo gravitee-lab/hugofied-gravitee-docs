@@ -1,0 +1,89 @@
+<div class="col-md-3">
+
+<!--
+
+Only thing missing to fully automate : How to define Parent / children rerlation between menus
+
+* https://discourse.gohugo.io/t/how-are-children-menu-entries-detected/21484/7
+* https://doc.huc.fr.eu.org/fr/web/hugo/hugo-menu-nav/
+* https://stackoverflow.com/questions/54971150/how-can-i-add-a-menu-for-each-content-type-in-hugo
+
+So now :
+* Developer Guide and Tutorials  Menus are autmotically generated. Each match their content-type :
+  * type: developer-guide
+  * type: tutorials
+
+Only problem :
+* In the Developer Guide menu, the Developer Guide content entries are listed, and that's what I want
+* In the Tutorials menu, the Delveloper Guide content entries are listed, and that's NOT what I want
+* Well that's why I need the concept of Children and parent menus
+
+ -->
+
+
+{{ $currentPage := . }}
+{{ $maVariableLocale := "piloupilou" }}
+<!--
+currentPage is like a variable locccccally defined in this hugo template;
+So there is no { { end } } associated to it. It's just a local variable declaration
+ -->
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Gravitee APIM 3.x Hugo Menu </li>
+    <!-- Troisième essai  -->
+    {{ range (sort $.Site.Menus.rootmenu  ".Weight" "asc") }}
+    <li class="{{ if in  $currentPage.URL .URL }}active{{ end }}">
+      <a href="{{ .URL }}">
+        {{ .Pre }} {{ .Name }}
+
+      </a>
+      {{ $allMenus := $.Site.Menus }}
+
+      {{ with (eq .Identifier "home") }}
+      {{ end }}
+      {{ with (eq .Identifier "developer_guide") }}
+        <ul class="sub-menu">
+          <li><a href="#">sous menu en dur un</a></li>
+          <li><a href="#">sous menu en dur deux</a></li>
+          {{ range  (sort $allMenus.developer_guide ".Page.Params.menu_index" )  }}
+          <li class="{{ if eq $currentPage.URL .Page.URL }}active{{ end }}">
+            <a href="{{ .URL }}">
+              {{ .Pre }}{{ .Name }} CELUI LA WITH [{{ .Page.Params.menu_index }}]
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+      {{ with (eq .Identifier "tutorials") }}
+        <ul class="sub-menu">
+          <li><a href="#">sous menu en dur un</a></li>
+          <li><a href="#">sous menu en dur deux</a></li>
+
+          {{ range  (sort $allMenus.tutorials ".Page.Params.menu_index" )  }}
+          <li class="{{ if eq $currentPage.URL .Page.URL }}active{{ end }}">
+            <a href="{{ .URL }}">
+              {{ .Pre }}{{ .Name }} CELUI LA WITH CELUI LA WITH [{{ .Page.Params.menu_index }}]
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+
+    </li>
+
+    {{ end }}
+
+
+
+</ul>
+<!--
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">{{ .Site.Data.sidebar.apim.v3_x.hugo_demo.title }} </li>
+    {{ range $.Site.Data.sidebar.apim.v3_x.demo_menus }}
+       {{ partial "sidebar-menu-demo.html" . }}
+    {{ end }}
+</ul>
+ -->
+
+
+</div>

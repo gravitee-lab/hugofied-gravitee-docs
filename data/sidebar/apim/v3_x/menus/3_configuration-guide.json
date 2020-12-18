@@ -1,0 +1,100 @@
+{
+  "data_index": 12,
+  "title": "Configuration Guide",
+  "items": [
+    {
+      "label": "Introduction",
+      "link": "/apim/3.x/apim_configurationguide.html"
+    },
+    {
+      "title": "Configure APIM Gateway",
+      "data_index": 12,
+      "items": [
+        {
+          "label": "General configuration",
+          "link": "/apim/3.x/apim_installguide_gateway_configuration.html"
+        },
+        {
+          "label": "Internal API",
+          "link": "/apim/3.x/apim_installguide_gateway_technical_api.html"
+        },
+        {
+          "label": "Metrics",
+          "link": "/apim/3.x/apim_installguide_gateway_metrics.html"
+        }
+      ]
+    },
+    {
+      "title": "Configure APIM API",
+      "data_index": 13,
+      "items": [
+        {
+          "label": "General configuration",
+          "link": "/apim/3.x/apim_installguide_rest_apis_configuration.html"
+        },
+        {
+          "label": "Internal API",
+          "link": "/apim/3.x/apim_installguide_rest_apis_technical_api.html"
+        },
+        {
+          "label": "Metrics",
+          "link": "/apim/3.x/apim_installguide_rest_apis_metrics.html"
+        },
+        {
+          "label": "Security",
+          "link": "/apim/3.x/apim_installguide_rest_apis_security.html"
+        }
+      ]
+    },
+    {
+      "title": "Configure APIM Console",
+      "data_index": 14,
+      "items": [
+        {
+          "label": "General configuration",
+          "link": "/apim/3.x/apim_installguide_management_ui_configuration.html"
+        }
+      ]
+    },
+    {
+      "title": "Configure APIM Portal",
+      "data_index": 15,
+      "items": [
+        {
+          "label": "General configuration",
+          "link": "/apim/3.x/apim_installguide_portal_ui_configuration.html"
+        }
+      ]
+    },
+    {
+      "title": "Configure repositories",
+      "data_index": 16,
+      "items": [
+        {
+          "label": "Introduction",
+          "link": "/apim/3.x/apim_installguide_repositories.html"
+        },
+        {
+          "label": "Elasticsearch",
+          "link": "/apim/3.x/apim_installguide_repositories_elasticsearch.html"
+        },
+        {
+          "label": "MongoDB",
+          "link": "/apim/3.x/apim_installguide_repositories_mongodb.html"
+        },
+        {
+          "label": "JDBC",
+          "link": "/apim/3.x/apim_installguide_repositories_jdbc.html"
+        },
+        {
+          "label": "Redis",
+          "link": "/apim/3.x/apim_installguide_repositories_redis.html"
+        }
+      ]
+    },
+    {
+      "label": "Configure Notifications",
+      "link": "/apim/3.x/apim_installguide_configuration_notifications.html"
+    }
+  ]
+}
