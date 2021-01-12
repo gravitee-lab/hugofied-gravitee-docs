@@ -43,8 +43,10 @@ So there is no { { end } } associated to it. It's just a local variable declarat
       {{ end }}
       {{ with (eq .Identifier "developer_guide") }}
         <ul class="sub-menu">
+          <!--
           <li><a href="#">sous menu en dur un</a></li>
           <li><a href="#">sous menu en dur deux</a></li>
+          -->
           {{ range  (sort $allMenus.developer_guide ".Page.Params.menu_index" )  }}
           <li class="{{ if eq $currentPage.URL .Page.URL }}active{{ end }}">
             <a href="{{ .URL }}">
@@ -56,9 +58,10 @@ So there is no { { end } } associated to it. It's just a local variable declarat
       {{ end }}
       {{ with (eq .Identifier "tutorials") }}
         <ul class="sub-menu">
+          <!--
           <li><a href="#">sous menu en dur un</a></li>
           <li><a href="#">sous menu en dur deux</a></li>
-
+          -->
           {{ range  (sort $allMenus.tutorials ".Page.Params.menu_index" )  }}
           <li class="{{ if eq $currentPage.URL .Page.URL }}active{{ end }}">
             <a href="{{ .URL }}">
