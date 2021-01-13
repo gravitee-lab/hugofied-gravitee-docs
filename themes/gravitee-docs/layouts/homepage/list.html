@@ -1,9 +1,9 @@
 {{ define "main" }}
 
 
-<h1>I am the [themes/gravitee-docs/layouts/homepage/list.html] layout file</h1>
+<!-- <h1>I am the [themes/gravitee-docs/layouts/homepage/list.html] layout file</h1> -->
 
-<h1>{{ .Content }}</h1>
+<center><h1>{{ .Content }}</h1></center>
 
 
 {{ $currentPage := . }}
@@ -126,7 +126,7 @@
                   </li>
                   {{ end }}
               {{ end }}
-              
+
               {{ with (eq .Identifier "cockpit_processes") }}
                   <!--
                   <li><a href="#">sous menu en dur un</a></li>

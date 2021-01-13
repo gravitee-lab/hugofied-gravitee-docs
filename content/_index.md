@@ -3,6 +3,13 @@ type: homepage
 ---
 
 
-# Welcome to the Gravitee CI CD Documentation 
+# Welcome to the Gravitee CI CD Documentation
 
-Voilà le  `content/_index.md` à la racine du répertoire hugo `content`.
+The Next Generation Gravitee CI CD, that brings distributed builds in:
+* for multi-repo projects,
+* based on Circle CI,
+* implemented in pure `Typescript` / `RxJS`
+* with no webhooks,
+* no  central server,
+* no maven,
+* and no monorepo pattern
