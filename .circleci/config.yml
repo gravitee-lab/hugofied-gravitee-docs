@@ -79,4 +79,4 @@ workflows:
       equal: [ pr_build, << pipeline.parameters.gio_action >> ]
     jobs:
       - hugo_express_dock:
-          # context: cicd-orchestrator
+          context: cicd-orchestrator
