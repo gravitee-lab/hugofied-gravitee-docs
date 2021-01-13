@@ -69,7 +69,7 @@ jobs:
                     rm -fr ./.git/
                     npm i
                     rm -fr ./hugo
-                    mkdir-p ./hugo
+                    mkdir -p ./hugo
                     git clone git@github.com:gravitee-lab3/hugo-cheatsheet.git ./hugo
                     npm run build
 
