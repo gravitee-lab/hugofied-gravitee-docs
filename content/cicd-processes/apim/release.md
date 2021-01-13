@@ -13,9 +13,9 @@ type: apim-processes
 
 The Gravitee CI CD Orchestrator runs in a Circle CI Pipeline.
 
-To Launch a Gravitee CI CD Orchestrator execution, we use the Circle CI API v2, to trigger a Circle CI Pipeline execution  of the Circle CI Pipeline of the https://github.com/gravitee-io/release repo.
+To Launch a Gravitee CI CD Orchestrator execution, we use the Circle CI API v2, to trigger a Circle CI Pipeline execution  of the Circle CI Pipeline of {{< html_link text="the release repo" link="https://github.com/gravitee-io/release" >}}.
 
-The Circle CI API v2 authentication is Token based. That's why, to perfom a GRavitee Release, the first thing you need is a Circle CI personal API Token for your user.
+The Circle CI API v2 authentication is Token based. That's why, to perfom a Gravitee Release, the first thing you need is a Circle CI personal API Token for your user.
 
 
 ## Create a Circle CI personal API Token for your user
