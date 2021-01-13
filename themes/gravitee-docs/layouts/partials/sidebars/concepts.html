@@ -18,7 +18,23 @@ Only problem :
 * In the Tutorials menu, the Delveloper Guide content entries are listed, and that's NOT what I want
 * Well that's why I need the concept of Children and parent menus
 
+[[menu.concepts]]
+  identifier = "general_design"
+  name = "The new CICD : General Design"
+  url = "/concepts/general-design/"
+  weight = 0
 
+[[menu.concepts]]
+  identifier = "circleci_pipelines"
+  name = "Tutorials"
+  url = "/concepts/circleci-pipelines/"
+  weight = 10
+
+[[menu.concepts]]
+  identifier = "circleci_orbs"
+  name = "Tutorials"
+  url = "/concepts/circleci-orbs/"
+  weight = 20
  -->
 
 
@@ -30,9 +46,9 @@ So there is no { { end } } associated to it. It's just a local variable declarat
  -->
 
 <ul id="mysidebar" class="nav">
-    <li class="sidebarTitle">Standard Operations</li>
+    <li class="sidebarTitle">Concepts and Design</li>
     <!-- Troisième essai  -->
-    {{ range (sort $.Site.Menus.standard_operations  ".Weight" "asc") }}
+    {{ range (sort $.Site.Menus.concepts  ".Weight" "asc") }}
     <li class="{{ if in  $currentPage.RelPermalink .URL }}active{{ end }}">
       <a href="{{ .URL }}">
         {{ .Pre }} {{ .Name }}
@@ -41,37 +57,56 @@ So there is no { { end } } associated to it. It's just a local variable declarat
 
       {{ with (eq .Identifier "home") }}
       {{ end }}
-      {{ with (eq .Identifier "developer_guide") }}
+      {{ with (eq .Identifier "general_design") }}
         <ul class="sub-menu">
           <!--
           <li><a href="#">sous menu en dur un</a></li>
           <li><a href="#">sous menu en dur deux</a></li>
           -->
-          {{ range  (sort $allMenus.developer_guide ".Page.Params.menu_index" )  }}
+          {{ range  (sort $allMenus.general_design ".Page.Params.menu_index" )  }}
           <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
             <a href="{{ .Page.RelPermalink }}">
-              {{ .Pre }}{{ .Name }} CELUI LA WITH [{{ .Page.Params.menu_index }}]
+              {{ .Pre }}{{ .Name }}
             </a>
           </li>
           {{ end }}
         </ul>
       {{ end }}
-      {{ with (eq .Identifier "tutorials") }}
+      {{ with (eq .Identifier "circleci_pipelines") }}
         <ul class="sub-menu">
           <!--
           <li><a href="#">sous menu en dur un</a></li>
           <li><a href="#">sous menu en dur deux</a></li>
           -->
-          {{ range  (sort $allMenus.tutorials ".Page.Params.menu_index" )  }}
+          {{ range  (sort $allMenus.circleci_pipelines ".Page.Params.menu_index" )  }}
           <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
             <a href="{{ .Page.RelPermalink }}">
-              {{ .Pre }}{{ .Name }} CELUI LA WITH CELUI LA WITH [{{ .Page.Params.menu_index }}]
+              {{ .Pre }}{{ .Name }}
+            </a>
+          </li>
+          <!-- <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
+            <a href="{{ .Page.RelPermalink }}">
+              {{ .Pre }}{{ .Name }} CELUI LA WITH menu_index [{{ .Page.Params.menu_index }}]
+            </a>
+          </li> -->
+          {{ end }}
+        </ul>
+      {{ end }}
+      {{ with (eq .Identifier "circleci_orbs") }}
+        <ul class="sub-menu">
+          <!--
+          <li><a href="#">sous menu en dur un</a></li>
+          <li><a href="#">sous menu en dur deux</a></li>
+          -->
+          {{ range  (sort $allMenus.circleci_orbs ".Page.Params.menu_index" )  }}
+          <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
+            <a href="{{ .Page.RelPermalink }}">
+              {{ .Pre }}{{ .Name }}
             </a>
           </li>
           {{ end }}
         </ul>
       {{ end }}
-
     </li>
 
     {{ end }}

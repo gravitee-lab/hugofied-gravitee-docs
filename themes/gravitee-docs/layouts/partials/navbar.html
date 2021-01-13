@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="fa fa-lg navbar-brand" href="/"><img alt="Gravitee CI CD - {{ .Title }}" src="/images/GRAVITEE_LOGOV2_TRANSPBLEU.png"><span class="projectTitle">Gravitee.io CI CD</span></a>
+      <a class="fa fa-lg navbar-brand" href="/"><img alt="Gravitee CI CD - {{ .Title }}" src="/images/GRAVITEE_LOGOV2_TRANSPBLEU.png"><span class="projectTitle">CI CD</span></a>
       {{ if ne .Type "homepage" }}
         <a class="fa fa-lg navbar-brand gio-context-link" href="{{ .Permalink }}"><img alt="Gravitee CI CD - {{ .Title }}" src="/images/GRAVITEE_LOGOV2_TRANSPWHITE.png"><span class="projectTitle">{{ .Params.nav_menu }} - {{ .Title }} </span></a>
       {{ end }}
@@ -21,7 +21,7 @@
 
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">CI/CD Standard Operations <b class="caret"></b></a>
+          <a href="/concepts">Concepts and Design <b class="caret"></b></a>
           <!--
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">API Management<b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -36,24 +36,13 @@
 
           </ul> -->
         </li>
+        <li class="dropdown">
+          <a href="/cicd-processes">CI/CD Processes<b class="caret"></b></a>
+        </li>
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Access Management<b class="caret"></b></a>
-          <ul class="dropdown-menu">
+          <a href="/standard-operations" class="dropdown-toggle" data-toggle="dropdown">CI/CD Standard Operations<b class="caret"></b></a>
 
-
-            <li><a href="/am/current/am_overview_introduction.html">3.x (current)</a></li>
-
-
-
-            <li><a href="/am/2.x/am_overview_introduction.html">2.x</a></li>
-
-
-
-            <li><a href="/am/1.x/am_overview_introduction.html">1.x</a></li>
-
-
-          </ul>
         </li>
 
 
@@ -62,15 +51,10 @@
 
 
 
-        <li><a href="/ae/overview_introduction.html">Alert Engine</a></li>
+        <li><a href="/secrets-management">Secrets Management</a></li>
 
 
-
-        <li><a href="/cli/cli_introduction.html">CLI</a></li>
-
-
-
-        <li><a href="/ee/ee_introduction.html">Enterprise</a></li>
+        <li><a href="/on_github">On Github</a></li>
 
 
 

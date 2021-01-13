@@ -32,25 +32,59 @@ theme = "gravitee-docs"
 [menu]
   # ---
   # There is one menu called "Concepts and Design" in the top navbar menu
+  # -
+  # Associated hugo content types :
+  #   - concepts
+  #   - concepts
   # ---
   [[menu.concepts]]
     identifier = "general_design"
-    name = "The new CICD : General Design"
+    name = "General Design"
     url = "/concepts/general-design/"
     weight = 0
 
   [[menu.concepts]]
     identifier = "circleci_pipelines"
-    name = "Tutorials"
+    name = "Circle CI Pipelines"
     url = "/concepts/circleci-pipelines/"
     weight = 10
 
   [[menu.concepts]]
     identifier = "circleci_orbs"
-    name = "Tutorials"
+    name = "Circle CI Orbs"
     url = "/concepts/circleci-orbs/"
     weight = 20
 
+  # ---
+  # There is one menu called "CI/CD Processes" in the top navbar menu
+  # -
+  # Associated hugo content types :
+  #   - cicd-processes
+  #   - apim-processes
+  #   - am-processes
+  #   - ae-processes
+  #   - cockpit-processes
+  # ---
+  [[menu.cicd_processes]]
+    identifier = "apim_processes"
+    name = "Gravitee APIM"
+    url = "/cicd-processes/apim/"
+    weight = 30
+  [[menu.cicd_processes]]
+    identifier = "am_processes"
+    name = "Gravitee AM"
+    url = "/cicd-processes/am/"
+    weight = 40
+  [[menu.cicd_processes]]
+    identifier = "ae_processes"
+    name = "Gravitee AE"
+    url = "/cicd-processes/ae/"
+    weight = 50
+  [[menu.cicd_processes]]
+    identifier = "cockpit_processes"
+    name = "Gravitee Cockpit"
+    url = "/cicd-processes/cockpit/"
+    weight = 60
   # ---
   # There is one menu called "CI/CD Standard Operations" in the top navbar menu
   # ---
@@ -58,13 +92,13 @@ theme = "gravitee-docs"
     identifier = "developer_guide"
     name = "Developer Guide"
     url = "/standard-operations/developer-guide/"
-    weight = 30
+    weight = 70
 
   [[menu.standard_operations]]
     identifier = "tutorials"
     name = "Tutorials"
     url = "/standard-operations/tutorials/"
-    weight = 40
+    weight = 80
 
   # ---
   # There is one menu called "Secrets Management" in the top navbar menu
@@ -73,22 +107,44 @@ theme = "gravitee-docs"
     identifier = "Secrethub"
     name = "The Secrethub: User Guide"
     url = "/secrets-management/secrethub-guide/"
-    weight = 50
+    weight = 90
 
   [[menu.secrets_management]]
     identifier = "taxonomy_tree"
     name = "Secrets Inventory: The Secrets Taxonomy Tree"
     url = "/secrets-management/secrets-inventory/"
-    weight = 60
+    weight = 100
 
   [[menu.secrets_management]]
     identifier = "initialization"
     name = "Secrets Initialization"
     url = "/secrets-management/secrets-initialization/"
-    weight = 70
+    weight = 110
 
   [[menu.secrets_management]]
     identifier = "rotation"
     name = "Secrets Rotation"
     url = "/secrets-management/secrets-rotation/"
-    weight = 80
+    weight = 120
+
+
+  # ---
+  # There is one menu called "On Github" in the top navbar menu
+  # -
+  # Associated hugo content type : on-github
+  # ---
+  [[menu.on_github]]
+    identifier = "github_orchestrator"
+    name = "The Orchestrator on Github"
+    url = "/on_github/orchestrator/"
+    weight = 130
+  [[menu.on_github]]
+    identifier = "github_orbs"
+    name = "The Gravitee Orbs on Github"
+    url = "/on_github/circleci-orbs/"
+    weight = 140
+  [[menu.on_github]]
+    identifier = "github_dev_repos"
+    name = "The Gravitee Orbs on Github"
+    url = "/on_github/dev-repos/"
+    weight = 150

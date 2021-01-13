@@ -18,6 +18,23 @@ Only problem :
 * In the Tutorials menu, the Delveloper Guide content entries are listed, and that's NOT what I want
 * Well that's why I need the concept of Children and parent menus
 
+"On Github"
+
+[[menu.on_github]]
+  identifier = "github_orchestrator"
+  name = "The Orchestrator on Github"
+  url = "/on_github/orchestrator/"
+  weight = 90
+[[menu.on_github]]
+  identifier = "github_orbs"
+  name = "The Gravitee Orbs on Github"
+  url = "/on_github/circleci-orbs/"
+  weight = 100
+[[menu.on_github]]
+  identifier = "github_dev_repos"
+  name = "The Gravitee Orbs on Github"
+  url = "/on_github/dev-repos/"
+  weight = 100
 
  -->
 
@@ -30,9 +47,9 @@ So there is no { { end } } associated to it. It's just a local variable declarat
  -->
 
 <ul id="mysidebar" class="nav">
-    <li class="sidebarTitle">Standard Operations</li>
+    <li class="sidebarTitle">On Github</li>
     <!-- Troisième essai  -->
-    {{ range (sort $.Site.Menus.standard_operations  ".Weight" "asc") }}
+    {{ range (sort $.Site.Menus.on_github  ".Weight" "asc") }}
     <li class="{{ if in  $currentPage.RelPermalink .URL }}active{{ end }}">
       <a href="{{ .URL }}">
         {{ .Pre }} {{ .Name }}
@@ -41,37 +58,56 @@ So there is no { { end } } associated to it. It's just a local variable declarat
 
       {{ with (eq .Identifier "home") }}
       {{ end }}
-      {{ with (eq .Identifier "developer_guide") }}
+      {{ with (eq .Identifier "github_orchestrator") }}
         <ul class="sub-menu">
           <!--
           <li><a href="#">sous menu en dur un</a></li>
           <li><a href="#">sous menu en dur deux</a></li>
           -->
-          {{ range  (sort $allMenus.developer_guide ".Page.Params.menu_index" )  }}
+          {{ range  (sort $allMenus.github_orchestrator ".Page.Params.menu_index" )  }}
           <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
             <a href="{{ .Page.RelPermalink }}">
-              {{ .Pre }}{{ .Name }} CELUI LA WITH [{{ .Page.Params.menu_index }}]
+              {{ .Pre }}{{ .Name }}
             </a>
           </li>
           {{ end }}
         </ul>
       {{ end }}
-      {{ with (eq .Identifier "tutorials") }}
+      {{ with (eq .Identifier "github_orbs") }}
         <ul class="sub-menu">
           <!--
           <li><a href="#">sous menu en dur un</a></li>
           <li><a href="#">sous menu en dur deux</a></li>
           -->
-          {{ range  (sort $allMenus.tutorials ".Page.Params.menu_index" )  }}
+          {{ range  (sort $allMenus.github_orbs ".Page.Params.menu_index" )  }}
           <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
             <a href="{{ .Page.RelPermalink }}">
-              {{ .Pre }}{{ .Name }} CELUI LA WITH CELUI LA WITH [{{ .Page.Params.menu_index }}]
+              {{ .Pre }}{{ .Name }}
+            </a>
+          </li>
+          <!-- <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
+            <a href="{{ .Page.RelPermalink }}">
+              {{ .Pre }}{{ .Name }} CELUI LA WITH menu_index [{{ .Page.Params.menu_index }}]
+            </a>
+          </li> -->
+          {{ end }}
+        </ul>
+      {{ end }}
+      {{ with (eq .Identifier "github_dev_repos") }}
+        <ul class="sub-menu">
+          <!--
+          <li><a href="#">sous menu en dur un</a></li>
+          <li><a href="#">sous menu en dur deux</a></li>
+          -->
+          {{ range  (sort $allMenus.github_dev_repos ".Page.Params.menu_index" )  }}
+          <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
+            <a href="{{ .Page.RelPermalink }}">
+              {{ .Pre }}{{ .Name }}
             </a>
           </li>
           {{ end }}
         </ul>
       {{ end }}
-
     </li>
 
     {{ end }}
