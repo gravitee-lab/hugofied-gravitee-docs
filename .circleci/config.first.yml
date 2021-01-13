@@ -59,6 +59,31 @@ jobs:
       - gravitee/git_config:
           secrethub_org: << pipeline.parameters.secrethub_org >>
           secrethub_repo: << pipeline.parameters.secrethub_repo >>
+      - run:
+          name: "Hugo Build"
+          command: |
+                    echo "BACK_IN_TIME_VERSION=[${BACK_IN_TIME_VERSION}]"
+                    echo "This job was used ONCE to 'release again' the [1.1.2] versio the [gravitee-licence]"
+                    echo "It could inspire a more general purpose Job, but it's not yet reusable as-is"
+                    if [ -d ./.circleci ]; then
+                      rm -fr ./circleci
+                    fi
+                    if [ -d ./graviteebot ]; then
+                      rm -fr ./graviteebot
+                    fi
+                    # there i will have to rm some files for sure
+                    ls -allh .
+                    git clone git@github.com:gravitee-lab3/hugo-cheatsheet.git .
+                    git checkout feature/github-auth
+                    rm -fr ./.git/
+                    npm i
+                    rm -fr ./hugo
+                    mkdir -p ./hugo
+                    git clone git@github.com:gravitee-lab3/hugofied-gravitee-docs.git ./hugo
+                    cd ./hugo/
+                    git checkout feature/first_release
+                    cd ../
+                    npm run build
       - run: # print the name of the branch we're on
           name: "Docker build"
           command: |
