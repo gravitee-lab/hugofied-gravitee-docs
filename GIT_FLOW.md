@@ -43,4 +43,7 @@ export FEATURE_ALIAS="sidebar-data-template"
 export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): work on data templating the sidebar menus"
 # git add --all && git commit -m "${COMMIT_MESSAGE}" && git push -u origin HEAD
 
+export FEATURE_ALIAS="first_release"
+export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): CircleCI Pipeline"
+git add --all && git commit -m "${COMMIT_MESSAGE}" && git push -u glab3 HEAD
 ```
