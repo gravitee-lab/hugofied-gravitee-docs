@@ -11,38 +11,13 @@ menu_index: 2
 type: apim-processes
 ---
 
-The Gravitee CI CD Orchestrator runs in a Circle CI Pipeline.
 
-To Launch a Gravitee CI CD Orchestrator execution, we use the Circle CI API v2, to trigger a Circle CI Pipeline execution  of the Circle CI Pipeline of {{< html_link text="the release repo" link="https://github.com/gravitee-io/release" >}}.
+## The Example Release scenario
 
-The Circle CI API v2 authentication is Token based. That's why, to perfom a Gravitee Release, the first thing you need is a Circle CI personal API Token for your user.
-
-
-## Create a Circle CI personal API Token for your user
-
-<!-- * The `release.json` etc.. -->
-First, connect to Circle CI, with your Github user, and create a Circle CI personal API Token for your user :
-* go to your Circle CI User settings menu :
-
-{{< image alt="Create Circle CI personal Token step 1" width="100%" height="100%" src="/images/figures/cicd-processes/cci-tokens/personal/create_a_circleci_token_for_your_user_1.png" >}}
-
-* go to your Circle CI User settings menu :
-
-{{< image alt="Create Circle CI personal Token step 2" width="100%" height="100%" src="/images/figures/cicd-processes/cci-tokens/personal/create_a_circleci_token_for_your_user_2.png" >}}
-
-<!--
-static/images/figures/cicd-processes/cci-tokens/personal/create_a_circleci_token_for_your_user_1.png
-static/images/figures/cicd-processes/cci-tokens/personal/create_a_circleci_token_for_your_user_2.png
--->
-
-
-## How to: Perfom a Release
-
-Let's explain by an example:
+Let's explain The release process by an example scenario :
 * We want to release Gravitee APIM version `3.9.4`
 * So we have to edit the `release.json` on the `3.9.x` git branch of the https://github.com/gravitee-io/release repo. :
   * For each component you want to release, set the `version` property to the version in your `pom.xml`, on the source git branch of your pull request
-
 
 Example `release.json` on the `3.9.x` git branch of the https://github.com/gravitee-io/release repo :
 
@@ -112,6 +87,30 @@ Example `release.json` on the `3.9.x` git branch of the https://github.com/gravi
 
 
 
+## How to: Perfom a Release
+
+
+### Create a Circle CI personal API Token for your user
+
+
+The Gravitee CI CD Orchestrator runs in a Circle CI Pipeline.
+
+To Launch a Gravitee CI CD Orchestrator execution, we use the Circle CI API v2, to trigger a Circle CI Pipeline execution  of the Circle CI Pipeline of {{< html_link text="the release repo" link="https://github.com/gravitee-io/release" >}}.
+
+The Circle CI API v2 authentication is Token based. That's why, to perfom a Gravitee Release, the first thing you need is a Circle CI personal API Token for your user.
+
+
+<!-- * The `release.json` etc.. -->
+First, connect to Circle CI, with your Github user, and create a Circle CI personal API Token for your user :
+* go to your Circle CI User settings menu :
+
+{{< image alt="Create Circle CI personal Token step 1" width="100%" height="100%" src="/images/figures/cicd-processes/cci-tokens/personal/create_a_circleci_token_for_your_user_1.png" >}}
+
+* go to your Circle CI User settings menu :
+
+{{< image alt="Create Circle CI personal Token step 2" width="100%" height="100%" src="/images/figures/cicd-processes/cci-tokens/personal/create_a_circleci_token_for_your_user_2.png" >}}
+
+
 
 
 ### Launch the Dry run
@@ -141,6 +140,9 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
+Note that in dry run mode, the full release process is performed, exceptthat no git commit is `git pushed` to any git repo :
+* In the dev repos
+* In  {{< html_link text="the release repo" link="https://github.com/gravitee-io/release" >}}
 
 ### Launch the Release
 
@@ -171,6 +173,41 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 Note that the only difference with the dry run, is the value of the `gio_action` pipeline parameter.
 
 ### Resume the Release
+
+If any Pipeline execution fails, the whole release process fails.
+
+The Gravitee CI/CD Orchestrator detects any Pipeline execution failure, and in such a case, the Orchestrator :
+* waits until all pipelines complete their execution.
+* updates the `release.json`, by removing the `-SNAPSHOT` suffix for all components whose Pipeline successfully completed their execution
+* git commits and push the updated the `release.json`, to the {{< html_link text="the release repo" link="https://github.com/gravitee-io/release" >}} on the
+* and finally stops.
+
+If a release process that you launched failed, allyou have to do, toresumethe release process, is to laucnh again the release, with the exact same commandthat you used, to launch it in the first place.
+
+Therefore, in our scenario, if you want to resume the release of `Gravitee APIM` version `3.9.4`, all you have to do is to eecute again :
+
+```bash
+export CCI_TOKEN=<You Circle CI User Personal Token>
+
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="3.9.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"release\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+Finally, note that since the Gravitee CI CD ORchestrator relies on the persisted `release.json`, the Resume Release feature is not available in "dry run" mode.
 
 ### The Circle CI Pipeline in the release repo
 
