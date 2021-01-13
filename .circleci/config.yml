@@ -22,21 +22,16 @@ parameters:
     type: string
     default: "cicd"
     description: "SecretHub Repo to use to fetch secrets ?"
-  marty_mcfly:
-    type: string
-    default: "HEAD"
-    description: "What back-in-time version would you like to maven deploy in your private maven repo ?"
 orbs:
   gravitee: gravitee-io/gravitee@dev:1.0.4
   secrethub: secrethub/cli@1.0
 
 jobs:
-  hugo_express_dock:
+  build_n_deploy:
     machine:
       image: 'ubuntu-1604:201903-01'
       resource_class: medium
     environment:
-      BACK_IN_TIME_VERSION: << pipeline.parameters.marty_mcfly >>
       HUGO_VERSION: '0.78.2'
     steps:
       # - checkout
@@ -76,3 +71,12 @@ jobs:
                     mkdir-p ./hugo
                     git clone git@github.com:gravitee-lab3/hugo-cheatsheet.git ./hugo
                     npm run build
+
+workflows:
+  version: 2.1
+  build_n_deploy:
+    when:
+      equal: [ pr_build, << pipeline.parameters.gio_action >> ]
+    jobs:
+      - hugo_express_dock:
+          # context: cicd-orchestrator
