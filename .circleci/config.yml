@@ -34,6 +34,9 @@ jobs:
       resource_class: medium
     environment:
       HUGO_VERSION: '0.78.2'
+      SECRETHUB_ORG: gravitee-lab
+      SECRETHUB_REPO: cicd
+      HEROKU_APP_ID: gravit33-docs
     steps:
       # - checkout
       - run:
@@ -55,8 +58,7 @@ jobs:
           name: "Build env setup"
           command: |
                     echo "BACK_IN_TIME_VERSION=[${BACK_IN_TIME_VERSION}]"
-                    echo "This job was used ONCE to 'release again' the [1.1.2] versio the [gravitee-licence]"
-                    echo "It could inspire a more general purpose Job, but it's not yet reusable as-is"
+                    echo "It could inspire a more general purpose Orb Job, but it's not yet reusable as-is"
                     if [ -d ./.circleci ]; then
                       rm -fr ./circleci
                     fi
@@ -86,7 +88,81 @@ jobs:
                     export GIT_COMMIT=$(git rev-parse --short HEAD)
                     export DESIRED_DOCKER_TAG=stable-latest
                     cd ../
-                    docker build -t "quay.io/gravitee-lab/cicd-orchestrator:${DESIRED_DOCKER_TAG}" --build-arg GIT_COMMIT=nightly -f ./Dockerfile .
+                    docker build -t "quay.io/gravitee-lab/gravitee-docs:${DESIRED_DOCKER_TAG}-heroku" --build-arg GIT_COMMIT=nightly -f ./Dockerfile .
+      - heroku/install
+      - run:
+          name: "Heroku Check Authentication"
+          command: |
+            export HEROKU_APP_ID=gravit33-docs
+            echo "Checking Heroku Authentication is successful, with the secrethub provided Heroku API Token"
+            echo "Checking context variables from [riccarl-cicd] context"
+            echo "Checking Circle CI Job env. variables"
+            echo "SECRETHUB_ORG=[${SECRETHUB_ORG}]"
+            echo "SECRETHUB_REPO=[${SECRETHUB_REPO}]"
+            echo "HEROKU_APP_ID=[${HEROKU_APP_ID}]"
+            # that's just to check how to
+            export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
+            heroku auth:whoami
+      - run:
+          name: "Set Heroku Stack to [container]"
+          command: |
+            echo "Initializing Heroku Git repo"
+            export HEROKU_APP_ID=gravit33-docs
+            export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
+            heroku git:remote -a $HEROKU_APP_ID
+            heroku stack:set container --app $HEROKU_APP_ID
+      - run:
+          name: "Deploy to Heroku by docker pushing container image, website at https://gravitee-docs.herokuapp.com/ "
+          command: |
+            echo "Deploying to Heroku, by pushing the built docker image, and release it using the Heroku API"
+            # the process type, is the thing that you can find in the `heroku.yml` (for me it's `web`, and
+            # there are others, which I don't care about like for backends I guess, stuff like that)
+            export HEROKU_PROCESS_TYPE=web
+            export HEROKU_APP_ID=gravit33-docs
+            export SECRETHUB_ORG=gravitee-lab
+            export SECRETHUB_REPO=cicd
+            # secrethub mkdir --parents "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku"
+            # echo "inyourdreams;)" | secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token"
+            export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
+            docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
+            # export GIT_RELEASE_TAG=$(git describe --tags --abbrev=0)
+            export GIT_RELEASE_TAG=stable-latest
+            export QUAY_OCI_IMAGE_TAG=${GIT_RELEASE_TAG}-heroku
+            echo "QUAY_OCI_IMAGE_TAG=[${QUAY_OCI_IMAGE_TAG}]"
+            docker tag quay.io/gravitee-lab/gravitee-docs:${QUAY_OCI_IMAGE_TAG} registry.heroku.com/${HEROKU_APP_ID}/${HEROKU_PROCESS_TYPE}
+            docker push registry.heroku.com/${HEROKU_APP_ID}/${HEROKU_PROCESS_TYPE}
+            # ---
+            # After the image is pushed, you have one more thing to do, to complete the deployment.
+            # This "thing" consists of invoking one Heroku API Endpoint, to "release" the pushed container.
+            # The Heroku API Endpoint is [/apps/$HEROKU_APP_ID/formation]: it is supposed to
+            # "release a contgaienr image". Odd name for an endpoint supposed to do that...
+            # ---
+            # To invoke the Heroku API Endpoint, I need one container
+            # meta data, obtained by [docker inspect ${DOCKER_IMAGE_GUN} --format={{.Id}}]
+            # ---
+            # To be absolutely sure, I get this metadata from the exact docker image pushed to Heroku Container Regsitry, I
+            # remove all local container images, and then pull again the pushed image of the deployment.
+            # ---
+            # docker system prune -f --all && docker system prune -f --volumes
+            export DOCKER_IMAGE_GUN=registry.heroku.com/${HEROKU_APP_ID}/${HEROKU_PROCESS_TYPE}
+            # docker pull ${DOCKER_IMAGE_GUN}
+            # export DOCKER_IMAGE_ID=$(docker inspect ${DOCKER_IMAGE_GUN} --format={{.Id}})
+            export DOCKER_IMAGE_ID=$(docker inspect ${DOCKER_IMAGE_GUN} --format={{.Id}})
+            # ---
+            # And now I have all I need to invoke the Heroku API Endpoint :
+            # ---
+            curl -iv -H "Authorization: Bearer ${HEROKU_API_KEY}" -X PATCH https://api.heroku.com/apps/$HEROKU_APP_ID/formation \
+              -d "{
+              \"updates\": [
+                {
+                  \"type\": \"${HEROKU_PROCESS_TYPE}\",
+                  \"docker_image\": \"${DOCKER_IMAGE_ID}\"
+                }
+              ]
+            }" \
+              -H "Content-Type: application/json" \
+              -H "Accept: application/vnd.heroku+json; version=3.docker-releases"
+
 workflows:
   version: 2.1
   build_n_deploy:
