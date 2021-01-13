@@ -26,6 +26,7 @@ orbs:
   gravitee: gravitee-io/gravitee@dev:1.0.4
   secrethub: secrethub/cli@1.0
   node: circleci/node@4.1.0
+  heroku: circleci/heroku@1.2.3
 
 jobs:
   hugo_express_dock:
