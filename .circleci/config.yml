@@ -37,10 +37,6 @@ jobs:
     steps:
       # - checkout
       - run:
-          name: "Check NodeJS version"
-          command: |
-                    node --version
-      - run:
           name: "Install HUGO version [${HUGO_VERSION}]"
           command: |
                     export HUGO_VERSION=${HUGO_VERSION:-'0.78.2'}
@@ -51,14 +47,34 @@ jobs:
                     sudo dpkg -i hugo_${HUGO_VERSION}_${HUGO_OS}-${HUGO_CPU_ARCH}.deb && sudo apt-get install -y
                     hugo version
                     mv ./hugo_${HUGO_VERSION}_${HUGO_OS}-${HUGO_CPU_ARCH}.deb $HOME
-      - run:
-          name: "Install TypeScript latest"
-          command: |
-                    npm install -g typescript @types/node
       - secrethub/install
       - gravitee/git_config:
           secrethub_org: << pipeline.parameters.secrethub_org >>
           secrethub_repo: << pipeline.parameters.secrethub_repo >>
+      - run:
+          name: "Build env setup"
+          command: |
+                    echo "BACK_IN_TIME_VERSION=[${BACK_IN_TIME_VERSION}]"
+                    echo "This job was used ONCE to 'release again' the [1.1.2] versio the [gravitee-licence]"
+                    echo "It could inspire a more general purpose Job, but it's not yet reusable as-is"
+                    if [ -d ./.circleci ]; then
+                      rm -fr ./circleci
+                    fi
+                    if [ -d ./graviteebot ]; then
+                      rm -fr ./graviteebot
+                    fi
+                    # there i will have to rm some files for sure
+                    ls -allh .
+                    git clone git@github.com:gravitee-lab3/hugo-cheatsheet.git .
+                    git checkout feature/github-auth
+                    rm -fr ./.git/
+                    npm i
+                    rm -fr ./hugo
+                    mkdir -p ./hugo
+                    git clone git@github.com:gravitee-lab3/hugofied-gravitee-docs.git ./hugo
+                    cd ./hugo/
+                    git checkout feature/first_release
+                    cd ../
       - run: # print the name of the branch we're on
           name: "Docker build"
           command: |
