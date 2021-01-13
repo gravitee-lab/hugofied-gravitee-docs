@@ -68,7 +68,6 @@ jobs:
                     git clone git@github.com:gravitee-lab3/hugo-cheatsheet.git .
                     git checkout feature/github-auth
                     rm -fr ./.git/
-                    npm i
                     rm -fr ./hugo
                     mkdir -p ./hugo
                     git clone git@github.com:gravitee-lab3/hugofied-gravitee-docs.git ./hugo
@@ -86,7 +85,7 @@ jobs:
                     # export DESIRED_DOCKER_TAG="${DESIRED_DOCKER_TAG}-$(git rev-parse --short HEAD)"
                     export DESIRED_DOCKER_TAG=stable-latest
                     cd ../
-                    docker build -t "quay.io/gravitee-lab/cicd-orchestrator:${DESIRED_DOCKER_TAG}" --build-arg GIT_COMMIT=$(git rev-parse HEAD) -f ./Dockerfile .
+                    docker build -t "quay.io/gravitee-lab/cicd-orchestrator:${DESIRED_DOCKER_TAG}" --build-arg GIT_COMMIT=nightly -f ./Dockerfile .
 workflows:
   version: 2.1
   build_n_deploy:
