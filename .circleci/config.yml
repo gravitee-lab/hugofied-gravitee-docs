@@ -75,7 +75,7 @@ jobs:
                     git checkout feature/first_release
                     cd ../
       - run: # print the name of the branch we're on
-          name: "Docker build"
+          name: "Docker image build"
           command: |
                     pwd
                     ls -allh
