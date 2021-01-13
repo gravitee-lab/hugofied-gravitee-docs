@@ -25,6 +25,7 @@ parameters:
 orbs:
   gravitee: gravitee-io/gravitee@dev:1.0.4
   secrethub: secrethub/cli@1.0
+  node: circleci/node@4.1.0
 
 jobs:
   hugo_express_dock:
@@ -35,6 +36,12 @@ jobs:
       HUGO_VERSION: '0.78.2'
     steps:
       # - checkout
+      - node/install:
+          install-yarn: true
+      - run:
+          name: "Check NodeJS version"
+          command: |
+                    node --version
       - run:
           name: "Install HUGO version [${HUGO_VERSION}]"
           command: |
