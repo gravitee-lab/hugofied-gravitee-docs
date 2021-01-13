@@ -40,10 +40,11 @@ jobs:
           name: "NodeJS Install Pre-checks"
           command: |
                     ls -allh /opt/circleci/.nvm/versions/node/
-                    nvm install 12.14.1
-                    nvm install 14.4.0
+                    # nvm install 12.14.1
+                    # nvm install 14.4.0
       - node/install:
           install-yarn: true
+          lts: true
       - run:
           name: "Check NodeJS version"
           command: |
