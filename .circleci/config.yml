@@ -40,6 +40,8 @@ jobs:
           name: "NodeJS Install Pre-checks"
           command: |
                     ls -allh /opt/circleci/.nvm/versions/node/
+                    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
                     # nvm install 12.14.1
                     # nvm install 14.4.0
       - node/install:
