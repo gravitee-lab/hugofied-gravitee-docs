@@ -45,12 +45,13 @@ jobs:
                     curl -LO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_${HUGO_OS}-${HUGO_CPU_ARCH}.deb
                     sudo dpkg -i hugo_${HUGO_VERSION}_${HUGO_OS}-${HUGO_CPU_ARCH}.deb && sudo apt-get install -y
                     hugo version
+                    mv ./hugo_${HUGO_VERSION}_${HUGO_OS}-${HUGO_CPU_ARCH}.deb $HOME
       - secrethub/install
       - gravitee/git_config:
           secrethub_org: << pipeline.parameters.secrethub_org >>
           secrethub_repo: << pipeline.parameters.secrethub_repo >>
       - run:
-          name: "Back in time release [${BACK_IN_TIME_VERSION}]"
+          name: "Hugo Build"
           command: |
                     echo "BACK_IN_TIME_VERSION=[${BACK_IN_TIME_VERSION}]"
                     echo "This job was used ONCE to 'release again' the [1.1.2] versio the [gravitee-licence]"
