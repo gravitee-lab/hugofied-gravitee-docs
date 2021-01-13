@@ -1,0 +1,18 @@
+{
+  "data_index": 26,
+  "title": "How to",
+  "items": [
+    {
+      "label": "Introduction",
+      "link": "/apim/3.x/apim_how_to_introduction.html"
+    },
+    {
+      "label": "Configure Global API reviewers",
+      "link": "/apim/3.x/apim_how_to_configure_global_API_reviewers.html"
+    },
+    {
+      "label": "Configure a production-ready APIM environment",
+      "link": "/apim/3.x/apim_how_to_configuration.html"
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 title: "Hugo Theme Demo"
 date: 2020-12-16T00:44:23+01:00
 draft: false
+nav_menu: "Standard Operations"
 menu: developer_guide
 menu_index: 10
 # menu:

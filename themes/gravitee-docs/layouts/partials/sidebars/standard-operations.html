@@ -2,7 +2,7 @@
 
 <!--
 
-Only thing missing to fully automate : How to define Parent / children rerlation between menus
+Only thing missing to fully automate : How to define Parent / children relation between menus
 
 * https://discourse.gohugo.io/t/how-are-children-menu-entries-detected/21484/7
 * https://doc.huc.fr.eu.org/fr/web/hugo/hugo-menu-nav/
@@ -22,7 +22,7 @@ Only problem :
 
 
 {{ $currentPage := . }}
-{{ $maVariableLocale := "piloupilou" }}
+{{ $maVariableLocale := "un exemple de variable locale" }}
 <!--
 currentPage is like a variable locccccally defined in this hugo template;
 So there is no { { end } } associated to it. It's just a local variable declaration
@@ -31,11 +31,10 @@ So there is no { { end } } associated to it. It's just a local variable declarat
 <ul id="mysidebar" class="nav">
     <li class="sidebarTitle">Gravitee APIM 3.x Hugo Menu </li>
     <!-- Troisième essai  -->
-    {{ range (sort $.Site.Menus.rootmenu  ".Weight" "asc") }}
-    <li class="{{ if in  $currentPage.URL .URL }}active{{ end }}">
+    {{ range (sort $.Site.Menus.standard_operations  ".Weight" "asc") }}
+    <li class="{{ if in  $currentPage.RelPermalink .URL }}active{{ end }}">
       <a href="{{ .URL }}">
         {{ .Pre }} {{ .Name }}
-
       </a>
       {{ $allMenus := $.Site.Menus }}
 
@@ -48,8 +47,8 @@ So there is no { { end } } associated to it. It's just a local variable declarat
           <li><a href="#">sous menu en dur deux</a></li>
           -->
           {{ range  (sort $allMenus.developer_guide ".Page.Params.menu_index" )  }}
-          <li class="{{ if eq $currentPage.URL .Page.URL }}active{{ end }}">
-            <a href="{{ .URL }}">
+          <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
+            <a href="{{ .Page.Permalink }}">
               {{ .Pre }}{{ .Name }} CELUI LA WITH [{{ .Page.Params.menu_index }}]
             </a>
           </li>
@@ -63,8 +62,8 @@ So there is no { { end } } associated to it. It's just a local variable declarat
           <li><a href="#">sous menu en dur deux</a></li>
           -->
           {{ range  (sort $allMenus.tutorials ".Page.Params.menu_index" )  }}
-          <li class="{{ if eq $currentPage.URL .Page.URL }}active{{ end }}">
-            <a href="{{ .URL }}">
+          <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
+            <a href="{{ .Page.Permalink }}">
               {{ .Pre }}{{ .Name }} CELUI LA WITH CELUI LA WITH [{{ .Page.Params.menu_index }}]
             </a>
           </li>
@@ -79,11 +78,3 @@ So there is no { { end } } associated to it. It's just a local variable declarat
 
 
 </ul>
-<!--
-<ul id="mysidebar" class="nav">
-    <li class="sidebarTitle">{{ .Site.Data.sidebar.apim.v3_x.hugo_demo.title }} </li>
-    {{ range $.Site.Data.sidebar.apim.v3_x.demo_menus }}
-       {{ partial "sidebar-menu-demo.html" . }}
-    {{ end }}
-</ul>
- -->

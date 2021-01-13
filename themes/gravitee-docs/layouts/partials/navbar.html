@@ -11,7 +11,7 @@
       </button>
       <a class="fa fa-lg navbar-brand" href="/"><img alt="Gravitee CI CD - {{ .Title }}" src="/images/GRAVITEE_LOGOV2_TRANSPBLEU.png"><span class="projectTitle">Gravitee.io CI CD</span></a>
       {{ if ne .Type "homepage" }}
-        <a class="fa fa-lg navbar-brand gio-context-link" href="{{ .Permalink }}"><img alt="Gravitee CI CD - {{ .Title }}" src="/images/GRAVITEE_LOGOV2_TRANSPWHITE.png"><span class="projectTitle">{{ .Type }} - {{ .Title }} </span></a>
+        <a class="fa fa-lg navbar-brand gio-context-link" href="{{ .Permalink }}"><img alt="Gravitee CI CD - {{ .Title }}" src="/images/GRAVITEE_LOGOV2_TRANSPWHITE.png"><span class="projectTitle">{{ .Params.nav_menu }} - {{ .Title }} </span></a>
       {{ end }}
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
