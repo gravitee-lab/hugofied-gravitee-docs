@@ -45,5 +45,6 @@ export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): work on data templating the side
 
 export FEATURE_ALIAS="first_release"
 export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): CircleCI Pipeline"
-git add --all && git commit -m "${COMMIT_MESSAGE}" && git push -u glab3 HEAD
+# git add --all && git commit -m "${COMMIT_MESSAGE}" && git push -u glab3 HEAD
+# "glab3" remote is [git@github.com:gravitee-lab3/hugofied-gravitee-docs.git]
 ```
