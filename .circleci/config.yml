@@ -78,6 +78,7 @@ jobs:
                     git checkout feature/first_release
                     cd ../
                     mkdir -p ./.git/ && cp -fR ./.git_backed/* ./.git/ && rm -fr ./.git_backed/
+                    ls -allh ./hugo
       - run: # print the name of the branch we're on
           name: "Docker oci image build for Heroku"
           command: |
