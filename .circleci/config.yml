@@ -78,7 +78,7 @@ jobs:
                     git checkout feature/first_release
                     cd ../
       - run: # print the name of the branch we're on
-          name: "Docker oci image build"
+          name: "Docker oci image build for Heroku"
           command: |
                     pwd
                     ls -allh
@@ -89,7 +89,7 @@ jobs:
                     export GIT_COMMIT=$(git rev-parse --short HEAD)
                     export DESIRED_DOCKER_TAG=stable-latest
                     cd ../
-                    docker build -t "quay.io/gravitee-lab/gravitee-docs:${DESIRED_DOCKER_TAG}-heroku" --build-arg GIT_COMMIT=nightly -f ./Dockerfile .
+                    docker build -t "quay.io/gravitee-lab/gravitee-docs:${DESIRED_DOCKER_TAG}-heroku" --build-arg GIT_COMMIT=nightly -f ./heroku.Dockerfile .
       - heroku/install
       - run:
           name: "Heroku Check Authentication"
@@ -110,12 +110,33 @@ jobs:
             echo "Initializing Heroku Git repo"
             export HEROKU_APP_ID=gravit33-docs
             export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
-            heroku git:remote -a $HEROKU_APP_ID
+            # heroku git:remote -a $HEROKU_APP_ID
             heroku stack:set container --app $HEROKU_APP_ID
+      - run:
+          name: "Set Heroku App config vars"
+          command: |
+            echo "Initializing Heroku Git repo"
+            export HEROKU_APP_ID=gravit33-docs
+            export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
+            # ---
+            # And now I have all I need to invoke the Heroku API Endpoint :
+            # ---
+            export JSON_PAYLOAD="{
+              \"FOO\": \"bar\",
+              \"BAZ\": \"qux\"
+            }"
+
+            curl -iv -n -X PATCH https://api.heroku.com/apps/$APP_ID_OR_NAME/config-vars \
+              -H "Authorization: Bearer ${HEROKU_API_KEY}" \
+              -d "${JSON_PAYLOAD}" \
+              -H "Content-Type: application/json" \
+              -H "Accept: application/vnd.heroku+json; version=3"
       - run:
           name: "Deploy to Heroku by docker pushing container image, website at https://gravitee-docs.herokuapp.com/ "
           command: |
             echo "Deploying to Heroku, by pushing the built docker image, and release it using the Heroku API"
+            echo "STOP - DEBUG"
+            exit 0
             # the process type, is the thing that you can find in the `heroku.yml` (for me it's `web`, and
             # there are others, which I don't care about like for backends I guess, stuff like that)
             export HEROKU_PROCESS_TYPE=web

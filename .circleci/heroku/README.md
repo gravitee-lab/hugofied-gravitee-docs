@@ -10,5 +10,16 @@ Okay, to automate Config Vars setup, I can use the Heroku REST API :
 * https://devcenter.heroku.com/articles/platform-api-reference#config-vars
 * mimic what I did with the `/formation` REST API Endpoint, and i'll be good I think.
 
+```bash
+export JSON_PAYLOAD="{
+  \"FOO\": \"bar\",
+  \"BAZ\": \"qux\"
+}"
+
+curl -n -X PATCH https://api.heroku.com/apps/$APP_ID_OR_NAME/config-vars \
+  -d "${JSON_PAYLOAD}" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/vnd.heroku+json; version=3"
+```
 
 With all this, I think it should be unnecessary ti use a `Heroku.yml` file (which any would have been used with a git based deployment).
