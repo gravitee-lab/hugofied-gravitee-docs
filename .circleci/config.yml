@@ -123,9 +123,8 @@ jobs:
             export HUGO_PORT=9443
             HUGO_THEME_GIT_SSH=git@github.com:dzello/reveal-hugo.git
             GIT_SSH_COMMAND='ssh -i ~/.ssh.perso.backed/id_rsa'
-            # GITHUB AUTH
-            # GITHUB_CLIENT_ID=not here, cause this is a secret, and a secret must never be included in a git commit
-            # GITHUB_CLIENT_SECRET=not here, cause this is a secret, and a secret must never be included in a git commit
+            export GITHUB_CLIENT_ID=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/oauth/github_client_id")
+            export GITHUB_AUTH_CALLBACK_URL=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/oauth/github_client_secret")
             export GITHUB_AUTH_CALLBACK_URL="https://${HEROKU_APP_ID}.herokuapp.com:/auth/gh/verte/callback"
             echo "Checking Circle CI Job env. variables"
             echo "SECRETHUB_ORG=[${SECRETHUB_ORG}]"
@@ -135,8 +134,8 @@ jobs:
             # And now I set as config vars all the Env.Var. needed at docker runtime, by my application :
             # ---
             export JSON_PAYLOAD="{
-              \"SECRETHUB_ORG\": \"${SECRETHUB_ORG}\",
-              \"SECRETHUB_REPO\": \"${SECRETHUB_REPO}\",
+              \"GITHUB_CLIENT_ID\": \"${GITHUB_CLIENT_ID}\",
+              \"GITHUB_CLIENT_SECRET\": \"${GITHUB_CLIENT_SECRET}\",
               \"HUGO_HOST\": \"${HUGO_HOST}\",
               \"HUGO_THEME_GIT_SSH\": \"${HUGO_THEME_GIT_SSH}\",
               \"GITHUB_AUTH_CALLBACK_URL\": \"${GITHUB_AUTH_CALLBACK_URL}\",
