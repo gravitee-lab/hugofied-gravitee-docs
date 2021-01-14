@@ -121,9 +121,10 @@ jobs:
             export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
             export HUGO_HOST=0.0.0.0
             # HUGO_PORT will anyway be set to Heroku's unpredictable PORT variable inside the container (Heroku Cloud networking specific)
-            export HUGO_PORT=9443
-            HUGO_THEME_GIT_SSH=git@github.com:dzello/reveal-hugo.git
-            GIT_SSH_COMMAND='ssh -i ~/.ssh.perso.backed/id_rsa'
+            # export HUGO_PORT=9443
+            export HUGO_BASE_URL="https://${HEROKU_APP_ID}.herokuapp.com/"
+            export HUGO_THEME_GIT_SSH=git@github.com:dzello/reveal-hugo.git
+            export GIT_SSH_COMMAND='ssh -i ~/.ssh.perso.backed/id_rsa'
             export GITHUB_CLIENT_ID=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/oauth/github_client_id")
             export GITHUB_AUTH_CALLBACK_URL=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/oauth/github_client_secret")
             export GITHUB_AUTH_CALLBACK_URL="https://${HEROKU_APP_ID}.herokuapp.com/auth/gh/verte/callback"
@@ -138,6 +139,7 @@ jobs:
               \"GITHUB_CLIENT_ID\": \"${GITHUB_CLIENT_ID}\",
               \"GITHUB_CLIENT_SECRET\": \"${GITHUB_CLIENT_SECRET}\",
               \"HUGO_HOST\": \"${HUGO_HOST}\",
+              \"HUGO_BASE_URL\": \"${HUGO_BASE_URL}\",
               \"HUGO_THEME_GIT_SSH\": \"${HUGO_THEME_GIT_SSH}\",
               \"GITHUB_AUTH_CALLBACK_URL\": \"${GITHUB_AUTH_CALLBACK_URL}\",
               \"FOO\": \"bar\",
