@@ -126,7 +126,7 @@ jobs:
               \"BAZ\": \"qux\"
             }"
 
-            curl -iv -n -X PATCH https://api.heroku.com/apps/$APP_ID_OR_NAME/config-vars \
+            curl -iv -n -X PATCH https://api.heroku.com/apps/${HEROKU_APP_ID}/config-vars \
               -H "Authorization: Bearer ${HEROKU_API_KEY}" \
               -d "${JSON_PAYLOAD}" \
               -H "Content-Type: application/json" \
@@ -137,7 +137,7 @@ jobs:
             echo "Deploying to Heroku, by pushing the built docker image, and release it using the Heroku API"
             echo "STOP - DEBUG"
             exit 0
-            # --- 
+            # ---
             # the process type, is the thing that you can find in the `heroku.yml` (for me it's `web`, and
             # there are others, which I don't care about like for backends I guess, stuff like that)
             export HEROKU_PROCESS_TYPE=web
