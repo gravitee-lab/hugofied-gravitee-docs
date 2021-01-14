@@ -16,7 +16,8 @@ export JSON_PAYLOAD="{
   \"BAZ\": \"qux\"
 }"
 
-curl -n -X PATCH https://api.heroku.com/apps/$APP_ID_OR_NAME/config-vars \
+curl -iv -n -X PATCH https://api.heroku.com/apps/${HEROKU_APP_ID}/config-vars \
+  -H "Authorization: Bearer ${HEROKU_API_KEY}" \
   -d "${JSON_PAYLOAD}" \
   -H "Content-Type: application/json" \
   -H "Accept: application/vnd.heroku+json; version=3"

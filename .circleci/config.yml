@@ -118,10 +118,15 @@ jobs:
             echo "Initializing Heroku Git repo"
             export HEROKU_APP_ID=gravit33-docs
             export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
+            export GITHUB_CLIENT_ID=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/oauth/github_client_id)
+            export GITHUB_CLIENT_SECRET=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/oauth/github_client_secret)
             # ---
             # And now I have all I need to invoke the Heroku API Endpoint :
             # ---
             export JSON_PAYLOAD="{
+              \"GITHUB_CLIENT_ID\": \"${GITHUB_CLIENT_ID}\",
+              \"GITHUB_CLIENT_SECRET\": \"${GITHUB_CLIENT_SECRET}\",
+              \"FOO\": \"bar\",
               \"FOO\": \"bar\",
               \"BAZ\": \"qux\"
             }"
