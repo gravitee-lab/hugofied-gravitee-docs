@@ -121,7 +121,8 @@ jobs:
             export HEROKU_APP_ID=gravit33-docs
             export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
             export HUGO_HOST=0.0.0.0
-            # HUGO_PORT will anyway be set to Heroku's unpredictable PORT variable inside the container (Heroku Cloud networking specific)
+            # HUGO_PORT will anyway be set to Heroku's unpredictable PORT variable inside the
+            # container (Heroku Cloud networking specific)
             # export HUGO_PORT=9443
             export HUGO_BASE_URL="https://${HEROKU_APP_ID}.herokuapp.com/"
             export HUGO_THEME_GIT_SSH=git@github.com:dzello/reveal-hugo.git
