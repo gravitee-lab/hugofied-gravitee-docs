@@ -118,18 +118,28 @@ jobs:
             echo "Heroku App config vars"
             export HEROKU_APP_ID=gravit33-docs
             export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
-            export GITHUB_CLIENT_ID=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/oauth/github_client_id")
-            export GITHUB_CLIENT_SECRET=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/oauth/github_client_secret")
+            export HUGO_HOST=0.0.0.0
+            # HUGO_PORT will anyway be set to Heroku's unpredictable PORT variable inside the container (Heroku Cloud networking specific)
+            export HUGO_PORT=9443
+            HUGO_THEME_GIT_SSH=git@github.com:dzello/reveal-hugo.git
+            GIT_SSH_COMMAND='ssh -i ~/.ssh.perso.backed/id_rsa'
+            # GITHUB AUTH
+            # GITHUB_CLIENT_ID=not here, cause this is a secret, and a secret must never be included in a git commit
+            # GITHUB_CLIENT_SECRET=not here, cause this is a secret, and a secret must never be included in a git commit
+            export GITHUB_AUTH_CALLBACK_URL="https://${HEROKU_APP_ID}.herokuapp.com:/auth/gh/verte/callback"
             echo "Checking Circle CI Job env. variables"
             echo "SECRETHUB_ORG=[${SECRETHUB_ORG}]"
             echo "SECRETHUB_REPO=[${SECRETHUB_REPO}]"
             echo "HEROKU_APP_ID=[${HEROKU_APP_ID}]"
             # ---
-            # And now I have all I need to invoke the Heroku API Endpoint :
+            # And now I set as config vars all the Env.Var. needed at docker runtime, by my application :
             # ---
             export JSON_PAYLOAD="{
-              \"GITHUB_CLIENT_ID\": \"${GITHUB_CLIENT_ID}\",
-              \"GITHUB_CLIENT_SECRET\": \"${GITHUB_CLIENT_SECRET}\",
+              \"SECRETHUB_ORG\": \"${SECRETHUB_ORG}\",
+              \"SECRETHUB_REPO\": \"${SECRETHUB_REPO}\",
+              \"HUGO_HOST\": \"${HUGO_HOST}\",
+              \"HUGO_THEME_GIT_SSH\": \"${HUGO_THEME_GIT_SSH}\",
+              \"GITHUB_AUTH_CALLBACK_URL\": \"${GITHUB_AUTH_CALLBACK_URL}\",
               \"FOO\": \"bar\",
               \"BAZ\": \"qux\"
             }"
@@ -143,8 +153,8 @@ jobs:
           name: "Deploy to Heroku by docker pushing container image, website at https://gravitee-docs.herokuapp.com/ "
           command: |
             echo "Deploying to Heroku, by pushing the built docker image, and release it using the Heroku API"
-            echo "STOP - DEBUG"
-            exit 0
+            # echo "STOP - DEBUG"
+            # exit 0
             # ---
             # the process type, is the thing that you can find in the `heroku.yml` (for me it's `web`, and
             # there are others, which I don't care about like for backends I guess, stuff like that)
@@ -166,7 +176,7 @@ jobs:
             # After the image is pushed, you have one more thing to do, to complete the deployment.
             # This "thing" consists of invoking one Heroku API Endpoint, to "release" the pushed container.
             # The Heroku API Endpoint is [/apps/$HEROKU_APP_ID/formation]: it is supposed to
-            # "release a contgaienr image". Odd name for an endpoint supposed to do that...
+            # "release a container image". Odd name for an endpoint supposed to do that...
             # ---
             # To invoke the Heroku API Endpoint, I need one container
             # meta data, obtained by [docker inspect ${DOCKER_IMAGE_GUN} --format={{.Id}}]
@@ -175,7 +185,7 @@ jobs:
             # remove all local container images, and then pull again the pushed image of the deployment.
             # ---
             # docker system prune -f --all && docker system prune -f --volumes
-            export DOCKER_IMAGE_GUN=registry.heroku.com/${HEROKU_APP_ID}/${HEROKU_PROCESS_TYPE}
+            export DOCKER_IMAGE_GUN="registry.heroku.com/${HEROKU_APP_ID}/${HEROKU_PROCESS_TYPE}"
             # docker pull ${DOCKER_IMAGE_GUN}
             # export DOCKER_IMAGE_ID=$(docker inspect ${DOCKER_IMAGE_GUN} --format={{.Id}})
             export DOCKER_IMAGE_ID=$(docker inspect ${DOCKER_IMAGE_GUN} --format={{.Id}})
