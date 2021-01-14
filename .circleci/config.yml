@@ -70,14 +70,14 @@ jobs:
                     ls -allh .
                     git clone git@github.com:gravitee-lab3/hugo-cheatsheet.git .
                     git checkout feature/github-auth
-                    mdkir -p ./.git_backed/ && cp -fR ./.git/* ./.git_backed/ && rm -fr ./.git/
+                    mkdir -p ./.git_backed/ && cp -fR ./.git/* ./.git_backed/ && rm -fr ./.git/
                     rm -fr ./hugo
                     mkdir -p ./hugo
                     git clone git@github.com:gravitee-lab3/hugofied-gravitee-docs.git ./hugo
                     cd ./hugo/
                     git checkout feature/first_release
                     cd ../
-                    mdkir -p ./.git/ && cp -fR ./.git_backed/* ./.git/ && rm -fr ./.git_backed/
+                    mkdir -p ./.git/ && cp -fR ./.git_backed/* ./.git/ && rm -fr ./.git_backed/
       - run: # print the name of the branch we're on
           name: "Docker oci image build for Heroku"
           command: |
