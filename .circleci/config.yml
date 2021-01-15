@@ -59,7 +59,7 @@ jobs:
           name: "Build env setup"
           command: |
                     echo "BACK_IN_TIME_VERSION=[${BACK_IN_TIME_VERSION}]"
-                    echo "It could inspire a more general purpose Orb Job, but it's not yet reusable as-is"
+                    # echo "It could inspire a more general purpose Orb Job, but it's not yet reusable as-is"
                     if [ -d ./.circleci ]; then
                       rm -fr ./circleci
                     fi
