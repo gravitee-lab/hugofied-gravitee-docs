@@ -66,7 +66,6 @@ jobs:
                     if [ -d ./graviteebot ]; then
                       rm -fr ./graviteebot
                     fi
-                    # there i will have to rm some files for sure
                     ls -allh .
                     git clone git@github.com:gravitee-lab3/hugo-cheatsheet.git .
                     git checkout feature/github-auth
