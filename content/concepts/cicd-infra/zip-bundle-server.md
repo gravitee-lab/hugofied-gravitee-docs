@@ -148,7 +148,7 @@ For the https://download.gravitee.io/ :
 
 
 
-## A First Quick recipe : setting up an first S3-based "Download" server with Clever Cloud
+## A First Quick recipe : setting up a first S3-based "Download" server with Clever Cloud
 
 
 #### Step 1 : Create a Cellar Addon
@@ -157,9 +157,189 @@ A first issue you may experience, that I exeprienced, is that my user on the cle
 
 {{< image alt=" permissions to create an add on" width="100%" height="100%" src="/images/figures/concepts-n-design/cicd-infra/jb-needs-permission-to-create-scellar-add-on.png" >}}
 
+#### Step 2: create a bucket, make it public, and store some files
+
+* I need to get a configuration file from Clever Cloud Web UI : a pre-filled `s3cfg` file. I should copy locally this file to the `~/.s3cfg` path. This cofiguration file will be sued by the `s3cmd` toolthat I should use.
+* so I need to [isntall `s3cmd`] :
+  * this tool is not a clever cloud sofware : https://s3tools.org/s3cmd and https://github.com/s3tools/s3cmd and https://github.com/s3tools/s3cmd/blob/master/INSTALL.md
+  * here is hwo to install it :
+
+
+
+__The `rclone` Docker image__
+
+
+Docker image for `Rclone` :
+
+```Dockerfile
+FROM debian:stable-slim
+
+RUN ls -allh
+# [python-pip] package necessary for s3cmd installation
+# [python3-pip] package necessary for s3cmd installation  ?
+# RUN apt-get update -y && apt-get install -y curl wget python3-pip jq
+RUN apt-get update -y && apt-get install -y bash curl wget jq unzip
+
+# install kubectl latest stable
+# https://kubernetes.io/docs/tasks/tools/install-kubectl/
+# doxnload binary
+RUN mkdir -p /gio/devops
+WORKDIR /gio/devops
+COPY install-rclone.sh /gio/devops
+RUN chmod +x ./install-rclone.sh && ./install-rclone.sh
+# ENTRYPOINT [ "/gio/devops/install-rclone.sh" ]
+CMD [ "/bin/bash" ]
+```
+
+I preferred `rclone` over `s3cmd` :
+* for `s3cmd`, I do not have any checksum file tocheck integrity of distribution downloads, and the GPG public Key to verify the signature is not available, see below the work done on building a container for `s3cmd`, and https://github.com/s3tools/s3cmd/issues/1173
+* At least, `rclone` project has checksums instead of GPG signatures, on the https://github.com/rclone/rclone/releases page, so that downloads integrity can be checked, and we can build a secured Docker image. So I'll build an image for Gravitee CICD Container library, based on `rclone` instead of `s3cmd`.
+
+
+```bash
+cat <<EOF >install-rclone.sh
+#!/bin/bash
+# https://rclone.org/install/#linux-installation-from-precompiled-binary
+# script to execute as ROOT user
+export RCLONE_OPS_HOME=\$(mktemp -d -t "rclone_install_ops-XXXXXXXXXX")
+export RCLONE_VERSION=\${RCLONE_VERSION:-'1.53.4'}
+export RCLONE_OS=osx
+export RCLONE_OS=plan9
+export RCLONE_OS=openbsd
+export RCLONE_OS=freebsd
+export RCLONE_OS=netbsd
+export RCLONE_OS=linux
+export RCLONE_CPU_ARCH=arm-v7
+export RCLONE_CPU_ARCH=amd64
+
+curl -LO "https://github.com/rclone/rclone/releases/download/v\${RCLONE_VERSION}/rclone-v\${RCLONE_VERSION}-\${RCLONE_OS}-\${RCLONE_CPU_ARCH}.zip"
+# verify binary
+curl -LO "https://github.com/rclone/rclone/releases/download/v\${RCLONE_VERSION}/SHA256SUMS"
+cat ./SHA256SUMS | grep "rclone-v\${RCLONE_VERSION}-\${RCLONE_OS}-\${RCLONE_CPU_ARCH}.zip" | sha256sum --check --status
+# install it
+
+unzip ./rclone-v\${RCLONE_VERSION}-\${RCLONE_OS}-\${RCLONE_CPU_ARCH}.zip -d \${RCLONE_OPS_HOME}
+export WHEREIAM=\$(pwd)
+echo "\\\${RCLONE_OPS_HOME}=\${RCLONE_OPS_HOME}"
+echo "\\\${RCLONE_OPS_HOME}/rclone-v\\\${RCLONE_VERSION}-\\\${RCLONE_OS}-\\\${RCLONE_CPU_ARCH}=\${RCLONE_OPS_HOME}/rclone-v\${RCLONE_VERSION}-\${RCLONE_OS}-\${RCLONE_CPU_ARCH}"
+ls -allh \${RCLONE_OPS_HOME}/rclone-v\${RCLONE_VERSION}-\${RCLONE_OS}-\${RCLONE_CPU_ARCH}
+
+cd \${RCLONE_OPS_HOME}/rclone-v\${RCLONE_VERSION}-\${RCLONE_OS}-\${RCLONE_CPU_ARCH}
+cp rclone /usr/bin/
+chown root:root /usr/bin/rclone
+chmod 755 /usr/bin/rclone
+cd \${WHEREIAM}
+rm -fr \${RCLONE_OPS_HOME}
+unset RCLONE_VERSION
+rclone --version
+EOF
+
+
+cat <<EOF >Dockerfile
+FROM debian:stable-slim
+
+RUN ls -allh
+RUN apt-get update -y && apt-get install -y bash curl wget jq unzip
+RUN mkdir -p /gio/devops
+WORKDIR /gio/devops
+COPY install-rclone.sh /gio/devops
+RUN chmod +x ./install-rclone.sh && ./install-rclone.sh
+# ENTRYPOINT [ "/gio/devops/install-rclone.sh" ]
+CMD [ "/bin/bash" ]
+EOF
+docker build -t graviteeio/rclone:clever-cloud-0.0.1 .
+docker run -itd --name devops-bubble graviteeio/rclone:clever-cloud-0.0.1 bash
+docker exec -it devops-bubble bash -c "rclone --version"
+# so ok, ready to work with s3cmd now
+
+```
+
+* Right, usage documentation of `Rclone` : https://rclone.org/docs/
+
+
+__The `s3cmd` Docker image__
+
+HEre is
+```bash
+cat <<EOF >install-s3cmd.sh
+#!/bin/bash
+export INSTALL_OPS_HOME=\$(mktemp -d -t "s3cmd_install_ops-XXXXXXXXXX")
+export S3CMD_VERSION=\${S3CMD_VERSION:-'2.1.0'}
+curl -LO https://github.com/s3tools/s3cmd/releases/download/v\${S3CMD_VERSION}/s3cmd-\${S3CMD_VERSION}.zip
+curl -LO https://github.com/s3tools/s3cmd/releases/download/v\${S3CMD_VERSION}/s3cmd-\${S3CMD_VERSION}.zip.asc
+# okay this is a GPG based signature check
+# Si need GPG installed, a GPG keyring context
+gpg --keyid-format long --list-options show-keyring s3cmd-${S3CMD_VERSION}.zip.asc
+# I will need the GPG Public Key of the project, whichI could not find anywhere yet, so
+# I opened an issue to ask for it : https://github.com/s3tools/s3cmd/issues/1173
+
+# https://serverfault.com/questions/896228/how-to-verify-a-file-using-an-asc-signature-file
+
+# once verifications finished
+
+unzip ./s3cmd-\${S3CMD_VERSION}.zip -d \${INSTALL_OPS_HOME}
+export WHERE_IAM=\$(pwd)
+cd \${INSTALL_OPS_HOME}/s3cmd-2.1.0
+python setup.py install
+cd \${WHERE_IAM}
+rm -fr \${INSTALL_OPS_HOME}
+s3cmd --version
+EOF
+
+cat <<EOF >install-s3cmd.sh
+#!/bin/bash
+export INSTALL_OPS_HOME=\$(mktemp -d -t "s3cmd_install_ops-XXXXXXXXXX")
+export S3CMD_VERSION=\${S3CMD_VERSION:-'2.1.0'}
+curl -LO https://github.com/s3tools/s3cmd/releases/download/v\${S3CMD_VERSION}/s3cmd-\${S3CMD_VERSION}.zip
+curl -LO https://github.com/s3tools/s3cmd/releases/download/v\${S3CMD_VERSION}/s3cmd-\${S3CMD_VERSION}.zip.asc
+# okay this is a GPG based signature check
+# Si need GPG installed, a GPG keyring context
+gpg --keyid-format long --list-options show-keyring s3cmd-${S3CMD_VERSION}.zip.asc
+# I will need the GPG Public Key of the project, whichI could not find anywhere yet, so
+# I opened an issue to ask for it : https://github.com/s3tools/s3cmd/issues/1173
+
+# https://serverfault.com/questions/896228/how-to-verify-a-file-using-an-asc-signature-file
+
+# once verifications finished
+
+unzip ./s3cmd-\${S3CMD_VERSION}.zip -d \${INSTALL_OPS_HOME}
+export WHERE_IAM=\$(pwd)
+cd \${INSTALL_OPS_HOME}/s3cmd-2.1.0
+python setup.py install
+cd \${WHERE_IAM}
+rm -fr \${INSTALL_OPS_HOME}
+s3cmd --version
+EOF
+cat <<EOF >Dockerfile
+FROM debian:stable-slim
+
+RUN ls -allh
+# [python-pip] package necessary for s3cmd installation
+# [python3-pip] package necessary for s3cmd installation  ?
+# RUN apt-get update -y && apt-get install -y curl wget python3-pip jq
+RUN apt-get update -y && apt-get install -y bash curl wget python-pip python-setuptools jq unzip
+
+# install kubectl latest stable
+# https://kubernetes.io/docs/tasks/tools/install-kubectl/
+# doxnload binary
+RUN mkdir -p /gio/devops
+WORKDIR /gio/devops
+COPY install-s3cmd.sh /gio/devops
+RUN chmod +x ./install-s3cmd.sh && ./install-s3cmd.sh
+# ENTRYPOINT [ "/gio/devops/install-s3cmd.sh" ]
+CMD [ "/bin/bash" ]
+EOF
+docker build -t graviteeio/s3cmd:clever-cloud-0.0.1 .
+docker run -itd --name devops-bubble graviteeio/s3cmd:clever-cloud-0.0.1 bash
+docker exec -it devops-bubble bash -c "s3cmd --version"
+# so ok, ready to work with s3cmd now
+
+```
+
 
 ### Misc Resources
 
 * A tutorial form Clever Cloud : https://www.clever-cloud.com/blog/features/2020/10/08/s3-directory-listing/
+* Rclone https://rclone.org/install/
 * advised palylist while working :
   * ["Creedence Revival Clearwater Greatest Hits (Full Album) Best Songs (HQ)"](https://www.youtube.com/watch?v=05JgKtm9ZKU)
