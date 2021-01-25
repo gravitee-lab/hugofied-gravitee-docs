@@ -66,6 +66,19 @@
                   </li>
                   {{ end }}
               {{ end }}
+              {{ with (eq .Identifier "cicd_infra") }}
+                  <!--
+                  <li><a href="#">sous menu en dur un</a></li>
+                  <li><a href="#">sous menu en dur deux</a></li>
+                  -->
+                  {{ range  (sort $allMenus.cicd_infra ".Page.Params.menu_index" )  }}
+                  <li>
+                    <p><a href="{{ .Page.RelPermalink }}">
+                      {{ .Pre }}{{ .Name }}
+                    </a></p>
+                  </li>
+                  {{ end }}
+              {{ end }}
 
             {{ end }}
           </ul>

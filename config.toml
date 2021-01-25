@@ -55,6 +55,13 @@ theme = "gravitee-docs"
     url = "/concepts/circleci-orbs/"
     weight = 20
 
+  [[menu.concepts]]
+    identifier = "cicd_infra"
+    name = "Ci Cd System's Infrastructure"
+    url = "/concepts/cicd-infra/"
+    weight = 30
+
+
   # ---
   # There is one menu called "CI/CD Processes" in the top navbar menu
   # -
@@ -69,22 +76,22 @@ theme = "gravitee-docs"
     identifier = "apim_processes"
     name = "Gravitee APIM"
     url = "/cicd-processes/apim/"
-    weight = 30
+    weight = 40
   [[menu.cicd_processes]]
     identifier = "am_processes"
     name = "Gravitee AM"
     url = "/cicd-processes/am/"
-    weight = 40
+    weight = 50
   [[menu.cicd_processes]]
     identifier = "ae_processes"
     name = "Gravitee AE"
     url = "/cicd-processes/ae/"
-    weight = 50
+    weight = 60
   [[menu.cicd_processes]]
     identifier = "cockpit_processes"
     name = "Gravitee Cockpit"
     url = "/cicd-processes/cockpit/"
-    weight = 60
+    weight = 70
   # ---
   # There is one menu called "CI/CD Standard Operations" in the top navbar menu
   # ---
@@ -92,13 +99,13 @@ theme = "gravitee-docs"
     identifier = "developer_guide"
     name = "Developer Guide"
     url = "/standard-operations/developer-guide/"
-    weight = 70
+    weight = 80
 
   [[menu.standard_operations]]
     identifier = "tutorials"
     name = "Tutorials"
     url = "/standard-operations/tutorials/"
-    weight = 80
+    weight = 90
 
   # ---
   # There is one menu called "Secrets Management" in the top navbar menu
@@ -107,25 +114,25 @@ theme = "gravitee-docs"
     identifier = "Secrethub"
     name = "The Secrethub: User Guide"
     url = "/secrets-management/secrethub-guide/"
-    weight = 90
+    weight = 100
 
   [[menu.secrets_management]]
     identifier = "taxonomy_tree"
     name = "Secrets Inventory: The Secrets Taxonomy Tree"
     url = "/secrets-management/secrets-inventory/"
-    weight = 100
+    weight = 110
 
   [[menu.secrets_management]]
     identifier = "initialization"
     name = "Secrets Initialization"
     url = "/secrets-management/secrets-initialization/"
-    weight = 110
+    weight = 120
 
   [[menu.secrets_management]]
     identifier = "rotation"
     name = "Secrets Rotation"
     url = "/secrets-management/secrets-rotation/"
-    weight = 120
+    weight = 130
 
 
   # ---
@@ -137,14 +144,14 @@ theme = "gravitee-docs"
     identifier = "github_orchestrator"
     name = "The Orchestrator on Github"
     url = "/on_github/orchestrator/"
-    weight = 130
+    weight = 140
   [[menu.on_github]]
     identifier = "github_orbs"
     name = "The Gravitee Orbs on Github"
     url = "/on_github/circleci-orbs/"
-    weight = 140
+    weight = 150
   [[menu.on_github]]
     identifier = "github_dev_repos"
     name = "The Gravitee Orbs on Github"
     url = "/on_github/dev-repos/"
-    weight = 150
+    weight = 160

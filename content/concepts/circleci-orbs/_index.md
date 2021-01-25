@@ -9,9 +9,7 @@ nav_menu: "Standard Operations"
 type: circleci-orbs
 ---
 
+# The Circle CI Orbs
 
-## Circle CI Pipeline Concept
-
-...
 
 <!-- To complete (in the [layouts/circleci-pipelines/list.html]) -->
