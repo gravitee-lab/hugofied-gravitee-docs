@@ -13,16 +13,54 @@ type: cicd-infra
 
 # The Zip bundles Downloads Server (Work in progress)
 
-https://download.gravitee.io/
+
+### The problem
+
+The docker images of __Gravitee APIM__, and other Gravitee.io Products, are defined by Dockerfiles, using two "downloads" servers :
+* https://dist.gravitee.io/
+* and https://download.gravitee.io/
+
+The `Dockerfile`s defined for the Gravitee APIM are :
+* in the https://github.com/gravitee-io/gravitee-docker repo
+* Gravitee APIM Management API :
+  * release image: `./images/management-api/Dockerfile`
+  * nightly image: `./images/management-api/Dockerfile-nightly`
+* Gravitee APIM Management UI : `./images/management-ui/Dockerfile`
+  * release image: `./images/management-api/Dockerfile`
+  * nightly image: `./images/management-api/Dockerfile-nightly`
+* Gravitee APIM Portal UI : `./images/portal-ui/Dockerfile`
+  * release image: `./images/portal-ui/Dockerfile` (does not exist yet)
+  * nightly image: `./images/portal-ui/Dockerfile-nightly`
+
+Now, for each of those container image definition, here are the download servers usage :
+
+{{< tables/1/table id="sample" class="bordered" data-sample=10 >}}
+
+| Gravitee Product             | nightly or release | Download(s) server(s) used          | Check this in the git repo 's master branch          |
+|------------------------------|--------------------|-------------------------------------|------------------------------------------------------|
+| Gravitee APIM Management API | release            | https://download.gravitee.io/       | [`./images/management-api/Dockerfile` line 21](https://github.com/gravitee-io/gravitee-docker/blob/2ba64162af7717ccbcb79025e221e997846a34ae/images/management-api/Dockerfile#L21) |
+| Gravitee APIM Management API | nightly            | https://dist.gravitee.io/           | [`./images/management-api/Dockerfile-nightly` line 21](https://github.com/gravitee-io/gravitee-docker/blob/2ba64162af7717ccbcb79025e221e997846a34ae/images/management-api/Dockerfile-nightly#L21) |
+| Gravitee APIM Management UI  | release            | https://download.gravitee.io/       | [`./images/management-ui/Dockerfile` ligne 26](https://github.com/gravitee-io/gravitee-docker/blob/2ba64162af7717ccbcb79025e221e997846a34ae/images/management-ui/Dockerfile#L26)  |
+| Gravitee APIM Management UI  | nightly            | https://dist.gravitee.io/           | [`./images/management-ui/Dockerfile-nightly` ligne 27](https://github.com/gravitee-io/gravitee-docker/blob/2ba64162af7717ccbcb79025e221e997846a34ae/images/management-ui/Dockerfile-nightly#L27) |
+| Gravitee APIM Portal UI      | release            | _(image does not exist yet)_        | _(image does not exist yet)_ |
+| Gravitee APIM Portal UI      | nightly            | https://dist.gravitee.io/           | [`images/portal-ui/Dockerfile-nightly` ligne 27](https://github.com/gravitee-io/gravitee-docker/blob/2ba64162af7717ccbcb79025e221e997846a34ae/images/portal-ui/Dockerfile-nightly#L27) |
+
+{{</ tables/1/table >}}
+
+
+
+### Overview
 
 * Legacy :
-  * git based Apache HttpServer
+  * Apache HttpServer
+  * content defined by
 
 
-* New design :
+* New design main points :
   * must keep the old URLs, all based on https://download.gravitee.io/
   * S3 bucket based (clever cloud)
   * I will add a hugo theme to browse at least main pages and to start with for the home landing page (explaining what's there, the policy about not keeping files older than ...e tc...)
 
+### Misc Resources
 
-problems to solve :
+* A tutorial form Clever Cloud : https://www.clever-cloud.com/blog/features/2020/10/08/s3-directory-listing/

@@ -11,6 +11,9 @@ menu_index: 10
 type: developer-guide
 ---
 
+That `Kubernetes` project chose https://gohugo.io to manage its documentation : https://kubernetes.io/docs/contribute/#getting-started
+
+
 Je suis un article de démo du Thème Hugo
 
 Pour vous montrer tout ce qu'il est possible de faire avec un thème hugo :
