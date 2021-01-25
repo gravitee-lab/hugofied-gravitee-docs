@@ -35,6 +35,7 @@ This continuous deployment:
   * a `Helm` Chart currently defined in the `./cockpit/`, on the `cockpit` git branch of the {{< html_link text="Gravitee Helm Chart repo" link="https://github.com/gravitee-io/helm-charts/tree/cockpit/cockpit" >}},
   * and secret values currently defined in a {{< html_link text="temporary Gravitee repo named Cockpit Cloud" link="https://github.com/gravitee-io/cloud-cockpit" >}} : those values will, in the future, be securely stored with verisoning, in a secret manager, the `secrethub` used at Gravitee.io (consider it a SAAS offer for `HashiCorp Vault`).
 
+## Rolling update of the Gravitee Cockpit on Azure AKS with Pulumi
 
 Rolling update strategy problem :
 * in our continuous deployment scenario, we have :
@@ -47,78 +48,82 @@ Rolling update strategy problem :
 
 Will follow up https://github.com/pulumi/docs/issues/5012
 
-## Idea for the furture implementation
 
-basically the same as a release, only :
-* instead of infering a git branch name from the `version` property of each component, being valued with somethinglike `5.4.x` (then the target branch is )
-* a new `JSON` property for each `component`, named `pull-request`, allows to specify the developer 's pull request soruce git branch name
-* then the release is perform basedon those pull request soruce git branch name
+#### Idea  1 (stupid)
 
-```JSon
-{
-    "name": "Gravitee.io",
-    "version": "7.10.0-SNAPSHOT",
-    "buildTimestamp": "2020-10-15T07:19:32+0000",
-    "scmSshUrl": "git@github.com:gravitee-io",
-    "scmHttpUrl": "https://github.com/gravitee-io/",
-    "components": [
-        {
-            "name": "graviteek-cicd-test-maven-project-g1",
-            "version": "4.1.32-SNAPSHOT",
-            "pull-request": "pr-1589-spikearrest"
-        },
-        {
-            "name": "graviteek-cicd-test-maven-project-g2",
-            "version": "4.2.67-SNAPSHOT",
-            "pull-request": "pr-84-json-weirdo"
-        },
-        {
-            "name": "graviteek-cicd-test-maven-project-g3",
-            "version": "4.3.17-SNAPSHOT",
-            "pull-request": "pr-753-gdpr-scar"
-        },
-        {
-            "name": "gravitee-common",
-            "version": "1.18.0"
-        }
-      ],
-      "buildDependencies": [
-          [
-              "graviteek-cicd-test-maven-project-g1"
-          ],
-          [
-              "graviteek-cicd-test-maven-project-g2"
-          ],
-          [
-              "graviteek-cicd-test-maven-project-g3"
-          ],
-          [
-              "gravitee-common"
-          ],
-          [
-              "gravitee-repository",
-              "gravitee-expression-language",
-              "gravitee-service-discovery-api",
-              "gravitee-notifier-api"
-          ]
-      ]
-}
+* I will use 2 docker iamge tags to rolling update the nightly demo : `3.0.0-nightly`, and `3.0.0-nightly-previous`
+* then I will roll up `3.0.0-nightly` and `3.0.0-nightly-previous` tags :
+
+```bash
+
+# --
+# Before this, the Circle CI pipeline finished docker build of [graviteeio/cockpit-management-api:3.0.0]
+# --
+docker pull graviteeio/cockpit-management-api:3.0.0-nightly
+docker tag graviteeio/cockpit-management-api:3.0.0-nightly graviteeio/cockpit-management-api:3.0.0-nightly-previous
+docker push graviteeio/cockpit-management-api:3.0.0-nightly-previous
+
+docker rmi graviteeio/cockpit-management-api:3.0.0-nightly graviteeio/cockpit-management-api:3.0.0-nightly-previous
+# --
+# now we "nightly"-tag the newly built image ofGravitee Cockpit Management API
+docker tag graviteeio/cockpit-management-api:3.0.0 graviteeio/cockpit-management-api:3.0.0-nightly
+# And push it to Dockerhub
+docker push graviteeio/cockpit-management-api:3.0.0-nightly
+
+
+# --
+# Before this, the Circle CI pipeline finished docker build of [graviteeio/cockpit-webui:3.0.0]
+# --
+docker pull graviteeio/cockpit-webui:3.0.0-nightly
+docker tag graviteeio/cockpit-webui:3.0.0-nightly graviteeio/cockpit-webui:3.0.0-nightly-previous
+docker push graviteeio/cockpit-webui:3.0.0-nightly-previous
+
+docker rmi graviteeio/cockpit-webui:3.0.0-nightly graviteeio/cockpit-webui:3.0.0-nightly-previous
+# --
+# now we "nightly"-tag the newly built image ofGravitee Cockpit Web UI
+docker tag graviteeio/cockpit-webui:3.0.0 graviteeio/cockpit-webui:3.0.0-nightly
+# And push it to Dockerhub
+docker push graviteeio/cockpit-webui:3.0.0-nightly
 ```
 
+* Then I will :
+  * pulumi up with the image tag `3.0.0-nightly-previous`
+  * and pulumi up with the image tag `3.0.0-nightly`
+  * Note this might work, But is kind of stupid to be doomed to `pulumi up` twice to "flip image tags" : to begin with it is twice too long
 
+#### Idea 2 Using labels
 
-Process pattern :
-* perform a dry run for each commit on a pull request :
-  * the docker push happens on a private docker registry
-  * no deployment target (zero infrastructure in any cloud provider)
-  * but from the private docker registry, the development engineer can deploy on his own machine (watch Cicrlc CI and  trigger local deployment)
-* when the manager wants to decide whether or not he accepts the pullrequest or not, he can launch the same process:
-  * but then what happens is the same, but with a deployment in a cloud provider. (non dry-run)
-  * actually, that process can be laucnhed every evening, and the manager gets the results everry morning.
+Here is the idea :
 
+* We add a new label to the `kind: Deployment` `Helm` template for, named `app.gravitee.io/git_commit_id` :
+  * for Gravitee Cockpit Management API, to add in `cockpit/templates/api/api-deployment.yaml`
+  * for Gravitee Cockpit Web UI, to add in `cockpit/templates/ui/ui-deployment.yaml`
+* We add a new parameter in the `values.yaml` file, named `api.git_commit_id` : it has no default value (setting its value with `--set` is required), and sets the value of the `app.gravitee.io/git_commit_id: "{{ .Values.api.git_commit_id }}"` pod label in `cockpit/templates/api/api-deployment.yaml`.
+* We add a new parameter in the `values.yaml` file, named `ui.git_commit_id` : it has no default value (setting its value with `--set` is required), and sets the value of the `app.gravitee.io/git_commit_id: "{{ .Values.ui.git_commit_id }}"` pod label in `cockpit/templates/ui/ui-deployment.yaml`.
 
+Ok, so I will have to fork the https://github.com/gravitee-io/helm-charts/ to modify the Cockpit Helm Chart
 
+* In the Circle CI Pipeline, The `Pulumi` recipe sets the value of `api.git_commit_id` and the `ui.git_commit_id` Helm deployment, on the fly with the GIT_COMMIT_ID (SHA), obtianed fromthe lastcommit on `master` branch
+* For the `GIT_COMMIT_ID`, I will use `git rev-parse --short=15 HEAD` to get the 15 first digits of the commit HASH, instead of the 7 first digits obtained with `git rev-parse --short HEAD`
 
+* We will set the pod strategy to `Recreate` if `ImagePullPolicy: Always` is not enough
 
+Finally I will use the new stack config parameter `graviteeio:git_commit_id`, to set the value in the stack, and trigger a change in the pulumi stack, to an update :
 
-## Misc. Cahracteristics
+```bash
+export LOCAL_CHART_FOLDER=./.cockpit.charts/
+export DOCKER_IMAGE_TAG="3.0.0-nightly"
+export API_DOCKER_IMAGE_TAG=$(docker images | grep "graviteeio/cockpit-management-api" | awk '{print $2}')
+export UI_DOCKER_IMAGE_TAG=$(docker images | grep "graviteeio/cockpit-management-api" | awk '{print $2}')
+if ! [ "${API_DOCKER_IMAGE_TAG}" == "${UI_DOCKER_IMAGE_TAG}" ]; then
+  echo "Cockpit UI and Management API Docker images have different tags, we have a problem."
+  exit 7
+fi;
+export DOCKER_IMAGE_TAG=${API_DOCKER_IMAGE_TAG}
+
+export GIT_COMMIT_ID="$(git rev-parse --short=15 HEAD)"
+echo "GIT_COMMIT_ID=[${GIT_COMMIT_ID}]"
+pulumi config -s "${PULUMI_STACK_NAME}" set graviteeio:localChartFolder "${LOCAL_CHART_FOLDER}"
+pulumi config -s "${PULUMI_STACK_NAME}" set graviteeio:docker_image_tag "${DOCKER_IMAGE_TAG}"
+pulumi config -s "${PULUMI_STACK_NAME}" set graviteeio:api_git_commit_id "${GIT_COMMIT_ID}"
+```
