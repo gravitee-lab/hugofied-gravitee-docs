@@ -159,12 +159,132 @@ A first issue you may experience, that I exeprienced, is that my user on the cle
 
 #### Step 2: create a bucket, make it public, and store some files
 
-* I need to get a configuration file from Clever Cloud Web UI : a pre-filled `s3cfg` file. I should copy locally this file to the `~/.s3cfg` path. This cofiguration file will be sued by the `s3cmd` toolthat I should use.
-* so I need to [isntall `s3cmd`] :
-  * this tool is not a clever cloud sofware : https://s3tools.org/s3cmd and https://github.com/s3tools/s3cmd and https://github.com/s3tools/s3cmd/blob/master/INSTALL.md
-  * here is hwo to install it :
+* To create a bucket, I will need to use a command line tool, the two proposed by [the clever cloud team tutorial](https://www.clever-cloud.com/blog/features/2020/10/08/s3-directory-listing/) :
+  * I will use tha ttool in a docker container
+  * I compared `rclone` and `s3cmd`, and chose `rclone` over `s3cmd` : see below the full details in [the annex dedicatedto the subject](#annex--docker-images-and-comparison-of-rclone-and-s3cmd)
+* Now I need to configure `rclone`, to be able to run the command which will create the _"Scellar"_ S3 bucket :
+  * The CleverCloud Web UI provides a download link to download an `s3cmd`-ready configuration file, `s3cmd`:
+    * If I used `s3cmd`, I would map the downloaded file to the `~/.s3cfg` path inside the docker container
+    * So the question is : How do I convert this `s3cmd`-ready configuration file, downloaded from Clever CLoud, into a valid `rclone` configuration file ?
+    * Using he `rclone config` command,I could manage to generate a config file, which ahs he following format/content , for an "Amazon Drive Cloud" remote type :
+
+```bash
+jbl@pc-alienware-jbl:~/tests.s3cmd$ docker exec -it devops-bubble bash -c "cat /root/.config/rclone/rclone.conf"
+[clevercloudscellar]
+type = amazon cloud drive
+client_id = clientid
+client_secret = clientecret
+token = wdfgwdgfwd
+auth_url = wdfgwdfg
+token_url = https://clevercloud.com/oauth
+
+jbl@pc-alienware-jbl:~/tests.s3cmd$
+
+```
 
 
+* Here are the typical `rclone` commands I will have to execute :
+
+```bash
+# [rclone config] will be interactive, and
+rclone config
+# Then I will be able to perform the following comands on my remote S3 bucket :
+rclone ls remote:path # lists files in the "path" path of the remote
+rclone copy /local/path remote:path # copies /local/path to the remote,  in the "path" path of the remote
+rclone sync -i /local/path remote:path # syncs /local/path to the remote in the "path" path of the remote
+```
+
+So in my contianer, I will use 2 volumes :
+* one to map the `/root/.config/rclone/rclone.conf` configuration file to be used by `rclone` in the container
+* one to map the local folder to sync to the remote S3 Bucket
+
+```bash
+cat <<EOF >install-rclone.sh
+#!/bin/bash
+# https://rclone.org/install/#linux-installation-from-precompiled-binary
+# script to execute as ROOT user
+export RCLONE_OPS_HOME=\$(mktemp -d -t "rclone_install_ops-XXXXXXXXXX")
+export RCLONE_VERSION=\${RCLONE_VERSION:-'1.53.4'}
+export RCLONE_OS=osx
+export RCLONE_OS=plan9
+export RCLONE_OS=openbsd
+export RCLONE_OS=freebsd
+export RCLONE_OS=netbsd
+export RCLONE_OS=linux
+export RCLONE_CPU_ARCH=arm-v7
+export RCLONE_CPU_ARCH=amd64
+
+curl -LO "https://github.com/rclone/rclone/releases/download/v\${RCLONE_VERSION}/rclone-v\${RCLONE_VERSION}-\${RCLONE_OS}-\${RCLONE_CPU_ARCH}.zip"
+# verify binary
+curl -LO "https://github.com/rclone/rclone/releases/download/v\${RCLONE_VERSION}/SHA256SUMS"
+cat ./SHA256SUMS | grep "rclone-v\${RCLONE_VERSION}-\${RCLONE_OS}-\${RCLONE_CPU_ARCH}.zip" | sha256sum --check --status
+# install it
+
+unzip ./rclone-v\${RCLONE_VERSION}-\${RCLONE_OS}-\${RCLONE_CPU_ARCH}.zip -d \${RCLONE_OPS_HOME}
+export WHEREIAM=\$(pwd)
+echo "\\\${RCLONE_OPS_HOME}=\${RCLONE_OPS_HOME}"
+echo "\\\${RCLONE_OPS_HOME}/rclone-v\\\${RCLONE_VERSION}-\\\${RCLONE_OS}-\\\${RCLONE_CPU_ARCH}=\${RCLONE_OPS_HOME}/rclone-v\${RCLONE_VERSION}-\${RCLONE_OS}-\${RCLONE_CPU_ARCH}"
+ls -allh \${RCLONE_OPS_HOME}/rclone-v\${RCLONE_VERSION}-\${RCLONE_OS}-\${RCLONE_CPU_ARCH}
+
+cd \${RCLONE_OPS_HOME}/rclone-v\${RCLONE_VERSION}-\${RCLONE_OS}-\${RCLONE_CPU_ARCH}
+cp rclone /usr/bin/
+chown root:root /usr/bin/rclone
+chmod 755 /usr/bin/rclone
+cd \${WHEREIAM}
+rm -fr \${RCLONE_OPS_HOME}
+unset RCLONE_VERSION
+rclone --version
+EOF
+
+
+cat <<EOF >Dockerfile
+FROM debian:stable-slim
+
+RUN ls -allh
+RUN apt-get update -y && apt-get install -y bash curl wget jq unzip
+RUN mkdir -p /root/.config/rclone/
+RUN mkdir -p /gio/devops/s3bucket
+
+VOLUME /root/.config/rclone/rclone.conf
+VOLUME /gio/devops/s3bucket
+
+WORKDIR /gio/devops
+COPY install-rclone.sh /gio/devops
+RUN chmod +x ./install-rclone.sh && ./install-rclone.sh
+# ENTRYPOINT [ "/gio/devops/install-rclone.sh" ]
+CMD [ "/bin/bash" ]
+EOF
+
+docker build -t graviteeio/rclone:clever-cloud-0.0.1 .
+docker run -itd --name devops-bubble -v ./.my.rclone.config.file:/root/.config/rclone/rclone.conf -v ./local/files/to/s3/:/gio/devops/s3bucket graviteeio/rclone:clever-cloud-0.0.1 bash
+docker exec -it devops-bubble bash -c "rclone --version"
+docker exec -it devops-bubble bash -c "rclone config show"
+docker exec -it devops-bubble bash -c "rclone config file"
+# --- Assume the content ofthe [~/.config/rclone/rclone.conf] rclone config file is :
+# [clevercloudscellar]
+# type = amazon cloud drive
+# client_id = clientid
+# client_secret = clientecret
+# token = wdfgwdgfwd
+# auth_url = wdfgwdfg
+# token_url = https://clevercloud.com/oauth
+# --
+# Then, the remote name is [clevercloudscellar] , and I can browse into it like this :
+export RCLONE_REMOTE_NAME=clevercloudscellar
+docker exec -it devops-bubble bash -c "rclone ls ${RCLONE_REMOTE_NAME}:/"
+# Then, the remote name is [clevercloudscellar] , and I can
+# copy /gio/devops/s3bucket folder content in container, in the "/" path of the "clevercloudscellar" remote,  like this :
+export RCLONE_REMOTE_NAME=clevercloudscellar
+docker exec -it devops-bubble bash -c "rclone copy /gio/devops/s3bucket ${RCLONE_REMOTE_NAME}:/"
+# Then, the remote name is [clevercloudscellar] , and I can
+# sync /gio/devops/s3bucket folder content in container, in the "/" path of the "clevercloudscellar" remote,  like this :
+export RCLONE_REMOTE_NAME=clevercloudscellar
+docker exec -it devops-bubble bash -c "rclone sync -i /gio/devops/s3bucket ${RCLONE_REMOTE_NAME}:/"
+
+```
+
+
+#### ANNEX : Docker images, and comparison of `rclone` and `s3cmd`
 
 __The `rclone` Docker image__
 
