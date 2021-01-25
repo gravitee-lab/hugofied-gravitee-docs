@@ -96,8 +96,8 @@ docker push graviteeio/cockpit-webui:3.0.0-nightly
 Here is the idea :
 
 * We add a new label to the `kind: Deployment` `Helm` template for, named `app.gravitee.io/git_commit_id` :
-  * for Gravitee Cockpit Management API, to add in `cockpit/templates/api/api-deployment.yaml`
-  * for Gravitee Cockpit Web UI, to add in `cockpit/templates/ui/ui-deployment.yaml`
+  * for Gravitee Cockpit Management API, to add in `cockpit/templates/api/api-deployment.yaml`, at the [pod spec level](https://github.com/gravitee-io/helm-charts/blob/3a09fdf2a13318790e83f7b80e5484db2ce5be0d/cockpit/templates/api/api-deployment.yaml#L33)
+  * for Gravitee Cockpit Web UI, to add in `cockpit/templates/ui/ui-deployment.yaml`, at the [pod spec level](https://github.com/gravitee-io/helm-charts/blob/3a09fdf2a13318790e83f7b80e5484db2ce5be0d/cockpit/templates/ui/ui-deployment.yaml#L31)
 * We add a new parameter in the `values.yaml` file, named `api.git_commit_id` : it has no default value (setting its value with `--set` is required), and sets the value of the `app.gravitee.io/git_commit_id: "{{ .Values.api.git_commit_id }}"` pod label in `cockpit/templates/api/api-deployment.yaml`.
 * We add a new parameter in the `values.yaml` file, named `ui.git_commit_id` : it has no default value (setting its value with `--set` is required), and sets the value of the `app.gravitee.io/git_commit_id: "{{ .Values.ui.git_commit_id }}"` pod label in `cockpit/templates/ui/ui-deployment.yaml`.
 
