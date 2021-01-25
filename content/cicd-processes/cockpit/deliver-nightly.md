@@ -131,9 +131,8 @@ pulumi config -s "${PULUMI_STACK_NAME}" set graviteeio:api_git_commit_id "${GIT_
 Everytime the pipeline is triggered :
 * the pulumi stack config will be updated with the docker image tag and the git commit id, modifying every time, at least because of the git commit id in the `Pulumi.${PULUMI_STACK_NAME}.yaml` file
 * and a git commit with the modified `Pulumi.${PULUMI_STACK_NAME}.yaml` file, will be pushed to https://github.com/gravitee-lab/gravitee-cockpit-nightly-deployment, and then:
-  * either :
-    * we setup a Circle CI Pipeline in the https://github.com/gravitee-lab/gravitee-cockpit-nightly-deployment repo, which will be triggered by the pushed commit (or we create a new branch from  the `master` branch, and a Pull Request to `master` branch)
-  * or we have an additional approve workflow, which will git clone the git@github.com:gravitee-lab/gravitee-cockpit-nightly-deployment repo, `git checkout master`, and `pulumi up`
+  * either the Circle CI Pipeline in the https://github.com/gravitee-lab/gravitee-cockpit-nightly-deployment repo, triggered by the pushed commit, executes the `pulumi up --yes -s ${PULUMI_STACK_NAME}`
+  * or we have an additional approve workflow, which will git clone the git@github.com:gravitee-lab/gravitee-cockpit-nightly-deployment repo, `git checkout master`, and executes the `pulumi up --yes -s ${PULUMI_STACK_NAME}`
 
 Antoher more refined, and more gitops-complant, and wost-saving, workflow would be :
 * create a new git branch named `deployment-${GIT_COMMIT_ID}`, from `master`, in the https://github.com/gravitee-lab/gravitee-cockpit-nightly-deployment repo,
