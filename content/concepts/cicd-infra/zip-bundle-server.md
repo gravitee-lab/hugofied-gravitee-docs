@@ -195,8 +195,8 @@ rclone sync -i /local/path remote:path # syncs /local/path to the remote in the 
 ```
 
 So in my contianer, I will use 2 volumes :
-* one to map the `/root/.config/rclone/rclone.conf` configuration file to be used by `rclone` in the container
-* one to map the local folder to sync to the remote S3 Bucket
+* `-v ./.my.rclone.config.file:/root/.config/rclone/rclone.conf` : to map the `/root/.config/rclone/rclone.conf` configuration file to be used by `rclone` in the container
+* `-v ./local/files/to/s3/:/gio/devops/s3bucket` : to map the local folder to sync to the remote S3 Bucket
 
 ```bash
 cat <<EOF >install-rclone.sh
