@@ -379,7 +379,8 @@ docker exec -it devops-bubble bash -c "rclone --version"
 
 __The `s3cmd` Docker image__
 
-HEre is
+Here is the docker image I designed for `s3cmd`, in order to evalutate its installation procedure and its usage :
+
 ```bash
 cat <<EOF >install-s3cmd.sh
 #!/bin/bash
@@ -459,7 +460,7 @@ docker exec -it devops-bubble bash -c "s3cmd --version"
 
 ### Misc Resources
 
-* A tutorial form Clever Cloud : https://www.clever-cloud.com/blog/features/2020/10/08/s3-directory-listing/
+* A tutorial from Clever Cloud : https://www.clever-cloud.com/blog/features/2020/10/08/s3-directory-listing/
 * Rclone https://rclone.org/install/
 * advised palylist while working :
   * ["Creedence Revival Clearwater Greatest Hits (Full Album) Best Songs (HQ)"](https://www.youtube.com/watch?v=05JgKtm9ZKU)
