@@ -148,7 +148,7 @@ For the https://download.gravitee.io/ :
 
 
 
-## A First Quick recipe : setting up a first S3-based "Download" server with Clever Cloud
+### A First Quick recipe : setting up a first S3-based "Download" server with Clever Cloud
 
 
 #### Step 1 : Create a Cellar Addon
