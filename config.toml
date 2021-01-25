@@ -155,3 +155,9 @@ theme = "gravitee-docs"
     name = "The Gravitee Orbs on Github"
     url = "/on_github/dev-repos/"
     weight = 160
+
+  [[menu.this_sites_hugo_theme]]
+    identifier = "hugo_short_codes"
+    name = "Short Codes"
+    url = "/this_sites_hugo_theme/shortcodes"
+    weight = 500

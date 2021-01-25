@@ -156,3 +156,5 @@ For the https://download.gravitee.io/ :
 ### Misc Resources
 
 * A tutorial form Clever Cloud : https://www.clever-cloud.com/blog/features/2020/10/08/s3-directory-listing/
+* advised palylist while working :
+  * ["Creedence Revival Clearwater Greatest Hits (Full Album) Best Songs (HQ)"](https://www.youtube.com/watch?v=05JgKtm9ZKU)
