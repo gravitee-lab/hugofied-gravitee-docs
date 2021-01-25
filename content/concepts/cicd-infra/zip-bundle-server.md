@@ -153,7 +153,7 @@ For the https://download.gravitee.io/ :
 
 #### Step 1 : Create a Cellar Addon
 
-Here My user on the clervercloud portal does not have the permissions to create an add on (here I need to create a _"Scellar"_ `add-on`) :
+A first issue you may experience, that I exeprienced, is that my user on the clervercloud portal does not have the permissions to create an add on (here I need to create a _"Scellar"_ `add-on`) :
 
 {{< image alt=" permissions to create an add on" width="100%" height="100%" src="/images/figures/concepts-n-design/cicd-infra/jb-needs-permission-to-create-scellar-add-on.png" >}}
 
