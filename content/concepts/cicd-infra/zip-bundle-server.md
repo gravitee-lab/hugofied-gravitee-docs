@@ -245,6 +245,54 @@ __Solved__
 
 The Scellar add-on was already created, the Clever Cloud Web UI URL to the Scellar S3 bucket is : https://console.clever-cloud.com/organisations/orga_ba284152-8da9-4e8f-b32f-21d86100cac1/addons/addon_af75d939-a744-4f33-b598-886a692165f9
 
+Ok, the downloaded credentials file (validfor `s3cmd`), is :
+
+```bash
+~/someops/yaml2json$ curl https://cellar-addon-clevercloud-customers.services.clever-cloud.com/s3cfg?token=2-FwSzFnV9dVzVHQqu06%2BZfIq8dWCFHR%2F4%2BbONqqRH5hDS%2FFFMBPpcLSGuMl%2FHF9j0lQj7DcR7%2FJY5zSE4Di7Ldewv069N0wlkrIZo0B38%2B894sNyc%2B0o4ALRq1rsLknEdDsAjof%2BJs7bS9KhqMPEqgw%3D%3D
+
+access_key = RF1SG1FHT83PQVBBED17
+secret_key = rxQITmnP9hX5srKpRfNkoFqF2QAgMDUnQUqHyz5c
+bucket_location = US
+cloudfront_host = cloudfront.amazonaws.com
+cloudfront_resource = /2010-07-15/distribution
+default_mime_type = binary/octet-stream
+delete_removed = False
+dry_run = False
+encoding = UTF-8
+encrypt = False
+follow_symlinks = False
+force = False
+get_continue = False
+gpg_command = /usr/bin/gpg
+gpg_decrypt = %(gpg_command)s -d --verbose --no-use-agent --batch --yes --passphrase-fd %(passphrase_fd)s -o %(output_file)s %(input_file)s
+gpg_encrypt = %(gpg_command)s -c --verbose --no-use-agent --batch --yes --passphrase-fd %(passphrase_fd)s -o %(output_file)s %(input_file)s
+gpg_passphrase =
+guess_mime_type = True
+host_base = cellar-c2.services.clever-cloud.com
+host_bucket = %(bucket)s.cellar-c2.services.clever-cloud.com
+human_readable_sizes = False
+list_md5 = False
+log_target_prefix =
+preserve_attrs = True
+progress_meter = True
+proxy_host =
+proxy_port = 0
+recursive = False
+recv_chunk = 4096
+reduced_redundancy = False
+send_chunk = 4096
+simpledb_host = sdb.amazonaws.com
+skip_existing = False
+socket_timeout = 300
+urlencoding_mode = normal
+use_https = False
+verbosity = WARNING
+
+~/$
+
+
+```
+
 #### Step 2: create a bucket, make it public, and store some files
 
 * To create a bucket, I will need to use a command line tool, the two proposed by [the clever cloud team tutorial](https://www.clever-cloud.com/blog/features/2020/10/08/s3-directory-listing/) :
