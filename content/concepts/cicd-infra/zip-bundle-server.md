@@ -318,6 +318,28 @@ jbl@pc-alienware-jbl:~/tests.s3cmd$
 
 ```
 
+* Neverthe less, to go quicker to aim, I will use `s3cmd`, to avoid the task of converting `s3cmd` config file to `rclone` config file :
+
+```bash
+# Create a bucket
+export S3_BUCKET_NAME="gravitee-releases-downloads"
+s3cmd mb s3://${S3_BUCKET_NAME}
+echo "------------------------------------------------------------------------------------------------------------"
+echo "The bucket is now available at https://${S3_BUCKET_NAME}.cellar-c2.services.clever-cloud.com/"
+echo "------------------------------------------------------------------------------------------------------------"
+# [ --acl-public] option makes the files publicly available
+s3cmd put --acl-public image.jpg s3://${S3_BUCKET_NAME}
+# ls into bucket
+s3cmd ls s3://${S3_BUCKET_NAME}
+# cors config based on xml, set allowed  origin to domain name set for CNAME : https://www.clever-cloud.com/doc/deploy/addon/cellar/#cors-configuration
+
+
+# bucket file browser
+git clone https://github.com/qoomon/aws-s3-bucket-browser/
+s3cmd put --acl-public aws-s3-bucket-browser/favicon.ico s3://${S3_BUCKET_NAME}/favicon.ico
+s3cmd put --acl-public aws-s3-bucket-browser/index.html s3://${S3_BUCKET_NAME}/index.html
+s3cmd put --acl-public aws-s3-bucket-browser/logo.png s3://${S3_BUCKET_NAME}/logo.png
+```
 
 * Here are the typical `rclone` commands I will have to execute :
 
