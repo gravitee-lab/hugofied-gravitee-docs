@@ -11,17 +11,127 @@ menu_index: 11
 type: cicd-infra
 ---
 
-# The Zip bundles Downloads Server(s) (Work in progress)
+# _(Work in progress)_
 
-## The problem
 
-The docker images of __Gravitee APIM__, and other Gravitee.io Products, are defined by Dockerfiles, whose docker build process makes use of two "downloads" servers :
+
+### Description of the CI CD System Component(s)
+
+All container images of __Gravitee APIM__, and most of Gravitee.io Products, are defined by `Dockerfile`s, whose docker build process makes use of two "downloads" servers :
 * https://dist.gravitee.io/
 * and https://download.gravitee.io/
 
+### CI CD Processes usiing the CI CD System Component(s)
+
+The https://dist.gravitee.io/ and https://download.gravitee.io/ _" Zip bundles Downloads Server(s)"_ , are dependencies of the two foolowing CI CD Processes, For `Gravitee APIM` and most of Gravitee Products :
+* Continuous Delivery and Deployment of the Stable Release
+* Continuous Delivery and Deployment of the Nightly Release
+
+### Legacy Design
+
+For the https://dist.gravitee.io/ :
+* Apache HttpServer
+* Its content is defined by the workspace of a Jenkins Job : the Jenkins job which in the legacy CICD Sytem, builds the nightly release of `Gravitee APIM`
+* This service only cares about on Gravitee Product :  `Gravitee APIM`
 
 
-## The Gravitee.Io Products Impacted
+
+For the https://download.gravitee.io/ :
+* Apache HttpServer
+* content defined by the https://github.com/gravitee-io/dist.gravitee.io git repo:
+  * the files served at the root of https://download.gravitee.io
+  * are exactly defined as if the https://github.com/gravitee-io/dist.gravitee.io was git cloned at the root of "the `www/` folder" of the https://download.gravitee.io Apache server
+* The  distributed zip bundles, are for the releases of the following Gravitee Products :
+  * [Gravitee APIM, Community Edition](https://github.com/gravitee-io/dist.gravitee.io/tree/master/graviteeio-apim)
+  * [Gravitee APIM, Entreprise Edition](https://github.com/gravitee-io/dist.gravitee.io/tree/master/graviteeio-ee/apim)
+  * [Gravitee AM, Community Edition](https://github.com/gravitee-io/dist.gravitee.io/tree/master/graviteeio-am)
+  * [Gravitee AM, Enreprise Edition](https://github.com/gravitee-io/dist.gravitee.io/tree/master/graviteeio-ee/am)
+  * [Gravitee Alert Engine](https://github.com/gravitee-io/dist.gravitee.io/tree/master/graviteeio-ae)
+  * There are also other distributed bundles :
+    * [Gravitee "Notifiers" Plugins](https://github.com/gravitee-io/dist.gravitee.io/tree/master/plugins/notifiers) : those are components developedby the Gravitee Team
+    * [Sample APIs](https://github.com/gravitee-io/dist.gravitee.io/tree/master/sample-apis) are simple APIs used for tests and demo purposes, by the gravitee team.Their souce codeis versioned in the https://github.com/gravitee-io/gravitee-sample-apis git repo
+
+
+### The problem of the Legacy Design
+
+A problem is common to both of https://download.gravitee.io/ and https://dist.gravitee.io/ :
+* no limits are openly, clearly defined,
+* when do we stop serving given file ?
+* those limits should probably synced to the LTS / STS policies : the CICD System shoudl automatically comply with those poicies, and these policies should be configuration parameters of the CI CD System.
+
+This first problem will be addresseed, but is not the most critical in the Legacy CICD System.
+
+The two server-specific problems described below, are more important to solve, before we address this common problem.
+
+#### The problem of the  https://download.gravitee.io/ server
+
+The content served by this server is updated by git cloning the https://github.com/gravitee-io/dist.gravitee.io git repo :
+* This `git clone` operation is very long, since new files are pushed with git commits
+* the files being held by the git repository, it will be even longer to perfom operations like is not easy to perform operations like  "get rid of files older than a given date",
+
+#### The problem of the  https://dist.gravitee.io/ server
+
+* The operation of updating the content served by https://dist.gravitee.io/ is completely tied to Jenkins :
+  * The server is an Apache Server, and the content of its _"www/"_ folder is mapped as a docker volume, to the workspace of a Jenkins job, directly on the Jenkins Worker machine :  If the Jenkins service goes down, the https://dist.gravitee.io/ goes down with it.
+  * If we want to use other Pipeline service providers, like `Circle CI`, `Drone`, or `Tekton`, well we have to completely redesign the https://dist.gravitee.io/ service with that migration
+
+So here, we see that the Legacy system cries out for a decoupling between :
+* the Pipeline Service provider used in the CI CD System : the part of the CI CD System which processes big jbo to build the zip bundle files to be served
+* and the simple static files server responsible dfor serving those files, on the other hand
+
+
+### The Target Design to solve our problem(s)
+
+Alright, now if we sum up :
+* For the https://download.gravitee.io/ service :
+  * we a decoupling between the Pipeline Service provider, and the https://download.gravitee.io/ service, responsible of making available for download, the GRavitee Porducts zip bundles files :  the decoupling is realized using a git repository to store the built zip bundles, after they are built by the pipelines, and before publishing them to the https://download.gravitee.io/ service
+  * but this decoupling solution makes stadnard operations slow : we doomed to git clone a huge size git repository, and managing "limits synced to STS / LTS policies" is made even more complex.
+* For the https://dist.gravitee.io/ service :
+  * we lack a decoupling between the Pipeline Service provider, and the https://download.gravitee.io/ service
+  * this makes the https://dist.gravitee.io/ service both very non resilient, and complex to migrate in case we wxould like to try different Pipeline service providers (`Drone`, `Circle CI`, `Tekton`, etc...) th
+
+Okay, so for both of those services, we :
+* will use an S3 bucket to :
+   * realize a decoupling between the Pipeline Service provider, and the https://download.gravitee.io/ service
+   * realize a decoupling between the Pipeline Service provider, and the https://dist.gravitee.io/ service
+   * make incremental content update a quick as possible
+   * make any "no files older than"-like policies easy and stright forward to implement
+* and we will use an S3 bucket, because most of the Cloud providers offer the feature of turning an S3 bucket into a static files server.
+
+### Planned path to Target Design
+
+
+
+
+#### POCs
+
+Therefore, a first main design task will be to conduct a POC where :
+
+* a set of `N` (`N > 1`) pipelines produce `N` zip files an jar files with a maven `mvn clean install` command
+* those `N` files are pushed to an S3 bucket
+* the S3 bucket is configured to serve its files as a static fiels server
+
+
+Next POC (migration, consolidation, Circle CI Orb Command to sync S3 bucket) :
+* CI CD Process "Stable Release" :
+  * migration of the existing content at https://download.gravitee.io/, to the s3 bucket
+  * launching a `Gravitee APIM` Stable Release must update the content of https://download.gravitee.io/
+* CI CD Process "Nightly Release" :
+  * migration of the existing content at https://dist.gravitee.io/, to the s3 bucket
+  * launching a `Gravitee APIM` Nightly Release must update the content of https://dist.gravitee.io/
+
+
+
+Misc.  requirements:
+* Migrations must keep the old URLs, all based on https://download.gravitee.io/ , no cut off
+* S3 bucket based (clever cloud)
+* I will add a nicer browsing web interface :
+  * quick one stealed from [the clever cloud tutorial](https://www.clever-cloud.com/blog/features/2020/10/08/s3-directory-listing/) :  https://github.com/qoomon/aws-s3-bucket-browser
+  * maybe later for eye pleasure, thngs like hugo theme to browse at least main pages and to start with for the home landing page (explaining what's there, the policy about not keeping files older than ...e tc...)
+
+
+
+## The Gravitee.io Products Impacted
 
 ### Gravitee APIM
 
@@ -41,8 +151,8 @@ The `Dockerfile`s defined for the 4 Gravitee APIM components are :
     * nightly image: `./images/gateway/Dockerfile-nightly`
 
 Now, for each of those container image definition, I synthetized the _"download servers"_ usage in the table below, making clear that :
-* https://dist.gravitee.io/ is used to build nightly images
-* and https://download.gravitee.io/is used to build release images
+* The https://dist.gravitee.io server is used to build nightly images, and for all of them, the content distributed at https://dist.gravitee.io/master/dist is used. Also note that in the Legacy CI CD System the https://dist.gravitee.io/ is only used for the `Gravitee APIM` Gravitee.io Product, cf. [The annex about the nightly distribution service](#annex--a-cadidate-next-target-design)
+* and https://download.gravitee.io/ is used to build release images.
 
 Those two servers are therefore, two components of the infrastructure of the global Gravitee CICD System.
 
@@ -75,8 +185,8 @@ The `Dockerfile`s defined for the 2 Gravitee Cockpit components are :
 
 
 Now, for each of those container image definition, I synthetized the _"download servers"_ usage in the table below, making clear that :
-* https://dist.gravitee.io/ is not used, like for GRavitee API, to build nightly images : In the stead, the files generated by the repo build process, are locally used in pipelines execution, by the Docker build process.
-* and that https://download.gravitee.io/ is palned to be used to build release images ofGRavitee Cockpit, when its release process will fully be implemented, similarly to Gravitee APIM.
+* https://dist.gravitee.io/ is not used, like for Gravitee API, to build nightly images : In the stead, the files generated by the repo build process, are locally used in pipelines execution, by the Docker build process. Also note that in the Legacy CI CD System the https://dist.gravitee.io/ is only used for the `Gravitee APIM` Gravitee.io Product, cf. [The annex about the nightly distribution service](#annex--a-cadidate-next-target-design)
+* and that https://download.gravitee.io/ is planned to be used to build release images of Gravitee Cockpit, when its release process will fully be implemented, similarly to Gravitee APIM.
 
 
 {{< tables/1/table id="sample" class="bordered" data-sample=10 >}}
@@ -120,32 +230,6 @@ Now, for each of those container image definition, I synthetized the _"download 
 | Gravitee AM Management UI  | release            | https://download.gravitee.io/       | [`./images/management-ui/Dockerfile` ligne 26](https://github.com/gravitee-io/gravitee-docker/blob/2ba64162af7717ccbcb79025e221e997846a34ae/images/management-ui/Dockerfile#L26)  |
 -->
 {{</ tables/1/table >}}
-
-
-## Design Overview of the CICD System Component(s)
-
-* https://dist.gravitee.io/
-* and https://download.gravitee.io/
-
-### Legacy
-
-For the https://dist.gravitee.io/ :
-* Apache HttpServer
-* content defined by a git repo the https://github.com/gravitee-io/dist.gravitee.io
-
-
-For the https://download.gravitee.io/ :
-* Apache HttpServer
-* content defined by a git repo the https://github.com/gravitee-io/dist.gravitee.io
-
-
-### New design
-
-
-* must keep the old URLs, all based on https://download.gravitee.io/
-* S3 bucket based (clever cloud)
-* I will add a hugo theme to browse at least main pages and to start with for the home landing page (explaining what's there, the policy about not keeping files older than ...e tc...)
-
 
 
 ### A First Quick recipe : setting up a first S3-based "Download" server with Clever Cloud
@@ -284,7 +368,7 @@ docker exec -it devops-bubble bash -c "rclone sync -i /gio/devops/s3bucket ${RCL
 ```
 
 
-#### ANNEX : Docker images, and comparison of `rclone` and `s3cmd`
+## ANNEX : Docker images, and comparison of `rclone` and `s3cmd`
 
 __The `rclone` Docker image__
 
@@ -457,8 +541,17 @@ docker exec -it devops-bubble bash -c "s3cmd --version"
 
 ```
 
+## ANNEX : A candidate Next Target Design
 
-### Misc Resources
+Note finally that The https://dist.gravitee.io/ service :
+* only cares about on Gravitee Product `Gravitee APIM`.
+* Well, we probably would want to generalize the https://dist.gravitee.io/ service to be responsible of serving distrib files, of Nightly Releases, for all Gravitee Products, not just `Gravitee APIM`.
+* Indeed, we can easily conceive :
+  * a "Nightly Release" concept for any Gravitee.io Product
+  * and therefore a "Deliver Nightly Release" CI CD Process, just like we have begun doing so for Gravitee Cockpit, see [Gravitee Cockpit (work in progress)](#gravitee-cockpit-work-in-progress)
+
+
+## ANNEX : Misc Resources
 
 * A tutorial from Clever Cloud : https://www.clever-cloud.com/blog/features/2020/10/08/s3-directory-listing/
 * Rclone https://rclone.org/install/
