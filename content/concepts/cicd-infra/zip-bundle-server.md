@@ -21,7 +21,7 @@ All container images of __Gravitee APIM__, and most of Gravitee.io Products, are
 * https://dist.gravitee.io/
 * and https://download.gravitee.io/
 
-### CI CD Processes usiing the CI CD System Component(s)
+### CI CD Processes using the CI CD System Component(s)
 
 The https://dist.gravitee.io/ and https://download.gravitee.io/ _" Zip bundles Downloads Server(s)"_ , are dependencies of the two following CI CD Processes, For `Gravitee APIM` and most of Gravitee Products :
 * Continuous Delivery and Deployment of the Stable Release
