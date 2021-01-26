@@ -327,6 +327,14 @@ s3cmd mb s3://${S3_BUCKET_NAME}
 echo "------------------------------------------------------------------------------------------------------------"
 echo "The bucket is now available at https://${S3_BUCKET_NAME}.cellar-c2.services.clever-cloud.com/"
 echo "------------------------------------------------------------------------------------------------------------"
+# bucket file browser
+git clone https://github.com/qoomon/aws-s3-bucket-browser/
+s3cmd put --acl-public aws-s3-bucket-browser/favicon.ico s3://${S3_BUCKET_NAME}/favicon.ico
+s3cmd put --acl-public aws-s3-bucket-browser/index.html s3://${S3_BUCKET_NAME}/index.html
+s3cmd put --acl-public aws-s3-bucket-browser/logo.png s3://${S3_BUCKET_NAME}/logo.png
+
+# Circle CI Orb Command will just push zip files like this :
+# (by configuration param set the path of the target folder into the bucket)
 # [ --acl-public] option makes the files publicly available
 s3cmd put --acl-public image.jpg s3://${S3_BUCKET_NAME}
 # ls into bucket
@@ -334,12 +342,9 @@ s3cmd ls s3://${S3_BUCKET_NAME}
 # cors config based on xml, set allowed  origin to domain name set for CNAME : https://www.clever-cloud.com/doc/deploy/addon/cellar/#cors-configuration
 
 
-# bucket file browser
-git clone https://github.com/qoomon/aws-s3-bucket-browser/
-s3cmd put --acl-public aws-s3-bucket-browser/favicon.ico s3://${S3_BUCKET_NAME}/favicon.ico
-s3cmd put --acl-public aws-s3-bucket-browser/index.html s3://${S3_BUCKET_NAME}/index.html
-s3cmd put --acl-public aws-s3-bucket-browser/logo.png s3://${S3_BUCKET_NAME}/logo.png
+
 ```
+* domain name config :  create a CNAME record on your domain pointing to cellar-c2.services.clever-cloud.com
 
 * Here are the typical `rclone` commands I will have to execute :
 
