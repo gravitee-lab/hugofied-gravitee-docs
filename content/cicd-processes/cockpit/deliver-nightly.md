@@ -139,3 +139,18 @@ Antoher more refined, and more gitops-complant, and wost-saving, workflow would 
 * push the git commit to the  `deployment-${GIT_COMMIT_ID}` git branch,
 * create a Pull Request from the  `deployment-${GIT_COMMIT_ID}` git branch, tothe `master`, in the https://github.com/gravitee-lab/gravitee-cockpit-nightly-deployment
 * the PR is accepted, and the CircleCI Pipeline , in the https://github.com/gravitee-lab/gravitee-cockpit-nightly-deployment repo, on `master`, triggers a Circle CI workflow which executes the pulumi up with the updated `Pulumi.${PULUMI_STACK_NAME}.yaml`
+
+## Misc. notes on the `Pulumi`
+
+The `Gravitee Cockpit` uses MTLS to communicate with `Gravitee APIM` and `Gravitee AM` :
+* Through websocket
+* The `Gravitee Cockpit` exposes the websocket server
+* `Gravitee APIM` and `Gravitee AM` ar equiped with a websocket client, and they establish a websocket connection, with Mutual TLS (MTLS) authentication, with the `Gravitee Cockpit`
+
+Helm Charts :
+* Nginx :
+  * ccc
+  * ccc
+* Gravitee Cockpit Helm Chart :
+  * a `Helm` Chart currently defined in the `./cockpit/`, on the `cockpit` git branch of the {{< html_link text="Gravitee Helm Chart repo" link="https://github.com/gravitee-io/helm-charts/tree/cockpit/cockpit" >}},
+  * and secret values currently defined in a {{< html_link text="temporary Gravitee repo named Cockpit Cloud" link="https://github.com/gravitee-io/cloud-cockpit" >}} : those values will, in the future, be securely stored with verisoning, in a secret manager, the `secrethub` used at Gravitee.io (consider it a SAAS offer for `HashiCorp Vault`).

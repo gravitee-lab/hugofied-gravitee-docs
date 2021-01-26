@@ -107,9 +107,9 @@ Okay, so for both of those services, we :
 
 Therefore, a first main design task will be to conduct a POC where :
 
-* a set of `N` (`N > 1`) pipelines produce `N` zip files an jar files with a maven `mvn clean install` command
-* those `N` files are pushed to an S3 bucket
-* the S3 bucket is configured to serve its files as a static fiels server
+* A set of `N` (`N > 1`) pipelines produce `N` zip files an jar files with a maven `mvn clean install` command. Here I will use forks of exitiing https://github.com/gravitee-io repos, to make the POC "real-life"
+* Those `N` files are pushed to an S3 bucket
+* The S3 bucket is configured to serve its files as a static fiels server
 
 
 Next POC (migration, consolidation, Circle CI Orb Command to sync S3 bucket) :
@@ -240,6 +240,10 @@ Now, for each of those container image definition, I synthetized the _"download 
 A first issue you may experience, that I exeprienced, is that my user on the clervercloud portal does not have the permissions to create an add on (here I need to create a _"Scellar"_ `add-on`) :
 
 {{< image alt=" permissions to create an add on" width="100%" height="100%" src="/images/figures/concepts-n-design/cicd-infra/jb-needs-permission-to-create-scellar-add-on.png" >}}
+
+__Solved__
+
+The Scellar add-on was already created, the Clever Cloud Web UI URL to the Scellar S3 bucket is : https://console.clever-cloud.com/organisations/orga_ba284152-8da9-4e8f-b32f-21d86100cac1/addons/addon_af75d939-a744-4f33-b598-886a692165f9
 
 #### Step 2: create a bucket, make it public, and store some files
 
