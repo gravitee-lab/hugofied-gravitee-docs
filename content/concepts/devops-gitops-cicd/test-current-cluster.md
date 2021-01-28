@@ -71,7 +71,8 @@ docker exec -it devops-bubble bash -c  "az aks get-credentials --resource-group 
 ```bash
 # A look into the default namespace
 docker exec -it devops-bubble bash -c  "kubectl get all"
-# Check extra Args and NodeSelectors etc...
+# Check Ingress Controller's extra Args and NodeSelectors etc...
 docker exec -it devops-bubble bash -c  "kubectl describe pods -l app=nginx-ingress-nginx-ingress"
-
+# CheckCockpit Kubernetes secrets
+docker exec -it devops-bubble bash -c  "kubectl get secrets"
 ```
