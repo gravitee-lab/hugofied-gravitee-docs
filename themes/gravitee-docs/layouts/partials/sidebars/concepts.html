@@ -124,6 +124,22 @@ So there is no { { end } } associated to it. It's just a local variable declarat
         </ul>
       {{ end }}
 
+      {{ with (eq .Identifier "devops_gitops_cicd") }}
+        <ul class="sub-menu">
+          <!--
+          <li><a href="#">sous menu en dur un</a></li>
+          <li><a href="#">sous menu en dur deux</a></li>
+          -->
+          {{ range  (sort $allMenus.devops_gitops_cicd ".Page.Params.menu_index" )  }}
+          <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
+            <a href="{{ .Page.RelPermalink }}">
+              {{ .Pre }}{{ .Name }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+
     </li>
 
     {{ end }}
