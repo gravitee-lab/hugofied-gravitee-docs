@@ -1,10 +1,11 @@
 ---
-title: "Gravitee APIM Pull Requests"
+title: "Pull Requests"
 date: 2020-12-16T00:44:23+01:00
 draft: false
 nav_menu: "CI/CD Processes"
 menu: apim_processes
-menu_index: 3
+menu_index: 6
+product: "Gravitee APIM"
 # menu:
   # developer_guide:
     # parent: 'mainmenu'
@@ -14,7 +15,6 @@ type: apim-processes
 ## Process Description
 
 * The description of what happens when a (multi) pull request CICD Process is launched
-
 
 
 ## Idea for the future implementation
