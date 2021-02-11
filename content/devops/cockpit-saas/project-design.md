@@ -38,3 +38,11 @@ Ok, alors pour une prod il ya des étapes :
 * et là on fait le point :
   * est-ce qu'on se considère prêt pour le go prod ?
   * Possibilité , avant le go prod, on peut mettre à dispo l'environnement `staging`, avec un gros bandeau "CECI EST LA VERSION ALPHA DE COCKPIT AUCUN SUPPORT N'EST ASSURE, C4EST POUR VOUS FAIRE PLAISIR QUE VOUS VOYEZ CE QUI VA BIENTÔT ETRE DISPO"
+
+
+
+_**Remarque: Sur la gestion des incidents**_
+
+* on peut démarrer avec quelque chose de très simple, voire extêment simple : cela rendrait les étapes ci-dessu plus courtes.
+* mais il faut qu'on en passe par les étapes ci-dessus, pour que cela soit une décission consciente: les process doivent être écrits explicitement, même si très simples, et schématisés clairement. En plus c'est JB qui se tapera de faire les beaux schemas avec draw.io qu'il n'y aura qu'à valider :slightly_smiling_face:
+* Prendre des risques n'est pas un problème. Ce qui est un problème, c'est de prendre des risques sans même les avoirs mesurés avant.
