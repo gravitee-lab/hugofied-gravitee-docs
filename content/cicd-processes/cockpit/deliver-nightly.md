@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 title: "Gravitee Cockpit Deliver Nightly Demo"
+=======
+title: "Cockpit Deliver Nightly Demo"
+>>>>>>> 18ab699910d5cb101a38b1c05631235554fad70a
 date: 2020-12-16T00:44:23+01:00
 draft: false
 nav_menu: "CI/CD Processes"
@@ -35,6 +39,10 @@ This continuous deployment:
   * a `Helm` Chart currently defined in the `./cockpit/`, on the `cockpit` git branch of the {{< html_link text="Gravitee Helm Chart repo" link="https://github.com/gravitee-io/helm-charts/tree/cockpit/cockpit" >}},
   * and secret values currently defined in a {{< html_link text="temporary Gravitee repo named Cockpit Cloud" link="https://github.com/gravitee-io/cloud-cockpit" >}} : those values will, in the future, be securely stored with verisoning, in a secret manager, the `secrethub` used at Gravitee.io (consider it a SAAS offer for `HashiCorp Vault`).
 
+<<<<<<< HEAD
+=======
+## Rolling update of the Gravitee Cockpit on Azure AKS with Pulumi
+>>>>>>> 18ab699910d5cb101a38b1c05631235554fad70a
 
 Rolling update strategy problem :
 * in our continuous deployment scenario, we have :
@@ -47,6 +55,7 @@ Rolling update strategy problem :
 
 Will follow up https://github.com/pulumi/docs/issues/5012
 
+<<<<<<< HEAD
 ## Idea for the furture implementation
 
 basically the same as a release, only :
@@ -122,3 +131,111 @@ Process pattern :
 
 
 ## Misc. Cahracteristics
+=======
+
+#### Idea  1 (stupid)
+
+* I will use 2 docker iamge tags to rolling update the nightly demo : `3.0.0-nightly`, and `3.0.0-nightly-previous`
+* then I will roll up `3.0.0-nightly` and `3.0.0-nightly-previous` tags :
+
+```bash
+
+# --
+# Before this, the Circle CI pipeline finished docker build of [graviteeio/cockpit-management-api:3.0.0]
+# --
+docker pull graviteeio/cockpit-management-api:3.0.0-nightly
+docker tag graviteeio/cockpit-management-api:3.0.0-nightly graviteeio/cockpit-management-api:3.0.0-nightly-previous
+docker push graviteeio/cockpit-management-api:3.0.0-nightly-previous
+
+docker rmi graviteeio/cockpit-management-api:3.0.0-nightly graviteeio/cockpit-management-api:3.0.0-nightly-previous
+# --
+# now we "nightly"-tag the newly built image ofGravitee Cockpit Management API
+docker tag graviteeio/cockpit-management-api:3.0.0 graviteeio/cockpit-management-api:3.0.0-nightly
+# And push it to Dockerhub
+docker push graviteeio/cockpit-management-api:3.0.0-nightly
+
+
+# --
+# Before this, the Circle CI pipeline finished docker build of [graviteeio/cockpit-webui:3.0.0]
+# --
+docker pull graviteeio/cockpit-webui:3.0.0-nightly
+docker tag graviteeio/cockpit-webui:3.0.0-nightly graviteeio/cockpit-webui:3.0.0-nightly-previous
+docker push graviteeio/cockpit-webui:3.0.0-nightly-previous
+
+docker rmi graviteeio/cockpit-webui:3.0.0-nightly graviteeio/cockpit-webui:3.0.0-nightly-previous
+# --
+# now we "nightly"-tag the newly built image ofGravitee Cockpit Web UI
+docker tag graviteeio/cockpit-webui:3.0.0 graviteeio/cockpit-webui:3.0.0-nightly
+# And push it to Dockerhub
+docker push graviteeio/cockpit-webui:3.0.0-nightly
+```
+
+* Then I will :
+  * pulumi up with the image tag `3.0.0-nightly-previous`
+  * and pulumi up with the image tag `3.0.0-nightly`
+  * Note this might work, But is kind of stupid to be doomed to `pulumi up` twice to "flip image tags" : to begin with it is twice too long
+
+#### Idea 2 Using labels
+
+Here is the idea :
+
+* We add a new label to the `kind: Deployment` `Helm` template for, named `app.gravitee.io/git_commit_id` :
+  * for Gravitee Cockpit Management API, to add in `cockpit/templates/api/api-deployment.yaml`, at the [pod spec level](https://github.com/gravitee-io/helm-charts/blob/3a09fdf2a13318790e83f7b80e5484db2ce5be0d/cockpit/templates/api/api-deployment.yaml#L33)
+  * for Gravitee Cockpit Web UI, to add in `cockpit/templates/ui/ui-deployment.yaml`, at the [pod spec level](https://github.com/gravitee-io/helm-charts/blob/3a09fdf2a13318790e83f7b80e5484db2ce5be0d/cockpit/templates/ui/ui-deployment.yaml#L31)
+* We add a new parameter in the `values.yaml` file, named `api.git_commit_id` : it has no default value (setting its value with `--set` is required), and sets the value of the `app.gravitee.io/git_commit_id: "{{ .Values.api.git_commit_id }}"` pod label in `cockpit/templates/api/api-deployment.yaml`.
+* We add a new parameter in the `values.yaml` file, named `ui.git_commit_id` : it has no default value (setting its value with `--set` is required), and sets the value of the `app.gravitee.io/git_commit_id: "{{ .Values.ui.git_commit_id }}"` pod label in `cockpit/templates/ui/ui-deployment.yaml`.
+
+Ok, so I will have to fork the https://github.com/gravitee-io/helm-charts/ to modify the Cockpit Helm Chart
+
+* In the Circle CI Pipeline, The `Pulumi` recipe sets the value of `api.git_commit_id` and the `ui.git_commit_id` Helm deployment, on the fly with the GIT_COMMIT_ID (SHA), obtianed fromthe lastcommit on `master` branch
+* For the `GIT_COMMIT_ID`, I will use `git rev-parse --short=15 HEAD` to get the 15 first digits of the commit HASH, instead of the 7 first digits obtained with `git rev-parse --short HEAD`
+
+* We will set the pod strategy to `Recreate` if `ImagePullPolicy: Always` is not enough
+
+Finally I will use the new stack config parameter `graviteeio:git_commit_id`, to set the value in the stack, and trigger a change in the pulumi stack, to an update :
+
+```bash
+export LOCAL_CHART_FOLDER=./.cockpit.charts/
+export DOCKER_IMAGE_TAG="3.0.0-nightly"
+export API_DOCKER_IMAGE_TAG=$(docker images | grep "graviteeio/cockpit-management-api" | awk '{print $2}')
+export UI_DOCKER_IMAGE_TAG=$(docker images | grep "graviteeio/cockpit-management-api" | awk '{print $2}')
+if ! [ "${API_DOCKER_IMAGE_TAG}" == "${UI_DOCKER_IMAGE_TAG}" ]; then
+  echo "Cockpit UI and Management API Docker images have different tags, we have a problem."
+  exit 7
+fi;
+export DOCKER_IMAGE_TAG=${API_DOCKER_IMAGE_TAG}
+
+export GIT_COMMIT_ID="$(git rev-parse --short=15 HEAD)"
+echo "GIT_COMMIT_ID=[${GIT_COMMIT_ID}]"
+pulumi config -s "${PULUMI_STACK_NAME}" set graviteeio:localChartFolder "${LOCAL_CHART_FOLDER}"
+pulumi config -s "${PULUMI_STACK_NAME}" set graviteeio:docker_image_tag "${DOCKER_IMAGE_TAG}"
+pulumi config -s "${PULUMI_STACK_NAME}" set graviteeio:api_git_commit_id "${GIT_COMMIT_ID}"
+```
+
+Everytime the pipeline is triggered :
+* the pulumi stack config will be updated with the docker image tag and the git commit id, modifying every time, at least because of the git commit id in the `Pulumi.${PULUMI_STACK_NAME}.yaml` file
+* and a git commit with the modified `Pulumi.${PULUMI_STACK_NAME}.yaml` file, will be pushed to https://github.com/gravitee-lab/gravitee-cockpit-nightly-deployment, and then:
+  * either the Circle CI Pipeline in the https://github.com/gravitee-lab/gravitee-cockpit-nightly-deployment repo, triggered by the pushed commit, executes the `pulumi up --yes -s ${PULUMI_STACK_NAME}`
+  * or we have an additional approve workflow, which will git clone the git@github.com:gravitee-lab/gravitee-cockpit-nightly-deployment repo, `git checkout master`, and executes the `pulumi up --yes -s ${PULUMI_STACK_NAME}`
+
+Antoher more refined, and more gitops-complant, and wost-saving, workflow would be :
+* create a new git branch named `deployment-${GIT_COMMIT_ID}`, from `master`, in the https://github.com/gravitee-lab/gravitee-cockpit-nightly-deployment repo,
+* push the git commit to the  `deployment-${GIT_COMMIT_ID}` git branch,
+* create a Pull Request from the  `deployment-${GIT_COMMIT_ID}` git branch, tothe `master`, in the https://github.com/gravitee-lab/gravitee-cockpit-nightly-deployment
+* the PR is accepted, and the CircleCI Pipeline , in the https://github.com/gravitee-lab/gravitee-cockpit-nightly-deployment repo, on `master`, triggers a Circle CI workflow which executes the pulumi up with the updated `Pulumi.${PULUMI_STACK_NAME}.yaml`
+
+## Misc. notes on the `Pulumi`
+
+The `Gravitee Cockpit` uses MTLS to communicate with `Gravitee APIM` and `Gravitee AM` :
+* Through websocket
+* The `Gravitee Cockpit` exposes the websocket server
+* `Gravitee APIM` and `Gravitee AM` ar equiped with a websocket client, and they establish a websocket connection, with Mutual TLS (MTLS) authentication, with the `Gravitee Cockpit`
+
+Helm Charts :
+* Nginx :
+  * ccc
+  * ccc
+* Gravitee Cockpit Helm Chart :
+  * a `Helm` Chart currently defined in the `./cockpit/`, on the `cockpit` git branch of the {{< html_link text="Gravitee Helm Chart repo" link="https://github.com/gravitee-io/helm-charts/tree/cockpit/cockpit" >}},
+  * and secret values currently defined in a {{< html_link text="temporary Gravitee repo named Cockpit Cloud" link="https://github.com/gravitee-io/cloud-cockpit" >}} : those values will, in the future, be securely stored with verisoning, in a secret manager, the `secrethub` used at Gravitee.io (consider it a SAAS offer for `HashiCorp Vault`).
+>>>>>>> 18ab699910d5cb101a38b1c05631235554fad70a

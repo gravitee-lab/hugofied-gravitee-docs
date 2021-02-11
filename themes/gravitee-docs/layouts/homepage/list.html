@@ -35,7 +35,7 @@
                   {{ range  (sort $allMenus.general_design ".Page.Params.menu_index" )  }}
                   <li>
                     <p><a href="{{ .Page.RelPermalink }}">
-                      {{ .Pre }}{{ .Name }}
+                      {{ .Page.Params.product }} {{ .Pre }}{{ .Name }}
                     </a></p>
                   </li>
                   {{ end }}
@@ -48,7 +48,7 @@
                   {{ range  (sort $allMenus.circleci_pipelines ".Page.Params.menu_index" )  }}
                   <li >
                     <p><a href="{{ .Page.RelPermalink }}">
-                      {{ .Pre }}{{ .Name }}
+                      {{ .Page.Params.product }} {{ .Pre }}{{ .Name }}
                     </a></p>
                   </li>
                   {{ end }}
@@ -61,7 +61,33 @@
                   {{ range  (sort $allMenus.circleci_orbs ".Page.Params.menu_index" )  }}
                   <li>
                     <p><a href="{{ .Page.RelPermalink }}">
-                      {{ .Pre }}{{ .Name }}
+                      {{ .Page.Params.product }} {{ .Pre }}{{ .Name }}
+                    </a></p>
+                  </li>
+                  {{ end }}
+              {{ end }}
+              {{ with (eq .Identifier "cicd_infra") }}
+                  <!--
+                  <li><a href="#">sous menu en dur un</a></li>
+                  <li><a href="#">sous menu en dur deux</a></li>
+                  -->
+                  {{ range  (sort $allMenus.cicd_infra ".Page.Params.menu_index" )  }}
+                  <li>
+                    <p><a href="{{ .Page.RelPermalink }}">
+                      {{ .Page.Params.product }} {{ .Pre }}{{ .Name }}
+                    </a></p>
+                  </li>
+                  {{ end }}
+              {{ end }}
+              {{ with (eq .Identifier "devops_gitops_cicd") }}
+                  <!--
+                  <li><a href="#">sous menu en dur un</a></li>
+                  <li><a href="#">sous menu en dur deux</a></li>
+                  -->
+                  {{ range  (sort $allMenus.devops_gitops_cicd ".Page.Params.menu_index" )  }}
+                  <li>
+                    <p><a href="{{ .Page.RelPermalink }}">
+                      {{ .Page.Params.product }} {{ .Pre }}{{ .Name }}
                     </a></p>
                   </li>
                   {{ end }}
@@ -95,7 +121,7 @@
                   {{ range  (sort $allMenus.apim_processes ".Page.Params.menu_index" )  }}
                   <li>
                     <p><a href="{{ .Page.RelPermalink }}">
-                      {{ .Pre }}{{ .Name }}
+                      {{ .Page.Params.product }} {{ .Pre }} {{ .Name }}
                     </a></p>
                   </li>
                   {{ end }}
@@ -108,7 +134,7 @@
                   {{ range  (sort $allMenus.am_processes ".Page.Params.menu_index" )  }}
                   <li >
                     <p><a href="{{ .Page.RelPermalink }}">
-                      {{ .Pre }}{{ .Name }}
+                      {{ .Page.Params.product }} {{ .Pre }} {{ .Name }}
                     </a></p>
                   </li>
                   {{ end }}
@@ -121,7 +147,7 @@
                   {{ range  (sort $allMenus.ae_processes ".Page.Params.menu_index" )  }}
                   <li>
                     <p><a href="{{ .Page.RelPermalink }}">
-                      {{ .Pre }}{{ .Name }}
+                      {{ .Page.Params.product }} {{ .Pre }}{{ .Name }}
                     </a></p>
                   </li>
                   {{ end }}
@@ -135,7 +161,7 @@
                   {{ range  (sort $allMenus.cockpit_processes ".Page.Params.menu_index" )  }}
                   <li>
                     <p><a href="{{ .Page.RelPermalink }}">
-                      {{ .Pre }}{{ .Name }}
+                      {{ .Page.Params.product }} {{ .Pre }}{{ .Name }}
                     </a></p>
                   </li>
                   {{ end }}

@@ -1,0 +1,219 @@
+
+version: 2.1
+
+parameters:
+  gio_action:
+    type: enum
+    enum: [release, martymcfly_mvn_release, pr_build]
+    default: pr_build
+  dry_run:
+    type: boolean
+    default: true
+    description: "Run in dry run mode?"
+  maven_profile_id:
+    type: string
+    default: "gravitee-dry-run"
+    description: "Maven ID of the Maven profile to use for a dry run ?"
+  secrethub_org:
+    type: string
+    default: "gravitee-lab"
+    description: "SecretHub Org to use to fetch secrets ?"
+  secrethub_repo:
+    type: string
+    default: "cicd"
+    description: "SecretHub Repo to use to fetch secrets ?"
+orbs:
+  gravitee: gravitee-io/gravitee@dev:1.0.4
+  secrethub: secrethub/cli@1.0
+  node: circleci/node@4.1.0
+  heroku: circleci/heroku@1.2.3
+
+jobs:
+  hugo_express_dock:
+    machine:
+      image: 'ubuntu-1604:201903-01'
+      resource_class: medium
+    environment:
+      HUGO_VERSION: '0.78.2'
+      SECRETHUB_ORG: gravitee-lab
+      SECRETHUB_REPO: cicd
+      HEROKU_APP_ID: gravit33-docs
+    steps:
+      # - checkout
+      - run:
+          name: "Install HUGO version [${HUGO_VERSION}]"
+          command: |
+                    export HUGO_VERSION=${HUGO_VERSION:-'0.78.2'}
+                    export HUGO_OS=Linux
+                    export HUGO_CPU_ARCH=64bit
+                    echo "Install Hugo version [${HUGO_VERSION}]"
+                    curl -LO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_${HUGO_OS}-${HUGO_CPU_ARCH}.deb
+                    sudo dpkg -i hugo_${HUGO_VERSION}_${HUGO_OS}-${HUGO_CPU_ARCH}.deb && sudo apt-get install -y
+                    hugo version
+                    mv ./hugo_${HUGO_VERSION}_${HUGO_OS}-${HUGO_CPU_ARCH}.deb $HOME
+      - secrethub/install
+      - gravitee/git_config:
+          secrethub_org: << pipeline.parameters.secrethub_org >>
+          secrethub_repo: << pipeline.parameters.secrethub_repo >>
+      - run:
+          name: "Build env setup"
+          command: |
+                    echo "BACK_IN_TIME_VERSION=[${BACK_IN_TIME_VERSION}]"
+                    # echo "It could inspire a more general purpose Orb Job, but it's not yet reusable as-is"
+                    if [ -d ./.circleci ]; then
+                      rm -fr ./circleci
+                    fi
+                    if [ -d ./graviteebot ]; then
+                      rm -fr ./graviteebot
+                    fi
+                    ls -allh .
+                    git clone git@github.com:gravitee-lab3/hugo-cheatsheet.git .
+                    git checkout feature/github-auth
+                    mkdir -p ./.git_backed/ && cp -fR ./.git/* ./.git_backed/ && rm -fr ./.git/
+                    rm -fr ./hugo
+                    mkdir -p ./hugo
+                    git clone git@github.com:gravitee-lab3/hugofied-gravitee-docs.git ./hugo
+                    cd ./hugo/
+                    git checkout feature/first_release
+                    cd ../
+                    mkdir -p ./.git/ && cp -fR ./.git_backed/* ./.git/ && rm -fr ./.git_backed/
+                    ls -allh ./hugo
+      - run: # print the name of the branch we're on
+          name: "Docker oci image build for Heroku"
+          command: |
+                    pwd
+                    ls -allh
+                    # export DESIRED_DOCKER_TAG=$(git describe --match "[0-999].[0-999].[0-999]" --abbrev=0 --tags)
+                    cd ./hugo
+                    export DESIRED_DOCKER_TAG=$(git describe --abbrev=0 --tags)
+                    export DESIRED_DOCKER_TAG="${DESIRED_DOCKER_TAG}-$(git rev-parse --short HEAD)"
+                    export GIT_COMMIT=$(git rev-parse --short HEAD)
+                    export DESIRED_DOCKER_TAG=stable-latest
+                    cd ../
+                    docker build -t "quay.io/gravitee-lab/gravitee-docs:${DESIRED_DOCKER_TAG}-heroku" --build-arg GIT_COMMIT=nightly -f ./heroku.Dockerfile .
+      - heroku/install
+      - run:
+          name: "Heroku Check Authentication"
+          command: |
+            export HEROKU_APP_ID=gravit33-docs
+            echo "Checking Heroku Authentication is successful, with the secrethub provided Heroku API Token"
+            echo "Checking context variables from [riccarl-cicd] context"
+            echo "Checking Circle CI Job env. variables"
+            echo "SECRETHUB_ORG=[${SECRETHUB_ORG}]"
+            echo "SECRETHUB_REPO=[${SECRETHUB_REPO}]"
+            echo "HEROKU_APP_ID=[${HEROKU_APP_ID}]"
+            # that's just to check how to
+            export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
+            heroku auth:whoami
+      - run:
+          name: "Set Heroku Stack to [container]"
+          command: |
+            echo "Set Heroku Stack to [container]"
+            export HEROKU_APP_ID=gravit33-docs
+            export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
+            # heroku git:remote -a $HEROKU_APP_ID
+            heroku stack:set container --app $HEROKU_APP_ID
+      - run:
+          name: "Set Heroku App config vars"
+          command: |
+            echo "Heroku App config vars"
+            export HEROKU_APP_ID=gravit33-docs
+            export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
+            export HUGO_HOST=0.0.0.0
+            # HUGO_PORT will anyway be set to Heroku's unpredictable PORT variable inside the
+            # container (Heroku Cloud networking specific)
+            # export HUGO_PORT=9443
+            export HUGO_BASE_URL="https://${HEROKU_APP_ID}.herokuapp.com/"
+            export HUGO_THEME_GIT_SSH=git@github.com:dzello/reveal-hugo.git
+            export GIT_SSH_COMMAND='ssh -i ~/.ssh.perso.backed/id_rsa'
+            export GITHUB_CLIENT_ID=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/oauth/github_client_id")
+            export GITHUB_CLIENT_SECRET=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/oauth/github_client_secret")
+            export GITHUB_AUTH_CALLBACK_URL="https://${HEROKU_APP_ID}.herokuapp.com/auth/gh/verte/callback"
+            export AUTHORIZED_GITHUB_ORG=gravitee-lab
+            echo "Checking Circle CI Job env. variables"
+            echo "SECRETHUB_ORG=[${SECRETHUB_ORG}]"
+            echo "SECRETHUB_REPO=[${SECRETHUB_REPO}]"
+            echo "HEROKU_APP_ID=[${HEROKU_APP_ID}]"
+            # ---
+            # And now I set as config vars all the Env.Var. needed at docker runtime, by my application :
+            # ---
+            export JSON_PAYLOAD="{
+              \"GITHUB_AUTH_CALLBACK_URL\": \"${GITHUB_AUTH_CALLBACK_URL}\",
+              \"AUTHORIZED_GITHUB_ORG\": \"${AUTHORIZED_GITHUB_ORG}\",
+              \"GITHUB_CLIENT_ID\": \"${GITHUB_CLIENT_ID}\",
+              \"GITHUB_CLIENT_SECRET\": \"${GITHUB_CLIENT_SECRET}\",
+              \"HUGO_HOST\": \"${HUGO_HOST}\",
+              \"HUGO_BASE_URL\": \"${HUGO_BASE_URL}\",
+              \"HUGO_THEME_GIT_SSH\": \"${HUGO_THEME_GIT_SSH}\",
+              \"FOO\": \"bar\",
+              \"BAZ\": \"qux\"
+            }"
+
+            curl -iv -n -X PATCH https://api.heroku.com/apps/${HEROKU_APP_ID}/config-vars \
+              -H "Authorization: Bearer ${HEROKU_API_KEY}" \
+              -d "${JSON_PAYLOAD}" \
+              -H "Content-Type: application/json" \
+              -H "Accept: application/vnd.heroku+json; version=3"
+      - run:
+          name: "Deploy to Heroku by docker pushing container image, website at https://gravitee-docs.herokuapp.com/ "
+          command: |
+            echo "Deploying to Heroku, by pushing the built docker image, and release it using the Heroku API"
+            # echo "STOP - DEBUG"
+            # exit 0
+            # ---
+            # the process type, is the thing that you can find in the `heroku.yml` (for me it's `web`, and
+            # there are others, which I don't care about like for backends I guess, stuff like that)
+            export HEROKU_PROCESS_TYPE=web
+            export HEROKU_APP_ID=gravit33-docs
+            export SECRETHUB_ORG=gravitee-lab
+            export SECRETHUB_REPO=cicd
+            # secrethub mkdir --parents "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku"
+            # echo "inyourdreams;)" | secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token"
+            export HEROKU_API_KEY=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/gravitee-docs/heroku/api-token")
+            docker login --username=_ --password=${HEROKU_API_KEY} registry.heroku.com
+            # export GIT_RELEASE_TAG=$(git describe --tags --abbrev=0)
+            export GIT_RELEASE_TAG=stable-latest
+            export QUAY_OCI_IMAGE_TAG=${GIT_RELEASE_TAG}-heroku
+            echo "QUAY_OCI_IMAGE_TAG=[${QUAY_OCI_IMAGE_TAG}]"
+            docker tag quay.io/gravitee-lab/gravitee-docs:${QUAY_OCI_IMAGE_TAG} registry.heroku.com/${HEROKU_APP_ID}/${HEROKU_PROCESS_TYPE}
+            docker push registry.heroku.com/${HEROKU_APP_ID}/${HEROKU_PROCESS_TYPE}
+            # ---
+            # After the image is pushed, you have one more thing to do, to complete the deployment.
+            # This "thing" consists of invoking one Heroku API Endpoint, to "release" the pushed container.
+            # The Heroku API Endpoint is [/apps/$HEROKU_APP_ID/formation]: it is supposed to
+            # "release a container image". Odd name for an endpoint supposed to do that...
+            # ---
+            # To invoke the Heroku API Endpoint, I need one container
+            # meta data, obtained by [docker inspect ${DOCKER_IMAGE_GUN} --format={{.Id}}]
+            # ---
+            # To be absolutely sure, I get this metadata from the exact docker image pushed to Heroku Container Regsitry, I
+            # remove all local container images, and then pull again the pushed image of the deployment.
+            # ---
+            # docker system prune -f --all && docker system prune -f --volumes
+            export DOCKER_IMAGE_GUN="registry.heroku.com/${HEROKU_APP_ID}/${HEROKU_PROCESS_TYPE}"
+            # docker pull ${DOCKER_IMAGE_GUN}
+            # export DOCKER_IMAGE_ID=$(docker inspect ${DOCKER_IMAGE_GUN} --format={{.Id}})
+            export DOCKER_IMAGE_ID=$(docker inspect ${DOCKER_IMAGE_GUN} --format={{.Id}})
+            # ---
+            # And now I have all I need to invoke the Heroku API Endpoint :
+            # ---
+            curl -iv -H "Authorization: Bearer ${HEROKU_API_KEY}" -X PATCH https://api.heroku.com/apps/$HEROKU_APP_ID/formation \
+              -d "{
+              \"updates\": [
+                {
+                  \"type\": \"${HEROKU_PROCESS_TYPE}\",
+                  \"docker_image\": \"${DOCKER_IMAGE_ID}\"
+                }
+              ]
+            }" \
+              -H "Content-Type: application/json" \
+              -H "Accept: application/vnd.heroku+json; version=3.docker-releases"
+
+workflows:
+  version: 2.1
+  build_n_deploy:
+    when:
+      equal: [ pr_build, << pipeline.parameters.gio_action >> ]
+    jobs:
+      - hugo_express_dock:
+          context: cicd-orchestrator

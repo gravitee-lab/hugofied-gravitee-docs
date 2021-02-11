@@ -1,10 +1,11 @@
 ---
-title: "Gravitee APIM Release"
+title: "Standalone Release"
 date: 2020-12-16T00:44:23+01:00
 draft: false
 nav_menu: "CI/CD Processes"
 menu: apim_processes
-menu_index: 2
+menu_index: 4
+product: "Gravitee APIM"
 # menu:
   # developer_guide:
     # parent: 'mainmenu'
@@ -12,7 +13,30 @@ type: apim-processes
 ---
 
 
-## The Example Release scenario
+## The Standalone release process
+
+For any reason, the Gravitee Dev Team must be able to run a full release process (and next [a nexus staging process](/cicd-processes/apim/standalone-nexus-staging/) ), for just one Github repo.
+
+One important question here, is : by which mean, will a Gravitee Dev Team member, trigger such a process ?
+
+
+On the other hand, as I presented the [Gravitee APIM Product Orchestrated Release](/cicd-processes/apim/orchestrated-release/) first new CI CD major feature, I explained that this process has to be triggered by sending an HTTP Request to the circle CI API, and demoed that using a simple `curl` command. On this occasion, the Gravitee dEv team made brought to my attention two points :
+* that it is unfriendly, to have to trigger such a process using a `curl`, along with requirng a secret : the Circle CI API Token, to authenticate to the Circle CI API.
+* that `Jenkins` allows triggering any Pipeline, through its Web UI, and that this same _"Gravitee APIM Product multi-repo Release process"_, in the Legacy CI CD System, was indeed triggered using the Jenkins Web UI : much more user friendly way, than using a rather complex `curl` command.     
+
+Now, The [Gravitee APIM Product Orchestrated Release](/cicd-processes/apim/orchestrated-release/) cannot be triggered from the Circle CI Web UI, because :
+* This process requires pipelines parameters, which values _have_ to vary, at least to be able to specify the "dry-run mode" (do you want to trigger a relase n dry run mode, or not?)
+* The Circle CI Web UI does not allow triggering Pipelines by specifying pipeline parameters values : When using Web UI, the Pipeline parameters values have to be their default value.
+
+Finally, as we discussed those considerations, important indeed, we considered two different means, to trigger a Circle CI Pipeline. But there are three, and the not considered during this duiscussion, third mean to trigger A Circle CI Pipeline, ertinaly is none the less : you can also trigger a Circle CI by any git event (pushing a git commit, pushing a git tag, pushing a new git commit to the source branch of an opened Pull/Merge Request, etc...).
+
+I now want to higlight this point of view, which is fundamental, in the way Circle CI conceptualizes a Ci CD System :
+The CICD System watches you, you do not watch the CICD System. And it wathces you through what you do on your git repos.  You don't have to tell the CICD System what ithas to do, it infers that from what you have done on yoru git repo.
+
+
+
+
+### The Example Release scenario
 
 Let's explain The release process by an example scenario :
 * We want to release Gravitee APIM version `3.9.4`
@@ -575,3 +599,120 @@ workflows:
 
 
 ## Misc. Cahracteristics
+
+
+## A demo On gravitee-lab
+
+
+As I developed the resume release feature, I had to prepare a set of tests (test suite).
+
+Now, to run the tests, I execute :
+
+* Test 1, on branch `4.1.x` of the release repo :
+
+```bash
+# It should be SECRETHUB_ORG=graviteeio, but Cirlce CI token is related to
+# a Circle CI User, not an Org, so just reusing the same than for Gravtiee-Lab here, to work faster
+# ---
+SECRETHUB_ORG=gravitee-lab
+SECRETHUB_REPO=cicd
+# Nevertheless, I today think :
+# Each team member should have his own personal secrethub repo in the [graviteeio] secrethub org.
+# like this :
+# a [graviteeio/${TEAM_MEMBER_NAME}] secrethub repo for each team member
+# and the Circle CI Personal Access token stored with [graviteeio/${TEAM_MEMBER_NAME}/circleci/token]
+# ---
+export HUMAN_NAME=jblasselle
+export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${HUMAN_NAME}/circleci/token")
+# You, will just use your own Circle CI Token
+# export CCI_TOKEN=<your user circle ci token>
+
+export ORG_NAME="gravitee-lab"
+export REPO_NAME="graviteek-release-test-suite-1"
+export BRANCH="4.1.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"release\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+* Test 4, on branch `4.4.x` of the release repo :
+
+```bash
+# It should be SECRETHUB_ORG=graviteeio, but Cirlce CI token is related to
+# a Circle CI User, not an Org, so just reusing the same than for Gravtiee-Lab here, to work faster
+# ---
+SECRETHUB_ORG=gravitee-lab
+SECRETHUB_REPO=cicd
+# Nevertheless, I today think :
+# Each team member should have his own personal secrethub repo in the [graviteeio] secrethub org.
+# like this :
+# a [graviteeio/${TEAM_MEMBER_NAME}] secrethub repo for each team member
+# and the Circle CI Personal Access token stored with [graviteeio/${TEAM_MEMBER_NAME}/circleci/token]
+# ---
+export HUMAN_NAME=jblasselle
+export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${HUMAN_NAME}/circleci/token")
+
+export ORG_NAME="gravitee-lab"
+export REPO_NAME="graviteek-release-test-suite-1"
+export BRANCH="4.4.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"release\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+
+
+* a quick test on master branch (to test prepare next release with minor version/ new support branch creation ) :
+
+```bash
+# It should be SECRETHUB_ORG=graviteeio, but Cirlce CI token is related to
+# a Circle CI User, not an Org, so just reusing the same than for Gravtiee-Lab here, to work faster
+# ---
+SECRETHUB_ORG=gravitee-lab
+SECRETHUB_REPO=cicd
+# Nevertheless, I today think :
+# Each team member should have his own personal secrethub repo in the [graviteeio] secrethub org.
+# like this :
+# a [graviteeio/${TEAM_MEMBER_NAME}] secrethub repo for each team member
+# and the Circle CI Personal Access token stored with [graviteeio/${TEAM_MEMBER_NAME}/circleci/token]
+# ---
+export HUMAN_NAME=jblasselle
+export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${HUMAN_NAME}/circleci/token")
+
+export ORG_NAME="gravitee-lab"
+export REPO_NAME="graviteek-release-test-suite-1"
+export BRANCH="master"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"release\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```

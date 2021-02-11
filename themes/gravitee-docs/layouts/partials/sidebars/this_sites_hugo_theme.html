@@ -1,0 +1,100 @@
+
+
+<!--
+
+Only thing missing to fully automate : How to define Parent / children relation between menus
+
+* https://discourse.gohugo.io/t/how-are-children-menu-entries-detected/21484/7
+* https://doc.huc.fr.eu.org/fr/web/hugo/hugo-menu-nav/
+* https://stackoverflow.com/questions/54971150/how-can-i-add-a-menu-for-each-content-type-in-hugo
+
+So now :
+* Developer Guide and Tutorials  Menus are autmotically generated. Each match their content-type :
+  * type: developer-guide
+  * type: tutorials
+
+Only problem :
+* In the Developer Guide menu, the Developer Guide content entries are listed, and that's what I want
+* In the Tutorials menu, the Delveloper Guide content entries are listed, and that's NOT what I want
+* Well that's why I need the concept of Children and parent menus
+
+# ---
+# There is one menu called "CI/CD Processes" in the top navbar menu
+# -
+# Associated hugo content types :
+#   - cicd-processes
+#   - apim-processes
+#   - am-processes
+#   - ae-processes
+#   - cockpit-processes
+# ---
+[[menu.cicd_processes]]
+  identifier = "apim_processes"
+  name = "Gravitee APIM"
+  url = "/cicd-processes/apim/"
+  weight = 30
+[[menu.cicd_processes]]
+  identifier = "am_processes"
+  name = "Gravitee AM"
+  url = "/cicd-processes/am/"
+  weight = 40
+[[menu.cicd_processes]]
+  identifier = "ae_processes"
+  name = "Gravitee AE"
+  url = "/cicd-processes/am/"
+  weight = 50
+[[menu.cicd_processes]]
+  identifier = "cockpit_processes"
+  name = "Gravitee Cockpit"
+  url = "/cicd-processes/am/"
+  weight = 60
+
+ -->
+
+
+{{ $currentPage := . }}
+{{ $maVariableLocale := "un exemple de variable locale" }}
+<!--
+currentPage is like a variable locccccally defined in this hugo template;
+So there is no { { end } } associated to it. It's just a local variable declaration
+ -->
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">CI/CD Processes</li>
+    <!-- Troisième essai  -->
+    {{ range (sort $.Site.Menus.cicd_processes  ".Weight" "asc") }}
+    <li class="{{ if in  $currentPage.RelPermalink .URL }}active{{ end }}">
+      <a href="{{ .URL }}">
+        {{ .Pre }} {{ .Name }}
+        <!--
+        <hr/>
+        $currentPage.RelPermalink : {{ $currentPage.RelPermalink }}
+        <hr/>
+        .URL : {{ .URL }}
+        -->
+      </a>
+      {{ $allMenus := $.Site.Menus }}
+
+
+      {{ with (eq .Identifier "hugo_short_codes") }}
+        <ul class="sub-menu">
+          <!--
+          <li><a href="#">sous menu en dur un</a></li>
+          <li><a href="#">sous menu en dur deux</a></li>
+          -->
+          {{ range  (sort $allMenus.hugo_short_codes ".Page.Params.menu_index" "asc" )  }}
+          <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
+            <a href="{{ .Page.RelPermalink }}">
+              {{ .Pre }}{{ .Name }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    </li>
+
+    {{ end }}
+
+
+
+</ul>
