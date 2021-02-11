@@ -35,10 +35,8 @@ This continuous deployment:
   * a `Helm` Chart currently defined in the `./cockpit/`, on the `cockpit` git branch of the {{< html_link text="Gravitee Helm Chart repo" link="https://github.com/gravitee-io/helm-charts/tree/cockpit/cockpit" >}},
   * and secret values currently defined in a {{< html_link text="temporary Gravitee repo named Cockpit Cloud" link="https://github.com/gravitee-io/cloud-cockpit" >}} : those values will, in the future, be securely stored with verisoning, in a secret manager, the `secrethub` used at Gravitee.io (consider it a SAAS offer for `HashiCorp Vault`).
 
-<<<<<<< HEAD
-=======
+
 ## Rolling update of the Gravitee Cockpit on Azure AKS with Pulumi
->>>>>>> 18ab699910d5cb101a38b1c05631235554fad70a
 
 Rolling update strategy problem :
 * in our continuous deployment scenario, we have :
@@ -51,7 +49,6 @@ Rolling update strategy problem :
 
 Will follow up https://github.com/pulumi/docs/issues/5012
 
-<<<<<<< HEAD
 ## Idea for the furture implementation
 
 basically the same as a release, only :
