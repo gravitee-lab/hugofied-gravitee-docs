@@ -19,6 +19,8 @@ Here I detail the main topics and Milestones to go prod for the first time.
 
 ## First draft
 
+(début de la rédaction : 17h30, à 20h20 même jour le tout est organisé et déployé sur ce site de doc)
+
 partie déploiement, cockpit.gravitee.io ne sera pas un environnement de démo mais de prod
 
 Ok, alors pour une prod il ya des étapes :
