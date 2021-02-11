@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
-title: "Gravitee Cockpit Deliver Nightly Demo"
-=======
 title: "Cockpit Deliver Nightly Demo"
->>>>>>> 18ab699910d5cb101a38b1c05631235554fad70a
 date: 2020-12-16T00:44:23+01:00
 draft: false
 nav_menu: "CI/CD Processes"

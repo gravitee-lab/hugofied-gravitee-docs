@@ -55,8 +55,6 @@ theme = "gravitee-docs"
     url = "/concepts/circleci-orbs/"
     weight = 20
 
-<<<<<<< HEAD
-=======
   [[menu.concepts]]
     identifier = "cicd_infra"
     name = "Ci Cd System's Infrastructure"
@@ -68,8 +66,6 @@ theme = "gravitee-docs"
     name = "Higher Order Ci Cd for Devops"
     url = "/concepts/devops-gitops-cicd/"
     weight = 40
-
->>>>>>> 18ab699910d5cb101a38b1c05631235554fad70a
 
   # ---
   # There is one menu called "CI/CD Processes" in the top navbar menu
