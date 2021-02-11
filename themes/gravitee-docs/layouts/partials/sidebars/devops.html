@@ -1,0 +1,97 @@
+
+
+<!--
+
+Only thing missing to fully automate : How to define Parent / children relation between menus
+
+* https://discourse.gohugo.io/t/how-are-children-menu-entries-detected/21484/7
+* https://doc.huc.fr.eu.org/fr/web/hugo/hugo-menu-nav/
+* https://stackoverflow.com/questions/54971150/how-can-i-add-a-menu-for-each-content-type-in-hugo
+
+So now :
+* Developer Guide and Tutorials  Menus are autmotically generated. Each match their content-type :
+  * type: developer-guide
+  * type: tutorials
+
+Only problem :
+* In the Developer Guide menu, the Developer Guide content entries are listed, and that's what I want
+* In the Tutorials menu, the Delveloper Guide content entries are listed, and that's NOT what I want
+* Well that's why I need the concept of Children and parent menus
+
+[[menu.concepts]]
+  identifier = "general_design"
+  name = "The new CICD : General Design"
+  url = "/concepts/general-design/"
+  weight = 0
+
+[[menu.concepts]]
+  identifier = "circleci_pipelines"
+  name = "Tutorials"
+  url = "/concepts/circleci-pipelines/"
+  weight = 10
+
+[[menu.concepts]]
+  identifier = "circleci_orbs"
+  name = "Tutorials"
+  url = "/concepts/circleci-orbs/"
+  weight = 20
+ -->
+
+
+{{ $currentPage := . }}
+{{ $maVariableLocale := "un exemple de variable locale" }}
+<!--
+currentPage is like a variable locccccally defined in this hugo template;
+So there is no { { end } } associated to it. It's just a local variable declaration
+ -->
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle">Concepts and Design</li>
+    <!-- Troisième essai  -->
+    {{ range (sort $.Site.Menus.devops  ".Weight" "asc") }}
+    <li class="{{ if in  $currentPage.RelPermalink .URL }}active{{ end }}">
+      <a href="{{ .URL }}">
+        {{ .Pre }} {{ .Name }}
+      </a>
+      {{ $allMenus := $.Site.Menus }}
+
+
+      {{ with (eq .Identifier "general_practices") }}
+        <ul class="sub-menu">
+          <!--
+          <li><a href="#">sous menu en dur un</a></li>
+          <li><a href="#">sous menu en dur deux</a></li>
+          -->
+          {{ range  (sort $allMenus.general_practices ".Page.Params.menu_index" )  }}
+          <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
+            <a href="{{ .Page.RelPermalink }}">
+              {{ .Pre }}{{ .Name }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+
+      {{ with (eq .Identifier "cockpit_saas") }}
+        <ul class="sub-menu">
+          <!--
+          <li><a href="#">sous menu en dur un</a></li>
+          <li><a href="#">sous menu en dur deux</a></li>
+          -->
+          {{ range  (sort $allMenus.cockpit_saas ".Page.Params.menu_index" )  }}
+          <li class="{{ if eq $currentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
+            <a href="{{ .Page.RelPermalink }}">
+              {{ .Pre }}{{ .Name }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+
+    </li>
+
+    {{ end }}
+
+
+
+</ul>

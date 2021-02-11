@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+
+<h1>{{ .Title }}</h1>
+
+{{ .Content }}
+
+
+
+
+
+<!-- Page Content -->
+  <div class="homepage">
+    <div class="sect1">
+      <h2><a href="#">Table of Content</a>CICD System version (0.0.6)</h2>
+      <div class="sectionbody">
+        <div class="ulist">
+          <ul>
+
+            {{ range (sort .Pages ".Page.Params.menu_index" ) }}
+            <li>
+              <p><a href="{{.Permalink}}">{{.Title}}</a></p>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+{{ end }}

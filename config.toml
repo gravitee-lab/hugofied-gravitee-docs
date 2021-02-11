@@ -55,6 +55,7 @@ theme = "gravitee-docs"
     url = "/concepts/circleci-orbs/"
     weight = 20
 
+
   # ---
   # There is one menu called "CI/CD Processes" in the top navbar menu
   # -
@@ -148,3 +149,22 @@ theme = "gravitee-docs"
     name = "The Gravitee Orbs on Github"
     url = "/on_github/dev-repos/"
     weight = 150
+
+  # ---
+  # There is one menu called "Devops" in the top navbar menu
+  # -
+  # Associated hugo content types :
+  #   - general-practices
+  #   - cockpit-saas
+  # ---
+  [[menu.devops]]
+    identifier = "general_practices"
+    name = "General Practices"
+    url = "/devops/general-practices/"
+    weight = 155
+
+  [[menu.devops]]
+    identifier = "cockpit_saas"
+    name = "Cockpit Saas"
+    url = "/devops/cockpit-saas/"
+    weight = 160
