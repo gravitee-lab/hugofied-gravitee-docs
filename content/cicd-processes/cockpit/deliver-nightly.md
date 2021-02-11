@@ -49,7 +49,7 @@ Rolling update strategy problem :
 
 Will follow up https://github.com/pulumi/docs/issues/5012
 
-## Idea for the furture implementation
+## Idea for the future implementation
 
 basically the same as a release, only :
 * instead of infering a git branch name from the `version` property of each component, being valued with somethinglike `5.4.x` (then the target branch is )
@@ -123,8 +123,8 @@ Process pattern :
 
 
 
-## Misc. Cahracteristics
-=======
+## Misc. Characteristics
+
 
 #### Idea  1 (stupid)
 
@@ -231,4 +231,3 @@ Helm Charts :
 * Gravitee Cockpit Helm Chart :
   * a `Helm` Chart currently defined in the `./cockpit/`, on the `cockpit` git branch of the {{< html_link text="Gravitee Helm Chart repo" link="https://github.com/gravitee-io/helm-charts/tree/cockpit/cockpit" >}},
   * and secret values currently defined in a {{< html_link text="temporary Gravitee repo named Cockpit Cloud" link="https://github.com/gravitee-io/cloud-cockpit" >}} : those values will, in the future, be securely stored with verisoning, in a secret manager, the `secrethub` used at Gravitee.io (consider it a SAAS offer for `HashiCorp Vault`).
->>>>>>> 18ab699910d5cb101a38b1c05631235554fad70a
