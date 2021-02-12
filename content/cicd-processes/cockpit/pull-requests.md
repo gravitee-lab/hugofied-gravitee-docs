@@ -116,10 +116,11 @@ jobs:
           path: /home/circleci/project/target/
           # destination: artifacts
       # ---
-      # Use the below step If you want to perist any file at the end of
+      # Use the below step If you want to persist any file at the end of
       # the build process
-      # Then this will make the persisted files, available for download, after
-      # pipeline finished execution, with a curl
+      # The files are persisted to the "Workspace" of the pipeline :
+      # -> the workspace is like a cache between 2 Pipeline executions, of the same Pipeline
+      # -> example : if a zip file does not change, in the next pipeline execution, then no need to build the zip again.
       # ---
       # - persist_to_workspace:
           # root: some/folder/from/your/maven/project/root/
@@ -165,9 +166,9 @@ workflows:
 ### Details about the job steps
 
 
-#### _**Job named `store_test_results`**_
+#### _**Job named `store_artifacts`**_
 
-* The `store_test_results` alows storing built artifacts to be able to retrieve them after the pipeline has finished its execution.
+* The `store_artifacts` allows storing built artifacts to be able to retrieve them after the pipeline has finished its execution.
 * below is a small script which will then retrieve all the files stored by `store_test_results`, for any project :
 
 ```bash
