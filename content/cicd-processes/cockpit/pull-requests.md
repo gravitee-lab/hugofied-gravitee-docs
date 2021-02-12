@@ -40,8 +40,8 @@ version: 2.1
 parameters:
   gio_action:
     type: enum
-    enum: [release, pr_build]
-    default: pr_build
+    enum: [release, pull_request]
+    default: pull_request
   dry_run:
     type: boolean
     default: true
@@ -129,6 +129,8 @@ jobs:
 workflows:
   version: 2.1
   pull_requests:
+    when:
+      equal: [ pull_request, << pipeline.parameters.gio_action >> ]
     jobs:
       - build_n_deploy_snapshot_to_nexus:
           context: cicd-orchestrator
