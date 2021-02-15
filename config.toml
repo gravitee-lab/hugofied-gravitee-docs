@@ -179,3 +179,9 @@ theme = "gravitee-docs"
     name = "Cockpit Saas"
     url = "/devops/cockpit-saas/"
     weight = 160
+
+  [[menu.cicd_cheatsheet]]
+    identifier = "circle_docker"
+    name = "Circle CI and Docker"
+    url = "/cicd-cheatsheet/circle-docker/"
+    weight = 170
