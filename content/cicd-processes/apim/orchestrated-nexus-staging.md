@@ -18,7 +18,9 @@ When we have performed a [Gravitee APIM Product Orchestrated Release](/cicd-proc
 * The new Gravitee components maven versions' artifacts are maven deployed to the private artifactory,
 * And we want to "push them to the Nexus public repository"
 * publishing artifacts to the Nexus public maven repository, is achieved :
-  * with a tarnsactional process : if the proess encounters any error, the whole publishing operation is canceled -, which is why the Nexus public maven repository uses an intermediate repository commonly named "=nexus staging"
+  * with a transactional process :
+    * for any Gravitee dev repo, if the "nexus staging" operation fails, then it has to be resumed exactly "as if it had never been attempted ".
+    * which is why the Nexus public maven repository uses an intermediate repository named "nexus staging" : this git repo is used to persist the state of the nexus staging operation, seen as one global operation on the set of all gravitee components (repos) which have to be published to nexus staging.
   * using the maven pluign named `nexus-staging`
 * Each published version of a given maven artifact, to the Nexus public maven repository, is immutable : once you have published it, you cannot "re-plublish". SO basically, one should be very sure of a given artifact version, before publishing it to the maven Nexus public repository
 
@@ -27,7 +29,7 @@ When we have performed a [Gravitee APIM Product Orchestrated Release](/cicd-proc
 ### Idea for the future implementation
 
 The idea :
-* the `nexus-staging` process is meant to be de-correlated, in terms of events, from therelease process : the nexus-staging  
+* the `nexus-staging` process is meant to be de-correlated, in terms of events, from therelease process : the nexus-staging
 * the `nexus-staging` process, like the release process performs operations that will necesarily fail after having succcessfully been completed a first time :
   * the `release` process creates git tags, and once a git tag has been created, the process, while resuming, must not try and create again the same git tag, because it  already exists, and the process will therefore necessarily fail. This is why the resume release feature must "remember" which component has successfully been released, and which has not : to resume the release process only on those components for which the `release` has not yet completed successfully (for each of those components, either the release process has never been started yet, or it has failed)
   * the `nexus-staging` process similarly, performs one operation which can only be done once, successfully : when a given maven artifact, of a given version, has successfully been published to the Nexus public maven repository, it is immutable and trying to publish it again will fail for sure. This is why an orchestrated process which publishes the maven artifacts made from multiple Gravitee Dev github repositories, like the [Gravitee APIM Product Orchestrated Release](/cicd-processes/apim/orchestrated-release/), must "remember" for which Gravitee dev repos, the "Nexus Staging" has already successfully completed.
