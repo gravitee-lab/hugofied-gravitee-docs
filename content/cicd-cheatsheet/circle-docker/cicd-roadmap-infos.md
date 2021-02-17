@@ -292,3 +292,8 @@ https://ci2.gravitee.io/view/Packages/job/RPM%20for%20Gravitee.io%20AE/configure
 * `[1 day]` Docker images : Build and push Entreprise
 * `[0.5 day]` RPMs : Generate and publish
 * `[0.5 day]` Build n Deploy the https://docs.gravitee.io exact same as APIM / AM Release (update _config.yml + a git commit on master => deploys)
+
+## Entreprise Edition Release Optimization (2 to 4 days)
+
+[2 to 4 days] Optimized Maven and git Release With monorepo => A first Circle CI experiment with the nightly release gave a 25 minutes long Pipeline. The goal here is to re-implement the release process, but with Docker Executor instead of Machine Executor. A bit of complexity for example due to GPG signature.
+Will be done right after we tested APIM release 1.25.x with Nicolas, see https://graviteeio.slack.com/archives/C018EUYFKRB/p1613554046034900
