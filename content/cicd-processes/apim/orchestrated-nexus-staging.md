@@ -96,7 +96,7 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
-then you can launch the package bundle cccc
+* then you can [launch the package bundle](/cicd-processes/apim/package-bundle-zips/)
 
 
 * delete the s3 Buckets created on Clever Cloud, for the nexus staging :
