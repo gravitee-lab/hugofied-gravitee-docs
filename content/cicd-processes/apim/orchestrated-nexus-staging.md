@@ -24,7 +24,288 @@ When we have performed a [Gravitee APIM Product Orchestrated Release](/cicd-proc
   * using the maven pluign named `nexus-staging`
 * Each published version of a given maven artifact, to the Nexus public maven repository, is immutable : once you have published it, you cannot "re-plublish". SO basically, one should be very sure of a given artifact version, before publishing it to the maven Nexus public repository
 
-## Orchestrated Nexus Staging
+
+## How to run
+
+* launch the Orchestrated dry run release :
+
+```bash
+export CCI_TOKEN=<you circle ci token>
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="1.25.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"dry_release\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+* launch the Orchestrated release :
+
+```bash
+export CCI_TOKEN=<you circle ci token>
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="1.25.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"release\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+
+* launch the nexus staging :
+
+```bash
+export CCI_TOKEN=<you circle ci token>
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="1.25.x"
+export GIO_RELEASE_VERSION="1.25.27"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"nexus_staging\",
+        \"gio_release_version\": \"${GIO_RELEASE_VERSION}\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+then you can launch the package bundle cccc
+
+
+* delete the s3 Buckets created on Clever Cloud, for the nexus staging :
+
+```bash
+export CICD_LIB_OCI_REPOSITORY_ORG=${CICD_LIB_OCI_REPOSITORY_ORG:-"quay.io/gravitee-lab"}
+export CICD_LIB_OCI_REPOSITORY_NAME=${CICD_LIB_OCI_REPOSITORY_NAME:-"cicd-s3cmd"}
+export S3CMD_CONTAINER_IMAGE_TAG=${S3CMD_CONTAINER_IMAGE_TAG:-"stable-latest"}
+export S3CMD_DOCKER="${CICD_LIB_OCI_REPOSITORY_ORG}/${CICD_LIB_OCI_REPOSITORY_NAME}:${S3CMD_CONTAINER_IMAGE_TAG}"
+
+docker pull "${S3CMD_DOCKER}"
+
+# The s3cmd configuration files, which includes the credentials
+mkdir -p ./.s3cmd
+
+export SECRETHUB_ORG=graviteeio
+export SECRETHUB_REPO=cicd
+
+secrethub read --out-file ./.s3cmd/config "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/infra/zip-bundle-server/clever-cloud-s3/s3cmd/config"
+
+# I need 1 volume : to map the s3cmd config file
+docker run -itd --name devops-bubble -v $PWD/.s3cmd/config:/root/.s3cfg "${S3CMD_DOCKER}" bash
+
+export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-apim-4_1_5"
+docker exec -it devops-bubble bash -c "s3cmd rb --recursive s3://${S3_BUCKET_NAME}"
+export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-apim-4_1_6"
+docker exec -it devops-bubble bash -c "s3cmd rb --recursive s3://${S3_BUCKET_NAME}"
+export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-apim-4_1_7"
+docker exec -it devops-bubble bash -c "s3cmd rb --recursive s3://${S3_BUCKET_NAME}"
+export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-apim-4_1_8"
+docker exec -it devops-bubble bash -c "s3cmd rb --recursive s3://${S3_BUCKET_NAME}"
+export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-apim-4_1_9"
+docker exec -it devops-bubble bash -c "s3cmd rb --recursive s3://${S3_BUCKET_NAME}"
+
+
+export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-apim-4_1_10"
+docker exec -it devops-bubble bash -c "s3cmd rb --recursive s3://${S3_BUCKET_NAME}"
+export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-apim-4_1_11"
+docker exec -it devops-bubble bash -c "s3cmd rb --recursive s3://${S3_BUCKET_NAME}"
+export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-apim-4_1_12"
+docker exec -it devops-bubble bash -c "s3cmd rb --recursive s3://${S3_BUCKET_NAME}"
+export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-apim-4_1_13"
+docker exec -it devops-bubble bash -c "s3cmd rb --recursive s3://${S3_BUCKET_NAME}"
+export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-apim-4_1_14"
+docker exec -it devops-bubble bash -c "s3cmd rb --recursive s3://${S3_BUCKET_NAME}"
+export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-apim-4_1_15"
+docker exec -it devops-bubble bash -c "s3cmd rb --recursive s3://${S3_BUCKET_NAME}"
+
+```
+
+
+
+## Preps
+
+To prepare `1.25.27` support release, I have to execute the following tasks :
+
+* update the `.circleci/config.yml` for the `git@github.com:gravitee-io/release.git` repo, on all its branches
+  * `git add --all && git commit -m "feat.(cicd-pipeline): maven and git release, with nexus staging and package bundle" && git push -u origin HEAD`
+  * git branches : `master`, and all `*.*.x` git branches and `3.0.0-beta`
+
+* update the `.circleci/config.yml` for the following github repo/branches :
+  * `git@github.com:gravitee-io/gravitee-gateway`, for git branches :
+    * `1.25.x`
+  * `git@github.com:gravitee-io/gravitee-management-rest-api`, for git branches :
+    * `1.25.x`
+  * `git@github.com:gravitee-io/gravitee-management-webui`, for git branches :
+    * `1.25.x`
+* for all 3 same repos, pull a new branch from `master`, named `feature/cicd-pipeline` :
+  * `git checkout master && git checkout -b feature/cicd-pipeline`
+  * `git add --all && git commit -m "feat.(cicd-pipeline): maven and git release, with nexus staging" && git push -u origin HEAD`
+  * and create a PR from `feature/cicd-pipeline` to `master`
+  * We test on support release `1.25.27`, and if test pass, PR is merged into `master`
+  * and people will all have to rebase on `master` to get the new pipeline defintion on their git branch
+  * Text of the PR :
+
+<pre>
+  New Pipeline Definition, to support "_nexus staging_" new CI CD Operation. So this pipeline brings support for the automation of the following CI CD Operations :
+  * maven and git release : maven and git release, `mvn deploy` to private artifactory
+  * nexus staging : mvn deploys to nexus staging to publish the artifacts to public Sonatype Nexus maven repository.
+
+  Note :
+  * We will test this pipeline definition with support release `1.25.27`
+  * when merged in `master`, everyone will get the new pipeline definition on their brach by git rebasing from `master`
+
+</pre>
+
+
+Create secrethub secrets in the `graviteeio` secrethub org :
+
+* the nexus staging `settings.xml` :
+
+```bash
+export SECRETHUB_ORG=graviteeio
+export SECRETHUB_REPO=cicd
+
+
+# those usename and passwords can be
+# found in [secrethub read --out-file ./jenkins.release.settings.xml graviteeio/cicd/graviteebot/infra/maven/release/jenkins/settings.xml]
+export NEXUS_STAGING_BOT_USER_NAME=inyourdreams;)
+export NEXUS_STAGING_BOT_USER_PWD=inyourdreams;)
+export GRAVITEEBOT_GPG_PASSPHRASE=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/gpg/passphrase")
+
+# ---
+#
+cat << EOF >./settings.nexus-staging.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2015 The Gravitee team (http://gravitee.io)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <pluginGroups></pluginGroups>
+  <proxies></proxies>
+  <servers>
+    <server>
+      <id>sonatype-nexus-staging</id>
+      <username>${NEXUS_STAGING_BOT_USER_NAME}</username>
+      <password>${NEXUS_STAGING_BOT_USER_PWD}</password>
+    </server>
+    <server>
+      <!-- as of https://maven.apache.org/plugins/maven-gpg-plugin/usage.html -->
+      <id>gpg.passphrase</id>
+      <passphrase>${GRAVITEEBOT_GPG_PASSPHRASE}</passphrase>
+    </server>
+  </servers>
+  <!--
+  <activeProfiles>
+  <activeProfile>gravitee-release</activeProfile>
+  </activeProfiles>
+  -->
+</settings>
+EOF
+
+secrethub write --in-file ./settings.nexus-staging.xml "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/infra/maven/settings.nexus-staging.xml"
+secrethub read --out-file ./test.settings.nexus-staging.xml "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/infra/maven/settings.nexus-staging.xml"
+
+cat ./test.settings.nexus-staging.xml
+rm ./test.settings.nexus-staging.xml
+
+```
+* the `s3cmd` config file (containing credentials) :
+
+```bash
+export SECRETHUB_ORG=graviteeio
+export SECRETHUB_REPO=cicd
+
+secrethub mkdir --parents "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/infra/zip-bundle-server/clever-cloud-s3/s3cmd/"
+
+# Replace the value of CLEVER_CLOUD_DOWNLOAD_LINK_URI with the value you have copied from Clever Cloud Portal Web UI
+export CLEVER_CLOUD_DOWNLOAD_LINK_URI="https://cellar-addon-clevercloud-customers.services.clever-cloud.com/s3cfg?token=skWwuXX24netSl%2BQ2rOeXLkd9wsMEEMO0xC6Ht%2FrewDqJN1sjnxbP9heWslE0QFw1mCjFrVuLPdjp039YexRT%2BktRdK6r%2BGze0UDs%2FHyjj2e0eu1AJ%2Biq4p3sd1C7G2jKEJENPmC0UYEBKTxSKodqg%3D%3D%7CIpFcG4Y4C%2FHeKmqh%2FYetW4KlVj9vg0br"
+mkdir -p ./.s3cmd
+touch ./.s3cmd/config
+curl -o ./.s3cmd/config ${CLEVER_CLOUD_DOWNLOAD_LINK_URI}
+
+# storing in the secret manager, the s3cmd configuration file, which includes the credentials, so is a secret file.
+secrethub write --in-file ./.s3cmd/config "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/infra/zip-bundle-server/clever-cloud-s3/s3cmd/config"
+
+rm -fr ./.s3cmd
+
+export SECRETHUB_ORG=graviteeio
+export SECRETHUB_ORG=gravitee-lab
+export SECRETHUB_REPO=cicd
+
+secrethub read --out-file ./.s3cmd.config.test "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/infra/zip-bundle-server/clever-cloud-s3/s3cmd/config"
+cat ./.s3cmd.config.test
+rm ./.s3cmd.config.test
+```
+
+
+Finally, I will prepare a new `git@github.com:gravitee-io/gravitee-parent.git`, version `19.1` :
+* which adds just the `gio-release` maven profile
+* git operations :
+
+```bash
+git add --all && git commit -m "feat.(cicd): added [gio-release] maven profile used by Circle CI cicd for private artifactory" && git push -u origin HEAD
+git tag -s 19.1 -m "[gio-release] maven profile used by Circle CI cicd for private artifactory"
+git push -u origin --tags
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Design notes
 
 ### Idea for the future implementation
 
