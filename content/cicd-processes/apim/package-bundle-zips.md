@@ -21,15 +21,63 @@ Build the zip files and deploy them to https://download.gravitee.io
 
 ## How to run
 
-* launch the package bundle for a given Gravitee.io Release :
+Launch the package bundle for a given Gravitee.io Release :
 
-
+* example for Release `3.3.0` :
 ```bash
 export CCI_TOKEN=<your Circle CI Token>
 export GRAVITEE_RELEASE_VERSION="3.3.0"
 export ORG_NAME="gravitee-io"
 export REPO_NAME="release"
 export BRANCH="3.3.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"publish_bundles\",
+        \"gio_release_version\": \"${GRAVITEE_RELEASE_VERSION}\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+* example for Release `3.5.2` :
+
+```bash
+export CCI_TOKEN=<your Circle CI Token>
+export GRAVITEE_RELEASE_VERSION="3.5.2"
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="3.5.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"publish_bundles\",
+        \"gio_release_version\": \"${GRAVITEE_RELEASE_VERSION}\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+* example for Release `3.5.3` :
+
+```bash
+export CCI_TOKEN=<your Circle CI Token>
+export GRAVITEE_RELEASE_VERSION="3.5.3"
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="3.5.x"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
