@@ -29,7 +29,7 @@ export CCI_TOKEN=<your Circle CI Token>
 export GRAVITEE_RELEASE_VERSION="3.3.0"
 export ORG_NAME="gravitee-io"
 export REPO_NAME="release"
-export BRANCH="3.5.x"
+export BRANCH="3.3.x"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
