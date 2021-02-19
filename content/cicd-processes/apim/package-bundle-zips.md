@@ -23,7 +23,7 @@ Build the zip files and deploy them to https://download.gravitee.io
 
 Launch the package bundle for a given Gravitee.io Release :
 
-* example for Release `3.3.0` :
+* example for Release `3.3.0` (**tested OK**):
 ```bash
 export CCI_TOKEN=<your Circle CI Token>
 export GRAVITEE_RELEASE_VERSION="3.3.0"
@@ -46,7 +46,7 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
-* example for Release `3.5.2` :
+* example for Release `3.5.2` (**tested OK**) :
 
 ```bash
 export CCI_TOKEN=<your Circle CI Token>
@@ -70,7 +70,7 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
-* example for Release `3.5.3` :
+* example for Release `3.5.3` (**tested OK**) :
 
 ```bash
 export CCI_TOKEN=<your Circle CI Token>
@@ -78,6 +78,80 @@ export GRAVITEE_RELEASE_VERSION="3.5.3"
 export ORG_NAME="gravitee-io"
 export REPO_NAME="release"
 export BRANCH="3.5.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"publish_bundles\",
+        \"gio_release_version\": \"${GRAVITEE_RELEASE_VERSION}\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+
+* example for Release `3.0.2` (**tested OK**) :
+
+```bash
+export CCI_TOKEN=<your Circle CI Token>
+export GRAVITEE_RELEASE_VERSION="3.0.2"
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="master"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"publish_bundles\",
+        \"gio_release_version\": \"${GRAVITEE_RELEASE_VERSION}\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+
+* example for Release `1.30.25`  (**tested KO** , see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/426/workflows/cd825e40-0d34-4ff9-8df9-ce549c5a9575/jobs/399), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
+
+```bash
+export CCI_TOKEN=<your Circle CI Token>
+export GRAVITEE_RELEASE_VERSION="1.30.25"
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="1.30.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"publish_bundles\",
+        \"gio_release_version\": \"${GRAVITEE_RELEASE_VERSION}\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+* example for Release `1.25.26`  (**tested KO** , see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/428/workflows/12d5af8f-6f5d-4c1d-99aa-689b0ca5a420/jobs/401), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
+
+```bash
+export CCI_TOKEN=<your Circle CI Token>
+export GRAVITEE_RELEASE_VERSION="1.25.26"
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="1.25.x"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -127,4 +201,29 @@ docker run -itd --name devops-bubble -v $PWD/.s3cmd/config:/root/.s3cfg -v /opt/
 export S3_BUCKET_NAME="gravitee-releases-downloads"
 docker exec -it devops-bubble bash -c "s3cmd sync --acl-public /gio/devops/bucket/ s3://${S3_BUCKET_NAME}/"
 
+```
+
+
+* example for Release `1.30.10` (**not tested**  ) :
+
+```bash
+export CCI_TOKEN=<your Circle CI Token>
+export GRAVITEE_RELEASE_VERSION="1.30.10"
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="1.30.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"publish_bundles\",
+        \"gio_release_version\": \"${GRAVITEE_RELEASE_VERSION}\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
