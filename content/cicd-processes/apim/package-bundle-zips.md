@@ -95,7 +95,7 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 ```
 
 
-* example for Release `3.0.2` (**tested OK**) :
+* example for Release `3.0.2` (**tested OK** cf. [this piepline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/427/workflows/061b556b-1d32-4103-889b-fbe30719c6fd/jobs/400) ) :
 
 ```bash
 export CCI_TOKEN=<your Circle CI Token>
