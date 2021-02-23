@@ -22,7 +22,7 @@ One important question here, is : by which mean, will a Gravitee Dev Team member
 
 On the other hand, as I presented the [Gravitee APIM Product Orchestrated Release](/cicd-processes/apim/orchestrated-release/) first new CI CD major feature, I explained that this process has to be triggered by sending an HTTP Request to the circle CI API, and demoed that using a simple `curl` command. On this occasion, the Gravitee dEv team made brought to my attention two points :
 * that it is unfriendly, to have to trigger such a process using a `curl`, along with requirng a secret : the Circle CI API Token, to authenticate to the Circle CI API.
-* that `Jenkins` allows triggering any Pipeline, through its Web UI, and that this same _"Gravitee APIM Product multi-repo Release process"_, in the Legacy CI CD System, was indeed triggered using the Jenkins Web UI : much more user friendly way, than using a rather complex `curl` command.     
+* that `Jenkins` allows triggering any Pipeline, through its Web UI, and that this same _"Gravitee APIM Product multi-repo Release process"_, in the Legacy CI CD System, was indeed triggered using the Jenkins Web UI : much more user friendly way, than using a rather complex `curl` command.
 
 Now, The [Gravitee APIM Product Orchestrated Release](/cicd-processes/apim/orchestrated-release/) cannot be triggered from the Circle CI Web UI, because :
 * This process requires pipelines parameters, which values _have_ to vary, at least to be able to specify the "dry-run mode" (do you want to trigger a relase n dry run mode, or not?)

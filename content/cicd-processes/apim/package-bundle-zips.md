@@ -4,7 +4,7 @@ date: 2020-12-16T00:44:23+01:00
 draft: false
 nav_menu: "CI/CD Processes"
 menu: apim_processes
-menu_index: 3
+menu_index: 7
 product: "Gravitee APIM"
 # menu:
   # developer_guide:
@@ -22,6 +22,32 @@ Build the zip files and deploy them to https://download.gravitee.io
 ## How to run
 
 Launch the package bundle for a given Gravitee.io Release :
+
+
+* example for Release `1.25.27`  (**tested OK** , see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/471/workflows/93270cf0-ec2e-44ac-b20c-4e66625d64a0/jobs/443), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
+
+```bash
+export CCI_TOKEN=<your Circle CI Token>
+export GRAVITEE_RELEASE_VERSION="1.25.27"
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="1.25.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"publish_bundles\",
+        \"gio_release_version\": \"${GRAVITEE_RELEASE_VERSION}\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
 
 * example for Release `3.3.0` (**tested OK**):
 ```bash
@@ -120,7 +146,7 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 ```
 
 
-* example for Release `1.30.25`  (**tested KO** , see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/426/workflows/cd825e40-0d34-4ff9-8df9-ce549c5a9575/jobs/399), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
+* example for Release `1.30.25`  (**tested OK** , see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/475/workflows/6f060fbe-542e-40b3-ad51-6581a481c483/jobs/447), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
 
 ```bash
 export CCI_TOKEN=<your Circle CI Token>
@@ -144,7 +170,33 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
-* example for Release `1.25.26`  (**tested KO** , see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/428/workflows/12d5af8f-6f5d-4c1d-99aa-689b0ca5a420/jobs/401), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
+
+* example for Release `1.30.29`  (**tested KO** , see [this pipeline execution](ccccc), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
+
+```bash
+export CCI_TOKEN=<your Circle CI Token>
+export GRAVITEE_RELEASE_VERSION="1.30.29"
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="1.30.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"publish_bundles\",
+        \"gio_release_version\": \"${GRAVITEE_RELEASE_VERSION}\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+
+* example for Release `1.25.26`  (**tested OK** , see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/477/workflows/d405ca6a-e5a3-43e6-a043-4836b16243b2/jobs/449), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
 
 ```bash
 export CCI_TOKEN=<your Circle CI Token>
