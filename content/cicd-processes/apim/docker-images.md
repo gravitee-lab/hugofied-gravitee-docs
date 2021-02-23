@@ -92,7 +92,7 @@ export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-docker"
 export BRANCH="master"
 # export BRANCH="feature/cicd-circle-image-builds"
-export GRAVITEEIO_VERSION="3.5.2"
+export GRAVITEEIO_VERSION="3.6.0"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -108,6 +108,7 @@ export JSON_PAYLOAD="{
 curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
+
 
 * For non latest in gravitee-io :
 
