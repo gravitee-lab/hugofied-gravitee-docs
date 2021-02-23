@@ -16,7 +16,6 @@ type: apim-processes
 
 Build and push the Gravitee APIM Docker image to Docker hub
 
-
 ## How to run
 
 Note that for APIM v1 and v3 Docker release processes :
@@ -34,7 +33,7 @@ export CCI_TOKEN=<your circle ci personal api token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-docker"
 export BRANCH="master"
-export BRANCH="feature/cicd-circle-image-builds"
+# export BRANCH="feature/cicd-circle-image-builds"
 export GRAVITEEIO_VERSION="1.30.31"
 export JSON_PAYLOAD="{
 
@@ -60,7 +59,7 @@ export CCI_TOKEN=<your circle ci personal api token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-docker"
 export BRANCH="master"
-export BRANCH="feature/cicd-circle-image-builds"
+# export BRANCH="feature/cicd-circle-image-builds"
 export GRAVITEEIO_VERSION="1.30.31"
 export JSON_PAYLOAD="{
 
@@ -92,7 +91,7 @@ export CCI_TOKEN=<your circle ci personal api token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-docker"
 export BRANCH="master"
-export BRANCH="feature/cicd-circle-image-builds"
+# export BRANCH="feature/cicd-circle-image-builds"
 export GRAVITEEIO_VERSION="3.5.2"
 export JSON_PAYLOAD="{
 
@@ -118,7 +117,7 @@ export CCI_TOKEN=<your circle ci personal api token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-docker"
 export BRANCH="master"
-export BRANCH="feature/cicd-circle-image-builds"
+# export BRANCH="feature/cicd-circle-image-builds"
 export GRAVITEEIO_VERSION="3.5.2"
 export JSON_PAYLOAD="{
 
