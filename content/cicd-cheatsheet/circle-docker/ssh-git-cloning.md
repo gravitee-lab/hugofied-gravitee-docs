@@ -4,7 +4,7 @@ date: 2020-12-16T00:44:23+01:00
 draft: false
 nav_menu: "Circle CI and Docker"
 menu: circle_docker
-menu_index: 2
+menu_index: 3
 product: "Gravitee APIM"
 # menu:
   # developer_guide:
@@ -18,7 +18,7 @@ The following `.circleci/config.yml` shows the problem, that using the same SSH 
 * the default workflow named `cicd_test` :
   * tries and fails to use an SSH Key Pair which is proved to be valid by the `dry_run_orchestrator` job
   * is triggered everytime you git push a new git commit
-* The `dry_nexus_staging_process` workflow 
+* The `dry_nexus_staging_process` workflow
 ```Yaml
 version: 2.1
 
