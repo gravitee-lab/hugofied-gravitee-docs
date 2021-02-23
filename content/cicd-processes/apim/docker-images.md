@@ -21,7 +21,7 @@ Build and push the Gravitee APIM Docker image to Docker hub
 Note that for APIM v1 and v3 Docker release processes :
 * you may use the `prune` optional parameter to clear all docker imgages from the Pipeline Docker Layer Cache, see [examples in the Tests section](#tests)
 * `GRAVITEEIO_VERSION` **must be strict semver (with 3 number, of the form `x.y.z`)**
-
+* the `dry_run` parameter is set to true by default : in dry run mode, no docker push is executed.
 
 ### APIM v1
 
@@ -42,7 +42,8 @@ export JSON_PAYLOAD="{
 
     {
         \"gio_product\": \"apim_1x\",
-        \"graviteeio_version\": \"${GRAVITEEIO_VERSION}\"
+        \"graviteeio_version\": \"${GRAVITEEIO_VERSION}\",
+        \"dry_run\": false
     }
 
 }"
@@ -69,7 +70,8 @@ export JSON_PAYLOAD="{
     {
         \"gio_product\": \"apim_1x\",
         \"graviteeio_version\": \"${GRAVITEEIO_VERSION}\",
-        \"tag_latest\": false
+        \"tag_latest\": false,
+        \"dry_run\": false
     }
 
 }"
@@ -100,7 +102,8 @@ export JSON_PAYLOAD="{
 
     {
         \"gio_product\": \"apim_3x\",
-        \"graviteeio_version\": \"${GRAVITEEIO_VERSION}\"
+        \"graviteeio_version\": \"${GRAVITEEIO_VERSION}\",
+        \"dry_run\": false
     }
 
 }"
@@ -128,7 +131,8 @@ export JSON_PAYLOAD="{
     {
         \"gio_product\": \"apim_3x\",
         \"graviteeio_version\": \"${GRAVITEEIO_VERSION}\",
-        \"tag_latest\": false
+        \"tag_latest\": false,
+        \"dry_run\": false
     }
 
 }"
