@@ -29,22 +29,8 @@ Note that for APIM v1 and v3 Docker release processes :
 * For a latest in gravitee-io :
 
 ```bash
-# It should be SECRETHUB_ORG=graviteeio, but Cirlce CI token is related to
-# a Circle CI User, not an Org, so just reusing the same than for Gravtiee-Lab here, to work faster
-# ---
-SECRETHUB_ORG=gravitee-lab
-SECRETHUB_REPO=cicd
-# Nevertheless, I today think :
-# Each team member should have his own personal secrethub repo in the [graviteeio] secrethub org.
-# like this :
-# a [graviteeio/${TEAM_MEMBER_NAME}] secrethub repo for each team member
-# and the Circle CI Personal Access token stored with [graviteeio/${TEAM_MEMBER_NAME}/circleci/token]
-# ---
-export HUMAN_NAME=jblasselle
-export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${HUMAN_NAME}/circleci/token")
 # You, will just use your own Circle CI Token
-# export CCI_TOKEN=<your user circle ci token>
-
+export CCI_TOKEN=<your circle ci personal api token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-docker"
 export BRANCH="master"
@@ -69,22 +55,8 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 * For non latest in gravitee-io :
 
 ```bash
-# It should be SECRETHUB_ORG=graviteeio, but Cirlce CI token is related to
-# a Circle CI User, not an Org, so just reusing the same than for Gravtiee-Lab here, to work faster
-# ---
-SECRETHUB_ORG=gravitee-lab
-SECRETHUB_REPO=cicd
-# Nevertheless, I today think :
-# Each team member should have his own personal secrethub repo in the [graviteeio] secrethub org.
-# like this :
-# a [graviteeio/${TEAM_MEMBER_NAME}] secrethub repo for each team member
-# and the Circle CI Personal Access token stored with [graviteeio/${TEAM_MEMBER_NAME}/circleci/token]
-# ---
-export HUMAN_NAME=jblasselle
-export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${HUMAN_NAME}/circleci/token")
 # You, will just use your own Circle CI Token
-# export CCI_TOKEN=<your user circle ci token>
-
+export CCI_TOKEN=<your circle ci personal api token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-docker"
 export BRANCH="master"
@@ -115,22 +87,8 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 * For a latest in gravitee-io :
 
 ```bash
-# It should be SECRETHUB_ORG=graviteeio, but Cirlce CI token is related to
-# a Circle CI User, not an Org, so just reusing the same than for Gravtiee-Lab here, to work faster
-# ---
-SECRETHUB_ORG=gravitee-lab
-SECRETHUB_REPO=cicd
-# Nevertheless, I today think :
-# Each team member should have his own personal secrethub repo in the [graviteeio] secrethub org.
-# like this :
-# a [graviteeio/${TEAM_MEMBER_NAME}] secrethub repo for each team member
-# and the Circle CI Personal Access token stored with [graviteeio/${TEAM_MEMBER_NAME}/circleci/token]
-# ---
-export HUMAN_NAME=jblasselle
-export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${HUMAN_NAME}/circleci/token")
 # You, will just use your own Circle CI Token
-# export CCI_TOKEN=<your user circle ci token>
-
+export CCI_TOKEN=<your circle ci personal api token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-docker"
 export BRANCH="master"
@@ -155,22 +113,8 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 * For non latest in gravitee-io :
 
 ```bash
-# It should be SECRETHUB_ORG=graviteeio, but Cirlce CI token is related to
-# a Circle CI User, not an Org, so just reusing the same than for Gravtiee-Lab here, to work faster
-# ---
-SECRETHUB_ORG=gravitee-lab
-SECRETHUB_REPO=cicd
-# Nevertheless, I today think :
-# Each team member should have his own personal secrethub repo in the [graviteeio] secrethub org.
-# like this :
-# a [graviteeio/${TEAM_MEMBER_NAME}] secrethub repo for each team member
-# and the Circle CI Personal Access token stored with [graviteeio/${TEAM_MEMBER_NAME}/circleci/token]
-# ---
-export HUMAN_NAME=jblasselle
-export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${HUMAN_NAME}/circleci/token")
 # You, will just use your own Circle CI Token
-# export CCI_TOKEN=<your user circle ci token>
-
+export CCI_TOKEN=<your circle ci personal api token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-docker"
 export BRANCH="master"
