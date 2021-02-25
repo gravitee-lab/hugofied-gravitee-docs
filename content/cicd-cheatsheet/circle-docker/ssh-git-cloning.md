@@ -407,3 +407,23 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 
 ```
+
+
+## Add SSH Key to Circle CI Project
+
+* Add SSH Key to the Project
+* Then, with the SSH Key Finger print in you `.circleci/config.yml` :
+```Yaml
+jobs:
+  deploy-job:
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "SO:ME:FIN:G:ER:PR:IN:T"
+```
+
+* calculate the finger print of an SSH public key :
+
+```bash
+ssh-keygen  -E md5 -lf ./maclef.pub.ssh
+```
