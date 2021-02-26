@@ -459,3 +459,26 @@ A new Gravitee Circle CI Orb Job will be implemented and used in every Gravitee 
   * it will execute  second maven command to execute the maven `nexus-staging` plugin
 
 ## Misc. Characteristics
+
+
+## The Last Issue
+
+The last experienced issue experienced with the nexus staging on Gravitee Project, was an error returned by nexus staging, returning 404 HTTP response code, and among all :
+
+```Xml
+<nexus-error>
+  <errors>
+    <error>
+      <id>*</id>
+      <msg>No such repository: iogravitee-3857</msg>
+    </error>
+  </errors>
+</nexus-error>
+```
+
+* I have found one entry on the web, mentioning that in the `pom.xml` of the project, some xml tags are required, like the project description, `<description>`  : https://issues.sonatype.org/browse/OSSRH-61788
+* https://central.sonatype.org/pages/requirements.html#project-name-description-and-url : on this page I read that among such POM project metadata, are required :
+  * project name, `<name>`
+  * project description, `<description>`
+  * project url, `<url>`
+  * what I do not yet understand is taht we have deployed to nexus staging Gravitee Gateway version `3.6.0` version, but its `pom.xml` has neither the `<url>`, nor the `<description>` required tags at the project level, for example , see [its `pom.xml`](https://github.com/gravitee-io/gravitee-gateway/blob/3.6.0/pom.xml)

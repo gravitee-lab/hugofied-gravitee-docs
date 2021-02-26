@@ -138,3 +138,9 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 # assuming we are in the release repo
 docker run --rm -v "${PWD}":/workdir mikefarah/yq
 ```
+
+## Github API issue
+
+I expeirienced an issue with the Github REST API v3, for creating a Pull Request.
+
+I have opened a topic on Github Community giving all details :https://github.community/t/github-api-create-pull-request-invalid-head-field-422-http-response/164104
