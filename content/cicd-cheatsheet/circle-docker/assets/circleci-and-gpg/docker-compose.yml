@@ -1,0 +1,46 @@
+version: '3.7'
+
+# ---
+# This docker-compose  automates a set of operations on the Gravitee Bot GPG KEy Pair.
+# Those operations are meant to test stanadrd operations on those Keys, in
+# Pipelines, using two different formats :
+#
+# => binary format
+# => base64 encoded text format
+# ---
+# Each container is based on the
+# => cccc
+# ---
+# networks:
+  # gpg_worker_net:
+    # name: gpg_worker_net
+
+services:
+  # ---
+  # In this container, I will import the
+  # binary form GPG Key, export them as base64 encoded text files, and store them back
+  gpg_worker_exporter:
+    image: ${OCI_REPOSITORY_ORG}/${OCI_REPOSITORY_NAME}:${DESIRED_DOCKER_TAG}
+    container_name: gpg_worker_exporter
+    # ports:
+      # # only expose https to outside world
+      # - "443:443"   # SSL
+    # command: /graviteeio/build.sh
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    # volumes:
+      # - "$PWD/oci/runtime/frontend/webapp_src_code:/graviteeio/src_code"
+    volumes:
+      - "${HOME}/.secrethub/credential:/home/${NON_ROOT_USER_NAME}/.secrehub/credential"
+    labels:
+      - "graviteeio.rocks=true"
+    # depends_on:
+      # - gpg_worker_backend
+    # networks:
+      # gpg_worker_net:
+        # aliases:
+          # - web.graviteeio.io
+
+
+# ------------

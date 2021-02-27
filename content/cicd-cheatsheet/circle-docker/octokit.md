@@ -105,5 +105,29 @@ console.log("created PR is of number = " + prNumber);
 
 EOF
 
+echo ""
+
+docker exec -it gio_pr_spawner sh -c 'pwd && ls -allh . && cd ephemeral && rm ./src/index.ts && mkdir gravitee-docs/'
+
+docker exec -it gio_pr_spawner sh -c 'cd ephemeral && sed -i "s#// \"noImplicitAny\": true#\"noImplicitAny\": false#g" tsconfig.json'
+
+docker cp ${WHATEVER}/new.index.ts gio_pr_spawner:/home/node/app/ephemeral/src
+docker cp ./_config.yml gio_pr_spawner:/home/node/app/ephemeral/gravitee-docs/
+
+
+echo "check content of src/index.ts inside container : "
+docker exec -it gio_pr_spawner sh -c 'cd ephemeral && ls -allh ./'
+docker exec -it gio_pr_spawner sh -c 'cd ephemeral && ls -allh ./src'
+docker exec -it gio_pr_spawner sh -c 'cd ephemeral && ls -allh . && cp ./src/new.index.ts ./src/index.ts'
+docker exec -it gio_pr_spawner sh -c 'cd ephemeral && ls -allh ./src/new.index.ts'
+docker exec -it gio_pr_spawner sh -c 'cd ephemeral && ls -allh ./src/index.ts'
+docker exec -it gio_pr_spawner sh -c 'cd ephemeral && rm ./src/new.index.ts'
+docker exec -it gio_pr_spawner sh -c 'cd ephemeral && cat ./src/index.ts'
+echo "check content of [/home/node/app/ephemeral/gravitee-docs/_config.yml] inside container : "
+docker exec -it gio_pr_spawner sh -c 'cd ephemeral && ls -allh ./gravitee-docs/ && cat /home/node/app/ephemeral/gravitee-docs/_config.yml'
+
+docker exec -it gio_pr_spawner sh -c 'cd ephemeral && npm i -g typescript && npm i && tsc && npm run build && npm start'
+
+
 
 ```
