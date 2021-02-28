@@ -31,8 +31,12 @@ export NON_ROOT_USER_GRP=${NON_ROOT_USER_NAME}
 
 export DESIRED_DOCKER_TAG="${MAVEN_VERSION}-openjdk-${OPENJDK_VERSION}"
 
-docker-compose -f docker-compose.build.yml  up -d
+docker-compose -f docker-compose.build.yml up -d
 
+docker-compose -f docker-compose.yml up -d
+docker exec -it gpg_worker_exporter bash -c "pwd && ls -allh"
+exit 0
+docker-compose -f docker-compose.yml up -d
 exit 0
 # -------------------------------------------------------------------------------- #
 # -----------                         DOCKER BUILD                       --------- #
