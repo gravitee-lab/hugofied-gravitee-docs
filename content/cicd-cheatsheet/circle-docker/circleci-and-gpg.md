@@ -27,6 +27,19 @@ I will, in a container :
 * And I will finally import those base64 encoded text files exported GPG Keys  into a Circle CI Docker executor. I will do that in this github repository : https://github.com/gravitee-lab/cicd_test_docker_n_gpg.git git@github.com:gravitee-lab/cicd_test_docker_n_gpg.git
 
 
+* run the docker-compose :
+
+```bash
+git clone git@github.com:gravitee-lab3/hugofied-gravitee-docs.git hugofied-gpg-work/
+cd hugofied-gpg-work/
+cd content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
+
+./build.sh
+
+
+```
+
+
 * import the Gravitee Bot public and private Keys :
 
 ```bash
