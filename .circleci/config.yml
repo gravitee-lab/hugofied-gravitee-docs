@@ -209,6 +209,41 @@ jobs:
               -H "Content-Type: application/json" \
               -H "Accept: application/vnd.heroku+json; version=3.docker-releases"
 
+  cicd_test_gpg_job:
+    machine:
+      image: 'ubuntu-1604:201903-01'
+      resource_class: medium
+    environment:
+      HUGO_VERSION: '0.78.2'
+      SECRETHUB_ORG: gravitee-lab
+      SECRETHUB_REPO: cicd
+      HEROKU_APP_ID: gravit33-docs
+    steps:
+      # - checkout
+      - secrethub/install
+      - gravitee/git_config:
+          secrethub_org: << pipeline.parameters.secrethub_org >>
+          secrethub_repo: << pipeline.parameters.secrethub_repo >>
+      - run:
+          name: "install secrethub credential as local file"
+          command: |
+                    mkdir -p ~/.secrethub/
+                    echo "${SECRETHUB_CREDENTIAL}" > ~/.secrethub/credential
+
+      - run:
+          name: "Docker Compose Build"
+          command: |
+                    git clone git@github.com:gravitee-lab3/hugofied-gravitee-docs.git hugofied-gpg-work/
+                    cd hugofied-gpg-work/
+      - run:
+          name: "Run the test: Docker Compose up"
+          command: |
+                    git clone git@github.com:gravitee-lab3/hugofied-gravitee-docs.git hugofied-gpg-work/
+                    cd hugofied-gpg-work/
+                    cd content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
+                    ./build.sh
+
+
 workflows:
   version: 2.1
   build_n_deploy:
@@ -217,3 +252,9 @@ workflows:
     jobs:
       - hugo_express_dock:
           context: cicd-orchestrator
+  cicd_test_gpg:
+    when:
+      equal: [ cicd_test_gpg, << pipeline.parameters.gio_action >> ]
+    jobs:
+      cicd_test_gpg_job:
+        context: cicd-orchestrator
