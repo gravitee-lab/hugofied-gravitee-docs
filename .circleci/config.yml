@@ -228,10 +228,15 @@ jobs:
                     mkdir -p ~/.secrethub/
                     echo "${SECRETHUB_CREDENTIAL}" > ~/.secrethub/credential
       - run:
-          name: "Run the test: Docker Compose up"
+          name: "Run the test: Docker Compose Build"
           command: |
                     cd hugofied-gpg-work/content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
                     ./build.sh
+      - run:
+          name: "Run the test: Docker Compose up"
+          command: |
+                    cd hugofied-gpg-work/content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
+                    ./run.sh
 
 
 workflows:
