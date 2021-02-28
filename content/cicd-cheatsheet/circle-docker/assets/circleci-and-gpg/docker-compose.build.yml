@@ -26,7 +26,7 @@ services:
     # command: --api --docker
     container_name: gpg_worker_exporter
     build:
-      context: ./oci
+      context: ./oci/
       args:
         - DEBIAN_IMAGE_TAG=${DEBIAN_IMAGE_TAG}
         - OCI_VENDOR=${OCI_VENDOR}
