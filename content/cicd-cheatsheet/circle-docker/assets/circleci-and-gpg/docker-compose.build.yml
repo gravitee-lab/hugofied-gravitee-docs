@@ -40,8 +40,8 @@ services:
       # - "443:443"   # SSL
     # command: /graviteeio/build.sh
     command: /bin/bash
-    stdin_open: true
-    tty: true
+    # stdin_open: true
+    # tty: true
     # volumes:
       # - "$PWD/oci/runtime/frontend/webapp_src_code:/graviteeio/src_code"
     labels:
