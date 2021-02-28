@@ -4,7 +4,7 @@ version: 2.1
 parameters:
   gio_action:
     type: enum
-    enum: [release, martymcfly_mvn_release, pr_build]
+    enum: [release, martymcfly_mvn_release, cicd_test_gpg, pr_build]
     default: pr_build
   dry_run:
     type: boolean

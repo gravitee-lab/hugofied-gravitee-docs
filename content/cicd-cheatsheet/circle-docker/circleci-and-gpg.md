@@ -40,7 +40,21 @@ cd content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
 
 * run the docker-compose on local machine :
 
+```bash
+SECRETHUB_ORG=gravitee-lab
+SECRETHUB_REPO=cicd
+# Nevertheless, I today think :
+# Each team member should have his own personal secrethub repo in the [graviteeio] secrethub org.
+# like this :
+# a [graviteeio/${TEAM_MEMBER_NAME}] secrethub repo for each team member
+# and the Circle CI Personal Access token stored with [graviteeio/${TEAM_MEMBER_NAME}/circleci/token]
+# ---
+export HUMAN_NAME=jblasselle
+export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${HUMAN_NAME}/circleci/token")
+# You, will just use your own Circle CI Token
+# export CCI_TOKEN=<your user circle ci token>
 
+```
 
 * import the Gravitee Bot public and private Keys :
 
