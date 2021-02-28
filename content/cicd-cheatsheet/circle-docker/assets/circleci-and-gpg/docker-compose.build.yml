@@ -28,8 +28,7 @@ services:
     build:
       context: ./oci
       args:
-        - MAVEN_VERSION=${MAVEN_VERSION}
-        - OPENJDK_VERSION=${OPENJDK_VERSION}
+        - DEBIAN_IMAGE_TAG=${DEBIAN_IMAGE_TAG}
         - OCI_VENDOR=${OCI_VENDOR}
         - NON_ROOT_USER_UID=${NON_ROOT_USER_UID}
         - NON_ROOT_USER_GID=${NON_ROOT_USER_GID}
