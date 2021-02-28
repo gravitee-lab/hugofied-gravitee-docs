@@ -2,9 +2,9 @@
 # ARG OPENJDK_VERSION=11
 ARG MAVEN_VERSION=3.6.3
 ARG OPENJDK_VERSION=11.0.3
-# FROM maven:$MAVEN_VERSION-openjdk-$OPENJDK_VERSION
+FROM maven:$MAVEN_VERSION-openjdk-$OPENJDK_VERSION
 # FROM circleci/openjdk:11.0.3-jdk-stretch
-FROM circleci/openjdk:$OPENJDK_VERSION-jdk-stretch
+# FROM circleci/openjdk:$OPENJDK_VERSION-jdk-stretch
 
 RUN apt-get update -y && apt-get install -y gnupg build-essential tree
 ARG MAVEN_VERSION=3.6.3
