@@ -219,7 +219,7 @@ jobs:
       SECRETHUB_REPO: cicd
       HEROKU_APP_ID: gravit33-docs
     steps:
-      # - checkout
+      - checkout
       - secrethub/install
       - run:
           name: "install secrethub credential as local file"
