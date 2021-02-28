@@ -1,16 +1,10 @@
-ARG MAVEN_VERSION=3.6.3
-ARG OPENJDK_VERSION=11
-FROM maven:$MAVEN_VERSION-openjdk-$OPENJDK_VERSION
-# FROM circleci/openjdk:11.0.3-jdk-stretch
-# FROM circleci/openjdk:$OPENJDK_VERSION-jdk-stretch
+ARG DEBIAN_IMAGE_TAG=buster-slim
+FROM debian:buster-slim
 
 RUN apt-get update -y && apt-get install -y gnupg build-essential tree
-ARG MAVEN_VERSION=3.6.3
-ARG OPENJDK_VERSION=11
 ARG OCI_VENDOR=$GITHUB_ORG
-# LABEL oci.image.tag=maven:"${MAVEN_VERSION}"-openjdk-"${OPENJDK_VERSION}"
-LABEL oci.image.tag="${MAVEN_VERSION}-openjdk-${OPENJDK_VERSION}"
-LABEL oci.image.from="circleci/openjdk:$OPENJDK_VERSION-jdk-stretch"
+LABEL oci.image.tag="${DEBIAN_IMAGE_TAG}-debian"
+LABEL oci.image.from="debian:$DEBIAN_IMAGE_TAG"
 LABEL vendor="${OCI_VENDOR}"
 LABEL maintainer="jean-baptiste.lasselle@graviteesource.com"
 

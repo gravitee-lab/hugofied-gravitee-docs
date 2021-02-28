@@ -10,10 +10,9 @@ set -x
 # -------------------------------------------------------------------------------- #
 
 # --
-export MAVEN_VERSION=${MAVEN_VERSION:-"3.6.3"}
-export OPENJDK_VERSION=${OPENJDK_VERSION:-"11"}
+export DEBIAN_IMAGE_TAG=${DEBIAN_IMAGE_TAG:-"buster-slim"}
 export OCI_REPOSITORY_ORG=${OCI_REPOSITORY_ORG:-"docker.io/graviteeio"}
-export OCI_REPOSITORY_NAME=${OCI_REPOSITORY_NAME:-"cicd-gpg-maven"}
+export OCI_REPOSITORY_NAME=${OCI_REPOSITORY_NAME:-"cicd-gpg-worker"}
 
 
 export OCI_VENDOR=gravitee.io
@@ -29,7 +28,7 @@ export NON_ROOT_USER_NAME=graviteebot
 export NON_ROOT_USER_GID=${MAPPED_USER_GID}
 export NON_ROOT_USER_GRP=${NON_ROOT_USER_NAME}
 
-export DESIRED_DOCKER_TAG="${MAVEN_VERSION}-openjdk-${OPENJDK_VERSION}"
+export DESIRED_DOCKER_TAG="${DEBIAN_IMAGE_TAG}-debian"
 
 docker-compose -f docker-compose.build.yml build
 
@@ -39,7 +38,7 @@ exit 0
 # -------------------------------------------------------------------------------- #
 
 
-export OCI_BUILD_ARGS="--build-arg MAVEN_VERSION=${MAVEN_VERSION} --build-arg OPENJDK_VERSION=${OPENJDK_VERSION} --build-arg OCI_VENDOR=${OCI_VENDOR}"
+export OCI_BUILD_ARGS="--build-arg DEBIAN_IMAGE_TAG=${DEBIAN_IMAGE_TAG} --build-arg OCI_VENDOR=${OCI_VENDOR}"
 export OCI_BUILD_ARGS="${OCI_BUILD_ARGS}"
 export OCI_BUILD_ARGS="${OCI_BUILD_ARGS} --build-arg NON_ROOT_USER_UID=${NON_ROOT_USER_UID} --build-arg NON_ROOT_USER_GID=${NON_ROOT_USER_GID}"
 export OCI_BUILD_ARGS="${OCI_BUILD_ARGS} --build-arg NON_ROOT_USER_NAME=${NON_ROOT_USER_NAME} --build-arg NON_ROOT_USER_GRP=${NON_ROOT_USER_GRP}"
