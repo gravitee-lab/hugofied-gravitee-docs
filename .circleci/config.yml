@@ -221,26 +221,16 @@ jobs:
     steps:
       # - checkout
       - secrethub/install
-      - gravitee/git_config:
-          secrethub_org: << pipeline.parameters.secrethub_org >>
-          secrethub_repo: << pipeline.parameters.secrethub_repo >>
       - run:
           name: "install secrethub credential as local file"
           command: |
+                    cd hugofied-gpg-work/content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
                     mkdir -p ~/.secrethub/
                     echo "${SECRETHUB_CREDENTIAL}" > ~/.secrethub/credential
-
-      - run:
-          name: "Docker Compose Build"
-          command: |
-                    git clone git@github.com:gravitee-lab3/hugofied-gravitee-docs.git hugofied-gpg-work/
-                    cd hugofied-gpg-work/
       - run:
           name: "Run the test: Docker Compose up"
           command: |
-                    git clone git@github.com:gravitee-lab3/hugofied-gravitee-docs.git hugofied-gpg-work/
-                    cd hugofied-gpg-work/
-                    cd content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
+                    cd hugofied-gpg-work/content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
                     ./build.sh
 
 
