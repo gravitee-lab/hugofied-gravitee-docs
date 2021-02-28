@@ -224,18 +224,18 @@ jobs:
       - run:
           name: "install secrethub credential as local file"
           command: |
-                    cd hugofied-gpg-work/content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
+                    cd content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
                     mkdir -p ~/.secrethub/
                     echo "${SECRETHUB_CREDENTIAL}" > ~/.secrethub/credential
       - run:
           name: "Run the test: Docker Compose Build"
           command: |
-                    cd hugofied-gpg-work/content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
+                    cd content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
                     ./build.sh
       - run:
           name: "Run the test: Docker Compose up"
           command: |
-                    cd hugofied-gpg-work/content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
+                    cd content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
                     ./run.sh
 
 
