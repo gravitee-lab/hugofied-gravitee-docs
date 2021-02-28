@@ -11,7 +11,7 @@ set -x
 
 # --
 export MAVEN_VERSION=${MAVEN_VERSION:-"3.6.3"}
-export OPENJDK_VERSION=${OPENJDK_VERSION:-"11.0.3"}
+export OPENJDK_VERSION=${OPENJDK_VERSION:-"11"}
 export OCI_REPOSITORY_ORG=${OCI_REPOSITORY_ORG:-"docker.io/graviteeio"}
 export OCI_REPOSITORY_NAME=${OCI_REPOSITORY_NAME:-"cicd-gpg-maven"}
 
