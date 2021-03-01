@@ -12,6 +12,12 @@ product: "Gravitee APIM"
 type: circle-docker
 ---
 
+### TODO : add on step to docker compose, to automate generate / rotate GPG Key (binary)
+
+So it's just what we need to get a fully automated secret maangement lifecycle.
+
+Only one thing annoying there : this docker compose encounters issue when run into a Circle CI Pipeline. HAve to fix that issue too.
+
 ## The problem
 
 Explain the problem
@@ -24,10 +30,9 @@ I will, in a container :
 * Import the Gravitee Bot public and private Keys
 * Then I will export them but as base64 encoded text files, instead of binary files, using the `--armor` option
 * Then I will store the base64 encoded text files exported Keys into secrethub
-* And I will finally import those base64 encoded text files exported GPG Keys  into a Circle CI Docker executor. I will do that in this github repository : https://github.com/gravitee-lab/cicd_test_docker_n_gpg.git git@github.com:gravitee-lab/cicd_test_docker_n_gpg.git
+* And I will finally import those base64 encoded text files exported GPG Keys into a Circle CI Docker executor. I will do that in the circlec ci `.circleci/onfig.yml` of https://github.com/gravitee-io/release.git git@github.com:gravitee-io/release.git
 
-
-* run the docker-compose on lcal machine :
+* run the docker-compose on local machine (assumes that you have the secrethub credential in `~/.secrethub/credential`) :
 
 ```bash
 git clone git@github.com:gravitee-lab3/hugofied-gravitee-docs.git hugofied-gpg-work/
@@ -40,7 +45,7 @@ cd content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
 # convert the binary GPG key into base64 encoded text format GPG Key, and store that to GRaviteeIO 's secrethub Vault
 docker exec -it gpg_worker_exporter bash -c 'pwd && ls -allh graviteebot/scripts && cd ./graviteebot/scripts/gpg_worker_exporter/ && ./operations.sh'
 
-# Test importing the base64 encoded text format GPG Key, and signing a file with it 
+# Test importing the base64 encoded text format GPG Key, and signing a file with it
 docker exec -it gpg_worker_armor_signer bash -c 'pwd && ls -allh graviteebot/scripts && cd ./graviteebot/scripts/gpg_worker_armor_signer/ && pwd && ls -allh'
 
 
