@@ -32,6 +32,12 @@ export DESIRED_DOCKER_TAG="${DEBIAN_IMAGE_TAG}-debian"
 
 docker-compose -f docker-compose.yml up -d
 docker exec -it gpg_worker_exporter bash -c "pwd && ls -allh"
+
+docker exec -it gpg_worker_exporter bash -c 'pwd && ls -allh graviteebot/.secrethub/credential && secrethub account inspect'
+
+docker exec -it gpg_worker_exporter bash -c 'pwd && ls -allh graviteebot/.secrethub/credential && secrethub account inspect'
+
+
 exit 0
 docker-compose -f docker-compose.yml up -d
 exit 0

@@ -32,7 +32,7 @@ services:
     # volumes:
       # - "$PWD/oci/runtime/frontend/webapp_src_code:/graviteeio/src_code"
     volumes:
-      - "${HOME}/.secrethub/credential:/home/${NON_ROOT_USER_NAME}/.secrehub/credential"
+      - "${HOME}/.secrethub/credential:/home/${NON_ROOT_USER_NAME}/.secrethub/credential"
     labels:
       - "graviteeio.rocks=true"
     # depends_on:
