@@ -33,6 +33,7 @@ services:
       # - "$PWD/oci/runtime/frontend/webapp_src_code:/graviteeio/src_code"
     volumes:
       - "${HOME}/.secrethub/credential:/home/${NON_ROOT_USER_NAME}/.secrethub/credential"
+      # - "$PWD/content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/script:/home/${NON_ROOT_USER_NAME}/scripts"
     labels:
       - "graviteeio.rocks=true"
     # depends_on:
