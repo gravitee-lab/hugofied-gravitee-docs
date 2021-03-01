@@ -37,21 +37,17 @@ cd content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
 ./build.sh
 ./run.sh
 
-# now run the first
+# convert the binary GPG key into base64 encoded text format GPG Key, and store that to GRaviteeIO 's secrethub Vault
 docker exec -it gpg_worker_exporter bash -c 'pwd && ls -allh graviteebot/scripts && cd ./graviteebot/scripts/gpg_worker_exporter/ && ./operations.sh'
 
-# now run the second
-
-
-docker exec -it gpg_worker_armor_signer bash -c 'pwd && ls -allh graviteebot/scripts && cd ./graviteebot/scripts/gpg_worker_armor_signer/ && ./operations.sh'
-
+# Test importing the base64 encoded text format GPG Key, and signing a file with it 
 docker exec -it gpg_worker_armor_signer bash -c 'pwd && ls -allh graviteebot/scripts && cd ./graviteebot/scripts/gpg_worker_armor_signer/ && pwd && ls -allh'
 
 
 
 ```
 
-* run the test of in the gravitee IO CICD in the release repo :
+* run the test of in the gravitee IO CI/CD in the release repo :
 
 ```bash
 SECRETHUB_ORG=gravitee-lab
