@@ -1,11 +1,14 @@
 #!/bin/bash
 export GPG_SECRETS_DIR=${HOME}/.retrieved.secrets/.gpg/
-export PATH_TO_GPG_PUB_KEY_FILE="${GPG_SECRETS_DIR}/binary-format/graviteebot.gpg.key.public"
-export PATH_TO_GPG_PRIVATE_KEY_FILE="${GPG_SECRETS_DIR}/binary-format/graviteebot.gpg.key.private"
-export GNUPGHOME_PATH=${GNUPGHOME_PATH:-"/tmp/special.ops/.gnupg/keyring"}
+export PATH_TO_GPG_PUB_KEY_FILE="${GPG_SECRETS_DIR}/armor-format/graviteebot.gpg.key.public"
+export PATH_TO_GPG_PRIVATE_KEY_FILE="${GPG_SECRETS_DIR}/armor-format/graviteebot.gpg.key.private"
+export GNUPGHOME=${GNUPGHOME_PATH}
 mkdir -p ${GPG_SECRETS_DIR}
 mkdir -p ${GNUPGHOME_PATH}
 
+echo "# ------------------------------------------ #"
+echo "  [$0]"
+echo "# ------------------------------------------ #"
 
 echo "# ------------------------------------------ #"
 echo "  GnuGPG version is :"
@@ -41,11 +44,11 @@ export RESTORED_GPG_PUB_KEY_FILE=${PATH_TO_GPG_PUB_KEY_FILE}
 export RESTORED_GPG_PRIVATE_KEY_FILE=${PATH_TO_GPG_PRIVATE_KEY_FILE}
 
 echo "# ------------------------------------------ #"
-echo "  Retrieve secrets from Secrethub Vault"
+echo "  Retrieve secrets form Vault"
 echo "# ------------------------------------------ #"
 export GPG_SIGNING_KEY_ID=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/gpg/key_id")
-secrethub read --out-file ${RESTORED_GPG_PUB_KEY_FILE} "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/gpg/pub_key"
-secrethub read --out-file ${RESTORED_GPG_PRIVATE_KEY_FILE} "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/gpg/private_key"
+secrethub read --out-file ${RESTORED_GPG_PUB_KEY_FILE} "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/gpg/armor_format_pub_key"
+secrethub read --out-file ${RESTORED_GPG_PRIVATE_KEY_FILE} "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/gpg/armor_format_private_key"
 
 echo "# ------------------------------------------ #"
 

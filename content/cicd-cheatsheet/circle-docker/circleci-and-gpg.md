@@ -36,6 +36,15 @@ cd content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/
 
 ./build.sh
 ./run.sh
+
+# now run the first
+docker exec -it gpg_worker_exporter bash -c 'pwd && ls -allh graviteebot/scripts && cd ./graviteebot/scripts/gpg_worker_exporter/ && ./operations.sh'
+
+# now run the second
+
+
+docker exec -it gpg_worker_armor_signer bash -c 'pwd && ls -allh graviteebot/scripts && cd ./graviteebot/scripts/gpg_worker_armor_signer/ && ./operations.sh'
+
 ```
 
 * run the docker-compose on local machine :

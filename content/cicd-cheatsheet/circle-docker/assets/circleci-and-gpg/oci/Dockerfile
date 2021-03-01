@@ -21,6 +21,9 @@ ARG NON_ROOT_USER_GRP=circleci
 ENV NON_ROOT_USER_GRP=$NON_ROOT_USER_GRP
 
 # ENV SECRETHUB_CREDENTIAL=$SECRETHUB_CREDENTIAL
+ENV SECRETHUB_ORG=$SECRETHUB_ORG
+ENV SECRETHUB_REPO=$SECRETHUB_REPO
+
 
 LABEL oci.image.nonroot.user.name=$NON_ROOT_USER_NAME
 LABEL oci.image.nonroot.user.group=$NON_ROOT_USER_GRP
@@ -45,12 +48,12 @@ RUN useradd -g $NON_ROOT_USER_GRP -u $NON_ROOT_USER_UID -m $NON_ROOT_USER_NAME
 # RUN useradd -g $NON_ROOT_USER_GRP -u $NON_ROOT_USER_UID -m $NON_ROOT_USER_NAME || true
 
 RUN ls -allh /home/$NON_ROOT_USER_NAME
-# --
-# workaround old known issue of docker for non-root users https://github.com/moby/moby/issues/2259#issuecomment-26564115
-RUN mkdir -p /home/$NON_ROOT_USER_NAME/.m2
-RUN mkdir -p /home/$NON_ROOT_USER_NAME/.m2
-RUN chown $NON_ROOT_USER_NAME:$NON_ROOT_USER_GRP /home/$NON_ROOT_USER_NAME/.m2
 
+RUN mkdir -p /home/$NON_ROOT_USER_NAME/scripts
+COPY scripts/ /home/$NON_ROOT_USER_NAME/scripts/
+RUN chmod +x /home/$NON_ROOT_USER_NAME/scripts/**/*.sh
+RUN mkdir -p /home/${NON_ROOT_USER_NAME}/.exported.secrets/.gpg && mkdir -p /home/${NON_ROOT_USER_NAME}/.signed.files/
+RUN chown $NON_ROOT_USER_NAME:$NON_ROOT_USER_GRP -R /home/${NON_ROOT_USER_NAME}/.exported.secrets/.gpg
 RUN echo "whoami = [$(whoami)]"
 USER $NON_ROOT_USER_NAME
 RUN echo "whoami = [$(whoami)]"
@@ -61,8 +64,7 @@ RUN echo "whoami = [$(whoami)]"
 #
 RUN mkdir -p /home/$NON_ROOT_USER_NAME/.secrets
 RUN chown $NON_ROOT_USER_NAME:$NON_ROOT_USER_GRP /home/$NON_ROOT_USER_NAME/.secrets
-RUN mkdir -p /home/$NON_ROOT_USER_NAME/scripts
-COPY scripts/ /home/$NON_ROOT_USER_NAME/scripts/
+
 WORKDIR /home
 
 
