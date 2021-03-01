@@ -62,7 +62,7 @@ RUN echo "whoami = [$(whoami)]"
 RUN mkdir -p /home/$NON_ROOT_USER_NAME/.secrets
 RUN chown $NON_ROOT_USER_NAME:$NON_ROOT_USER_GRP /home/$NON_ROOT_USER_NAME/.secrets
 RUN mkdir -p /home/$NON_ROOT_USER_NAME/scripts
-COPY scripts/* /home/$NON_ROOT_USER_NAME/scripts/
+COPY scripts/ /home/$NON_ROOT_USER_NAME/scripts/
 WORKDIR /home
 
 
