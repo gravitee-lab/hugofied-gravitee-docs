@@ -45,6 +45,10 @@ docker exec -it gpg_worker_exporter bash -c 'pwd && ls -allh graviteebot/scripts
 
 docker exec -it gpg_worker_armor_signer bash -c 'pwd && ls -allh graviteebot/scripts && cd ./graviteebot/scripts/gpg_worker_armor_signer/ && ./operations.sh'
 
+docker exec -it gpg_worker_armor_signer bash -c 'pwd && ls -allh graviteebot/scripts && cd ./graviteebot/scripts/gpg_worker_armor_signer/ && pwd && ls -allh'
+
+
+
 ```
 
 * run the docker-compose on local machine :

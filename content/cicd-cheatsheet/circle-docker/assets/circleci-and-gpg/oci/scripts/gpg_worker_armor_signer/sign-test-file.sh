@@ -4,7 +4,6 @@ export GPG_SECRETS_DIR=${HOME}/.retrieved.secrets/.gpg
 export ARMOR_EXPORTED_KEYS_HOME="${HOME}/.exported.secrets/.gpg/armor-format"
 mkdir -p ${GPG_SECRETS_DIR}
 mkdir -p ${ARMOR_EXPORTED_KEYS_HOME}
-mkdir -p ${HOME}/.exported.secrets/.gpg
 
 echo "[$0] SECRETHUB_ORG=[${SECRETHUB_ORG}]"
 echo "[$0] SECRETHUB_REPO=[${SECRETHUB_REPO}]"
@@ -27,8 +26,13 @@ if [ "x${GNUPGHOME_PATH}" == "x" ]; then
   exit 2
 fi;
 
-if [ "x${GRAVITEEBOT_GPG_PASSPHRASE}" == "x" ]; then
-  echo "[GRAVITEEBOT_GPG_PASSPHRASE] env. var. is not set, and must be."
+if [ "x${SECRETHUB_ORG}" == "x" ]; then
+  echo "[SECRETHUB_ORG] env. var. is not set, and must be."
+  exit 5
+fi;
+
+if [ "x${SECRETHUB_REPO}" == "x" ]; then
+  echo "[SECRETHUB_REPO] env. var. is not set, and must be."
   exit 5
 fi;
 
@@ -72,8 +76,8 @@ echo "   Now Signing a test file"
 echo "# ---------------------------------------------------------------------- #"
 
 
-echo "${GRAVITEEBOT_GPG_PASSPHRASE}" | gpg -u "0x${GRAVITEEBOT_GPG_SIGNING_KEY}" --pinentry-mode loopback --passphrase-fd 0 --sign ${HOME}/.signed.files/some-file-to-sign.txt
-echo "${GRAVITEEBOT_GPG_PASSPHRASE}" | gpg -u "0x${GRAVITEEBOT_GPG_SIGNING_KEY}" --pinentry-mode loopback --passphrase-fd 0 --detach-sign ${HOME}/.signed.files/some-file-to-sign.txt
+echo "${GRAVITEEBOT_GPG_PASSPHRASE}" | gpg -u "0x${GRAVITEEBOT_GPG_SIGNING_KEY_ID}" --pinentry-mode loopback --passphrase-fd 0 --sign ${HOME}/.signed.files/some-file-to-sign.txt
+echo "${GRAVITEEBOT_GPG_PASSPHRASE}" | gpg -u "0x${GRAVITEEBOT_GPG_SIGNING_KEY_ID}" --pinentry-mode loopback --passphrase-fd 0 --detach-sign ${HOME}/.signed.files/some-file-to-sign.txt
 
 
 

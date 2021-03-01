@@ -54,6 +54,7 @@ COPY scripts/ /home/$NON_ROOT_USER_NAME/scripts/
 RUN chmod +x /home/$NON_ROOT_USER_NAME/scripts/**/*.sh
 RUN mkdir -p /home/${NON_ROOT_USER_NAME}/.exported.secrets/.gpg && mkdir -p /home/${NON_ROOT_USER_NAME}/.signed.files/
 RUN chown $NON_ROOT_USER_NAME:$NON_ROOT_USER_GRP -R /home/${NON_ROOT_USER_NAME}/.exported.secrets/.gpg
+RUN chown $NON_ROOT_USER_NAME:$NON_ROOT_USER_GRP -R /home/${NON_ROOT_USER_NAME}/.signed.files/
 RUN echo "whoami = [$(whoami)]"
 USER $NON_ROOT_USER_NAME
 RUN echo "whoami = [$(whoami)]"

@@ -114,3 +114,7 @@ ls -allh ${ARMOR_FMT_EXPORTED_GPG_PUB_KEY_FILE}
 ls -allh ${ARMOR_FMT_EXPORTED_GPG_PRIVATE_KEY_FILE}
 secrethub write --in-file ${ARMOR_FMT_EXPORTED_GPG_PUB_KEY_FILE} "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/gpg/armor_format_pub_key"
 secrethub write --in-file ${ARMOR_FMT_EXPORTED_GPG_PRIVATE_KEY_FILE} "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/gpg/armor_format_private_key"
+
+exit 0
+secrethub read --out-file ./test.armor_fmt_exported_gpg_pub_key_file "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/gpg/armor_format_pub_key"
+secrethub read --out-file ./test.armor_fmt_exported_gpg_private_key_file "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/gpg/armor_format_private_key"

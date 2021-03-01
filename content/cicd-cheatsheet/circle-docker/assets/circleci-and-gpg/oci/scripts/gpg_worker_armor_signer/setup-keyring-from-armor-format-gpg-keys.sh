@@ -3,7 +3,7 @@ export GPG_SECRETS_DIR=${HOME}/.retrieved.secrets/.gpg/
 export PATH_TO_GPG_PUB_KEY_FILE="${GPG_SECRETS_DIR}/armor-format/graviteebot.gpg.key.public"
 export PATH_TO_GPG_PRIVATE_KEY_FILE="${GPG_SECRETS_DIR}/armor-format/graviteebot.gpg.key.private"
 export GNUPGHOME=${GNUPGHOME_PATH}
-mkdir -p ${GPG_SECRETS_DIR}
+mkdir -p ${GPG_SECRETS_DIR}/armor-format
 mkdir -p ${GNUPGHOME_PATH}
 
 echo "# ------------------------------------------ #"

@@ -19,8 +19,10 @@ echo "# -------------------------------------------------------------------- #"
 echo "    Running Operations (Import binary Keys and Export [--armor] )       "
 echo "# -------------------------------------------------------------------- #"
 export GNUPGHOME_PATH="/tmp/special.ops/.gnupg/keyring"
+mkdir -p ${GNUPGHOME_PATH}
+chmod 700 -R ${GNUPGHOME_PATH}
 export GPG_SIGNING_KEY_ID=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/graviteebot/gpg/key_id")
 
 ./setup-keyring-from-armor-format-gpg-keys.sh
 
-./export-gpg-keys-with-armor-n-secrethub.sh
+./sign-test-file.sh
