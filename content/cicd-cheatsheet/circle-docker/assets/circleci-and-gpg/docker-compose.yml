@@ -39,8 +39,8 @@ services:
       - gpg:/home/${NON_ROOT_USER_NAME}/.exported.secrets/.gpg/
       # - "$PWD/content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/script:/home/${NON_ROOT_USER_NAME}/scripts"
     environment:
-      - SECRETHUB_ORG=graviteeio
-      - SECRETHUB_REPO=cicd
+      - SECRETHUB_ORG=$SECRETHUB_ORG
+      - SECRETHUB_REPO=$SECRETHUB_REPO
     labels:
       - "graviteeio.rocks=true"
     # depends_on:
@@ -72,8 +72,8 @@ services:
 
       # - "$PWD/content/cicd-cheatsheet/circle-docker/assets/circleci-and-gpg/script:/home/${NON_ROOT_USER_NAME}/scripts"
     environment:
-      - SECRETHUB_ORG=graviteeio
-      - SECRETHUB_REPO=cicd
+      - SECRETHUB_ORG=$SECRETHUB_ORG
+      - SECRETHUB_REPO=$SECRETHUB_REPO
     labels:
       - "graviteeio.rocks=true"
     # depends_on:

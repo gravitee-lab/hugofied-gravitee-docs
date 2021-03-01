@@ -51,7 +51,7 @@ docker exec -it gpg_worker_armor_signer bash -c 'pwd && ls -allh graviteebot/scr
 
 ```
 
-* run the docker-compose on local machine :
+* run the test of in the gravitee IO CICD in the release repo :
 
 ```bash
 SECRETHUB_ORG=gravitee-lab
@@ -67,9 +67,9 @@ export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${H
 # You, will just use your own Circle CI Token
 # export CCI_TOKEN=<your user circle ci token>
 
-export ORG_NAME="gravitee-lab"
-export REPO_NAME="hugofied-gravitee-docs"
-export BRANCH="feature/first_release"
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="1.25.x"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
