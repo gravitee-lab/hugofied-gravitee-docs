@@ -284,3 +284,39 @@ chmod +x ./build.sh
 ./build.sh
 
 ```
+
+
+### Annex : publish the GPG Public Key to a Key server
+
+* to perform the release `1.25.27`, the nexus staging will look up the GPG Public Key into a set of public GPG Key servers. So I had to publish it to one of those servers :
+```bash
+mkdir ./qops_gpp
+cd ./qops_gpp
+export OPS_HOME=$(pwd)
+secrethub read --out-file ${OPS_HOME}/recup_clef_pub_gpg graviteeio/cicd/graviteebot/gpg/pub_key
+
+export RESTORED_GPG_PUB_KEY_FILE=${OPS_HOME}/recup_clef_pub_gpg
+
+export EPHEMERAL_KEYRING_FOLDER_ZERO=${HOME}/.eph.gpg.kring/
+mkdir -p ${EPHEMERAL_KEYRING_FOLDER_ZERO}
+export GNUPGHOME=${EPHEMERAL_KEYRING_FOLDER_ZERO}
+gpg --list-keys
+
+# ---
+# Importing GPG KeyPair
+echo "# ------------------------------------------ #"
+echo "Now Importing GPG Pub Key : "
+gpg --import ${RESTORED_GPG_PUB_KEY_FILE}
+echo "# ------------------------------------------ #"
+echo "GPG Keys after import : "
+gpg --list-keys
+echo "# ------------------------------------------ #"
+cat ${RESTORED_GPG_PUB_KEY_FILE}
+
+export GPG_SIGNING_KEY_ID="870B61A8E14DC301"
+
+# gpg --keyserver pgp.mit.edu --send-keys "${GPG_SIGNING_KEY_ID}"
+gpg --keyserver keys.openpgp.org --send-keys "${GPG_SIGNING_KEY_ID}"
+
+# https://keys.openpgp.org/search?q=870B61A8E14DC301
+```

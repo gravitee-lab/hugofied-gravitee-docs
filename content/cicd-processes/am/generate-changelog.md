@@ -27,7 +27,7 @@ Generate the CHANGELOG for a given Gravitee.io AM Release :
 ```bash
 export CCI_TOKEN=<your Circle CI Token>
 # https://github.com/gravitee-io/issues/milestones
-export GIO_MILESTONE_VERSION="APIM - 1.25.27"
+export GIO_MILESTONE_VERSION="AM - 3.5.4"
 export ORG_NAME="gravitee-io"
 export REPO_NAME="issues"
 export BRANCH="master"

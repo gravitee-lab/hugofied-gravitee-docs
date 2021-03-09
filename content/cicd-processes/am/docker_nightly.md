@@ -1,10 +1,10 @@
 ---
-title: "Gravitee AM Release"
+title: "Docker Nightly (Community Edition)"
 date: 2020-12-16T00:44:23+01:00
 draft: false
 nav_menu: "CI/CD Processes"
 menu: am_processes
-menu_index: 9
+menu_index: 10
 # menu:
   # developer_guide:
     # parent: 'mainmenu'
@@ -13,7 +13,7 @@ type: am-processes
 
 ## Process Description
 
-TODO
+Build and push to Dockerhub Nightly Cotnaienr iamges of Gravitee AM Community Edition
 
 
 ## How to: Perfom a Release
@@ -41,13 +41,15 @@ export ORG_NAME="gravitee-io"
 export REPO_NAME="graviteeio-access-management"
 export BRANCH="master"
 export BRANCH="cicd/circleci-release"
+eport GRAVITEEAM_VERSION="3.6.0"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
     \"parameters\":
 
     {
-        \"gio_action\": \"release\",
+        \"gio_action\": \"docker_nightly\",
+        \"graviteeio_version\": \"${GRAVITEEAM_VERSION}\",
         \"dry_run\": true
     }
 
