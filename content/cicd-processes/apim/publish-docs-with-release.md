@@ -4,7 +4,7 @@ date: 2020-12-16T00:44:23+01:00
 draft: false
 nav_menu: "CI/CD Processes"
 menu: apim_processes
-menu_index: 8
+menu_index: 10
 product: "Gravitee APIM"
 # menu:
   # developer_guide:
