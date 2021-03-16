@@ -13,7 +13,7 @@ type: am-processes
 
 ## Process Description
 
-TODO
+Builds the RPM Packges, and Publishes them to _Package Cloud_ (Digital Ocean Service), for both GRavitee AM v3 and bv2
 
 ## Legacy Jenkins
 
@@ -28,7 +28,7 @@ TODO
 ## How to: Perfom a Docker Images Release
 
 
-* Get yourself A Circle CI Personal API Token, from eb UI, personally I stored it in secrethub :
+* Grab a Circle CI Personal API Token, from Circle CI Web UI, personally I stored it in secrethub :
 
 ```bash
 # It should be SECRETHUB_ORG=graviteeio, but Cirlce CI token is related to
@@ -56,10 +56,10 @@ export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${H
 
 export GRAVITEE_RELEASE_VERSION="2.0.1"
 #
-export ORG_NAME="gravitee-io"
 export ORG_NAME="gravitee-lab"
-export REPO_NAME="graviteeio-access-management"
+export ORG_NAME="gravitee-io"
 export REPO_NAME="gio-graviteeio-access-management"
+export REPO_NAME="graviteeio-access-management"
 export BRANCH="master"
 export BRANCH="cicd/circleci-release"
 #
@@ -87,10 +87,10 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 
 export GRAVITEE_RELEASE_VERSION="3.5.3"
 #
-export ORG_NAME="gravitee-io"
 export ORG_NAME="gravitee-lab"
-export REPO_NAME="graviteeio-access-management"
+export ORG_NAME="gravitee-io"
 export REPO_NAME="gio-graviteeio-access-management"
+export REPO_NAME="graviteeio-access-management"
 export BRANCH="master"
 export BRANCH="cicd/circleci-release"
 #
