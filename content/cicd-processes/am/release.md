@@ -4,7 +4,7 @@ date: 2020-12-16T00:44:23+01:00
 draft: false
 nav_menu: "CI/CD Processes"
 menu: am_processes
-menu_index: 9
+menu_index: 12
 # menu:
   # developer_guide:
     # parent: 'mainmenu'
@@ -38,7 +38,9 @@ export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${H
 # export CCI_TOKEN=<your user circle ci token>
 
 export ORG_NAME="gravitee-io"
+export ORG_NAME="gravitee-lab"
 export REPO_NAME="graviteeio-access-management"
+export REPO_NAME="gio-graviteeio-access-management"
 export BRANCH="master"
 export BRANCH="cicd/circleci-release"
 export JSON_PAYLOAD="{
