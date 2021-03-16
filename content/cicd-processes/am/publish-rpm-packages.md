@@ -49,12 +49,12 @@ export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${H
 ```
 
 
-* example RPM Package release, for GRavitee AM Release `2.0.1`, see [this pipeline execution](cccccc)  :
+* example RPM Package release, for GRavitee AM Release `2.0.1`, see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/graviteeio-access-management/1217/workflows/70966491-2e96-4a25-b376-251e4eb667ce/jobs/1203)  :
 
 ```bash
 # export CCI_TOKEN=<your Circle CI Token>
 
-export GRAVITEE_RELEASE_VERSION="2.0.1"
+export GRAVITEE_RELEASE_VERSION="2.4.0"
 #
 export ORG_NAME="gravitee-lab"
 export ORG_NAME="gravitee-io"
@@ -80,7 +80,7 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 ```
 
 
-* example RPM Package release, for GRavitee AM Release `3.5.3`, see [this pipeline execution](cccccc)  :
+* example RPM Package release, for GRavitee AM Release `3.5.3`, see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/graviteeio-access-management/1215/workflows/2384763e-eab4-466d-b3cc-976212f901c0/jobs/1197)  :
 
 ```bash
 # export CCI_TOKEN=<your Circle CI Token>
