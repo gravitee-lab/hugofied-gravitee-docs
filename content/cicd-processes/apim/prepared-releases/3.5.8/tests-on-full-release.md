@@ -106,10 +106,15 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 ### 2. Package bundle
 
 
-* Run orchestrated Maven and git release :
-
 * Running the package bundle requires the git tag to exist : so the maven and git release must be run with dry run mode off (Orchestrator invoked with GNU Option `--dry-run false`)
-* To run th epackage bundle for the Release `3.5.8`, without Entreprise Edition  (**tested OK** , see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/505/workflows/1632b81a-eb26-46eb-9528-68ed7cb818d1/jobs/477), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
+
+The package Bundle Entreprise Edition fetches zips from https://download.gravitee.io. That's why we must:
+* first execute the package bundle for the Comunity Edition
+* then execute the wget script to transfer the zips from the S3 Bucket, to https://download.gravitee.io
+* and finally run the packge bundle for the Entreprise Edition
+
+
+* To run the package bundle for the Release `3.5.8`, without Entreprise Edition  (**tested OK** , see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/505/workflows/1632b81a-eb26-46eb-9528-68ed7cb818d1/jobs/477), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
 
 ```bash
 # export CCI_TOKEN=<your Circle CI Token>
@@ -139,7 +144,7 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 
 ```bash
 # export CCI_TOKEN=<your Circle CI Token>
-
+# the versions for the below dependencies were confirmed at each release time by POs
 export GRAVITEE_RELEASE_VERSION="3.5.8"
 export AE_VERSION="1.2.18"
 # https://github.com/gravitee-io/gravitee-license/tags
