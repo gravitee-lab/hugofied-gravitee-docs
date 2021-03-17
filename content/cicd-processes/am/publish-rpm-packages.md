@@ -79,7 +79,6 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
-
 * example RPM Package release, for GRavitee AM Release `3.5.3`, see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/graviteeio-access-management/1215/workflows/2384763e-eab4-466d-b3cc-976212f901c0/jobs/1197)  :
 
 ```bash
