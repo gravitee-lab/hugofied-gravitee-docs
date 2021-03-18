@@ -149,19 +149,45 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
+The release process in non dry run mode successfully compelted in the folowing pipeline execution :
+
+https://app.circleci.com/pipelines/github/gravitee-io/release/793/workflows/aa28d9c6-f6e2-4474-9c60-37f78e02bcd5/jobs/801
+
 
 ### 2. Package bundle
 
+#### Process overview
 
 * Running the package bundle requires the git tag to exist : so the maven and git release must be run with dry run mode off (Orchestrator invoked with GNU Option `--dry-run false`)
 
 The package Bundle Entreprise Edition fetches zips from https://download.gravitee.io. That's why we must:
 * first execute the package bundle for the Comunity Edition
-* then execute the wget script to transfer the zips from the S3 Bucket, to https://download.gravitee.io
+* then execute the wget script to transfer the zips from the S3 Bucket, to https://download.gravitee.io :
+
+```bash
+wget https://raw.githubusercontent.com/gravitee-lab/hugofied-gravitee-docs/feature/first_release/content/cicd-processes/apim/prepared-releases/3.5.8/package_bundles_ce/script.to.download.gravitee.io.sh -O ./script.to.download.gravitee.io.sh
+chmod +x ./script.to.download.gravitee.io.sh
+mdkir -p /opt/folder_for_test
+export BASE_WWW_FOLDER="/opt/folder_for_test"
+./script.to.download.gravitee.io.sh
+# ---
+# Then we check if what is in the [/opt/folder_for_test] has the expected tree structure
+# ---
+# And the we can run again with the path of the foler actually served by the https://download.gravitee.io server
+# Can't check that but I thin k the path is :
+# export BASE_WWW_FOLDER="/opt/dist/download.gravitee.io"
+# ---
+#
+export BASE_WWW_FOLDER="/opt/dist/download.gravitee.io"
+./script.to.download.gravitee.io.sh
+```
+
 * and finally run the packge bundle for the Entreprise Edition
 
 
 * To run the package bundle for the Release `3.5.8`, without Entreprise Edition  (**tested OK** , see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/505/workflows/1632b81a-eb26-46eb-9528-68ed7cb818d1/jobs/477), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
+
+#### Now the process curls
 
 ```bash
 # export CCI_TOKEN=<your Circle CI Token>
@@ -268,6 +294,22 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
+#### Nexus staging results
+
+* Failed jobs (each of them can be relaunched with circle ci web ui re-run button) :
+  * https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-gateway-bridge-http/78/workflows/6d4ff5fb-c6d2-40b7-819f-74c4c46a416a/jobs/69 : because of a problem wuth secrethub orb.. Just Relaunched it and it was successful
+  * https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-webui/834/workflows/cb31a3c1-1b4d-49b9-8d53-3a9cae9cdcb3/jobs/814 : missing license headers because gravitee license plugin configuration does not ignore the `node/` folder (which contains the npm project, and the `node_modules` folder). https://github.com/gravitee-io/gravitee-management-webui/blob/a5ad8d78606ef1c51c60ec0d98f1826a265e4718/pom.xml#L71 . This one I can solve by editing the pom.xml in the S3 Bucket.
+  * https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/344/workflows/461583c2-5284-430b-ba12-23830429d609/jobs/316 :  real strange error for this one permission denied for a mysterious executable :
+
+```bash
+An error occurred while invoking protoc: Error while executing process. Cannot run program "/usr/src/giomaven_project/gravitee-gateway-standalone/gravitee-gateway-standalone-container/target/protoc-plugins/protoc-3.12.2-linux-x86_64.exe": error=13, Permission denied -> [Help 1]
+```
+
+* Successful nexus staging :
+  * `gravitee-policy-rest-to-soap` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-policy-rest-to-soap/54/workflows/6e63041f-4695-4401-be13-367f20181f90/jobs/49
+  * `gravitee-portal-webui` :  https://app.circleci.com/pipelines/github/gravitee-io/gravitee-portal-webui/295/workflows/e5e64717-dba0-4523-b6c7-1fcb16efab19/jobs/272
+  * `gravitee-repository-gateway-bridge-http` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-gateway-bridge-http/78/workflows/23abe867-1c63-46ce-9e41-b2697e05be2b/jobs/70
+  * `gravitee-management-rest-api` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-rest-api/895/workflows/9ba6b428-4203-4647-bc21-da90b2f66073/jobs/867
 
 
 ## ANNEX A Utility commands for the maven and git release preps
