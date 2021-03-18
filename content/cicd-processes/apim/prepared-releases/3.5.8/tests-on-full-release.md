@@ -26,7 +26,54 @@ Here I leave the tests I ran to perform a full APIM release :
   * continous delivery https://docs.gravitee.io (truc à valider pour les branchesde départ et arrivée)
 * etc...
 
+## Release 3.5.8 : the B.O.M.
 
+```JSon
+{
+ "built_execution_plan_is": [
+  [],
+  [],
+  [],
+  [
+   {
+    "name": "gravitee-repository-gateway-bridge-http",
+    "version": "3.5.4-SNAPSHOT"
+   }
+  ],
+  [],
+  [],
+  [],
+  [],
+  [
+   {
+    "name": "gravitee-gateway",
+    "version": "3.5.8-SNAPSHOT"
+   }
+  ],
+  [],
+  [
+   {
+    "name": "gravitee-policy-rest-to-soap",
+    "version": "1.11.1-SNAPSHOT"
+   }
+  ],
+  [
+   {
+    "name": "gravitee-management-rest-api",
+    "version": "3.5.8-SNAPSHOT"
+   },
+   {
+    "name": "gravitee-management-webui",
+    "version": "3.5.8-SNAPSHOT"
+   },
+   {
+    "name": "gravitee-portal-webui",
+    "version": "3.5.8-SNAPSHOT"
+   }
+  ]
+ ]
+}
+```
 
 ## Gravitee APIM 3.5.8 release
 
