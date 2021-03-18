@@ -300,9 +300,49 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
   * [SOLVED] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-gateway-bridge-http/78/workflows/6d4ff5fb-c6d2-40b7-819f-74c4c46a416a/jobs/69 : because of a problem wuth secrethub orb.. Just Relaunched it and it was successful
   * [BEING SOLVED] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-webui/834/workflows/cb31a3c1-1b4d-49b9-8d53-3a9cae9cdcb3/jobs/814 : missing license headers because gravitee license plugin configuration does not ignore the `node/` folder (which contains the npm project, and the `node_modules` folder). https://github.com/gravitee-io/gravitee-management-webui/blob/a5ad8d78606ef1c51c60ec0d98f1826a265e4718/pom.xml#L71 . This one I can solve by editing the pom.xml in the S3 Bucket.
   * [UNDER INVESTIGATIONS] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/344/workflows/461583c2-5284-430b-ba12-23830429d609/jobs/316 :  real strange error for this one permission denied for a mysterious executable :
+    * closest github issue found : https://github.com/google/protobuf-gradle-plugin/issues/165
+
+<pre>
+An error occurred while invoking protoc: Error while executing process. Cannot run program "/usr/src/giomaven_project/gravitee-gateway-standalone/gravitee-gateway-standalone-container/target/protoc-plugins/protoc-3.12.2-linux-x86_64.exe": error=13, Permission denied -> [Help 1]
+</pre>
+
+* To indivudually relaunch the nexus staging with a `curl`, just for gravitee-gateway :
 
 ```bash
-An error occurred while invoking protoc: Error while executing process. Cannot run program "/usr/src/giomaven_project/gravitee-gateway-standalone/gravitee-gateway-standalone-container/target/protoc-plugins/protoc-3.12.2-linux-x86_64.exe": error=13, Permission denied -> [Help 1]
+export ORG_NAME="gravitee-io"
+export REPO_NAME="gravitee-gateway"
+export BRANCH="3.5.x"
+export GIO_RELEASE_VERSION="3.5.8"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"nexus_staging\",
+        \"secrethub_org\": \"graviteeio\",
+        \"secrethub_repo\": \"cicd\",
+        \"s3_bucket_name\": \"prepared-nexus-staging-gravitee-apim-3_5_8\",
+        \"maven_profile_id\": \"gravitee-release\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+```Yaml
+nexus_staging:
+  when:
+    equal: [ nexus_staging, << pipeline.parameters.gio_action >> ]
+  jobs:
+    - gravitee/nexus_staging:
+        context: cicd-orchestrator
+        secrethub_org: << pipeline.parameters.secrethub_org >>
+        secrethub_repo: << pipeline.parameters.secrethub_repo >>
+        maven_profile_id: << pipeline.parameters.maven_profile_id >>
+        s3_bucket_name: << pipeline.parameters.s3_bucket_name >>
 ```
 
 * Successful nexus staging :
@@ -310,6 +350,7 @@ An error occurred while invoking protoc: Error while executing process. Cannot r
   * `gravitee-portal-webui` :  https://app.circleci.com/pipelines/github/gravitee-io/gravitee-portal-webui/295/workflows/e5e64717-dba0-4523-b6c7-1fcb16efab19/jobs/272
   * `gravitee-repository-gateway-bridge-http` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-gateway-bridge-http/78/workflows/23abe867-1c63-46ce-9e41-b2697e05be2b/jobs/70
   * `gravitee-management-rest-api` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-rest-api/895/workflows/9ba6b428-4203-4647-bc21-da90b2f66073/jobs/867
+  * `gravitee-management-webui` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-webui/834/workflows/85b724f9-057b-47a4-b5bc-eec11ae5dcce/jobs/816
 
 
 ## ANNEX A Utility commands for the maven and git release preps
