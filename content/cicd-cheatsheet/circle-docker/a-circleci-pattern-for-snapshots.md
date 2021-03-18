@@ -159,3 +159,7 @@ workflows:
           secrethub_repo: << pipeline.parameters.secrethub_repo >>
           maven_profile_id: << pipeline.parameters.maven_profile_id >>
 ```
+
+
+Note that an example successful execution of the publish to nexus snapshots is : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-cockpit-connectors/48/workflows/cc033af6-ee40-455e-b566-320d61ef2ca6/jobs/61
+ 

@@ -298,9 +298,17 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 
 * Failed jobs (each of them can be relaunched with circle ci web ui re-run button) :
   * [SOLVED] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-gateway-bridge-http/78/workflows/6d4ff5fb-c6d2-40b7-819f-74c4c46a416a/jobs/69 : because of a problem wuth secrethub orb.. Just Relaunched it and it was successful
-  * [BEING SOLVED] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-webui/834/workflows/cb31a3c1-1b4d-49b9-8d53-3a9cae9cdcb3/jobs/814 : missing license headers because gravitee license plugin configuration does not ignore the `node/` folder (which contains the npm project, and the `node_modules` folder). https://github.com/gravitee-io/gravitee-management-webui/blob/a5ad8d78606ef1c51c60ec0d98f1826a265e4718/pom.xml#L71 . This one I can solve by editing the pom.xml in the S3 Bucket.
-  * [UNDER INVESTIGATIONS] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/344/workflows/461583c2-5284-430b-ba12-23830429d609/jobs/316 :  real strange error for this one permission denied for a mysterious executable :
-    * closest github issue found : https://github.com/google/protobuf-gradle-plugin/issues/165
+  * [SOLVED] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-webui/834/workflows/cb31a3c1-1b4d-49b9-8d53-3a9cae9cdcb3/jobs/814 : missing license headers because gravitee license plugin configuration does not ignore the `node/` folder (which contains the npm project, and the `node_modules` folder). https://github.com/gravitee-io/gravitee-management-webui/blob/a5ad8d78606ef1c51c60ec0d98f1826a265e4718/pom.xml#L71 . This one I can solve by editing the pom.xml in the S3 Bucket.
+  * [SOLVED] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/344/workflows/461583c2-5284-430b-ba12-23830429d609/jobs/316 :  real strange error for this one permission denied for a mysterious executable :
+    * closest github issues found :
+      * https://github.com/google/protobuf-gradle-plugin/issues/165
+      * https://stackoverflow.com/questions/39331665/permission-denied-for-protoc-on-maven-build-in-teamcity
+    * By resetting permissions on files (exec permission on exucatable, read permission on all project files), and also docker priviledged contaienr, I had [a change](https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/347/workflows/91d5881c-7f8a-41fa-88de-40a5c7812b23/jobs/321) :
+      * this time the problem is that "protoc did not exit cleanly"
+      * here is my new error : `[ERROR] PROTOC FAILED: /usr/src/giomaven_project/gravitee-gateway-standalone/gravitee-gateway-standalone-container/target/protoc-plugins/protoc-gen-grpc-java-1.25.0-linux-x86_64.exe: program not found or is not executable
+Please specify a program using absolute path or make sure the program is available in your PATH system variable`
+      * this new eror is about a new executable file which needs exec permissions. After chmod +x on this file issue was solved.
+      * last : what happened here : while pushing to s3 bucket those executables, `s3cmd` removed their exec permissions for s3 storage security. My guess at least.
 
 <pre>
 An error occurred while invoking protoc: Error while executing process. Cannot run program "/usr/src/giomaven_project/gravitee-gateway-standalone/gravitee-gateway-standalone-container/target/protoc-plugins/protoc-3.12.2-linux-x86_64.exe": error=13, Permission denied -> [Help 1]
@@ -309,6 +317,7 @@ An error occurred while invoking protoc: Error while executing process. Cannot r
 * To indivudually relaunch the nexus staging with a `curl`, just for gravitee-gateway :
 
 ```bash
+export CCI_TOKEN=<you circle ci token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-gateway"
 export BRANCH="3.5.x"
@@ -351,6 +360,7 @@ nexus_staging:
   * `gravitee-repository-gateway-bridge-http` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-gateway-bridge-http/78/workflows/23abe867-1c63-46ce-9e41-b2697e05be2b/jobs/70
   * `gravitee-management-rest-api` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-rest-api/895/workflows/9ba6b428-4203-4647-bc21-da90b2f66073/jobs/867
   * `gravitee-management-webui` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-webui/834/workflows/85b724f9-057b-47a4-b5bc-eec11ae5dcce/jobs/816
+  * `gravitee-gateway` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/349/workflows/f84e849b-f17f-4941-82ef-146101ec5a1e/jobs/323
 
 
 ## ANNEX A Utility commands for the maven and git release preps
