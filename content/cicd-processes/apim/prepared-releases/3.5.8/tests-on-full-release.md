@@ -297,9 +297,9 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 #### Nexus staging results
 
 * Failed jobs (each of them can be relaunched with circle ci web ui re-run button) :
-  * https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-gateway-bridge-http/78/workflows/6d4ff5fb-c6d2-40b7-819f-74c4c46a416a/jobs/69 : because of a problem wuth secrethub orb.. Just Relaunched it and it was successful
-  * https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-webui/834/workflows/cb31a3c1-1b4d-49b9-8d53-3a9cae9cdcb3/jobs/814 : missing license headers because gravitee license plugin configuration does not ignore the `node/` folder (which contains the npm project, and the `node_modules` folder). https://github.com/gravitee-io/gravitee-management-webui/blob/a5ad8d78606ef1c51c60ec0d98f1826a265e4718/pom.xml#L71 . This one I can solve by editing the pom.xml in the S3 Bucket.
-  * https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/344/workflows/461583c2-5284-430b-ba12-23830429d609/jobs/316 :  real strange error for this one permission denied for a mysterious executable :
+  * [SOLVED] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-gateway-bridge-http/78/workflows/6d4ff5fb-c6d2-40b7-819f-74c4c46a416a/jobs/69 : because of a problem wuth secrethub orb.. Just Relaunched it and it was successful
+  * [BEING SOLVED] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-webui/834/workflows/cb31a3c1-1b4d-49b9-8d53-3a9cae9cdcb3/jobs/814 : missing license headers because gravitee license plugin configuration does not ignore the `node/` folder (which contains the npm project, and the `node_modules` folder). https://github.com/gravitee-io/gravitee-management-webui/blob/a5ad8d78606ef1c51c60ec0d98f1826a265e4718/pom.xml#L71 . This one I can solve by editing the pom.xml in the S3 Bucket.
+  * [UNDER INVESTIGATIONS] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/344/workflows/461583c2-5284-430b-ba12-23830429d609/jobs/316 :  real strange error for this one permission denied for a mysterious executable :
 
 ```bash
 An error occurred while invoking protoc: Error while executing process. Cannot run program "/usr/src/giomaven_project/gravitee-gateway-standalone/gravitee-gateway-standalone-container/target/protoc-plugins/protoc-3.12.2-linux-x86_64.exe": error=13, Permission denied -> [Help 1]
