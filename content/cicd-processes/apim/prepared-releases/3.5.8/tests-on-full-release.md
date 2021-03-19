@@ -165,11 +165,13 @@ The package Bundle Entreprise Edition fetches zips from https://download.gravite
 * then execute the wget script to transfer the zips from the S3 Bucket, to https://download.gravitee.io :
 
 ```bash
-wget https://raw.githubusercontent.com/gravitee-lab/hugofied-gravitee-docs/feature/first_release/content/cicd-processes/apim/prepared-releases/3.5.8/package_bundles_ce/script.to.download.gravitee.io.sh -O ./script.to.download.gravitee.io.sh
-chmod +x ./script.to.download.gravitee.io.sh
+wget https://raw.githubusercontent.com/gravitee-lab/hugofied-gravitee-docs/feature/first_release/content/cicd-processes/apim/prepared-releases/3.5.8/package_bundles_ce/script.download.gravitee.io.sh -O ./script.download.gravitee.io.sh
+chmod +x ./script.download.gravitee.io.sh
 mdkir -p /opt/folder_for_test
 export BASE_WWW_FOLDER="/opt/folder_for_test"
-./script.to.download.gravitee.io.sh
+./script.download.gravitee.io.sh
+# we also create the target folders which do not exist in the "/opt/folder_for_test" test folder
+./script.download.gravitee.io.sh
 # ---
 # Then we check if what is in the [/opt/folder_for_test] has the expected tree structure
 # ---
@@ -179,7 +181,9 @@ export BASE_WWW_FOLDER="/opt/folder_for_test"
 # ---
 #
 export BASE_WWW_FOLDER="/opt/dist/download.gravitee.io"
-./script.to.download.gravitee.io.sh
+./script.download.gravitee.io.sh
+# we do not create the target folders inthe real www folder : theynshould already exist
+
 ```
 
 * and finally run the packge bundle for the Entreprise Edition
@@ -261,8 +265,8 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 
 # --
-# Will fail at downloading https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-1.25.27.zip
-# But we have              https://gravitee-releases-downloads.cellar-c2.services.clever-cloud.com/graviteeio-apim/distributions/graviteeio-full-1.25.27.zip
+# Will fail at downloading https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-3.5.8.zip
+# But we have              https://gravitee-releases-downloads.cellar-c2.services.clever-cloud.com/graviteeio-apim/distributions/graviteeio-full-3.5.8.zip
 ```
 
 Package bundle is completely idempotent : you can run as many times as you want, nothing will ever fail "because it was already done". And the result is always the exact same, unles you change either parameters, or soruce code of the package bundler (NodeJS Python or Circle CI Orb)
@@ -361,6 +365,118 @@ nexus_staging:
   * `gravitee-management-rest-api` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-rest-api/895/workflows/9ba6b428-4203-4647-bc21-da90b2f66073/jobs/867
   * `gravitee-management-webui` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-webui/834/workflows/85b724f9-057b-47a4-b5bc-eec11ae5dcce/jobs/816
   * `gravitee-gateway` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/349/workflows/f84e849b-f17f-4941-82ef-146101ec5a1e/jobs/323
+
+  #### changelog
+
+  * example for Release `3.5.8`, see [this pipeline execution](cccccc)  :
+
+```bash
+export CCI_TOKEN=<your Circle CI Token>
+# https://github.com/gravitee-io/issues/milestones
+export GIO_MILESTONE_VERSION="APIM - 3.5.8"
+export ORG_NAME="gravitee-io"
+export REPO_NAME="issues"
+export BRANCH="master"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"changelog_apim\",
+        \"gio_milestone_version\": \"${GIO_MILESTONE_VERSION}\",
+        \"dry_run\": true
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+* and in non dry run when logged CHANGELOG modification is confirmed :) :
+
+```bash
+export CCI_TOKEN=<your Circle CI Token>
+# https://github.com/gravitee-io/issues/milestones
+export GIO_MILESTONE_VERSION="APIM - 3.5.8"
+export ORG_NAME="gravitee-io"
+export REPO_NAME="issues"
+export BRANCH="master"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"changelog_apim\",
+        \"gio_milestone_version\": \"${GIO_MILESTONE_VERSION}\",
+        \"dry_run\": false
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+
+## docker images
+
+
+```bash
+# You, will just use your own Circle CI Token
+export CCI_TOKEN=<your circle ci personal api token>
+export ORG_NAME="gravitee-io"
+export REPO_NAME="gravitee-docker"
+export BRANCH="master"
+export BRANCH="feature/cicd-circle-image-builds"
+export GRAVITEEIO_VERSION="3.5.8"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_product\": \"apim_3x\",
+        \"graviteeio_version\": \"${GRAVITEEIO_VERSION}\",
+        \"tag_latest\": false,
+        \"dry_run\": false
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+succesfully built images EE and CE :
+
+* https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/92/workflows/44a25dc1-e97e-4e48-8fc1-ce6fc30ae6e7/jobs/125
+
+### RPM Packages `3.5.8`
+
+```bash
+export GRAVITEE_RELEASE_VERSION="3.5.8"
+export ORG_NAME="gravitee-io"
+export REPO_NAME="release"
+export BRANCH="3.5.x"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"publish_rpms\",
+        \"gio_release_version\": \"${GRAVITEE_RELEASE_VERSION}\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
 
 
 ## ANNEX A Utility commands for the maven and git release preps
