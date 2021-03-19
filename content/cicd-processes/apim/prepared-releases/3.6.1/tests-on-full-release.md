@@ -325,31 +325,21 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 #### Nexus staging results
 
 * Failed jobs (each of them can be relaunched with circle ci web ui re-run button) :
-  * [SOLVED] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-gateway-bridge-http/78/workflows/6d4ff5fb-c6d2-40b7-819f-74c4c46a416a/jobs/69 : because of a problem wuth secrethub orb.. Just Relaunched it and it was successful
-  * [SOLVED] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-webui/834/workflows/cb31a3c1-1b4d-49b9-8d53-3a9cae9cdcb3/jobs/814 : missing license headers because gravitee license plugin configuration does not ignore the `node/` folder (which contains the npm project, and the `node_modules` folder). https://github.com/gravitee-io/gravitee-management-webui/blob/a5ad8d78606ef1c51c60ec0d98f1826a265e4718/pom.xml#L71 . This one I can solve by editing the pom.xml in the S3 Bucket.
-  * [SOLVED] https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/344/workflows/461583c2-5284-430b-ba12-23830429d609/jobs/316 :  real strange error for this one permission denied for a mysterious executable :
-    * closest github issues found :
-      * https://github.com/google/protobuf-gradle-plugin/issues/165
-      * https://stackoverflow.com/questions/39331665/permission-denied-for-protoc-on-maven-build-in-teamcity
-    * By resetting permissions on files (exec permission on exucatable, read permission on all project files), and also docker priviledged contaienr, I had [a change](https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/347/workflows/91d5881c-7f8a-41fa-88de-40a5c7812b23/jobs/321) :
-      * this time the problem is that "protoc did not exit cleanly"
-      * here is my new error : `[ERROR] PROTOC FAILED: /usr/src/giomaven_project/gravitee-gateway-standalone/gravitee-gateway-standalone-container/target/protoc-plugins/protoc-gen-grpc-java-1.25.0-linux-x86_64.exe: program not found or is not executable
-Please specify a program using absolute path or make sure the program is available in your PATH system variable`
-      * this new eror is about a new executable file which needs exec permissions. After chmod +x on this file issue was solved.
-      * last : what happened here : while pushing to s3 bucket those executables, `s3cmd` removed their exec permissions for s3 storage security. My guess at least.
+  * [SOLVED] `gravitee-reporter-file` fails because `prettier --check fails` https://app.circleci.com/pipelines/github/gravitee-io/gravitee-reporter-file/43/workflows/5966ddd3-45bd-4bc2-969a-3672b1b30ce1/jobs/38 : fixed by rnning mvn prettier:write before nexus staging
+  * [SOLVED] `gravitee-policy-http-signature` failed to find `gravitee-gateway-buffer` in nexus, https://app.circleci.com/pipelines/github/gravitee-io/gravitee-policy-http-signature/6/workflows/4f99c8b4-18f5-4b28-a46e-767269bb650c/jobs/5
+  * [SOLVED] `gravitee-repository-mongodb` : failed because was failing to find `gravitee-repository-test` in nexus
+  * basically dpeendencies are resolved from nexus, so : I should change the nexus-staging settings.xml, so that :
+    * dependencies are resolved from private artifactory
+    * and altDeploymentTBlabal: target mvn repository is nexus staging
 
-<pre>
-An error occurred while invoking protoc: Error while executing process. Cannot run program "/usr/src/giomaven_project/gravitee-gateway-standalone/gravitee-gateway-standalone-container/target/protoc-plugins/protoc-3.12.2-linux-x86_64.exe": error=13, Permission denied -> [Help 1]
-</pre>
 
 * To indivudually relaunch the nexus staging with a `curl`, just for gravitee-gateway :
 
 ```bash
 export CCI_TOKEN=<you circle ci token>
 export ORG_NAME="gravitee-io"
-export REPO_NAME="gravitee-gateway"
-export BRANCH="3.6.x"
-export GIO_RELEASE_VERSION="3.6.1"
+export REPO_NAME="gravitee-reporter-file"
+export BRANCH="2.1.x"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -359,7 +349,7 @@ export JSON_PAYLOAD="{
         \"gio_action\": \"nexus_staging\",
         \"secrethub_org\": \"graviteeio\",
         \"secrethub_repo\": \"cicd\",
-        \"s3_bucket_name\": \"prepared-nexus-staging-gravitee-apim-3_5_8\",
+        \"s3_bucket_name\": \"prepared-nexus-staging-gravitee-apim-3_6_1\",
         \"maven_profile_id\": \"gravitee-release\"
     }
 
@@ -369,34 +359,30 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
-```Yaml
-nexus_staging:
-  when:
-    equal: [ nexus_staging, << pipeline.parameters.gio_action >> ]
-  jobs:
-    - gravitee/nexus_staging:
-        context: cicd-orchestrator
-        secrethub_org: << pipeline.parameters.secrethub_org >>
-        secrethub_repo: << pipeline.parameters.secrethub_repo >>
-        maven_profile_id: << pipeline.parameters.maven_profile_id >>
-        s3_bucket_name: << pipeline.parameters.s3_bucket_name >>
-```
-
 * Successful nexus staging :
-  * `gravitee-policy-rest-to-soap` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-policy-rest-to-soap/54/workflows/6e63041f-4695-4401-be13-367f20181f90/jobs/49
-  * `gravitee-portal-webui` :  https://app.circleci.com/pipelines/github/gravitee-io/gravitee-portal-webui/295/workflows/e5e64717-dba0-4523-b6c7-1fcb16efab19/jobs/272
-  * `gravitee-repository-gateway-bridge-http` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-gateway-bridge-http/78/workflows/23abe867-1c63-46ce-9e41-b2697e05be2b/jobs/70
-  * `gravitee-management-rest-api` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-rest-api/895/workflows/9ba6b428-4203-4647-bc21-da90b2f66073/jobs/867
-  * `gravitee-management-webui` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-webui/834/workflows/85b724f9-057b-47a4-b5bc-eec11ae5dcce/jobs/816
-  * `gravitee-gateway` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/349/workflows/f84e849b-f17f-4941-82ef-146101ec5a1e/jobs/323
+  * `gravitee-repository-test` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-test/135/workflows/fa52b8b6-4764-4446-82e6-9f61616ec29f/jobs/123
+  * `gravitee-repository-jdbc` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-jdbc/143/workflows/08e66f16-690d-4d22-87b2-907c362f8cc3/jobs/132
+  * `gravitee-repository-gateway-bridge-http` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-gateway-bridge-http/85/workflows/613be08d-44d5-4b72-a74e-a366699dbfc7/jobs/76
+  * `gravitee-reporter-tcp` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-reporter-tcp/22/workflows/a59607e5-4209-4476-a6b7-4657a4fd69a1/jobs/20
+  * `gravitee-gateway` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-gateway/359/workflows/85c1fedd-3f03-43e6-b63e-e1af3ec9d247/jobs/332
+  * `gravitee-portal-webui` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-portal-webui/301/workflows/be46bcc7-97bd-4864-ab28-bb83678d3ec0/jobs/277
+  * `gravitee-management-webui` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-webui/844/workflows/ac305919-b6e4-4887-8e1f-4c6b94ff5961/jobs/825
+  * `gravitee-repository-mongodb` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-repository-mongodb/144/workflows/e18e00bf-a27d-4550-b8b3-02f650e41a0b/jobs/133
+  * `gravitee-management-rest-api` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-management-rest-api/906/workflows/3ceb581b-af5e-4244-bb77-4ac38298236a/jobs/877
+  * `gravitee-policy-http-signature` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-policy-http-signature/6/workflows/a09e4002-7d17-4e8f-8881-1c2060cdb554/jobs/6
+  * `gravitee-reporter-file` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-reporter-file/45/workflows/123c214a-595f-48bb-b974-e1d8fa9ae128/jobs/41
 
-  #### changelog
 
-  * example for Release `3.6.1`, see [this pipeline execution](cccccc)  :
+
+
+#### changelog
+
+* example for Release `3.6.1`, see [this pipeline execution](cccccc)  :
 
 ```bash
 export CCI_TOKEN=<your Circle CI Token>
 # https://github.com/gravitee-io/issues/milestones
+export GIO_MILESTONE_VERSION="APIM - 3.5.8"
 export GIO_MILESTONE_VERSION="APIM - 3.6.1"
 export ORG_NAME="gravitee-io"
 export REPO_NAME="issues"
@@ -417,6 +403,8 @@ export JSON_PAYLOAD="{
 curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
+
+* dry run success : https://app.circleci.com/pipelines/github/gravitee-io/issues/23/workflows/3d828633-aadb-4ef0-871a-4a7d2d7aa1fa/jobs/22
 
 * and in non dry run when logged CHANGELOG modification is confirmed :) :
 
@@ -444,6 +432,7 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
+* sucessful exec : https://app.circleci.com/pipelines/github/gravitee-io/issues/24/workflows/c16ac351-a517-480d-8955-dcc6880e742f/jobs/23
 
 ## docker images
 
@@ -476,7 +465,7 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 
 succesfully built images EE and CE :
 
-* https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/92/workflows/44a25dc1-e97e-4e48-8fc1-ce6fc30ae6e7/jobs/125
+* https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/95/workflows/27806892-bc99-4721-b2e6-6c7d36ba4ea6/jobs/127
 
 ### RPM Packages `3.6.1`
 

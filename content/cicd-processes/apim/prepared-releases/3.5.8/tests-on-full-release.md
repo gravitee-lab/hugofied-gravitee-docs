@@ -453,7 +453,8 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 succesfully built images EE and CE :
 
 * https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/92/workflows/44a25dc1-e97e-4e48-8fc1-ce6fc30ae6e7/jobs/125
-
+µ and another to add minor vesions tags `3.5` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/94/workflows/e5c60e5c-52fd-4351-b1e3-dc900172d303/jobs/126
+ 
 ### RPM Packages `3.5.8`
 
 ```bash
