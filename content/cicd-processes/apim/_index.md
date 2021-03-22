@@ -13,7 +13,7 @@ In this page, you will find a full step by step procedure for APIM Release
 ## Process Description
 
 Here are the steps :
-* 0. [A kind of (magic) Release](0-a-kind-of-magic-release)
+* 0. [A kind of (magic) Release](#0-a-kind-of-magic-release)
 * 1. [The Orchestrated Maven and Git release](#1-orchestrated-maven-and-git-release)
 * can be run in parallel :
   * 2. [Package n publish zip bundles](#2-package-bundle)
