@@ -552,7 +552,7 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
     * ok so could not publish bersion `1.10.0` because this version already exists in nexus public,
     * search `Artifact updating: Repository =&apos;releases:Releases&apos; does not allow updating artifact=&apos;/io/gravitee/policy/gravitee-policy-cache/1.10.0/gravitee-policy-cache-1.10.0.pom&apos;` in logs : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-policy-cache/62/workflows/7ec18290-e10f-4921-83d7-eb91da426813/jobs/70
     * but still I cannot find this version listed by nexus public : https://search.maven.org/artifact/io.gravitee.policy/gravitee-policy-cache
-    * ok but confirmed I could find it in nexus : https://repo.maven.apache.org/maven2/io/gravitee/policy/gravitee-policy-cache/1.10.0/ (and this was not done with APIM release 3.7.0 in circle ci)
+    * ok but confirmed I could find it in nexus : https://repo.maven.apache.org/maven2/io/gravitee/policy/gravitee-policy-cache/1.10.0/ (and this was done at `2021-03-22 19:30` ... Was it  with APIM release 3.7.0 in circle ci? )
   * `gravitee-policy-oauth2`: https://app.circleci.com/pipelines/github/gravitee-io/gravitee-policy-oauth2/70/workflows/61ad7f37-501b-46a5-a275-cf20825d2797/jobs/70
   * `gravitee-reporter-file`:https://app.circleci.com/pipelines/github/gravitee-io/gravitee-reporter-file/54/workflows/87a49f81-919d-4aa2-afdc-6d6d5acdbbb8/jobs/50
   * `gravitee-policy-http-signature`: https://app.circleci.com/pipelines/github/gravitee-io/gravitee-policy-http-signature/13/workflows/1effd007-3159-4e84-8b71-6fb425cc7f2c/jobs/13
