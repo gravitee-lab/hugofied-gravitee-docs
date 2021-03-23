@@ -473,6 +473,7 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 
 Package bundle is completely idempotent : you can run as many times as you want, nothing will ever fail "because it was already done". And the result is always the exact same, unles you change either parameters, or soruce code of the package bundler (NodeJS Python or Circle CI Orb)
 
+* successfully ran the package bundle with fix to upgrade python script : https://app.circleci.com/pipelines/github/gravitee-io/release/855/workflows/a7a8688f-276c-419b-b7cc-2e66b1309823/jobs/858
 
 ### 3. Nexus staging
 
@@ -610,7 +611,7 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
-* dry run success :
+* dry run success : https://app.circleci.com/pipelines/github/gravitee-io/issues/30/workflows/e6503d24-6edc-4e30-a603-cc9a9735386e/jobs/28
 
 * and in non dry run when logged CHANGELOG modification is confirmed :) :
 
@@ -638,7 +639,8 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
-* sucessful exec : https://app.circleci.com/pipelines/github/gravitee-io/issues/24/workflows/c16ac351-a517-480d-8955-dcc6880e742f/jobs/23
+* successful exec : https://app.circleci.com/pipelines/github/gravitee-io/issues/31/workflows/c3770567-1ced-455c-a985-b57a11b2f6d1/jobs/29
+
 
 ## docker images
 
@@ -671,7 +673,8 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 
 succesfully built images EE and CE :
 
-* https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/97/workflows/d78854dd-e574-4cfd-8f26-d1a9092c54d7/jobs/129
+* https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/97/workflows/d78854dd-e574-4cfd-8f26-d1a9092c54d7/jobs/129 : had to be re issued because of package bundle fix
+* re issued here : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/101/workflows/c991f2e3-b7f7-4fda-b9d0-730a8e0fcfcc/jobs/130
 
 ### RPM Packages `3.7.0`
 
