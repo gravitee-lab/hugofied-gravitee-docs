@@ -37,10 +37,10 @@ export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${H
 # You, will just use your own Circle CI Token
 # export CCI_TOKEN=<your user circle ci token>
 
-export ORG_NAME="gravitee-io"
 export ORG_NAME="gravitee-lab"
-export REPO_NAME="graviteeio-access-management"
+export ORG_NAME="gravitee-io"
 export REPO_NAME="gio-graviteeio-access-management"
+export REPO_NAME="graviteeio-access-management"
 export BRANCH="master"
 export BRANCH="cicd/circleci-release"
 export JSON_PAYLOAD="{

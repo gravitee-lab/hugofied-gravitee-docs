@@ -12,146 +12,6 @@ product: "Gravitee APIM"
 type: apim-processes
 ---
 
-## Process Description
-
-Here I leave the tests I ran to perform a full APIM release :
-* 1. maven and git release
-* 2. en parallèle :
-  * package n publish zip bundles
-  * nexus-staging
-* 3. En parallèle :
-  * docker images CE and EE
-  * rpm
-  * changelog
-  * continous delivery https://docs.gravitee.io (truc à valider pour les branchesde départ et arrivée)
-* etc...
-
-## Release 3.5.8 : the B.O.M.
-
-```JSon
-{
- "built_execution_plan_is": [
-  [],
-  [],
-  [],
-  [
-   {
-    "name": "gravitee-repository-gateway-bridge-http",
-    "version": "3.5.4-SNAPSHOT"
-   }
-  ],
-  [],
-  [],
-  [],
-  [],
-  [
-   {
-    "name": "gravitee-gateway",
-    "version": "3.5.8-SNAPSHOT"
-   }
-  ],
-  [],
-  [
-   {
-    "name": "gravitee-policy-rest-to-soap",
-    "version": "1.11.1-SNAPSHOT"
-   }
-  ],
-  [
-   {
-    "name": "gravitee-management-rest-api",
-    "version": "3.5.8-SNAPSHOT"
-   },
-   {
-    "name": "gravitee-management-webui",
-    "version": "3.5.8-SNAPSHOT"
-   },
-   {
-    "name": "gravitee-portal-webui",
-    "version": "3.5.8-SNAPSHOT"
-   }
-  ]
- ]
-}
-```
-
-## Gravitee APIM 3.5.8 release
-
-To get a Circlei CI Token, I personally use :
-
-```bash
-# It should be SECRETHUB_ORG=graviteeio, but Cirlce CI token is related to
-# a Circle CI User, not an Org, so just reusing the same than for Gravtiee-Lab here, to work faster
-# ---
-SECRETHUB_ORG=gravitee-lab
-SECRETHUB_REPO=cicd
-# Nevertheless, I today think :
-# Each team member should have his own personal secrethub repo in the [graviteeio] secrethub org.
-# like this :
-# a [graviteeio/${TEAM_MEMBER_NAME}] secrethub repo for each team member
-# and the Circle CI Personal Access token stored with [graviteeio/${TEAM_MEMBER_NAME}/circleci/token]
-# ---
-export HUMAN_NAME=jblasselle
-export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${HUMAN_NAME}/circleci/token")
-# You, will just use your own Circle CI Token
-# export CCI_TOKEN=<your user circle ci token>
-```
-
-But you can get a Circle CI "Personal API Token" just using the Circle CI Web UI in your profile settings menu.
-
-
-### 1. Orchestrated Maven and git release
-
-* To run the orchestrated Maven and git release, with dry run mode on :
-
-```bash
-# export CCI_TOKEN=<You Circle CI User Personal Token>
-
-export ORG_NAME="gravitee-io"
-export REPO_NAME="release"
-export BRANCH="3.5.x"
-export JSON_PAYLOAD="{
-
-    \"branch\": \"${BRANCH}\",
-    \"parameters\":
-
-    {
-        \"gio_action\": \"dry_release\"
-    }
-
-}"
-
-curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
-curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
-```
-
-
-* To run the orchestrated Maven and git release, with dry run mode off :
-
-```bash
-# export CCI_TOKEN=<You Circle CI User Personal Token>
-# PAS AVANT GO !!!!!
-export ORG_NAME="gravitee-io"
-export REPO_NAME="release"
-export BRANCH="3.5.x"
-export JSON_PAYLOAD="{
-
-    \"branch\": \"${BRANCH}\",
-    \"parameters\":
-
-    {
-        \"gio_action\": \"release\"
-    }
-
-}"
-
-curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
-curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
-```
-
-The release process in non dry run mode successfully compelted in the folowing pipeline execution :
-
-https://app.circleci.com/pipelines/github/gravitee-io/release/793/workflows/aa28d9c6-f6e2-4474-9c60-37f78e02bcd5/jobs/801
 
 
 ### 2. Package bundle
@@ -165,7 +25,7 @@ The package Bundle Entreprise Edition fetches zips from https://download.gravite
 * then execute the wget script to transfer the zips from the S3 Bucket, to https://download.gravitee.io :
 
 ```bash
-wget https://raw.githubusercontent.com/gravitee-lab/hugofied-gravitee-docs/feature/first_release/content/cicd-processes/apim/prepared-releases/3.5.8/package_bundles_ce/script.download.gravitee.io.sh -O ./script.download.gravitee.io.sh
+wget https://raw.githubusercontent.com/gravitee-lab/hugofied-gravitee-docs/feature/first_release/content/cicd-processes/apim/prepared-releases/1.25.27/package_bundles_ce/script.download.gravitee.io.sh -O ./script.download.gravitee.io.sh
 chmod +x ./script.download.gravitee.io.sh
 mdkir -p /opt/folder_for_test
 export BASE_WWW_FOLDER="/opt/folder_for_test"
@@ -189,17 +49,17 @@ export BASE_WWW_FOLDER="/opt/dist/download.gravitee.io"
 * and finally run the packge bundle for the Entreprise Edition
 
 
-* To run the package bundle for the Release `3.5.8`, without Entreprise Edition  (**tested OK** , see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/505/workflows/1632b81a-eb26-46eb-9528-68ed7cb818d1/jobs/477), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
+* To run the package bundle for the Release `1.25.27`, without Entreprise Edition  (**tested OK** , see [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/release/505/workflows/1632b81a-eb26-46eb-9528-68ed7cb818d1/jobs/477), showing that it's the transformation from dist.gravitee.io to download.graavitee.io , formerly done manually, which has an issue )  :
 
 #### Now the process curls
 
 ```bash
 # export CCI_TOKEN=<your Circle CI Token>
 
-export GRAVITEE_RELEASE_VERSION="3.5.8"
+export GRAVITEE_RELEASE_VERSION="1.25.27"
 export ORG_NAME="gravitee-io"
 export REPO_NAME="release"
-export BRANCH="3.5.x"
+export BRANCH="1.25.x"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -217,14 +77,12 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
-* successfully ran the package bundle for APIM CE (after 2 fixes on package bundle ) : https://app.circleci.com/pipelines/github/gravitee-io/release/882/workflows/262f866f-06d5-4cc0-9f63-60993d1f4b71/jobs/885
-
-* To run the package bundle for the Release `3.5.8`, with Entreprise Edition
+* To run the package bundle for the Release `1.25.27`, with Entreprise Edition
 
 ```bash
 # export CCI_TOKEN=<your Circle CI Token>
 # the versions for the below dependencies were confirmed at each release time by POs
-export GRAVITEE_RELEASE_VERSION="3.5.8"
+export GRAVITEE_RELEASE_VERSION="1.25.27"
 export AE_VERSION="1.2.18"
 # https://github.com/gravitee-io/gravitee-license/tags
 export LICENSE_VERSION="1.1.2"
@@ -245,7 +103,7 @@ export NOTIFIER_EMAIL_VERSION="1.2.7"
 
 export ORG_NAME="gravitee-io"
 export REPO_NAME="release"
-export BRANCH="3.5.x"
+export BRANCH="1.25.x"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -267,8 +125,8 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 
 # --
-# Will fail at downloading https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-3.5.8.zip
-# But we have              https://gravitee-releases-downloads.cellar-c2.services.clever-cloud.com/graviteeio-apim/distributions/graviteeio-full-3.5.8.zip
+# Will fail at downloading https://download.gravitee.io/graviteeio-apim/distributions/graviteeio-full-1.25.27.zip
+# But we have              https://gravitee-releases-downloads.cellar-c2.services.clever-cloud.com/graviteeio-apim/distributions/graviteeio-full-1.25.27.zip
 ```
 
 Package bundle is completely idempotent : you can run as many times as you want, nothing will ever fail "because it was already done". And the result is always the exact same, unles you change either parameters, or soruce code of the package bundler (NodeJS Python or Circle CI Orb)
@@ -282,8 +140,8 @@ beware, there is no dry run for this one
 # export CCI_TOKEN=<you circle ci token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="release"
-export BRANCH="3.5.x"
-export GIO_RELEASE_VERSION="3.5.8"
+export BRANCH="1.25.x"
+export GIO_RELEASE_VERSION="1.25.27"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -326,8 +184,8 @@ An error occurred while invoking protoc: Error while executing process. Cannot r
 export CCI_TOKEN=<you circle ci token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-gateway"
-export BRANCH="3.5.x"
-export GIO_RELEASE_VERSION="3.5.8"
+export BRANCH="1.25.x"
+export GIO_RELEASE_VERSION="1.25.27"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -370,12 +228,12 @@ nexus_staging:
 
   #### changelog
 
-  * example for Release `3.5.8`, see [this pipeline execution](cccccc)  :
+  * example for Release `1.25.27`, see [this pipeline execution](cccccc)  :
 
 ```bash
 export CCI_TOKEN=<your Circle CI Token>
 # https://github.com/gravitee-io/issues/milestones
-export GIO_MILESTONE_VERSION="APIM - 3.5.8"
+export GIO_MILESTONE_VERSION="APIM - 1.25.27"
 export ORG_NAME="gravitee-io"
 export REPO_NAME="issues"
 export BRANCH="master"
@@ -401,7 +259,7 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 ```bash
 export CCI_TOKEN=<your Circle CI Token>
 # https://github.com/gravitee-io/issues/milestones
-export GIO_MILESTONE_VERSION="APIM - 3.5.8"
+export GIO_MILESTONE_VERSION="APIM - 1.25.27"
 export ORG_NAME="gravitee-io"
 export REPO_NAME="issues"
 export BRANCH="master"
@@ -433,7 +291,7 @@ export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-docker"
 export BRANCH="master"
 export BRANCH="feature/cicd-circle-image-builds"
-export GRAVITEEIO_VERSION="3.5.8"
+export GRAVITEEIO_VERSION="1.25.27"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -457,13 +315,13 @@ succesfully built images EE and CE :
 * https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/92/workflows/44a25dc1-e97e-4e48-8fc1-ce6fc30ae6e7/jobs/125
 * and another to add minor vesions tags `3.5` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/94/workflows/e5c60e5c-52fd-4351-b1e3-dc900172d303/jobs/126
 
-### RPM Packages `3.5.8`
+### RPM Packages `1.25.27`
 
 ```bash
-export GRAVITEE_RELEASE_VERSION="3.5.8"
+export GRAVITEE_RELEASE_VERSION="1.25.27"
 export ORG_NAME="gravitee-io"
 export REPO_NAME="release"
-export BRANCH="3.5.x"
+export BRANCH="1.25.x"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -511,12 +369,12 @@ prepared git commands :
 
 ```bash
 # ++ if gravitee parent pom is in version 15 (like e.g. [gravitee-reporter-api]):
-# git add --all && git commit -m "CiCd / prepare APIM 3.5.8 release: upgrade gravitee-parent to version 15.1, and [.circleci/config.yml] pipeline def." && git push -u origin HEAD
+# git add --all && git commit -m "CiCd / prepare APIM 1.25.27 release: upgrade gravitee-parent to version 15.1, and [.circleci/config.yml] pipeline def." && git push -u origin HEAD
 
 # ++ if gravitee parent pom is in a 17.x version :
-# git add --all && git commit -m "CiCd / prepare APIM 3.5.8 release: upgrade gravitee-parent to version 17.2, and [.circleci/config.yml] pipeline def." && git push -u origin HEAD
+# git add --all && git commit -m "CiCd / prepare APIM 1.25.27 release: upgrade gravitee-parent to version 17.2, and [.circleci/config.yml] pipeline def." && git push -u origin HEAD
 
 # ++ if gravitee parent pom is in a 19.x version :
-# git add --all && git commit -m "CiCd / prepare APIM 3.5.8 release: upgrade gravitee-parent to version 19.2, and [.circleci/config.yml] pipeline def." && git push -u origin HEAD
+# git add --all && git commit -m "CiCd / prepare APIM 1.25.27 release: upgrade gravitee-parent to version 19.2, and [.circleci/config.yml] pipeline def." && git push -u origin HEAD
 
 ```
