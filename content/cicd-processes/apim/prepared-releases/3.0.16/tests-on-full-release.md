@@ -536,8 +536,8 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 
 succesfully built images EE and CE :
 
-* https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/92/workflows/44a25dc1-e97e-4e48-8fc1-ce6fc30ae6e7/jobs/125
-* and another to add minor vesions tags `3.5` : https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/94/workflows/e5c60e5c-52fd-4351-b1e3-dc900172d303/jobs/126
+* https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/135/workflows/ba604b38-10e2-4218-884b-fe93871f916d/jobs/159
+* note that I had to apply `3.0.16` specific fix for TLS Cert problem of service https://download.gravtiee.io using a specifically implemented new Circle CI Orb ,`gravitee/container_images_build_apim_3_0_16_fix`
 
 ### RPM Packages `3.0.16`
 
@@ -562,6 +562,7 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
+* successful exec : https://app.circleci.com/pipelines/github/gravitee-io/release/912/workflows/96bef0c3-cb2d-46a2-b734-f60786107c65/jobs/913
 
 
 ## ANNEX A Utility commands for the maven and git release preps
