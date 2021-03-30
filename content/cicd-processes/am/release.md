@@ -78,8 +78,12 @@ export CCI_USER_GID="3434"
 export OUTSIDE_CONTAINER_SECRETS_VOLUME=$(mktemp -d -t "oci_secrets_vol-XXXXXXXXXX")
 docker pull ${DOCKER_IMAGE_GUN}
 
-# docker run -it --rm --user ${CCI_USER_UID}:${CCI_USER_GID} -v ${OUTSIDE_CONTAINER_SECRETS_VOLUME}:/home/$NON_ROOT_USER_NAME/.secrets -v "$PWD":/usr/src/giomaven_project -v "$HOME/.m2":/home/${NON_ROOT_USER_NAME_LABEL}/.m2 -e MAVEN_CONFIG=/home/${NON_ROOT_USER_NAME_LABEL}/.m2 -w /usr/src/giomaven_project "${MVN_DOCKER}" ${MAVEN_SHELL_SCRIPT}
-# docker run -it --rm --user ${CCI_USER_UID}:${CCI_USER_GID} -v ${OUTSIDE_CONTAINER_SECRETS_VOLUME}:/home/$NON_ROOT_USER_NAME/.secrets -v "$PWD":/home/circleci/project -v "$HOME/.m2":/home/${NON_ROOT_USER_NAME_LABEL}/.m2 -e MAVEN_CONFIG=/home/${NON_ROOT_USER_NAME_LABEL}/.m2 -w /home/circleci/project "${DOCKER_IMAGE_GUN}" ${MAVEN_SHELL_SCRIPT}
-docker run -it --rm --user ${CCI_USER_UID}:${CCI_USER_GID} -v "$PWD":/home/circleci/project -v "$HOME/.m2":/home/${NON_ROOT_USER_NAME_LABEL}/.m2 -e MAVEN_CONFIG=/home/${NON_ROOT_USER_NAME_LABEL}/.m2 -w /home/circleci/project "${DOCKER_IMAGE_GUN}" ${MAVEN_SHELL_SCRIPT}
+# ---
+# docker run -it --rm --user ${CCI_USER_UID}:${CCI_USER_GID} -v ${OUTSIDE_CONTAINER_SECRETS_VOLUME}:/home/$NON_ROOT_USER_NAME/.secrets -v "$PWD":/usr/src/giomaven_project -v "$HOME/.m2":/home/${NON_ROOT_USER_NAME}/.m2 -e MAVEN_CONFIG=/home/${NON_ROOT_USER_NAME}/.m2 -w /usr/src/giomaven_project "${MVN_DOCKER}" ${MAVEN_SHELL_SCRIPT}
+# ---
+# docker run -it --rm --user ${CCI_USER_UID}:${CCI_USER_GID} -v "$PWD":/home/circleci/project -v "$HOME/.m2":/home/${NON_ROOT_USER_NAME}/.m2 -e MAVEN_CONFIG=/home/${NON_ROOT_USER_NAME}/.m2 -w /home/circleci/project "${DOCKER_IMAGE_GUN}" ${MAVEN_SHELL_SCRIPT}
+
+# I will git clone the source cdoe directly into the container
+docker run -it --rm --user ${CCI_USER_UID}:${CCI_USER_GID} -e MAVEN_CONFIG=/home/${NON_ROOT_USER_NAME}/.m2 -w /home/circleci/project "${DOCKER_IMAGE_GUN}" ${MAVEN_SHELL_SCRIPT}
 
 ```
