@@ -15,10 +15,7 @@ type: am-processes
 
 TODO
 
-
-## How to: Perfom a Release
-
-* Launch in dry run mode  :
+## The Circle CI TOken
 
 ```bash
 # It should be SECRETHUB_ORG=graviteeio, but Cirlce CI token is related to
@@ -36,6 +33,14 @@ export HUMAN_NAME=jblasselle
 export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${HUMAN_NAME}/circleci/token")
 # You, will just use your own Circle CI Token
 # export CCI_TOKEN=<your user circle ci token>
+```
+
+## How to: Perfom a Release
+
+* Launch in dry run mode  :
+
+```bash
+export CCI_TOKEN=<your user circle ci token>
 
 export ORG_NAME="gravitee-lab"
 export ORG_NAME="gravitee-io"
@@ -57,4 +62,24 @@ export JSON_PAYLOAD="{
 
 curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+
+## Running locally (with dry run mode only)
+
+
+```bash
+export DOCKER_IMAGE_GUN="circleci/openjdk:11.0.3-jdk-stretch"
+
+# In Docker executor : uid=3434(circleci) gid=3434(circleci) groups=3434(circleci)
+export NON_ROOT_USER_NAME="circleci"
+export CCI_USER_UID="3434"
+export CCI_USER_GID="3434"
+export OUTSIDE_CONTAINER_SECRETS_VOLUME=$(mktemp -d -t "oci_secrets_vol-XXXXXXXXXX")
+docker pull ${DOCKER_IMAGE_GUN}
+
+# docker run -it --rm --user ${CCI_USER_UID}:${CCI_USER_GID} -v ${OUTSIDE_CONTAINER_SECRETS_VOLUME}:/home/$NON_ROOT_USER_NAME/.secrets -v "$PWD":/usr/src/giomaven_project -v "$HOME/.m2":/home/${NON_ROOT_USER_NAME_LABEL}/.m2 -e MAVEN_CONFIG=/home/${NON_ROOT_USER_NAME_LABEL}/.m2 -w /usr/src/giomaven_project "${MVN_DOCKER}" ${MAVEN_SHELL_SCRIPT}
+# docker run -it --rm --user ${CCI_USER_UID}:${CCI_USER_GID} -v ${OUTSIDE_CONTAINER_SECRETS_VOLUME}:/home/$NON_ROOT_USER_NAME/.secrets -v "$PWD":/home/circleci/project -v "$HOME/.m2":/home/${NON_ROOT_USER_NAME_LABEL}/.m2 -e MAVEN_CONFIG=/home/${NON_ROOT_USER_NAME_LABEL}/.m2 -w /home/circleci/project "${DOCKER_IMAGE_GUN}" ${MAVEN_SHELL_SCRIPT}
+docker run -it --rm --user ${CCI_USER_UID}:${CCI_USER_GID} -v "$PWD":/home/circleci/project -v "$HOME/.m2":/home/${NON_ROOT_USER_NAME_LABEL}/.m2 -e MAVEN_CONFIG=/home/${NON_ROOT_USER_NAME_LABEL}/.m2 -w /home/circleci/project "${DOCKER_IMAGE_GUN}" ${MAVEN_SHELL_SCRIPT}
+
 ```
