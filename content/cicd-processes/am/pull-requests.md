@@ -13,82 +13,29 @@ type: am-processes
 
 ## Process Description
 
-* The description of what happens when a (multi) pull request CICD Process is launched
+* Every time a pull request event occurs :
+  * The `SNAPSHOT` is maven built by the `build_snapshot_job` Circle CI Job
+  * The `SNAPSHOT` maven artefacts are published to Gravitee's private Artifactory, in the `gravitee-snapshots` repository, by the `publish_snapshot_to_private_artifactory_job` Circle CI Job
+  * If A Gravitee Team member (a human), gives his approval to the `publish_snapshot_to_nexus_approval` Circle CI Job, then the `publish_snapshot_to_nexus_job` is executed, to publish the snapshot to nexus snapshots.
 
 
-
-## Idea for the furture implementation
-
-basically the same as a release, only :
-* instead of infering a git branch name from the `version` property of each component, being valued with somethinglike `5.4.x` (then the target branch is )
-* a new `JSON` property for each `component`, named `pull-request`, allows to specify the developer 's pull request soruce git branch name
-* then the release is perform basedon those pull request soruce git branch name
-
-```JSon
-{
-    "name": "Gravitee.io",
-    "version": "7.10.0-SNAPSHOT",
-    "buildTimestamp": "2020-10-15T07:19:32+0000",
-    "scmSshUrl": "git@github.com:gravitee-io",
-    "scmHttpUrl": "https://github.com/gravitee-io/",
-    "components": [
-        {
-            "name": "graviteek-cicd-test-maven-project-g1",
-            "version": "4.1.32-SNAPSHOT",
-            "pull-request": "pr-1589-spikearrest"
-        },
-        {
-            "name": "graviteek-cicd-test-maven-project-g2",
-            "version": "4.2.67-SNAPSHOT",
-            "pull-request": "pr-84-json-weirdo"
-        },
-        {
-            "name": "graviteek-cicd-test-maven-project-g3",
-            "version": "4.3.17-SNAPSHOT",
-            "pull-request": "pr-753-gdpr-scar"
-        },
-        {
-            "name": "gravitee-common",
-            "version": "1.18.0"
-        }
-      ],
-      "buildDependencies": [
-          [
-              "graviteek-cicd-test-maven-project-g1"
-          ],
-          [
-              "graviteek-cicd-test-maven-project-g2"
-          ],
-          [
-              "graviteek-cicd-test-maven-project-g3"
-          ],
-          [
-              "gravitee-common"
-          ],
-          [
-              "gravitee-repository",
-              "gravitee-expression-language",
-              "gravitee-service-discovery-api",
-              "gravitee-notifier-api"
-          ]
-      ]
-}
-```
+Jobs Structure :
 
 
-
-Process pattern :
-* perform a dry run for each commit on a pull request :
-  * the docker push happens on a private docker registry
-  * no deployement target (zero infrastructure in any cloud provider)
-  * but from the private docker registry, the development engineer can deploy on his own machine (watch Cicrlc CI and  trigger local deployment)
-* when the manager wants to decide whether or not he accepts the pullrequest or not, he can launch the same process:
-  * but then what happens is the same, but with a deployement in a cloud provider. (non dry-run)
-  * actually, that process can be laucnhed every evening, and the manager gets the results everry morning.
-
-
-
-
-
-
-## Misc. Cahracteristics
+<pre>
+  secrethub
+      |
+     \|/
+      .
+  build_snapshot_job
+      |
+      |----------------------------------------->  publish_snapshot_to_private_artifactory_job
+      |
+     \|/
+      .
+  publish_snapshot_to_nexus_approval
+      |
+     \|/
+      .
+  publish_snapshot_to_nexus_job
+</pre>
