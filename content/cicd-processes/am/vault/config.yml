@@ -39,6 +39,7 @@ jobs:
       DEV_MAVEN_SETTINGS: 'secrethub://graviteeio/cicd/graviteebot/infra/maven/dry-run/artifactory/settings.dev.xml'
       RELEASE_MAVEN_SETTINGS: 'secrethub://graviteeio/cicd/graviteebot/infra/maven/settings.nexus-staging.xml'
       DRY_RELEASE_MAVEN_SETTINGS: 'secrethub://graviteeio/cicd/graviteebot/infra/maven/dry-run/artifactory/settings.xml'
+      NON_DRY_RELEASE_MAVEN_SETTINGS: 'secrethub://graviteeio/cicd/graviteebot/infra/maven/dry-run/artifactory/settings.non.dry.run.xml'
       NEXUS_STAGING_MAVEN_SETTINGS: 'secrethub://graviteeio/cicd/graviteebot/infra/maven/settings.nexus-staging.xml'
       GIO_GPG_PUB_KEY: 'secrethub://graviteeio/cicd/graviteebot/gpg/armor_format_pub_key'
       GIO_GPG_PRV_KEY: 'secrethub://graviteeio/cicd/graviteebot/gpg/armor_format_private_key'
@@ -53,6 +54,7 @@ jobs:
                     mkdir -p /tmp/gravit33bot/.secrets/.gungpg
                     echo $RELEASE_MAVEN_SETTINGS > /tmp/gravit33bot/.secrets/release.settings.xml
                     echo $DRY_RELEASE_MAVEN_SETTINGS > /tmp/gravit33bot/.secrets/dry.release.settings.xml
+                    echo $NON_DRY_RELEASE_MAVEN_SETTINGS > /tmp/gravit33bot/.secrets/non.dry.release.settings.xml
                     echo $NEXUS_STAGING_MAVEN_SETTINGS > /tmp/gravit33bot/.secrets/nexus.staging.settings.xml
                     echo $GIO_GPG_PUB_KEY > /tmp/gravit33bot/.secrets/.gungpg/graviteebot.gpg.pub.key
                     echo $GIO_GPG_PRV_KEY > /tmp/gravit33bot/.secrets/.gungpg/graviteebot.gpg.priv.key
@@ -248,28 +250,25 @@ jobs:
                     cat ${EPHEMERAL_KEYRING_FOLDER_ZERO}/gpg.conf
                     echo "# ----------------------------------------------------------------"
       - run:
-          name: "Setup [settings.xml] according dry run mode"
+          name: "Setup [settings.xml] for the artifactory rekease, according dry run mode"
           command: |
                     # #                                  # #
                     if [ "x${DRY_RUN}" == "x" ]; then
                       echo "[DRY_RUN] is not set, and must be to secure Release process"
                       exit 3
                     fi;
+
                     if [ -f /tmp/release.settings.xml ]; then
                       rm /tmp/release.settings.xml
                     fi;
-                    # if [ "${DRY_RUN}" == "false" ]; then
-                      # echo "# --->>> NO IT IS NOT A DRY RUN"
-                      # cp -f /tmp/gravit33bot/.secrets/dry.release.settings.xml /tmp/release.settings.xml
-                    # else
-                      # echo "# --->>> THIS IS A DRY RUN"
-                      # cp -f /tmp/gravit33bot/.secrets/release.settings.xml /tmp/release.settings.xml
-                    # fi;
 
-                    # The settings.xml used for nexus staging is the one to use to
-                    # release Gravitee AM to nexus staging, dry run or not :
-                    # In dry run mode, no nexus staging will happen, just a n [mvn clean install]
-                    cp -f /tmp/gravit33bot/.secrets/nexus.staging.settings.xml /tmp/release.settings.xml
+                    if [ "${DRY_RUN}" == "false" ]; then
+                      echo "# --->>> NO IT IS NOT A DRY RUN"
+                      cp -f /tmp/gravit33bot/.secrets/non.dry.release.settings.xml /tmp/release.settings.xml
+                    else
+                      echo "# --->>> THIS IS A DRY RUN"
+                      cp -f /tmp/gravit33bot/.secrets/dry.release.settings.xml /tmp/release.settings.xml
+                    fi;
 
                     echo " [--------------------------------------------------------------------------------] "
                     echo " [------  NOW HERE IS THE SETTINGS.XML WHICH WILL BE USED: "
@@ -316,12 +315,56 @@ jobs:
             cat ./pom.xml
             echo " [--------------------------------------------------------------------------------] "
       - run:
-          name: Maven Test, Package, and Deploy to Nexus Staging
+          name: "Maven Test, Package, and Deploy to Gravitee's private Artifactory"
           command: |
             if [ "x${DRY_RUN}" == "x" ]; then
               echo "[DRY_RUN] is not set, and must be to secure Release process"
               exit 3
             fi;
+
+            echo " [--------------------------------------------------------------------------------] "
+            echo " [------  NOW HERE IS THE SETTINGS.XML WHICH WILL BE USED: "
+            echo " [--------------------------------------------------------------------------------] "
+            cat /tmp/release.settings.xml | sed "s#<passphrase>.*#<passphrase>obfuscated</passphrase>#g" | sed "s#<password>.*#<password>obfuscated</password>#g" | sed "s#<username>.*#<username>obfuscated</username>#g"
+            echo " [--------------------------------------------------------------------------------] "
+            # #                   # #
+            # # + MAVEN RELEASE + # #
+            # #                   # #
+            export GPG_TTY=$(tty)
+            export EPHEMERAL_KEYRING_FOLDER_ZERO="/tmp/gravit33bot/ephemeral_gpg_ring"
+            export GNUPGHOME=${EPHEMERAL_KEYRING_FOLDER_ZERO}
+            if [ "${DRY_RUN}" == "false" ]; then
+              echo "# --->>> NO IT IS NOT A DRY RUN"
+            else
+              echo "# --->>> THIS IS A DRY RUN"
+            fi;
+            export MAVEN_PROFILE_ID=gio-release
+            mvn -Duser.home=${HOME} -s /tmp/release.settings.xml -B -U -P ${MAVEN_PROFILE_ID} clean deploy -DskipTests=true
+      - run:
+          name: "Reset [settings.xml] for Nexus Staging"
+          command: |
+                    if [ -f /tmp/release.settings.xml ]; then
+                      rm /tmp/release.settings.xml
+                    fi;
+                    # The settings.xml used for nexus staging is the one to use to
+                    # release Gravitee AM to nexus staging, dry run or not :
+                    # In dry run mode, no nexus staging will happen, just a n [mvn clean install]
+                    cp -f /tmp/gravit33bot/.secrets/nexus.staging.settings.xml /tmp/release.settings.xml
+
+                    echo " [--------------------------------------------------------------------------------] "
+                    echo " [------  NOW HERE IS THE SETTINGS.XML WHICH WILL BE USED: "
+                    echo " [--------------------------------------------------------------------------------] "
+                    cat /tmp/release.settings.xml | sed "s#<passphrase>.*#<passphrase>obfuscated</passphrase>#g" | sed "s#<password>.*#<password>obfuscated</password>#g" | sed "s#<username>.*#<username>obfuscated</username>#g"
+                    echo " [--------------------------------------------------------------------------------] "
+      - run:
+          name: Maven Test, Package, and Deploy to Nexus Staging
+          command: |
+
+            echo " [--------------------------------------------------------------------------------] "
+            echo " [------  NOW HERE IS THE SETTINGS.XML WHICH WILL BE USED: "
+            echo " [--------------------------------------------------------------------------------] "
+            cat /tmp/release.settings.xml | sed "s#<passphrase>.*#<passphrase>obfuscated</passphrase>#g" | sed "s#<password>.*#<password>obfuscated</password>#g" | sed "s#<username>.*#<username>obfuscated</username>#g"
+            echo " [--------------------------------------------------------------------------------] "
             # #                   # #
             # # + MAVEN RELEASE + # #
             # #                   # #
@@ -330,13 +373,14 @@ jobs:
             export GNUPGHOME=${EPHEMERAL_KEYRING_FOLDER_ZERO}
             if [ "${DRY_RUN}" == "false" ]; then
               echo "# --->>> NO IT IS NOT A DRY RUN : so we maven deploy to nexus staging"
-              mvn -Duser.home=${HOME} -s /tmp/release.settings.xml -B -U -P ${MAVEN_PROFILE_ID} clean deploy -DskipTests=false
+              mvn -Duser.home=${HOME} -s /tmp/release.settings.xml -B -U -P ${MAVEN_PROFILE_ID} deploy -DskipTests=false
             else
               echo "# --->>> THIS IS A DRY RUN: no deployment to nexus staging"
-              mvn -Duser.home=${HOME} -s /tmp/release.settings.xml -B -U -P ${MAVEN_PROFILE_ID} clean verify -DskipTests=false
+              exit 0
+              mvn -Duser.home=${HOME} -s /tmp/release.settings.xml -B -U -P ${MAVEN_PROFILE_ID} verify -DskipTests=false
             fi;
 
-            # mvn -Duser.home=${HOME} -s /tmp/release.settings.xml -B -U -P ${MAVEN_PROFILE_ID} clean deploy -DskipTests=true
+            # mvn -Duser.home=${HOME} -s /tmp/release.settings.xml -B -U -P ${MAVEN_PROFILE_ID} deploy -DskipTests=true
       - add_ssh_keys:
           fingerprints:
             - "ac:88:23:8f:c6:0f:7d:f0:fc:df:73:20:34:56:02:6c"
@@ -628,6 +672,7 @@ workflows:
       - publish_snapshot_to_private_artifactory_job:
           requires:
             - build_snapshot_job
+            - secrethub
       - publish_snapshot_to_nexus_approval:
           type: approval
           requires:

@@ -37,7 +37,7 @@ export CCI_TOKEN=$(secrethub read "${SECRETHUB_ORG}/${SECRETHUB_REPO}/humans/${H
 
 ## How to: Perfom a Release
 
-* Launch with dry run mode on (tested operational with [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/graviteeio-access-management/1331/workflows/c23dcc50-8b3b-4d40-9d53-6b1365823377/jobs/1364) )  :
+* Launch with dry run mode on (tested operational with [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/graviteeio-access-management/1338/workflows/26540fb5-259a-4d74-8adf-b696f98e7c09) )  :
 
 ```bash
 export CCI_TOKEN=<your user circle ci token>
