@@ -83,12 +83,20 @@ In this first step, you will :
 * Run the Orchestrator with dry run mode on:
   * with dry run mode on, no modifications will happen in any git repository
   * in the logs of this first execution, you will find the "execution plan". You will find it by searching the string `built_execution_plan_is` in the logs.
-  * this execution plan gives the fill list of all github repositoruies which will be involved into the APIM release
-  * communicate the execution plan to the dev or support team on slack, to confirm the list of github repositories involved int he APIM release.
+  * this execution plan gives the fill list of all github repositories which will be involved into the APIM release. Once you have that list, you must  :
+    * communicate the execution plan to the dev or support team on slack, to confirm the list of github repositories involved int he APIM release.
+    * (this just for the period of the Jenkins => Circle CI migration) check that on all git branch of dev repos involed into the release, the gravitee-parent version doe snot need an update :
+      * if the gravitee-parent is in version `15` => upgrade to version `15.1`
+      * if the gravitee-parent is in version `17.1` => upgrade to version `17.2`
+      * if the gravitee-parent is in version `19` => upgrade to version `19.2.1`
+      * if the gravitee-parent is in version `19.1` => upgrade to version `19.3`
+    * (this just for the period of Circle CI Pipeline defintion upgrade) check that on all git branch of dev repos invovled into the release, the `config.yml` contains :
+      * (VM Executors-based) https://github.com/gravitee-io/gravitee-circleci-orbinoid/blob/develop/documentation/ref-config-yml/dev-repos/config.yml
+      * (Container Executors-based) https://github.com/gravitee-io/gravitee-circleci-orbinoid/blob/develop/documentation/ref-config-yml/pure-docker-executor-based/dev-repos/config.yml
+    * and on the git branch of the https://github.com/gravitee-io/release repo, the config.yml is exactly as https://github.com/gravitee-io/gravitee-circleci-orbinoid/blob/develop/documentation/ref-config-yml/release-repo/config.yml
 * Run the Orchestrator with dry run mode off :
   * this time the release process will git push the commit and the git tag
   * at the end of the process, all the maven artifacts (jars and zips), will be is a private ARtifafcory server owned by Gravitee, only accessible by the gravitee team members.
-
 
 
 * To run the orchestrated Maven and git release, with dry run mode on :
