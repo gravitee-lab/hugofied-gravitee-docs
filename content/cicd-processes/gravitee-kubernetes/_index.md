@@ -8,11 +8,11 @@ nav_menu: "CI/CD Processes"
 type: ae-processes
 ---
 
-## Process Description
+## Gravitee Kubernetes Releases
 
-
-
-## Behavioral Characteristics
-
-
-<!-- To complete (in the [layouts/general-design/list.html]) -->
+The Release process of the gravitee kubernetes repository can be launched by 2 means :
+* Either you release it within an APIM release (Gravitee APIM Orchestrated release CICD Process) :
+  * Then the Orchestrator launches it, in an Orchestrated release process of APIM
+  * Or you can trigger it yoruself, using the exact same Circle CI API call the orchestrator uses : I called this the "Standalone release"
+* Or you want to perform the release on the gravitee-kubernetes repository alone, out of any APIM release process:
+  * Regarding the gravitee-kubernetes repository itself

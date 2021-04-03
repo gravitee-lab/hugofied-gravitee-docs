@@ -92,7 +92,9 @@ In this first step, you will :
       * if the gravitee-parent is in version `19.1` => upgrade to version `19.3`
     * (this just for the period of Circle CI Pipeline defintion upgrade) check that on all git branch of dev repos invovled into the release, the `config.yml` contains :
       * (VM Executors-based) https://github.com/gravitee-io/gravitee-circleci-orbinoid/blob/develop/documentation/ref-config-yml/dev-repos/config.yml
-      * (Container Executors-based) https://github.com/gravitee-io/gravitee-circleci-orbinoid/blob/develop/documentation/ref-config-yml/pure-docker-executor-based/dev-repos/config.yml
+      * (Container Executors-based) :
+        * GRAVITEE COMMUNITY EDITION REPOS : https://github.com/gravitee-io/gravitee-circleci-orbinoid/blob/develop/documentation/ref-config-yml/pure-docker-executor-based/gravitee-ce/dev-repos/config.yml
+        * GRAVITEE ENTREPRISE EDITION REPOS : https://github.com/gravitee-io/gravitee-circleci-orbinoid/blob/develop/documentation/ref-config-yml/pure-docker-executor-based/gravitee-ce/dev-repos/config.yml
     * and on the git branch of the https://github.com/gravitee-io/release repo, the config.yml is exactly as https://github.com/gravitee-io/gravitee-circleci-orbinoid/blob/develop/documentation/ref-config-yml/release-repo/config.yml
 * Run the Orchestrator with dry run mode off :
   * this time the release process will git push the commit and the git tag
