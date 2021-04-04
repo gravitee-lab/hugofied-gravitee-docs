@@ -104,8 +104,8 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 
 ### Launch the Standalone Release
 
+#### With dry run mode ON
 
-* To indivudually (re-)launch the Release process with a `curl`, just for `gravitee-kubernetes` :
 
 ```bash
 export CCI_TOKEN=<you circle ci token>
@@ -116,21 +116,48 @@ export BRANCH="master"
 # on a "*.*.x" branch for a support release
 export BRANCH="9.3.x"
 export BRANCH="cicd/circleci_pipeline"
-export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-apim-3_6_1"
-export S3_BUCKET_NAME="prepared-nexus-staging-gravitee-kubernetes-3_6_1"
-
+export MAVEN_PROFILE_ID="gio-release"
+export MAVEN_PROFILE_ID="gravitee-dry-run"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
     \"parameters\":
 
     {
-        \"gio_action\": \"release\",
-        \"dry_run\": true,
-        \"secrethub_org\": \"graviteeio\",
-        \"secrethub_repo\": \"cicd\",
-        \"s3_bucket_name\": \"${S3_BUCKET_NAME}\",
-        \"maven_profile_id\": \"gravitee-release\"
+        \"gio_action\": \"standalone_release\",
+        \"maven_profile_id\": \"${MAVEN_PROFILE_ID}\",
+        \"dry_run\": true
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+#### With dry run mode OFF (immutable!)
+
+
+```bash
+export CCI_TOKEN=<you circle ci token>
+export ORG_NAME="gravitee-io"
+export REPO_NAME="gravitee-kubernetes"
+# on master branch for a major release
+export BRANCH="master"
+# on a "*.*.x" branch for a support release
+export BRANCH="9.3.x"
+export BRANCH="cicd/circleci_pipeline"
+export MAVEN_PROFILE_ID="gravitee-dry-run"
+export MAVEN_PROFILE_ID="gio-release"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"standalone_release\",
+        \"maven_profile_id\": \"${MAVEN_PROFILE_ID}\",
+        \"dry_run\": false
     }
 
 }"
@@ -140,15 +167,36 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 ```
 
 
+#### And then the Standalone Nexus Staging (Community Edition Repositories Only)
 
 
+```bash
+export CCI_TOKEN=<you circle ci token>
+export ORG_NAME="gravitee-io"
+export REPO_NAME="gravitee-kubernetes"
+# on master branch for a major release
+export BRANCH="master"
+# on a "*.*.x" branch for a support release
+export BRANCH="9.3.x"
+export BRANCH="cicd/circleci_pipeline"
+export MAVEN_PROFILE_ID="gravitee-release"
+export RELEASE_VERSION_NUMBER="0.1.0"
+export S3_BUCKET_NAME="prepared-standalone-nexus-staging-${REPO_NAME}-${RELEASE_VERSION_NUMBER}"
+export JSON_PAYLOAD="{
 
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
 
-### Launch the Dry run
+    {
+        \"gio_action\": \"nexus_staging\",
+        \"secrethub_org\": \"graviteeio\",
+        \"secrethub_repo\": \"cicd\",
+        \"s3_bucket_name\": \"${S3_BUCKET_NAME}\",
+        \"maven_profile_id\": \"${MAVEN_PROFILE_ID}\"
+    }
 
-### Launch the Release
+}"
 
-### Resume the Release
-
-
-## Misc. Cahracteristics
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
