@@ -135,6 +135,17 @@ curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
 
+{{< image alt="Standalone Release Step 1" width="100%" height="100%" src="/images/standalone-release/standalone_release_1.png" >}}
+
+{{< image alt="Standalone Release Step 2" width="100%" height="100%" src="/images/standalone-release/standalone_release_2.png" >}}
+
+{{< image alt="Standalone Release Step 3" width="100%" height="100%" src="/images/standalone-release/standalone_release_3.png" >}}
+
+{{< image alt="Standalone Release Step 4" width="100%" height="100%" src="/images/standalone-release/standalone_release_4.png" >}}
+
+
+
+
 #### With dry run mode OFF (immutable!)
 
 
@@ -167,7 +178,48 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 ```
 
 
-#### And then the Standalone Nexus Staging (Community Edition Repositories Only)
+_**And then the Standalone Nexus Staging (Community Edition Repositories Only)**_
+
+
+* And if the chained Nexus Staging failed, you can:
+  * re-run the job from Circle CI Web UI
+  * and even then re-launch a Nexus Staging, with a curl, like demonstrated below
+
+* re-launch a Nexus Staging, for a given Standalone release, with a `curl`, with dry run mode on (nothing will be maven deployed to nexus staging) :
+
+```bash
+export CCI_TOKEN=<you circle ci token>
+export ORG_NAME="gravitee-io"
+export REPO_NAME="gravitee-kubernetes"
+# on master branch for a major release
+export BRANCH="master"
+# on a "*.*.x" branch for a support release
+export BRANCH="9.3.x"
+export BRANCH="cicd/circleci_pipeline"
+export MAVEN_PROFILE_ID="gravitee-release"
+export RELEASE_VERSION_NUMBER="0.1.0"
+export S3_BUCKET_NAME="prepared-standalone-nexus-staging-${REPO_NAME}-${RELEASE_VERSION_NUMBER}"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"nexus_staging\",
+        \"dry_run\": true,
+        \"secrethub_org\": \"graviteeio\",
+        \"secrethub_repo\": \"cicd\",
+        \"s3_bucket_name\": \"${S3_BUCKET_NAME}\",
+        \"maven_profile_id\": \"${MAVEN_PROFILE_ID}\"
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+* re-launch a Nexus Staging, for a given Standalone release, with a `curl`, with dry run mode off (immutable !! ) :
 
 
 ```bash
@@ -189,6 +241,7 @@ export JSON_PAYLOAD="{
 
     {
         \"gio_action\": \"nexus_staging\",
+        \"dry_run\": false,
         \"secrethub_org\": \"graviteeio\",
         \"secrethub_repo\": \"cicd\",
         \"s3_bucket_name\": \"${S3_BUCKET_NAME}\",
