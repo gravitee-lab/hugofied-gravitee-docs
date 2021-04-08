@@ -91,6 +91,10 @@ workflows:
             - am_release_secrets
           dry_run: << pipeline.parameters.dry_run >>
           maven_profile_id: 'gio-release'
+          ee_id_provider_cas_version: << pipeline.parameters.ee_id_provider_cas_version >>
+          ee_id_provider_kerberos_version: << pipeline.parameters.ee_id_provider_kerberos_version >>
+          ee_id_provider_saml_version: << pipeline.parameters.ee_id_provider_saml_version >>
+
   release_dry_run:
     when:
       and:
