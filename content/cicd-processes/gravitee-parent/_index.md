@@ -8,6 +8,7 @@ nav_menu: "CI/CD Processes"
 type: metacicd-processes
 ---
 
+see also : https://github.com/gravitee-io/kb/wiki/CICD:-The-Gravitee-Parent
 
 #### Before you start : your need your Circle CI API Token
 
