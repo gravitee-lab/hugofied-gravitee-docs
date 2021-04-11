@@ -134,7 +134,7 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 
 
 
-
+for more parameters to set versions of more EE Release addons, we could have : 
 
 * To run the Maven and git release, with dry run mode on :
 
