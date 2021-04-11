@@ -25,6 +25,10 @@ parameters:
     type: string
     default: $ID_PROVIDER_SAML_VERSION
     description: "For Gravitee AM Release : The semver version number of the SAML2 identity provider plugin to bundle with GRavitee AM Entreprise Edition"
+  ee_gravitee_license_version:
+    type: string
+    default: $ID_PROVIDER_SAML_VERSION
+    description: "The semver version number of the Gravitee License to bundle with Gravitee AM Entreprise Edition"
   secrethub_org:
     type: string
     default: "gravitee-lab"
@@ -91,9 +95,10 @@ workflows:
             - am_release_secrets
           dry_run: << pipeline.parameters.dry_run >>
           maven_profile_id: 'gio-release'
-          ee_id_provider_cas_version: << pipeline.parameters.ee_id_provider_cas_version >>
-          ee_id_provider_kerberos_version: << pipeline.parameters.ee_id_provider_kerberos_version >>
+          # ee_id_provider_cas_version: << pipeline.parameters.ee_id_provider_cas_version >>
+          # ee_id_provider_kerberos_version: << pipeline.parameters.ee_id_provider_kerberos_version >>
           ee_id_provider_saml_version: << pipeline.parameters.ee_id_provider_saml_version >>
+          ee_gravitee_license_version: << pipeline.parameters.ee_gravitee_license_version >>
 
   release_dry_run:
     when:
@@ -109,9 +114,11 @@ workflows:
             - am_release_secrets
           dry_run: << pipeline.parameters.dry_run >>
           maven_profile_id: 'gravitee-dry-run'
-          ee_id_provider_cas_version: << pipeline.parameters.ee_id_provider_cas_version >>
-          ee_id_provider_kerberos_version: << pipeline.parameters.ee_id_provider_kerberos_version >>
+          # ee_id_provider_cas_version: << pipeline.parameters.ee_id_provider_cas_version >>
+          # ee_id_provider_kerberos_version: << pipeline.parameters.ee_id_provider_kerberos_version >>
           ee_id_provider_saml_version: << pipeline.parameters.ee_id_provider_saml_version >>
+          ee_gravitee_license_version: << pipeline.parameters.ee_gravitee_license_version >>
+
 
 
   docker_nightly:

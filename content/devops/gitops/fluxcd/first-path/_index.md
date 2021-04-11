@@ -89,3 +89,18 @@ echo "But What I want is that it generates the CRDs from gravtiee-kubernetes"
 
 
 ```
+
+
+faire fluxcd flagger canary A/B testing
+
+autre gros objectif  :
+* dans https://github.com/stefanprodan/gitops-istio : remplacer istio par gravitee , faire le comparatif
+* est-ce que gravitee supporte blue green / canary / comparatif à istio/ quels implementations futures pour aller dans ce sens ? graavitee kubernetes là dedans ?
+
+* Comment on peut fair du canary / du blue green déployments d'appli microservices, alors que les API  sont gérées par Gravitee ?
+* est-ce que CRD GRavitee Kuernetes peret de faire du blue green, du canary avec vos APIs ?
+
+
+# The gravitee nightly with gitops
+
+refiare toiutes les nigtly en mode gitops

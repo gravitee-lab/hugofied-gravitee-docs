@@ -59,6 +59,81 @@ _**In all Below AM release steps, we note `M.N.P` the release version number of 
 
 ## 1. Maven and git release
 
+* To run the Maven and git release, with dry run mode on :
+
+```bash
+# export CCI_TOKEN=<You Circle CI User Personal Token>
+
+export ORG_NAME="gravitee-io"
+export REPO_NAME="graviteeio-access-management"
+# For example, for the 3.6.1 APIM release, the git branch was 3.6.x
+export BRANCH="3.6.x"
+# if P is zero, than the git branch will be master
+export BRANCH="master"
+# if P is not zero, than the git branch will be M.N.x
+export BRANCH="M.N.x"
+export BRANCH="cicd/prepare-release"
+# description: "The semver version number of the SAML2 identity provider plugin to bundle with GRavitee AM Entreprise Edition"
+export ID_PROVIDER_SAML_VERSION="1.1.1"
+export GRAVITEE_LICENSE_VERSION="1.1.0"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"release\",
+        \"ee_id_provider_saml_version\": \"${ID_PROVIDER_SAML_VERSION}\",
+        \"ee_gravitee_license_version\": \"${GRAVITEE_LICENSE_VERSION}\",
+        \"dry_run\": true
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+
+* To run the Maven and git release, with dry run mode off :
+
+```bash
+# export CCI_TOKEN=<You Circle CI User Personal Token>
+
+export ORG_NAME="gravitee-io"
+export REPO_NAME="graviteeio-access-management"
+# For example, for the 3.6.1 APIM release, the git branch was 3.6.x
+export BRANCH="3.6.x"
+# if P is zero, than the git branch will be master
+export BRANCH="master"
+# if P is not zero, than the git branch will be M.N.x
+export BRANCH="M.N.x"
+export BRANCH="cicd/prepare-release"
+# description: "The semver version number of the SAML2 identity provider plugin to bundle with GRavitee AM Entreprise Edition"
+export ID_PROVIDER_SAML_VERSION="1.1.1"
+export GRAVITEE_LICENSE_VERSION="1.1.0"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"gio_action\": \"release\",
+        \"ee_id_provider_saml_version\": \"${ID_PROVIDER_SAML_VERSION}\",
+        \"ee_gravitee_license_version\": \"${GRAVITEE_LICENSE_VERSION}\",
+        \"dry_run\": false
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+
+
+
+
 
 
 * To run the Maven and git release, with dry run mode on :
@@ -81,7 +156,7 @@ export ID_PROVIDER_CAS_VERSION="1.0.0"
 export ID_PROVIDER_KERBEROS_VERSION="1.0.0"
 # description: "The semver version number of the SAML2 identity provider plugin to bundle with GRavitee AM Entreprise Edition"
 export ID_PROVIDER_SAML_VERSION="1.2.0"
-
+export GRAVITEE_LICENSE_VERSION=""
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -92,6 +167,7 @@ export JSON_PAYLOAD="{
         \"ee_id_provider_cas_version\": \"${ID_PROVIDER_CAS_VERSION}\",
         \"ee_id_provider_kerberos_version\": \"${ID_PROVIDER_KERBEROS_VERSION}\",
         \"ee_id_provider_saml_version\": \"${ID_PROVIDER_SAML_VERSION}\",
+        \"ee_gravitee_license_version\": \"${GRAVITEE_LICENSE_VERSION}\",
         \"dry_run\": true
     }
 
