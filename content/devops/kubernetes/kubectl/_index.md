@@ -18,14 +18,20 @@ export WHERE_I_WAS=$(pwd)
 export KCTL_INSTALL_OPS=$(mktemp -d -t "KCTL_INSTALL_OPS-XXXXXXXXXX")
 cd ${KCTL_INSTALL_OPS}
 
-curl -LO https://github.com/kubernetes/kubectl/archive/refs/tags/${KCTL_VERSION}.tar.gz -o kubectl-${KCTL_VERSION}.tar.gz
+curl -L https://github.com/kubernetes/kubectl/archive/refs/tags/${KCTL_VERSION}.tar.gz -o kubectl-${KCTL_VERSION}.tar.gz
 
 mkdir uncompressed/
 tar -xvf kubectl-${KCTL_VERSION}.tar.gz -C uncompressed/
+export GOLANG_VERSION=1.16
+docker run --rm -v $PWD/uncompressed/kubectl-0.21.0/:/usr/src/myapp -w /usr/src/myapp golang:${GOLANG_VERSION} go build -v
+
+# ---
+# export FILE_NAME='kubectl'
+# docker run --name checksummer -i --rm -v $PWD/uncompressed/kubectl-0.21.0/bin/kubectl:/root/ debian:buster-slim bash -c "cd /root && md5sum ./${FILE_NAME} > ./${FILE_NAME}.md5 && sha512sum ./${FILE_NAME} > ./${FILE_NAME}.sha512sum && sha1sum ${FILE_NAME} > ${FILE_NAME}.sha1"
+
 # Validate the kubectl binary against the checksum file:
 # echo "$(<kubectl.sha256) kubectl" | sha256sum --check
-echo "$(<uncompressed/kubectl.sha256) uncompressed/kubectl" | sha256sum --check
-
+# echo "$(<uncompressed/kubectl.sha256) uncompressed/kubectl" | sha256sum --check
 ```
 
 ### Install `K3D` on GNU/Linux and Mac OS
