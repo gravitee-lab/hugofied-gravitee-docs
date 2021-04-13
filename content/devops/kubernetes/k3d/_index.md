@@ -1,6 +1,6 @@
 
 
-### Install `K3D` on GNU/Linux and Mac OS
+### Install `K3D` on GNU/Linux (not Mac OS)
 
 ```bash
 #!/bin/bash
@@ -23,12 +23,14 @@ export K3D_VERSION=v3.0.0-beta.1
 export K3D_VERSION=v4.4.1
 # darwin, for macos, and will run in bash, on both linux and macos, coz of shebang
 export K3D_OS=linux
+export K3D_OS=darwin
 export K3D_CPU_ARCH=amd64
 export K3D_GH_BINARY_RELEASE_DWLD_URI="https://github.com/rancher/k3d/releases/download/${K3D_VERSION}/k3d-${K3D_OS}-${K3D_CPU_ARCH}"
 
 # first, run the installation of the latest version so that all helpers bash env are installed
 
-wget -q -O - https://raw.githubusercontent.com/rancher/k3d/master/install.sh | TAG=${K3D_VERSION} bash
+# wget -q -O - https://raw.githubusercontent.com/rancher/k3d/master/install.sh | TAG=${K3D_VERSION} bash
+curk -L https://raw.githubusercontent.com/rancher/k3d/master/install.sh | TAG=${K3D_VERSION} bash
 # the delete installed standalone k3d binary
 if [ -f /usr/local/bin/k3d ]; then
   sudo rm /usr/local/bin/k3d

@@ -28,7 +28,7 @@ At the end of the release process:
 * mvn deploy to Gravitee 's Private Artifactory
 * mvn deploy to Nexus Staging
 
-
+### Example to Release Gravitee Parent `16.1` on `16.x` git branch
 
 * To run the Maven and git release, with dry run mode on :
 
@@ -37,10 +37,9 @@ export CCI_TOKEN=<You Circle CI User Personal Token>
 
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-parent"
-export BRANCH="19.xfixes"
-export BRANCH="cicd/circleci-pipeline-def"
-# description:
-export NEXT_SNAPSHOT_VERSION="19.2.4-SNAPSHOT"
+export BRANCH="16.x"
+# description: "Used only for the Gravitee Parent Release Process: What will be the next snapshot version?"
+export NEXT_SNAPSHOT_VERSION="16.2-SNAPSHOT"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -66,10 +65,10 @@ export CCI_TOKEN=<You Circle CI User Personal Token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-parent"
 export BRANCH="cicd/circleci-pipeline-def"
-# release will happen on git branch "19.xfixes" , when "cicd/circleci-pipeline-def" is merged into "19.xfixes"
-export BRANCH="19.xfixes"
-# description:
-export NEXT_SNAPSHOT_VERSION="19.2.4-SNAPSHOT"
+# release will happen on git branch "16.x" , when "cicd/circleci-pipeline-def" is merged into "16.x"
+export BRANCH="16.x"
+# description: "Used only for the Gravitee Parent Release Process: What will be the next snapshot version?"
+export NEXT_SNAPSHOT_VERSION="16.2-SNAPSHOT"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
