@@ -1,0 +1,197 @@
+version: 2.1
+
+parameters:
+  gio_action:
+    type: enum
+    enum: [release, nexus_staging, standalone_release, pull_requests]
+    default: pull_requests
+  dry_run:
+    type: boolean
+    default: true
+    description: "Run in dry run mode?"
+  maven_profile_id:
+    type: string
+    default: "gravitee-dry-run"
+    description: "Maven ID of the Maven profile to use for a dry run ?"
+  secrethub_org:
+    type: string
+    default: "gravitee-io"
+    description: "SecretHub Org to use to fetch secrets ?"
+  secrethub_repo:
+    type: string
+    default: "cicd"
+    description: "SecretHub Repo to use to fetch secrets ?"
+  s3_bucket_name:
+    type: string
+    default: $s3_bucket_name
+    description: "Name of the S3 Bucket used to store and retrieve the state of the maven project, to perform the nexus staging ?"
+
+orbs:
+  gravitee: gravitee-io/gravitee@dev:1.0.4
+
+workflows:
+  version: 2.1
+  # -- typically this workflow is executed on pull requests events for Community Edition Gravitee Repositories
+  pull_requests:
+    when:
+      and:
+        - equal: [ pull_requests, << pipeline.parameters.gio_action >> ]
+    jobs:
+      - gravitee/d_pull_requests_secrets:
+          context: cicd-orchestrator
+          name: pr_secrets_resolution
+      - gravitee/d_pull_requests_ce:
+          name: process_pull_request
+          requires:
+            - pr_secrets_resolution
+          # "What is the maven ID of the maven profile to use to build and deploy SNAPSHOTS to Prviate Artifactory ?"
+          maven_profile_id: 'gio-dev'
+          # nexus_snapshots_url: 'https://oss.sonatype.org/content/repositories/snapshots'
+          # nexus_snapshots_server_id: 'sonatype-nexus-snapshots'
+          # container_gun_image_org: 'circleci'
+          # container_gun_image_name: 'openjdk'
+          # container_gun_image_tag: '11.0.3-jdk-stretch'
+          container_size: 'medium'
+          filters:
+            branches:
+              ignore:
+                - master
+  release:
+    when:
+      and:
+        - equal: [ release, << pipeline.parameters.gio_action >> ]
+        - not: << pipeline.parameters.dry_run >>
+    jobs:
+      - gravitee/release:
+          context: cicd-orchestrator
+          dry_run: << pipeline.parameters.dry_run >>
+          secrethub_org: << pipeline.parameters.secrethub_org >>
+          secrethub_repo: << pipeline.parameters.secrethub_repo >>
+          maven_profile_id: << pipeline.parameters.maven_profile_id >>
+          s3_bucket_name: << pipeline.parameters.s3_bucket_name >>
+  release_dry_run:
+    when:
+      and:
+        - equal: [ release, << pipeline.parameters.gio_action >> ]
+        - << pipeline.parameters.dry_run >>
+    jobs:
+      - gravitee/release:
+          context: cicd-orchestrator
+          dry_run: << pipeline.parameters.dry_run >>
+          secrethub_org: << pipeline.parameters.secrethub_org >>
+          secrethub_repo: << pipeline.parameters.secrethub_repo >>
+          maven_profile_id: << pipeline.parameters.maven_profile_id >>
+          s3_bucket_name: << pipeline.parameters.s3_bucket_name >>
+
+  nexus_staging:
+    when:
+      equal: [ nexus_staging, << pipeline.parameters.gio_action >> ]
+    jobs:
+      - gravitee/nexus_staging:
+          context: cicd-orchestrator
+          secrethub_org: << pipeline.parameters.secrethub_org >>
+          secrethub_repo: << pipeline.parameters.secrethub_repo >>
+          maven_profile_id: << pipeline.parameters.maven_profile_id >>
+          s3_bucket_name: << pipeline.parameters.s3_bucket_name >>
+
+  # ---
+  # The 3 Workflows Below are there to perform a "Standalone Release":
+  # => independently of any APIM release Process, with Docker executors instead of VMs
+  # => with chained nexus staging : only when release with dry run mode off
+  standalone_release:
+    when:
+      and:
+        - equal: [ standalone_release, << pipeline.parameters.gio_action >> ]
+        - not: << pipeline.parameters.dry_run >>
+    jobs:
+      - gravitee/d_release_secrets:
+          context: cicd-orchestrator
+          name: release_secrets_resolution
+      - gravitee/d_standalone_release:
+          name: maven_n_git_release
+          requires:
+            - release_secrets_resolution
+          dry_run: false
+          maven_profile_id: << pipeline.parameters.maven_profile_id >>
+          s3_bucket_name: << pipeline.parameters.s3_bucket_name >>
+          # container_gun_image_org: 'circleci'
+          # container_gun_image_name: 'openjdk'
+          # container_gun_image_tag: '11.0.3-jdk-stretch'
+          container_size: 'large'
+
+  standalone_release_dry_run:
+    when:
+      and:
+        - equal: [ standalone_release, << pipeline.parameters.gio_action >> ]
+        - << pipeline.parameters.dry_run >>
+    jobs:
+      - gravitee/d_release_secrets:
+          context: cicd-orchestrator
+          name: release_secrets_resolution
+      - gravitee/d_standalone_release:
+          name: maven_n_git_release
+          requires:
+            - release_secrets_resolution
+          dry_run: true
+          maven_profile_id: << pipeline.parameters.maven_profile_id >>
+          s3_bucket_name: << pipeline.parameters.s3_bucket_name >>
+          # container_gun_image_org: 'circleci'
+          # container_gun_image_name: 'openjdk'
+          # container_gun_image_tag: '11.0.3-jdk-stretch'
+          container_size: 'large'
+
+  standalone_nexus_staging:
+    # ---
+    # Running the nexus staging makes sense only when the
+    # standalone release is being performed with dry run mode off
+    # That is to say, when the maven project is ready to be release to mmaven Staging
+    # ---
+    when:
+      and:
+        - equal: [ standalone_release, << pipeline.parameters.gio_action >> ]
+        - not: << pipeline.parameters.dry_run >>
+    # ---
+    # Running the nexus staging makes sense only when the
+    # standalone release is being performed with dry run mode off
+    # That is to say, when the maven project is ready to be release to mmaven Staging
+    # Never the less, to test the CICD system, I temporarily git pushed a different configuration
+    # ---
+    # when:
+      # equal: [ standalone_release, << pipeline.parameters.gio_action >> ]
+    jobs:
+      - gravitee/d_nexus_staging_secrets:
+          context: cicd-orchestrator
+          name: nexus_staging_secrets_resolution
+      - nexus_staging_dry_run_approval:
+          type: approval
+          requires:
+            - nexus_staging_secrets_resolution
+      - gravitee/d_standalone_nexus_staging:
+          name: standalone_nexus_staging_dry_run
+          requires:
+            - nexus_staging_dry_run_approval
+            # - nexus_staging_secrets_resolution
+          dry_run: true
+          # maven_profile_id: << pipeline.parameters.maven_profile_id >>
+          maven_profile_id: "gravitee-release"
+          # container_gun_image_org: 'circleci'
+          # container_gun_image_name: 'openjdk'
+          # container_gun_image_tag: '11.0.3-jdk-stretch'
+          container_size: 'large'
+      - nexus_staging_approval:
+          type: approval
+          requires:
+            - nexus_staging_secrets_resolution
+            - standalone_nexus_staging_dry_run
+      - gravitee/d_standalone_nexus_staging:
+          name: standalone_nexus_staging
+          requires:
+            - nexus_staging_approval
+            # - nexus_staging_secrets_resolution
+          dry_run: false
+          # maven_profile_id: << pipeline.parameters.maven_profile_id >>
+          maven_profile_id: "gravitee-release"
+          # container_gun_image_org: 'circleci'
+          # container_gun_image_name: 'openjdk'
+          # container_gun_image_tag: '11.0.3-jdk-stretch'
+          container_size: 'large'
