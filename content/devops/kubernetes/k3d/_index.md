@@ -15,6 +15,10 @@ fi;
 # Install latest stable (`v1.7`)
 
 https://github.com/rancher/k3d/releases/tag/v4.4.1
+
+# Tested OK with :
+# => [v3.0.0-beta.1]
+# => [v4.4.1]
 export K3D_VERSION=v3.0.0-beta.1
 export K3D_VERSION=v4.4.1
 # darwin, for macos, and will run in bash, on both linux and macos, coz of shebang

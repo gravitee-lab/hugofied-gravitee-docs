@@ -3,17 +3,53 @@
 
 ### Install `Kubectl` on GNU/Linux and Mac OS
 
+* Install form Binary :
+
+```bash
+export WHERE_I_WAS=$(pwd)
+export KCTL_INSTALL_OPS=$(mktemp -d -t "KCTL_INSTALL_OPS-XXXXXXXXXX")
+completeKctlInstall () {
+  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+  cd ${WHERE_I_WAS}
+  rm -fr ${KCTL_INSTALL_OPS}
+  kubectl version --client
+}
+
+# uninstall any kubectl previous installation, if any
+if [ -f $(which kubectl) ]; then
+  sudo rm $(which kubectl)
+fi;
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+# Validate the kubectl binary against the checksum file:
+echo "$(<kubectl.sha256) kubectl" | sha256sum --check
+
+export CHCKSUM_EXIT_CODE=$?
+if [ "${CHCKSUM_EXIT_CODE}" == "0" ]; then
+  completeKctlInstall
+else
+  echo "There was a problem checksumming downloaded Kubectl binary"
+fi;
+
+
+```
+
+
+
+* Build from source :
+
 ```bash
 #!/bin/bash
 
-# uninstall any k3d previous installation, if any
+# uninstall any kubectl previous installation, if any
 if [ -f $(which kubectl) ]; then
   sudo rm $(which kubectl)
 fi;
 # ---
 # Install latest stable
-# https://github.com/kubernetes/kubectl/releases/tag/v0.21.0
-export KCTL_VERSION=v0.21.0
+export KCTL_LATEST_STABLE=$(curl -L -s https://dl.k8s.io/release/stable.txt)
+export KCTL_VERSION=${KCTL_LATEST_STABLE}
 export WHERE_I_WAS=$(pwd)
 export KCTL_INSTALL_OPS=$(mktemp -d -t "KCTL_INSTALL_OPS-XXXXXXXXXX")
 cd ${KCTL_INSTALL_OPS}
