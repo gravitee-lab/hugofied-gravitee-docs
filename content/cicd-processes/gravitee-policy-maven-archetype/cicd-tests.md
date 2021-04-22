@@ -1,5 +1,5 @@
 ---
-title: "Gravitee Parent CI/CD Processes"
+title: "Gravitee Policy Maven Archetype CI/CD Processes"
 date: 2020-12-16T00:44:23+01:00
 draft: false
 menu_index: 7
@@ -20,7 +20,7 @@ Here is how you can get one :
 * Keep the value of your token, you will need it at each step.
 
 
-## Gravitee Parent Releases
+## Gravitee Policy Maven Archetype Releases
 
 
 At the end of the release process:
@@ -28,7 +28,7 @@ At the end of the release process:
 * mvn deploy to Gravitee 's Private Artifactory
 * mvn deploy to Nexus Staging
 
-### Example to Release Gravitee Parent `16.1` on `16.x` git branch
+### Example to Release Gravitee Policy Maven Archetype `16.1` on `16.x` git branch
 
 * To run the Maven and git release, with dry run mode on :
 
@@ -38,7 +38,7 @@ export CCI_TOKEN=<You Circle CI User Personal Token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-parent"
 export BRANCH="16.x"
-# description: "Used only for the Gravitee Parent Release Process: What will be the next snapshot version?"
+# description: "Used only for the Gravitee Policy Maven Archetype Release Process: What will be the next snapshot version?"
 export NEXT_SNAPSHOT_VERSION="16.2-SNAPSHOT"
 export JSON_PAYLOAD="{
 
@@ -67,7 +67,7 @@ export REPO_NAME="gravitee-parent"
 export BRANCH="cicd/circleci-pipeline-def"
 # release will happen on git branch "16.x" , when "cicd/circleci-pipeline-def" is merged into "16.x"
 export BRANCH="16.x"
-# description: "Used only for the Gravitee Parent Release Process: What will be the next snapshot version?"
+# description: "Used only for the Gravitee Policy Maven Archetype Release Process: What will be the next snapshot version?"
 export NEXT_SNAPSHOT_VERSION="16.2-SNAPSHOT"
 export JSON_PAYLOAD="{
 
@@ -87,7 +87,7 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 ```
 
 
-### Example to REPLAY Release Gravitee Parent `16.1` on `16.x` git branch
+### Example to REPLAY Release Gravitee Policy Maven Archetype `16.1` on `16.x` git branch
 
 
 #### Without replaying the release to Nexus
@@ -100,7 +100,7 @@ export CCI_TOKEN=<You Circle CI User Personal Token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-parent"
 export BRANCH="16.x"
-# description: "Used only for the Gravitee Parent Release Process: What will be the next snapshot version?"
+# description: "Used only for the Gravitee Policy Maven Archetype Release Process: What will be the next snapshot version?"
 export REPLAYED_RELEASE="16.1"
 export JSON_PAYLOAD="{
 
@@ -129,7 +129,7 @@ export REPO_NAME="gravitee-parent"
 export BRANCH="cicd/circleci-pipeline-def"
 # release will happen on git branch "16.x" , when "cicd/circleci-pipeline-def" is merged into "16.x"
 export BRANCH="16.x"
-# description: "Used only for the Gravitee Parent Release Process: What will be the next snapshot version?"
+# description: "Used only for the Gravitee Policy Maven Archetype Release Process: What will be the next snapshot version?"
 export REPLAYED_RELEASE="16.1"
 export JSON_PAYLOAD="{
 
@@ -159,7 +159,7 @@ export CCI_TOKEN=<You Circle CI User Personal Token>
 export ORG_NAME="gravitee-io"
 export REPO_NAME="gravitee-parent"
 export BRANCH="16.x"
-# description: "Used only for the Gravitee Parent Release Process: What will be the next snapshot version?"
+# description: "Used only for the Gravitee Policy Maven Archetype Release Process: What will be the next snapshot version?"
 export REPLAYED_RELEASE="16.1"
 export JSON_PAYLOAD="{
 
@@ -189,7 +189,7 @@ export REPO_NAME="gravitee-parent"
 export BRANCH="cicd/circleci-pipeline-def"
 # release will happen on git branch "16.x" , when "cicd/circleci-pipeline-def" is merged into "16.x"
 export BRANCH="16.x"
-# description: "Used only for the Gravitee Parent Release Process: What will be the next snapshot version?"
+# description: "Used only for the Gravitee Policy Maven Archetype Release Process: What will be the next snapshot version?"
 export REPLAYED_RELEASE="16.1"
 export JSON_PAYLOAD="{
 

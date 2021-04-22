@@ -134,7 +134,7 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 
 
 
-for more parameters to set versions of more EE Release addons, we could have : 
+for more parameters to set versions of more EE Release addons, we could have :
 
 * To run the Maven and git release, with dry run mode on :
 
@@ -234,7 +234,7 @@ For a `2.x` Gravitee AM, use `\"gio_product\": \"am_v2\",` instead of `\"gio_pro
 
 #### Dryn run mode ON
 
-* Launching Gravitee AM version `3.5.4` with `gio_product = am_v3` ( tested ok with [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/84/workflows/c0274387-d96a-42d0-aca0-8c38df3775bd) ) :
+* Launching `Gravitee AM` version `3.5.4` with `gio_product = am_v3` ( tested ok with [this pipeline execution](https://app.circleci.com/pipelines/github/gravitee-io/gravitee-docker/84/workflows/c0274387-d96a-42d0-aca0-8c38df3775bd) ) :
 
 ```bash
 export CCI_TOKEN=<your user circle ci token>
@@ -259,6 +259,38 @@ export JSON_PAYLOAD="{
 curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
+
+
+* For a `Gravitee AM` Major Release version, for which docker images should be tagged latests, use the addtional `tag_latest` pipeline parameter (which defaults to `true`), example with `Gravitee AM` version `3.8.0` :
+
+```bash
+export CCI_TOKEN=<your user circle ci token>
+export ORG_NAME="gravitee-io"
+export REPO_NAME="gravitee-docker"
+export BRANCH="master"
+export BRANCH="feature/cicd-circle-image-builds"
+export GIO_RELEASE_VERSION="3.8.0"
+export JSON_PAYLOAD="{
+
+    \"branch\": \"${BRANCH}\",
+    \"parameters\":
+
+    {
+        \"dry_run\": true,
+        \"gio_product\": \"am_v3\",
+        \"graviteeio_version\": \"${GIO_RELEASE_VERSION}\",
+        \"tag_latest\": true
+    }
+
+}"
+
+curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
+curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
+```
+
+<!--
+tag_latest_support
+-->
 
 
 #### Dry run mode OFF (will push to Dockerhub)
@@ -347,3 +379,22 @@ export JSON_PAYLOAD="{
 curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
 curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
 ```
+
+
+
+
+
+
+### New CICD Migration Ops
+
+Migrating to the new CICD requires 2 operations :
+* Updating the `./.circleci/config.yml` with the reference [`config.yml`](./reference-config-yml/config.yml) (`content/cicd-processes/am/reference-config-yml/config.yml`)
+* Updating the `pom.xml` gravitee parent version : it must use a version of the gravitee-parent, compatible with the new CICD, without breaking change
+
+#### Where we are
+
+Git Branches for Which the migration has been done :
+* `master` : validated with the AM release `3.8.0` made with Circle CI
+* `3.5.x` : validated with the AM release `3.5.4` made with Circle CI
+* `3.7.x` : validated with the AM release `3.7.2` made with Circle CI
+* `3.6.x` : validated with the AM release `3.6.4` made with Circle CI (yet `3.6.x` is today not supported anymore)

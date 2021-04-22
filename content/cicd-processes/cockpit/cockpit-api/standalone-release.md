@@ -36,19 +36,18 @@ Here is how you can get one :
 
 ## Launch the Standalone Release
 
-## Example 1 : A Gravitee Community Edition Repository, Gravitee Kubernetes
 
 #### With dry run mode ON
 
 ```bash
 export CCI_TOKEN=<you circle ci token>
 export ORG_NAME="gravitee-io"
-export REPO_NAME="gravitee-kubernetes"
+export REPO_NAME="gravitee-cockpit-api"
 # on master branch for a major release
 export BRANCH="master"
 # on a "*.*.x" branch for a support release
 export BRANCH="9.3.x"
-export BRANCH="0.1.x"
+export BRANCH="cicd/respawned-pipeline"
 # IMPORTANT ! Name of Maven profile defines in which Artifactory repo the mvn deploys sends
 export MAVEN_PROFILE_ID="gravitee-dry-run"
 export JSON_PAYLOAD="{
@@ -77,12 +76,12 @@ When launched, no Nexus Staging Workflow will be triggered :
 ```bash
 export CCI_TOKEN=<you circle ci token>
 export ORG_NAME="gravitee-io"
-export REPO_NAME="gravitee-kubernetes"
+export REPO_NAME="gravitee-cockpit-api"
 # on master branch for a major release
 export BRANCH="master"
 # on a "*.*.x" branch for a support release
 export BRANCH="9.3.x"
-export BRANCH="0.1.x"
+export BRANCH="cicd/respawned-pipeline"
 # IMPORTANT ! Name of Maven profile defines in which Artifactory repo the mvn deploys sends
 export MAVEN_PROFILE_ID="gio-release"
 export JSON_PAYLOAD="{
@@ -116,72 +115,8 @@ When launched, A Nexus Staging Workflow will be triggered, and will hold 2 jobs 
 
 
 
-## Example 2 : A Gravitee Entreprise Edition Repository, Gravitee License
-
-#### With dry run mode ON
-
-
-```bash
-export CCI_TOKEN=<you circle ci token>
-export ORG_NAME="gravitee-io"
-export REPO_NAME="gravitee-license"
-# on master branch for a major release
-export BRANCH="master"
-# on a "*.*.x" branch for a support release
-export BRANCH="9.3.x"
-export MAVEN_PROFILE_ID="gravitee-dry-run"
-export JSON_PAYLOAD="{
-
-    \"branch\": \"${BRANCH}\",
-    \"parameters\":
-
-    {
-        \"gio_action\": \"standalone_release\",
-        \"maven_profile_id\": \"${MAVEN_PROFILE_ID}\",
-        \"dry_run\": true
-    }
-
-}"
-
-curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
-curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
-```
-
-#### With dry run mode OFF (immutable!)
-
-
-```bash
-export CCI_TOKEN=<you circle ci token>
-export ORG_NAME="gravitee-io"
-export REPO_NAME="gravitee-license"
-# on master branch for a major release
-export BRANCH="master"
-# on a "*.*.x" branch for a support release
-export BRANCH="9.3.x"
-export BRANCH="cicd/awesome_pr_builds"
-export MAVEN_PROFILE_ID="gio-release"
-export JSON_PAYLOAD="{
-
-    \"branch\": \"${BRANCH}\",
-    \"parameters\":
-
-    {
-        \"gio_action\": \"standalone_release\",
-        \"maven_profile_id\": \"${MAVEN_PROFILE_ID}\",
-        \"dry_run\": false
-    }
-
-}"
-
-curl -X GET -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/me | jq .
-curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept: application/json' -H "Circle-Token: ${CCI_TOKEN}" https://circleci.com/api/v2/project/gh/${ORG_NAME}/${REPO_NAME}/pipeline | jq .
-```
-
-
-
 ## Launch the Standalone Release Replay
 
-## Example 1 : A Gravitee Community Edition Repository, Gravitee Kubernetes
 
 #### With dry run mode ON
 
@@ -190,11 +125,12 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 ```bash
 export CCI_TOKEN=<you circle ci token>
 export ORG_NAME="gravitee-io"
-export REPO_NAME="gravitee-kubernetes"
+export REPO_NAME="gravitee-cockpit-api"
 # on a "*.*.x" branch for a support release
 export BRANCH="9.3.x"
 # on master branch for a major release
 export BRANCH="master"
+export BRANCH="cicd/respawned-pipeline"
 # IMPORTANT ! Name of Maven profile defines in which Artifactory repo the mvn deploys sends
 export MAVEN_PROFILE_ID="gravitee-dry-run"
 export REPLAYED_RELEASE="0.1.0"
@@ -225,18 +161,19 @@ When launched, no Nexus Staging Workflow will be triggered :
 ```bash
 export CCI_TOKEN=<you circle ci token>
 export ORG_NAME="gravitee-io"
-export REPO_NAME="gravitee-kubernetes"
+export REPO_NAME="gravitee-cockpit-api"
 # on a "*.*.x" branch for a support release
 export BRANCH="9.3.x"
 # on master branch for a major release
 export BRANCH="master"
+export BRANCH="cicd/respawned-pipeline"
 # IMPORTANT ! Name of Maven profile defines in which Artifactory repo the mvn deploys sends
 export MAVEN_PROFILE_ID="gravitee-dry-run"
 export REPLAYED_RELEASE="0.1.0"
 export MAJOR_VERSION=$(echo "${REPLAYED_RELEASE}" | awk -F '.' '{print $1}')
 export MINOR_VERSION=$(echo "${REPLAYED_RELEASE}" | awk -F '.' '{print $2}')
 export PATCH_VERSION=$(echo "${REPLAYED_RELEASE}" | awk -F '.' '{print $3}')
-export S3_BUCKET_NAME="prepared-standalone-nexus-staging-gravitee-kubernetes-${MAJOR_VERSION}_${MINOR_VERSION}_${PATCH_VERSION}"
+export S3_BUCKET_NAME="prepared-standalone-nexus-staging-gravitee-cockpit-api-${MAJOR_VERSION}_${MINOR_VERSION}_${PATCH_VERSION}"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -265,11 +202,12 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 ```bash
 export CCI_TOKEN=<you circle ci token>
 export ORG_NAME="gravitee-io"
-export REPO_NAME="gravitee-kubernetes"
+export REPO_NAME="gravitee-cockpit-api"
 # on a "*.*.x" branch for a support release
 export BRANCH="9.3.x"
 # on master branch for a major release
 export BRANCH="master"
+export BRANCH="cicd/respawned-pipeline"
 # IMPORTANT ! Name of Maven profile defines in which Artifactory repo the mvn deploys sends
 export MAVEN_PROFILE_ID="gio-release"
 export REPLAYED_RELEASE="0.1.0"
@@ -301,18 +239,19 @@ When launched, A Nexus Staging Workflow will be triggered, and will hold 2 jobs 
 ```bash
 export CCI_TOKEN=<you circle ci token>
 export ORG_NAME="gravitee-io"
-export REPO_NAME="gravitee-kubernetes"
+export REPO_NAME="gravitee-cockpit-api"
 # on a "*.*.x" branch for a support release
 export BRANCH="9.3.x"
 # on master branch for a major release
 export BRANCH="master"
+export BRANCH="cicd/respawned-pipeline"
 # IMPORTANT ! Name of Maven profile defines in which Artifactory repo the mvn deploys sends
 export MAVEN_PROFILE_ID="gio-release"
 export REPLAYED_RELEASE="0.1.0"
 export MAJOR_VERSION=$(echo "${REPLAYED_RELEASE}" | awk -F '.' '{print $1}')
 export MINOR_VERSION=$(echo "${REPLAYED_RELEASE}" | awk -F '.' '{print $2}')
 export PATCH_VERSION=$(echo "${REPLAYED_RELEASE}" | awk -F '.' '{print $3}')
-export S3_BUCKET_NAME="prepared-standalone-nexus-staging-gravitee-kubernetes-${MAJOR_VERSION}_${MINOR_VERSION}_${PATCH_VERSION}"
+export S3_BUCKET_NAME="prepared-standalone-nexus-staging-gravitee-cockpit-api-${MAJOR_VERSION}_${MINOR_VERSION}_${PATCH_VERSION}"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
