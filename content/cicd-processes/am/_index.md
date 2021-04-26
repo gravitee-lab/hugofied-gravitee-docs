@@ -398,3 +398,27 @@ Git Branches for Which the migration has been done :
 * `3.5.x` : validated with the AM release `3.5.4` made with Circle CI
 * `3.7.x` : validated with the AM release `3.7.2` made with Circle CI
 * `3.6.x` : validated with the AM release `3.6.4` made with Circle CI (yet `3.6.x` is today not supported anymore)
+
+
+List of all release git branches :
+
+* git branch `1.x` : `deprecated`
+* git branch `2.0.x` : `deprecated`
+* git branch `2.10.x` : `deprecated`
+* git branch `2.7.1` : `deprecated`
+* git branch `2.7.x` : `deprecated`
+* git branch `2.8.x` : `deprecated`
+* git branch `2.9.x` : `deprecated`
+* git branch `2.x` : `deprecated`
+* git branch `3.0.10` : `deprecated`
+* git branch `3.0.9` : `deprecated`
+* git branch `3.0.x` : `deprecated`
+* git branch `3.1.x` : `deprecated`
+* git branch `3.2.x` : `deprecated`
+* git branch `3.3.x` : `deprecated`
+* git branch `3.4.x` : `deprecated`
+* git branch `3.5.x` : `active`
+* git branch `3.6.x` : `deprecated`
+* git branch `3.7.x` : `active`
+* git branch `3.8.x` : `active`
+* git branch `master` : `active`

@@ -27,11 +27,11 @@ This process is executed within the release process
 ```bash
 export CCI_TOKEN=<you circle ci token>
 export ORG_NAME="gravitee-io"
-export REPO_NAME="gravitee-cockpit"
+export REPO_NAME="gravitee-cockpit-connectors"
 export BRANCH="cicd/release_process"
-export BRANCH="cicd/package-bundle"
 export BRANCH="master"
-export GIO_RELEASE_VERSION="1.2.1"
+export BRANCH="cicd/package_bundle"
+export GIO_RELEASE_VERSION="1.2.0"
 export JSON_PAYLOAD="{
 
     \"branch\": \"${BRANCH}\",
@@ -54,10 +54,10 @@ curl -X POST -d "${JSON_PAYLOAD}" -H 'Content-Type: application/json' -H 'Accept
 ```bash
 export CCI_TOKEN=<you circle ci token>
 export ORG_NAME="gravitee-io"
-export REPO_NAME="gravitee-cockpit"
+export REPO_NAME="gravitee-cockpit-connectors"
 export BRANCH="cicd/release_process"
-export BRANCH="cicd/package-bundle"
 export BRANCH="master"
+export BRANCH="cicd/package_bundle"
 export GIO_RELEASE_VERSION="1.2.0"
 export JSON_PAYLOAD="{
 
