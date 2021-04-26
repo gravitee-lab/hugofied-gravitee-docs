@@ -603,6 +603,25 @@ echo "But What I want is that it generates the CRDs from gravtiee-kubernetes"
 ```
 
 
+#### Future of GRavitee CRDs?
+
+Well we should have CRDs to create Alert Engine Alerts for example, so many ideas...
+
+To all those tresources, there should be prometheus metrics associated (prometheus exporters)
+
+
+
+# The gravitee nightly with gitops
+
+Refiare Toutes les nigtly en mode gitops
+
+
+
+
+
+####
+
+
 faire fluxcd flagger canary A/B testing
 
 autre gros objectif  :
@@ -611,8 +630,3 @@ autre gros objectif  :
 
 * Comment on peut fair du canary / du blue green déployments d'appli microservices, alors que les API  sont gérées par Gravitee ?
 * est-ce que CRD GRavitee Kuernetes peret de faire du blue green, du canary avec vos APIs ?
-
-
-# The gravitee nightly with gitops
-
-refiare toiutes les nigtly en mode gitops
