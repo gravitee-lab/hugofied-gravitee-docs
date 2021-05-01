@@ -32,7 +32,9 @@ curl -s https://toolkit.fluxcd.io/install.sh | sudo bash
 
 
 
-#### 4. Install the Gitops Toolkit (this mainly means runing the `bootstrap` command, and there are many different ways to run that bootstrap see https://toolkit.fluxcd.io/guides/installation/ )
+#### 4. Install the `FluxCD` Gitops Toolkit
+
+This mainly means runing the `bootstrap` command, and there are many different ways to run that bootstrap see https://toolkit.fluxcd.io/guides/installation/ )
 
 ```bash
 # --- #
@@ -91,7 +93,7 @@ flux uninstall --namespace=flux-system
 Main doc Reference : https://toolkit.fluxcd.io/guides/helmreleases/
 
 Helm Charts can be released with `FluxCD`, using either :
-* an acual Helm Repository,
+* an actual Helm Repository,
 * or a git repository versioning the `Helm Chart`
 * or an S3 Bucket publishing the Helm Chart
 
@@ -174,7 +176,7 @@ kubectl apply -f ./lambda-helm-release.yaml
 ```
 
 Above :
-* instead of `kind: GitRepository`, we could have `kind: HelmRepository`, `kind: Bucket`
+* Instead of `kind: GitRepository`, we could have `kind: HelmRepository`, `kind: Bucket`
 * If the Chart "source" (where `FluxCD` finds the Helm Chart) :
   * is a git repository, or a S3 Bucket, `chart: ./gravitee-lab-helm-charts/lambda/` gives a path within the S3 Bucket or the git reprository
   * is a Helm Repository, the `chart: <value here>` value must be the name of the Helm Chart in the Helm Repository.
